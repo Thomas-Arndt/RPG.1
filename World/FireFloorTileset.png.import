@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grass_Background.png-323c259cda81b3df56f594b40fedbefa.stex"
+path="res://.import/FireFloorTileset.png-1fdf38a65ee754a7be2de8689bbd3f43.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Grass_Background.png"
-dest_files=[ "res://.import/Grass_Background.png-323c259cda81b3df56f594b40fedbefa.stex" ]
+source_file="res://World/FireFloorTileset.png"
+dest_files=[ "res://.import/FireFloorTileset.png-1fdf38a65ee754a7be2de8689bbd3f43.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0
