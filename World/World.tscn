@@ -1,8 +1,9 @@
-[gd_scene load_steps=104 format=2]
+[gd_scene load_steps=105 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
 [ext_resource path="res://World/KinematicBody2D.gd" type="Script" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/sheet.png" type="Texture" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -1091,3 +1092,6 @@ position = Vector2( -1117, 52 )
 
 [node name="BottomRight" type="Position2D" parent="Camera2D/Limits"]
 position = Vector2( -229, 861 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( -940, 211 )
