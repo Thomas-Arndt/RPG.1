@@ -1047,6 +1047,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 2/z_index = 0
 
 [node name="World" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="StoneCliffs" type="TileMap" parent="."]
 z_index = 1
@@ -1090,7 +1091,3 @@ position = Vector2( -1117, 52 )
 
 [node name="BottomRight" type="Position2D" parent="Camera2D/Limits"]
 position = Vector2( -229, 861 )
-
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-position = Vector2( -673, 447 )
-script = ExtResource( 3 )
