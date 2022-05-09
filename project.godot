@@ -14,6 +14,13 @@ config/name="RPG.1"
 run/main_scene="res://World/World.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=320
+window/size/height=180
+window/size/test_width=640
+window/size/test_height=360
+
 [physics]
 
 common/enable_pause_aware_picking=true
