@@ -197,6 +197,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 55, 56, 57, 58, 59 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "roll_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=28]
 resource_name = "roll_left"
@@ -212,6 +226,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 50, 51, 52, 53, 54 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "roll_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=29]
@@ -229,6 +257,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 40, 41, 42, 43, 44 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "roll_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=30]
 resource_name = "roll_up"
@@ -244,6 +286,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 45, 46, 47, 48, 49 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "roll_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=9]
