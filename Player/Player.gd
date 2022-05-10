@@ -32,10 +32,12 @@ func _physics_process(delta):
 			move_state(delta)
 		ROLL:
 			roll_state()
+		ATTACK:
+			attack_state()
 	
-	if Input.is_action_just_pressed("ui_accept") and RedDimension.visible == false:
+	if Input.is_action_just_pressed("d_shift") and RedDimension.visible == false:
 		RedDimension.visible = true
-	elif Input.is_action_just_pressed("ui_accept") and RedDimension.visible == true:
+	elif Input.is_action_just_pressed("d_shift") and RedDimension.visible == true:
 		RedDimension.visible = false
 
 func move_state(delta):
@@ -49,6 +51,7 @@ func move_state(delta):
 		anim_tree.set("parameters/idle/blend_position", input_vector)
 		anim_tree.set("parameters/run/blend_position", input_vector)
 		anim_tree.set("parameters/roll/blend_position", input_vector)
+		anim_tree.set("parameters/attack/blend_position", input_vector)
 		anim_state.travel("run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
@@ -56,17 +59,27 @@ func move_state(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	move()
 	
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("roll"):
 		state = ROLL
+	
+	if Input.is_action_just_pressed("attack"):
+		state = ATTACK
 
 func roll_state():
 	velocity = roll_vector * ROLL_SPEED
 	anim_state.travel("roll")
 	move()
+	
+func attack_state():
+	velocity = Vector2.ZERO
+	anim_state.travel("attack")
 
 func move():
 	velocity = move_and_slide(velocity)
 	
 func roll_animation_finished():
 	velocity = velocity * 0.8
+	state = MOVE
+
+func attack_animation_finished():
 	state = MOVE
