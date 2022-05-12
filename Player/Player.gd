@@ -83,3 +83,7 @@ func roll_animation_finished():
 
 func attack_animation_finished():
 	state = MOVE
+
+
+func _on_HurtBox_area_entered(area):
+	pass # Replace with function body.
