@@ -24,6 +24,7 @@ onready var RedDimension = get_node("/root/World/RedDimension")
 func _ready():
 	anim_tree.active = true
 	anim_tree.set("parameters/roll/blend_position", Vector2.DOWN)
+	anim_tree.set("parameters/attack/blend_position", Vector2.DOWN)
 	anim_player.play("SETUP")
 	
 func _physics_process(delta):

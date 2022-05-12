@@ -47,6 +47,15 @@ d_shift={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Hurt Boxes"
+2d_physics/layer_4="Hit Boxes"
+2d_physics/layer_5="Enemies"
+2d_physics/layer_6="Boundaries"
+
 [physics]
 
 common/enable_pause_aware_picking=true
