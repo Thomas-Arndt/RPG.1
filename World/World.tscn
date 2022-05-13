@@ -1102,13 +1102,16 @@ remote_path = NodePath("../../../Camera2D")
 [node name="Grass" type="YSort" parent="YSort"]
 
 [node name="Grass" parent="YSort/Grass" instance=ExtResource( 3 )]
-position = Vector2( -716, 139 )
+position = Vector2( -720, 136 )
 
 [node name="Grass2" parent="YSort/Grass" instance=ExtResource( 3 )]
-position = Vector2( -703, 243 )
+position = Vector2( -744, 136 )
 
 [node name="Grass3" parent="YSort/Grass" instance=ExtResource( 3 )]
-position = Vector2( -801, 141 )
+position = Vector2( -816, 136 )
 
 [node name="Grass4" parent="YSort/Grass" instance=ExtResource( 3 )]
-position = Vector2( -868, 246 )
+position = Vector2( -792, 136 )
+
+[node name="Grass5" parent="YSort/Grass" instance=ExtResource( 3 )]
+position = Vector2( -768, 136 )
