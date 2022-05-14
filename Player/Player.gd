@@ -18,6 +18,7 @@ var roll_vector = Vector2.DOWN
 onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
 onready var anim_state = anim_tree.get("parameters/playback")
+onready var sword_hit_box = $HitBoxPivot/SwordHitBox
 
 onready var RedDimension = get_node("/root/World/RedDimension")
 
@@ -26,6 +27,7 @@ func _ready():
 	anim_tree.set("parameters/roll/blend_position", Vector2.DOWN)
 	anim_tree.set("parameters/attack/blend_position", Vector2.DOWN)
 	anim_player.play("SETUP")
+	sword_hit_box.knockback_vector = roll_vector
 	
 func _physics_process(delta):
 	match state:
@@ -36,9 +38,11 @@ func _physics_process(delta):
 		ATTACK:
 			attack_state()
 	
-	if Input.is_action_just_pressed("d_shift") and RedDimension.visible == false:
+	if Input.is_action_just_pressed("d_shift") and WorldStats.DIMENSION == false:
+		WorldStats.shift_dimension()
 		RedDimension.visible = true
-	elif Input.is_action_just_pressed("d_shift") and RedDimension.visible == true:
+	elif Input.is_action_just_pressed("d_shift") and WorldStats.DIMENSION == true:
+		WorldStats.shift_dimension()
 		RedDimension.visible = false
 
 func move_state(delta):
@@ -49,6 +53,7 @@ func move_state(delta):
 	
 	if input_vector != Vector2.ZERO:
 		roll_vector = input_vector
+		sword_hit_box.knockback_vector = input_vector
 		anim_tree.set("parameters/idle/blend_position", input_vector)
 		anim_tree.set("parameters/run/blend_position", input_vector)
 		anim_tree.set("parameters/roll/blend_position", input_vector)

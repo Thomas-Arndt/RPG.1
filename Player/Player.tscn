@@ -73,7 +73,7 @@ tracks/4/keys = {
 "values": [ 270.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("HitBoxPivot/HitBox/CollisionShape2D:disabled")
+tracks/5/path = NodePath("HitBoxPivot/SwordHitBox/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -125,7 +125,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, -9 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitBoxPivot/HitBox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitBoxPivot/SwordHitBox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -179,7 +179,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitBoxPivot/HitBox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitBoxPivot/SwordHitBox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -233,7 +233,7 @@ tracks/2/keys = {
 "values": [ 90.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitBoxPivot/HitBox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitBoxPivot/SwordHitBox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -287,7 +287,7 @@ tracks/2/keys = {
 "values": [ 270.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitBoxPivot/HitBox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitBoxPivot/SwordHitBox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -341,7 +341,7 @@ tracks/2/keys = {
 "values": [ 180.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitBoxPivot/HitBox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitBoxPivot/SwordHitBox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -788,6 +788,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "SETUP"
 anims/RESET = SubResource( 2 )
 anims/SETUP = SubResource( 3 )
 anims/attack_down = SubResource( 39 )
@@ -820,10 +821,10 @@ parameters/run/blend_position = Vector2( -0.00470811, -0.0472103 )
 [node name="HitBoxPivot" type="Position2D" parent="."]
 rotation = 4.71239
 
-[node name="HitBox" parent="HitBoxPivot" instance=ExtResource( 4 )]
+[node name="SwordHitBox" parent="HitBoxPivot" instance=ExtResource( 4 )]
 collision_mask = 8
 
-[node name="CollisionShape2D" parent="HitBoxPivot/HitBox" index="0"]
+[node name="CollisionShape2D" parent="HitBoxPivot/SwordHitBox" index="0"]
 position = Vector2( 0, 12 )
 rotation = 1.5708
 shape = SubResource( 50 )
@@ -838,5 +839,5 @@ shape = SubResource( 51 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 
-[editable path="HitBoxPivot/HitBox"]
+[editable path="HitBoxPivot/SwordHitBox"]
 [editable path="HurtBox"]

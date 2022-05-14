@@ -14,6 +14,11 @@ config/name="RPG.1"
 run/main_scene="res://World/World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerStats="*res://Utils/Stats/PlayerStats.tscn"
+WorldStats="*res://Utils/Stats/WorldStats.gd"
+
 [display]
 
 window/size/width=320
