@@ -19,7 +19,7 @@ func set_health(value):
 		emit_signal("no_health")
 		
 func change_health(value):
-	print(health)
+
 	health += value
 	if health <= 0:
 		emit_signal("no_health")

@@ -835,7 +835,7 @@ radius = 11.0
 height = 12.0
 
 [sub_resource type="CapsuleShape2D" id=51]
-radius = 4.0
+radius = 5.0
 height = 4.0
 
 [node name="Player" type="KinematicBody2D"]
@@ -899,7 +899,7 @@ rotation = 4.71239
 [node name="SwordHitBox" parent="HitBoxPivot" instance=ExtResource( 4 )]
 
 [node name="CollisionShape2D" parent="HitBoxPivot/SwordHitBox" index="0"]
-position = Vector2( 0, 12 )
+position = Vector2( 0, 11 )
 rotation = 1.5708
 shape = SubResource( 50 )
 disabled = true
@@ -907,7 +907,7 @@ disabled = true
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2( 0, -3 )
+position = Vector2( 0, -2 )
 shape = SubResource( 51 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

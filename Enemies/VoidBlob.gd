@@ -22,12 +22,12 @@ onready var half_sprite = $HalfSprite
 onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
 onready var anim_state = anim_tree.get("parameters/playback")
+onready var blink_anim_player = $BlinkAnimationPlayer
 onready var hurt_box = $HurtBox
 onready var hit_box = $HitBox
 onready var player_detection_zone = $PlayerDetectionZone
 onready var soft_collision = $SoftCollision
 onready var wander_controller = $WanderController
-onready var blink_anim_player = $BlinkAnimationPlayer
 
 func _ready():
 	stats.set_max_health(3)
@@ -85,6 +85,7 @@ func pick_random_state(state_list):
 func accelerate_towards_point(point, delta):
 	var direction = global_position.direction_to(point)
 	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
+	hit_box.knockback_vector = velocity.normalized()
 	full_sprite.flip_h = velocity.x > 0
 	half_sprite.flip_h = velocity.x > 0
 
@@ -99,3 +100,11 @@ func _on_Stats_no_health():
 func match_dimension():
 	pass
 
+
+
+func _on_HurtBox_invincible_start():
+	blink_anim_player.play("start")
+
+
+func _on_HurtBox_invincible_end():
+	blink_anim_player.play("stop")

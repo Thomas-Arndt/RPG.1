@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 export var ACCELERATION = 500
 export var MAX_SPEED = 80
 export var ROLL_SPEED = 120
@@ -31,11 +30,15 @@ func _ready():
 	anim_tree.set("parameters/roll/blend_position", Vector2.DOWN)
 	anim_tree.set("parameters/attack/blend_position", Vector2.DOWN)
 	anim_player.play("SETUP")
-	PlayerStats.health = 3
+	PlayerStats.set_health(3)
 	sword_hit_box.knockback_vector = roll_vector
 	PlayerStats.connect("no_health", self, "_on_PlayerStats_no_health")
 	
 func _physics_process(delta):
+	
+	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
+	knockback = move_and_slide(knockback)
+	
 	match state:
 		MOVE:
 			move_state(delta)
@@ -99,7 +102,8 @@ func attack_animation_finished():
 
 func _on_HurtBox_area_entered(area):
 	PlayerStats.change_health(-area.damage)
-	knockback = area.knockback_vector * 200
+	print(area.knockback_vector)
+	knockback = area.knockback_vector * 175
 	hurt_box.start_invincible(0.6)
 
 func _on_HurtBox_invincible_start():
