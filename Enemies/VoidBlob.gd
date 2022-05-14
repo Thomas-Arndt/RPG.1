@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var ACCELERATION = 200
-export var MAX_SPEED = 50
+export var MAX_SPEED = 35
 export var FRICTION = 200
 export var WANDER_BUFFER = 4
 
@@ -27,6 +27,7 @@ onready var hit_box = $HitBox
 onready var player_detection_zone = $PlayerDetectionZone
 onready var soft_collision = $SoftCollision
 onready var wander_controller = $WanderController
+onready var blink_anim_player = $BlinkAnimationPlayer
 
 func _ready():
 	stats.set_max_health(3)
@@ -95,5 +96,12 @@ func _on_HurtBox_area_entered(area):
 func _on_Stats_no_health():
 	queue_free()
 
+func _on_HurtBox_invincible_start():
+	blink_anim_player.play("start")
+
+func _on_HurtBox_invincible_end():
+	blink_anim_player.play("stop")
+
 func match_dimension():
 	pass
+

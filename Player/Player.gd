@@ -19,6 +19,7 @@ onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
 onready var anim_state = anim_tree.get("parameters/playback")
 onready var sword_hit_box = $HitBoxPivot/SwordHitBox
+onready var blink_anim_player = $BlinkAnimationPlayer
 
 onready var RedDimension = get_node("/root/World/RedDimension")
 
@@ -93,3 +94,11 @@ func attack_animation_finished():
 
 func _on_HurtBox_area_entered(area):
 	pass # Replace with function body.
+
+
+func _on_HurtBox_invincible_start():
+	blink_anim_player.play("start")
+
+
+func _on_HurtBox_invincible_end():
+	blink_anim_player.play("stop")
