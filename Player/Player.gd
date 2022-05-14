@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+
 export var ACCELERATION = 500
 export var MAX_SPEED = 80
 export var ROLL_SPEED = 120
@@ -14,11 +15,13 @@ enum {
 var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
+var knockback = Vector2()
 
 onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
 onready var anim_state = anim_tree.get("parameters/playback")
 onready var sword_hit_box = $HitBoxPivot/SwordHitBox
+onready var hurt_box = $HurtBox
 onready var blink_anim_player = $BlinkAnimationPlayer
 
 onready var RedDimension = get_node("/root/World/RedDimension")
@@ -28,7 +31,9 @@ func _ready():
 	anim_tree.set("parameters/roll/blend_position", Vector2.DOWN)
 	anim_tree.set("parameters/attack/blend_position", Vector2.DOWN)
 	anim_player.play("SETUP")
+	PlayerStats.health = 3
 	sword_hit_box.knockback_vector = roll_vector
+	PlayerStats.connect("no_health", self, "_on_PlayerStats_no_health")
 	
 func _physics_process(delta):
 	match state:
@@ -93,8 +98,9 @@ func attack_animation_finished():
 
 
 func _on_HurtBox_area_entered(area):
-	pass # Replace with function body.
-
+	PlayerStats.change_health(-area.damage)
+	knockback = area.knockback_vector * 200
+	hurt_box.start_invincible(0.6)
 
 func _on_HurtBox_invincible_start():
 	blink_anim_player.play("start")
@@ -102,3 +108,6 @@ func _on_HurtBox_invincible_start():
 
 func _on_HurtBox_invincible_end():
 	blink_anim_player.play("stop")
+
+func _on_PlayerStats_no_health():
+	queue_free()

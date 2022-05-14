@@ -897,7 +897,6 @@ parameters/run/blend_position = Vector2( -0.00470811, -0.0472103 )
 rotation = 4.71239
 
 [node name="SwordHitBox" parent="HitBoxPivot" instance=ExtResource( 4 )]
-collision_mask = 8
 
 [node name="CollisionShape2D" parent="HitBoxPivot/SwordHitBox" index="0"]
 position = Vector2( 0, 12 )
@@ -906,7 +905,6 @@ shape = SubResource( 50 )
 disabled = true
 
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
-collision_layer = 4
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2( 0, -3 )

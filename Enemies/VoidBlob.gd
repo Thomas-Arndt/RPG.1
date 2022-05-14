@@ -96,12 +96,6 @@ func _on_HurtBox_area_entered(area):
 func _on_Stats_no_health():
 	queue_free()
 
-func _on_HurtBox_invincible_start():
-	blink_anim_player.play("start")
-
-func _on_HurtBox_invincible_end():
-	blink_anim_player.play("stop")
-
 func match_dimension():
 	pass
 
