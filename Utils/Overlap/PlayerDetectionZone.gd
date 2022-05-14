@@ -5,9 +5,9 @@ var player = null
 func can_see_player():
 	return player != null
 
-func _on_PlayerDetectionZone_area_entered(area):
-	player = area
+func _on_PlayerDetectionZone_body_entered(body):
+	player = body
 
 
-func _on_PlayerDetectionZone_area_exited(area):
+func _on_PlayerDetectionZone_body_exited(body):
 	player = null
