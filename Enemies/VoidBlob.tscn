@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Utils/Overlap/PlayerDetectionZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hit and Hurt Boxes/HitBox.tscn" type="PackedScene" id=2]
@@ -31,45 +31,6 @@ shader_param/active = false
 
 [sub_resource type="ShaderMaterial" id=20]
 resource_local_to_scene = true
-
-[sub_resource type="Animation" id=3]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("FullSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("HalfSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CollisionShape2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 5 ) ]
-}
 
 [sub_resource type="Animation" id=2]
 resource_name = "SETUP"
@@ -307,33 +268,6 @@ height = 8.0
 radius = 5.0
 height = 6.0
 
-[sub_resource type="Animation" id=21]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("HalfSprite:material:shader_param/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("FullSprite:material:shader_param/active")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-
 [sub_resource type="Animation" id=22]
 resource_name = "start"
 length = 0.2
@@ -405,16 +339,13 @@ texture = ExtResource( 3 )
 [node name="FullSprite" type="Sprite" parent="."]
 material = SubResource( 18 )
 hframes = 13
-frame = 1
 
 [node name="HalfSprite" type="Sprite" parent="."]
 material = SubResource( 20 )
 hframes = 13
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/RESET = SubResource( 3 )
 anims/SETUP = SubResource( 2 )
 anims/idle = SubResource( 4 )
 anims/move_left = SubResource( 5 )
@@ -464,7 +395,7 @@ shape = SubResource( 10 )
 [node name="WanderController" parent="." instance=ExtResource( 8 )]
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 21 )
+autoplay = "stop"
 anims/start = SubResource( 22 )
 anims/stop = SubResource( 23 )
 

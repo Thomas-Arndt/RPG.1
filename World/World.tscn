@@ -1128,6 +1128,9 @@ position = Vector2( -624, 520 )
 [node name="GreenVoidBlob2" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( -744, 400 )
 
+[node name="GreenVoidBlob3" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( -680, 472 )
+
 [node name="RedVoidBlob" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( -600, 392 )
 collision_layer = 1
@@ -1138,6 +1141,3 @@ position = Vector2( -744, 528 )
 
 [node name="RedVoidBlob3" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( -680, 440 )
-
-[node name="GreenVoidBlob3" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( -680, 472 )

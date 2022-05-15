@@ -8,7 +8,8 @@ export var WANDER_BUFFER = 4
 enum {
 	IDLE,
 	WANDER,
-	CHASE
+	CHASE,
+	ATTACK
 }
 
 var velocity = Vector2.ZERO
@@ -59,12 +60,14 @@ func _physics_process(delta):
 				update_wander()
 		
 		CHASE:
-			
 			var player = player_detection_zone.player
 			if player != null:
 				accelerate_towards_point(player.global_position, delta)
 			else:
 				state = IDLE
+		
+		ATTACK:
+			state = IDLE
 		
 	if soft_collision.is_colliding():
 		velocity += soft_collision.get_push_vector() * delta * 400
