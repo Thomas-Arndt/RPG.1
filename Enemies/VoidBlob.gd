@@ -20,20 +20,25 @@ var state = IDLE
 onready var stats = $Stats
 onready var full_sprite = $FullSprite
 onready var half_sprite = $HalfSprite
+onready var full_attack_sprite = $FullAttackSprite
+onready var half_attack_sprite = $HalfAttackSprite
 onready var anim_player = $AnimationPlayer
-onready var anim_tree = $AnimationTree
-onready var anim_state = anim_tree.get("parameters/playback")
 onready var blink_anim_player = $BlinkAnimationPlayer
+onready var attack_anim_player = $AttackAnimationPlayer
 onready var hurt_box = $HurtBox
 onready var hit_box = $HitBox
 onready var player_detection_zone = $PlayerDetectionZone
 onready var soft_collision = $SoftCollision
 onready var wander_controller = $WanderController
+onready var attack_raduis = $AttackRadius
 
 func _ready():
 	stats.set_max_health(3)
 	stats.set_health(3)
 	state = pick_random_state([IDLE, WANDER])
+	attack_raduis.duration = 0.25
+	anim_player.play("SETUP")
+	anim_player.play("idle")
 	
 func _physics_process(delta):
 	match_dimension()
@@ -67,7 +72,16 @@ func _physics_process(delta):
 				state = IDLE
 		
 		ATTACK:
-			state = IDLE
+			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+			if velocity == Vector2.ZERO:
+				hit_box.damage = 3
+				if WorldStats.DIMENSION == get_dimension():
+					full_attack_sprite.visible = false
+					half_attack_sprite.visible = true
+				else:
+					full_attack_sprite.visible = true
+					half_attack_sprite.visible = false
+				attack_anim_player.play("explosion")
 		
 	if soft_collision.is_colliding():
 		velocity += soft_collision.get_push_vector() * delta * 400
@@ -94,7 +108,8 @@ func accelerate_towards_point(point, delta):
 
 func _on_HurtBox_area_entered(area):
 	stats.change_health(-area.damage)
-	knockback = area.knockback_vector * 130
+	if state != ATTACK:
+		knockback = area.knockback_vector * 130
 	hurt_box.start_invincible(0.4)
 
 func _on_Stats_no_health():
@@ -103,7 +118,8 @@ func _on_Stats_no_health():
 func match_dimension():
 	pass
 
-
+func get_dimension():
+	pass
 
 func _on_HurtBox_invincible_start():
 	blink_anim_player.play("start")
@@ -111,3 +127,13 @@ func _on_HurtBox_invincible_start():
 
 func _on_HurtBox_invincible_end():
 	blink_anim_player.play("stop")
+
+
+func _on_AttackRadius_explosion_attack():
+	state = ATTACK
+
+func on_attack_animation_complete():
+	hit_box.damage = 1
+	full_attack_sprite.visible = false
+	half_attack_sprite.visible = false
+	state = IDLE

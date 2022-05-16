@@ -30,7 +30,7 @@ func _ready():
 	anim_tree.set("parameters/roll/blend_position", Vector2.DOWN)
 	anim_tree.set("parameters/attack/blend_position", Vector2.DOWN)
 	anim_player.play("SETUP")
-	PlayerStats.set_health(3)
+	PlayerStats.set_health(10)
 	sword_hit_box.knockback_vector = roll_vector
 	PlayerStats.connect("no_health", self, "_on_PlayerStats_no_health")
 	
@@ -99,10 +99,9 @@ func roll_animation_finished():
 func attack_animation_finished():
 	state = MOVE
 
-
 func _on_HurtBox_area_entered(area):
 	PlayerStats.change_health(-area.damage)
-	knockback = area.knockback_vector * 175
+	knockback = area.knockback_vector * 120
 	hurt_box.start_invincible(0.6)
 
 func _on_HurtBox_invincible_start():

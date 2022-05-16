@@ -10,3 +10,6 @@ func match_dimension():
 		full_sprite.visible = false
 		hurt_box.monitorable = false
 		hurt_box.monitoring = false
+
+func get_dimension():
+	return false
