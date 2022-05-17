@@ -1126,16 +1126,16 @@ position = Vector2( -768, 136 )
 position = Vector2( -840, 216 )
 
 [node name="GreenVoidBlob2" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( -744, 400 )
+position = Vector2( -736, 416 )
 
 [node name="GreenVoidBlob3" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( -680, 472 )
+position = Vector2( -632, 520 )
 
 [node name="RedVoidBlob" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( -640, 402 )
+position = Vector2( -632, 392 )
 
 [node name="RedVoidBlob2" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( -752, 506 )
+position = Vector2( -744, 504 )
 
 [node name="RedVoidBlob3" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( -944, 330 )
