@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Enemies/RedVoidBlob-idle-move.png" type="Texture" id=1]
-[ext_resource path="res://Enemies/RedVoidBlob-Faded-idle-move.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/RedVoidBlob-idle-move-die.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/RedVoidBlob-Faded-idle-move-die.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/VoidBlob.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/RedVoidBlob.gd" type="Script" id=4]
 [ext_resource path="res://Enemies/BlobAttackRedFull.png" type="Texture" id=5]
