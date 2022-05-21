@@ -1,5 +1,6 @@
 extends "res://Enemies/VoidBlob.gd"
 
+const DeathEffect = preload("res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn")
 
 func match_dimension():
 	if WorldStats.DIMENSION == true:
@@ -13,3 +14,9 @@ func match_dimension():
 		
 func get_dimension():
 	return true
+
+func death_animation():
+	var death_effect = DeathEffect.instance()
+	get_parent().add_child(death_effect)
+	death_effect.global_position = global_position
+

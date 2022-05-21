@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RedVoidBlob-Faded-idle-move-die.png-1d3a37acb73a628210bca568be8ee9e1.stex"
+path="res://.import/GreenVoidBlob-die.png-45f9d5b828bf1029a05ef7eca562cf56.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/RedVoidBlob-Faded-idle-move-die.png"
-dest_files=[ "res://.import/RedVoidBlob-Faded-idle-move-die.png-1d3a37acb73a628210bca568be8ee9e1.stex" ]
+source_file="res://Effects/EnemyEffects/VoidBlob/GreenVoidBlob-die.png"
+dest_files=[ "res://.import/GreenVoidBlob-die.png-45f9d5b828bf1029a05ef7eca562cf56.stex" ]
 
 [params]
 

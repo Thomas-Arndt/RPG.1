@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Effects/EnemyEffects/VoidBlob/VoidBlobDeathEffect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Effects/EnemyEffects/VoidBlob/RedVoidBlob-Faded-die.png" type="Texture" id=2]
+[ext_resource path="res://Effects/EnemyEffects/VoidBlob/RedVoidBlobDeathEffect.gd" type="Script" id=3]
+[ext_resource path="res://Effects/EnemyEffects/VoidBlob/RedVoidBlob-die.png" type="Texture" id=4]
+
+[node name="RedVoidBlobDeathEffect" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="FullSprite" parent="." index="0"]
+texture = ExtResource( 4 )
+
+[node name="HalfSprite" parent="." index="1"]
+texture = ExtResource( 2 )

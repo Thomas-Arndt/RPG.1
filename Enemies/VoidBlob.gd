@@ -114,11 +114,15 @@ func _on_HurtBox_area_entered(area):
 
 func _on_Stats_no_health():
 	queue_free()
+	death_animation()
 
 func match_dimension():
 	pass
 
 func get_dimension():
+	pass
+	
+func death_animation():
 	pass
 
 func _on_HurtBox_invincible_start():
