@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://World/Objects/StaticWorldComponent.gd" type="Script" id=1]
+
+[node name="StaticWorldComponent" type="StaticBody2D"]
+z_as_relative = false
+script = ExtResource( 1 )
+
+[node name="ShadowSprite" type="Sprite" parent="."]
+
+[node name="GreenSprite" type="Sprite" parent="."]
+
+[node name="RedSprite" type="Sprite" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

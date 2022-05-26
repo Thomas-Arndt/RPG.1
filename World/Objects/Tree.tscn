@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://World/Objects/StaticWorldComponent.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Shadows/LargeShadow.png" type="Texture" id=2]
+[ext_resource path="res://World/Objects/TreeRed.png" type="Texture" id=3]
+[ext_resource path="res://World/Objects/TreeGreen.png" type="Texture" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 22.0
+height = 26.0
+
+[node name="Tree" instance=ExtResource( 1 )]
+position = Vector2( 0, -22 )
+
+[node name="ShadowSprite" parent="." index="0"]
+position = Vector2( -0.499999, 14.5 )
+scale = Vector2( 3.21875, 2.55 )
+texture = ExtResource( 2 )
+
+[node name="GreenSprite" parent="." index="1"]
+position = Vector2( 0, -33 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="RedSprite" parent="." index="2"]
+position = Vector2( 0, -33 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 0, 4 )
+rotation = 1.5708
+shape = SubResource( 1 )
