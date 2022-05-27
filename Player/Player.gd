@@ -35,7 +35,7 @@ func _ready():
 	PlayerStats.connect("no_health", self, "_on_PlayerStats_no_health")
 	
 func _physics_process(delta):
-	
+
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
 	knockback = move_and_slide(knockback)
 	
