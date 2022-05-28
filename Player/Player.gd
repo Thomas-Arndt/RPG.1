@@ -22,6 +22,7 @@ onready var anim_state = anim_tree.get("parameters/playback")
 onready var sword_hit_box = $HitBoxPivot/SwordHitBox
 onready var hurt_box = $HurtBox
 onready var blink_anim_player = $BlinkAnimationPlayer
+onready var detection_zone = $DetectionZone/DetectionZone
 
 onready var RedDimension = get_node("/root/World/RedDimension")
 
@@ -46,6 +47,15 @@ func _physics_process(delta):
 			roll_state()
 		ATTACK:
 			attack_state()
+	
+	if Input.is_action_just_pressed("roll"):
+		state = ROLL
+	
+	if Input.is_action_just_pressed("attack"):
+		if detection_zone.can_interact() and roll_vector == Vector2.UP:
+			print(detection_zone.target.test)
+		else:
+			state = ATTACK
 	
 	if Input.is_action_just_pressed("d_shift") and WorldStats.DIMENSION == false:
 		WorldStats.shift_dimension()
@@ -74,11 +84,6 @@ func move_state(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	move()
 	
-	if Input.is_action_just_pressed("roll"):
-		state = ROLL
-	
-	if Input.is_action_just_pressed("attack"):
-		state = ATTACK
 
 func roll_state():
 	velocity = roll_vector * ROLL_SPEED
