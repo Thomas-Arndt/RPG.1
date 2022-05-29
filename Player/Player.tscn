@@ -798,6 +798,7 @@ radius = 5.0
 height = 4.0
 
 [sub_resource type="CircleShape2D" id=57]
+radius = 8.0
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -872,7 +873,7 @@ shape = SubResource( 51 )
 [node name="DetectionZone" parent="." instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" parent="DetectionZone/DetectionZone" index="0"]
-position = Vector2( 0, 15 )
+position = Vector2( 0, 13 )
 shape = SubResource( 57 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

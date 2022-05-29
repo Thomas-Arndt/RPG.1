@@ -1,10 +1,7 @@
 extends Area2D
 
-var test = null
+var text = []
 
-func _process(delta):
-	if WorldStats.DIMENSION == true:
-		test = "Red Dimension Stuff on a Red Dimension Bulletin Board."
-	else:
-		test = "Green Dimenson Stuff on a Green Dimension Bulletin Board."
+func hasText():
+	return len(text) > 0
 
