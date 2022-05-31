@@ -24,7 +24,7 @@ onready var hurt_box = $HurtBox
 onready var blink_anim_player = $BlinkAnimationPlayer
 onready var detection_zone = $DetectionZone/DetectionZone
 
-onready var TextBox = get_node("/root/World/UITextBox")
+onready var TextBox = get_node("/root/World/UI/UITextBox")
 onready var RedDimension = get_node("/root/World/RedDimension")
 
 func _ready():
@@ -33,6 +33,7 @@ func _ready():
 	anim_tree.set("parameters/attack/blend_position", Vector2.DOWN)
 	anim_player.play("SETUP")
 	PlayerStats.set_health(10)
+	PlayerStats.set_max_health(10)
 	sword_hit_box.knockback_vector = roll_vector
 	PlayerStats.connect("no_health", self, "_on_PlayerStats_no_health")
 	
