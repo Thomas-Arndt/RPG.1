@@ -56,7 +56,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack"):
 		if detection_zone.can_interact() and roll_vector == Vector2.UP:
 			if detection_zone.target.hasText() && TextBox.complete:
-				TextBox.queue_text(detection_zone.target.text)
+				TextBox.queue_text(detection_zone.target.text)	
 		elif TextBox.complete:
 			state = ATTACK
 	
@@ -99,6 +99,10 @@ func attack_state():
 
 func move():
 	velocity = move_and_slide(velocity)
+	
+func interact():
+	if detection_zone.target.hasText() && TextBox.complete:
+		TextBox.queue_text(detection_zone.target.text)	
 	
 func roll_animation_finished():
 	velocity = velocity * 0.8
