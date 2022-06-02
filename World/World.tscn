@@ -1182,6 +1182,9 @@ position = Vector2( -432, 720 )
 [node name="BulletinBoard" parent="YSort/Signs" instance=ExtResource( 3 )]
 position = Vector2( -448, 144 )
 
+[node name="InteractionZone" parent="YSort/Signs/BulletinBoard" index="4"]
+text = [ "This is some placeholder text." ]
+
 [node name="BulletinBoard2" parent="YSort/Signs" instance=ExtResource( 3 )]
 position = Vector2( -336, 224 )
 
