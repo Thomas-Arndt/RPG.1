@@ -57,6 +57,9 @@ func _physics_process(delta):
 		if detection_zone.can_interact() and roll_vector == Vector2.UP:
 			if detection_zone.target.hasText() && TextBox.complete:
 				TextBox.queue_text(detection_zone.target.text)	
+			if detection_zone.target.quest_reference != null:
+				var quest_reference: Quest = detection_zone.target.quest_reference.instance()
+				QuestSystem.start(quest_reference)
 		elif TextBox.complete:
 			state = ATTACK
 	

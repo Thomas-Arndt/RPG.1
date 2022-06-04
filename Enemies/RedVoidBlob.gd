@@ -1,6 +1,7 @@
 extends "res://Enemies/VoidBlob.gd"
 
 const DeathEffect = preload("res://Effects/EnemyEffects/VoidBlob/RedVoidBlobDeathEffect.tscn")
+const masterScene: PackedScene = preload("res://Enemies/VoidBlob.tscn")
 
 func match_dimension():
 	if WorldStats.DIMENSION == true:

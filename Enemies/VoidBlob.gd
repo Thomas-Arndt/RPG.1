@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+class_name VoidBlob
+
+signal died(enemy)
+
 export var ACCELERATION = 200
 export var MAX_SPEED = 35
 export var FRICTION = 200
@@ -113,6 +117,7 @@ func _on_HurtBox_area_entered(area):
 	hurt_box.start_invincible(0.4)
 
 func _on_Stats_no_health():
+	emit_signal("died", self)
 	queue_free()
 	death_animation()
 

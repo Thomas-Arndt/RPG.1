@@ -8,6 +8,40 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "Quest",
+"language": "GDScript",
+"path": "res://Utils/QuestSystem/Quest.gd"
+}, {
+"base": "Node",
+"class": "QuestItemReward",
+"language": "GDScript",
+"path": "res://Utils/QuestSystem/QuestItemReward.gd"
+}, {
+"base": "Node",
+"class": "QuestObjective",
+"language": "GDScript",
+"path": "res://Utils/QuestSystem/Objectives/QuestObjective.gd"
+}, {
+"base": "QuestObjective",
+"class": "QuestSlayObjective",
+"language": "GDScript",
+"path": "res://Utils/QuestSystem/Objectives/QuestSlayObjective.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "VoidBlob",
+"language": "GDScript",
+"path": "res://Enemies/VoidBlob.gd"
+} ]
+_global_script_class_icons={
+"Quest": "",
+"QuestItemReward": "",
+"QuestObjective": "",
+"QuestSlayObjective": "",
+"VoidBlob": ""
+}
+
 [application]
 
 config/name="RPG.1"
@@ -18,6 +52,7 @@ config/icon="res://icon.png"
 
 PlayerStats="*res://Utils/Stats/PlayerStats.tscn"
 WorldStats="*res://Utils/Stats/WorldStats.gd"
+QuestSystem="*res://Utils/QuestSystem/QuestSystem.tscn"
 
 [display]
 

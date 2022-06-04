@@ -27,7 +27,6 @@ func _process(delta):
 				display_text()
 		States.READING:
 			if Input.is_action_just_pressed("attack") and label.percent_visible > 0.05:
-				print(label.percent_visible)
 				label.percent_visible = 1.0
 				$Tween.remove_all()
 				end_symbol.text = "v"

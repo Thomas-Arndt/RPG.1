@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=2]
+[gd_scene load_steps=112 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://World/Objects/Bush.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Objects/Shrub.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Utils/QuestSystem/Quests/TestQuest.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -1180,20 +1181,13 @@ position = Vector2( -432, 720 )
 [node name="Signs" type="YSort" parent="YSort"]
 
 [node name="BulletinBoard" parent="YSort/Signs" instance=ExtResource( 3 )]
-position = Vector2( -448, 144 )
+position = Vector2( -936, 176 )
 
 [node name="InteractionZone" parent="YSort/Signs/BulletinBoard" index="4"]
 text = [ "This is some placeholder text." ]
-
-[node name="BulletinBoard2" parent="YSort/Signs" instance=ExtResource( 3 )]
-position = Vector2( -336, 224 )
-
-[node name="InteractionZone" parent="YSort/Signs/BulletinBoard2" index="4"]
-text = [ "This is some different placeholder text." ]
+quest_reference = ExtResource( 12 )
 
 [node name="UI" parent="." instance=ExtResource( 11 )]
 
 [editable path="YSort/Signs/BulletinBoard"]
 [editable path="YSort/Signs/BulletinBoard/InteractionZone"]
-[editable path="YSort/Signs/BulletinBoard2"]
-[editable path="YSort/Signs/BulletinBoard2/InteractionZone"]
