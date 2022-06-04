@@ -7,6 +7,10 @@
 [node name="TestQuest" instance=ExtResource( 1 )]
 title = "test"
 description = "testes"
+startText = [ "        ~~ NOTICE TO TRAVELERS ~~", "Please help in the annual banishing of the Void Blobs.", "Banish three Void Blobs and return here for a reward." ]
+progressText = [ "Please return when you have banished 3 Void Blobs for your reward." ]
+deliverText = [ "Well done! Here are your rewards..." ]
+reward_on_delivery = true
 _reward_experience = 10
 
 [node name="QuestSlayObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]

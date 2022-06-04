@@ -9,8 +9,6 @@ func connect_signals() -> void:
 		enemy.connect("died", self, "_on_enemy_died")
 
 func _on_enemy_died(enemy) -> void:
-	print(enemy.masterScene.resource_path)
-	print(target_to_slay.resource_path)
 	if completed or enemy.masterScene.resource_path != target_to_slay.resource_path:
 		return
 	amount -= 1

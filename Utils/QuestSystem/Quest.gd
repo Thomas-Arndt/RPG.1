@@ -10,6 +10,9 @@ onready var _reward_items: Node = $ItemRewards
 
 export var title: String
 export var description: String
+export var startText: Array
+export var progressText: Array
+export var deliverText: Array
 
 export var reward_on_delivery: bool = false
 export var _reward_experience: int
@@ -44,11 +47,11 @@ func notify_slay_objectives() -> void:
 		(objective as QuestSlayObjective).connect_signals()
 
 func get_rewards() -> Dictionary:
-	return {'experience': _reward_experience, 'items': _reward_items.get_children()}
+	return {'experience': _reward_experience, 'items': null}
 
-func get_rewards_as_test() -> Array:
+func get_rewards_as_text() -> Array:
 	var text := []
 	text.append(" - Experience: %s" % str(_reward_experience))
-	for item in _reward_items.get_children():
-		text.append(" - [%s] x (%s)\n" % [item.item.name, str(item.amount)])
+	#for item in _reward_items.get_children():
+	#	text.append(" - [%s] x (%s)\n" % [item.item.name, str(item.amount)])
 	return text 

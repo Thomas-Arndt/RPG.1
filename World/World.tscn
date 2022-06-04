@@ -1181,10 +1181,9 @@ position = Vector2( -432, 720 )
 [node name="Signs" type="YSort" parent="YSort"]
 
 [node name="BulletinBoard" parent="YSort/Signs" instance=ExtResource( 3 )]
-position = Vector2( -936, 176 )
+position = Vector2( -448, 144 )
 
 [node name="InteractionZone" parent="YSort/Signs/BulletinBoard" index="4"]
-text = [ "This is some placeholder text." ]
 quest_reference = ExtResource( 12 )
 
 [node name="UI" parent="." instance=ExtResource( 11 )]

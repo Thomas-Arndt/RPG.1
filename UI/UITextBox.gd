@@ -2,6 +2,8 @@ extends CanvasLayer
 
 const CHAR_READ_RATE = 0.05
 
+signal finished
+
 onready var text_box_container = $TextBoxContainer
 onready var end_symbol = $TextBoxContainer/MarginContainer/HBoxContainer/End
 onready var label = $TextBoxContainer/MarginContainer/HBoxContainer/Label
@@ -37,6 +39,7 @@ func _process(delta):
 				if len(text_queue) == 0:
 					complete = true
 					hide_text_box()
+					emit_signal("finished")
 
 func hide_text_box():
 	end_symbol.text = ""
@@ -58,18 +61,11 @@ func display_text():
 
 func change_state(next_state):
 	state = next_state
-	match state:
-		States.READY:
-			print("Now in READY state.")
-		States.READING:
-			print("Now in READING state.")
-		States.FINISHED:
-			print("Now in FINISHED state.")
 			
 func queue_text(text_array):
 	complete = false
 	for text in text_array:
-		print(text)
+
 		text_queue.push_back(text)
 	display_text()
 

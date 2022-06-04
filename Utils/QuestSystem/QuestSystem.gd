@@ -5,6 +5,8 @@ onready var active_quests = $Active
 onready var completed_quests = $Completed
 onready var delivered_quests = $Delivered
 
+onready var TextBox = get_node("/root/World/UI/UITextBox")
+
 func find_available(reference: Quest) -> Quest:
 	return available_quests.find(reference)
 
@@ -28,6 +30,18 @@ func _on_Quest_completed(quest):
 	completed_quests.add_child(quest)
 
 func deliver(quest: Quest):
-	quest._deliver()
-	var rewards = quest.get_rewards()
+	#quest._deliver()
+	var rewards = quest.get_rewards_as_text()
+	completed_quests.remove_child(quest)
+	delivered_quests.add_child(quest)
+	quest.deliverText.append_array(rewards)
 	
+func process_quest(quest: Quest):
+	if available_quests.find(quest) != null:
+		TextBox.queue_text(quest.startText)
+		start(quest)
+	elif active_quests.find(quest) != null:
+		TextBox.queue_text(quest.progressText)
+	elif completed_quests.find(quest) != null:
+		deliver(completed_quests.find(quest))
+		TextBox.queue_text(delivered_quests.find(quest).deliverText)

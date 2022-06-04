@@ -13,7 +13,10 @@ script = ExtResource( 2 )
 [node name="TestQuest" parent="Available" instance=ExtResource( 3 )]
 
 [node name="Active" type="Node" parent="."]
+script = ExtResource( 2 )
 
 [node name="Completed" type="Node" parent="."]
+script = ExtResource( 2 )
 
 [node name="Delivered" type="Node" parent="."]
+script = ExtResource( 2 )
