@@ -11,7 +11,7 @@
 [ext_resource path="res://World/Objects/Bush.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Objects/Shrub.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Utils/QuestSystem/Quests/TestQuest.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Utils/QuestSystem/Quests/slay-3-voidblob-billboard-billboard.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -1187,6 +1187,7 @@ position = Vector2( -448, 144 )
 quest_reference = ExtResource( 12 )
 
 [node name="UI" parent="." instance=ExtResource( 11 )]
+position = Vector2( -9, 9 )
 
 [editable path="YSort/Signs/BulletinBoard"]
 [editable path="YSort/Signs/BulletinBoard/InteractionZone"]

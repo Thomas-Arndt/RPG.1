@@ -4,7 +4,7 @@
 [ext_resource path="res://Utils/QuestSystem/Objectives/QuestSlayObjective.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/VoidBlob.tscn" type="PackedScene" id=3]
 
-[node name="TestQuest" instance=ExtResource( 1 )]
+[node name="slay-3-voidblob-billboard-billboard" instance=ExtResource( 1 )]
 title = "test"
 description = "testes"
 startText = [ "        ~~ NOTICE TO TRAVELERS ~~", "Please help in the annual banishing of the Void Blobs.", "Banish three Void Blobs and return here for a reward." ]

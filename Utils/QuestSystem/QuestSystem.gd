@@ -30,7 +30,6 @@ func _on_Quest_completed(quest):
 	completed_quests.add_child(quest)
 
 func deliver(quest: Quest):
-	#quest._deliver()
 	var rewards = quest.get_rewards_as_text()
 	completed_quests.remove_child(quest)
 	delivered_quests.add_child(quest)

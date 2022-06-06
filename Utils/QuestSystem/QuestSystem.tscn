@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Utils/QuestSystem/QuestSystem.gd" type="Script" id=1]
 [ext_resource path="res://Utils/QuestSystem/QuestContainer.gd" type="Script" id=2]
-[ext_resource path="res://Utils/QuestSystem/Quests/TestQuest.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Utils/QuestSystem/Quests/slay-3-voidblob-billboard-billboard.tscn" type="PackedScene" id=3]
 
 [node name="QuestSystem" type="Node"]
 script = ExtResource( 1 )
@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 [node name="Available" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="TestQuest" parent="Available" instance=ExtResource( 3 )]
+[node name="slay-3-voidblob-billboard-billboard" parent="Available" instance=ExtResource( 3 )]
 
 [node name="Active" type="Node" parent="."]
 script = ExtResource( 2 )
