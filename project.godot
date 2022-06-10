@@ -12,27 +12,27 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Quest",
 "language": "GDScript",
-"path": "res://Utils/QuestSystem/Quest.gd"
+"path": "res://QuestSystem/Quest.gd"
 }, {
 "base": "QuestObjective",
 "class": "QuestInteractObjective",
 "language": "GDScript",
-"path": "res://Utils/QuestSystem/Objectives/QuestInteractObjective.gd"
+"path": "res://QuestSystem/Objectives/QuestInteractObjective.gd"
 }, {
 "base": "Node",
 "class": "QuestItemReward",
 "language": "GDScript",
-"path": "res://Utils/QuestSystem/QuestItemReward.gd"
+"path": "res://QuestSystem/QuestItemReward.gd"
 }, {
 "base": "Node",
 "class": "QuestObjective",
 "language": "GDScript",
-"path": "res://Utils/QuestSystem/Objectives/QuestObjective.gd"
+"path": "res://QuestSystem/Objectives/QuestObjective.gd"
 }, {
 "base": "QuestObjective",
 "class": "QuestSlayObjective",
 "language": "GDScript",
-"path": "res://Utils/QuestSystem/Objectives/QuestSlayObjective.gd"
+"path": "res://QuestSystem/Objectives/QuestSlayObjective.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "VoidBlob",
@@ -58,7 +58,7 @@ config/icon="res://icon.png"
 
 PlayerStats="*res://Utils/Stats/PlayerStats.tscn"
 WorldStats="*res://Utils/Stats/WorldStats.gd"
-QuestSystem="*res://Utils/QuestSystem/QuestSystem.tscn"
+QuestSystem="*res://QuestSystem/QuestSystem.tscn"
 
 [display]
 
