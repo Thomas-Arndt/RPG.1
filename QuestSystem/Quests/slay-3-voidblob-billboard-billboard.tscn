@@ -14,5 +14,5 @@ reward_on_delivery = true
 _reward_experience = 10
 
 [node name="QuestSlayObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
-amount = 3
+amount = 1
 target_to_slay = ExtResource( 3 )

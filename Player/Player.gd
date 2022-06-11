@@ -24,7 +24,6 @@ onready var hurt_box = $HurtBox
 onready var blink_anim_player = $BlinkAnimationPlayer
 onready var detection_zone = $DetectionZone/DetectionZone
 
-onready var TextBox = get_node("/root/World/UI/UITextBox")
 onready var RedDimension = get_node("/root/World/RedDimension")
 
 func _ready():
@@ -55,10 +54,11 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("attack"):
 		if detection_zone.can_interact() and roll_vector == Vector2.UP:
-			if detection_zone.target.quest_reference != null and TextBox.complete:
-				var quest_reference: Quest = detection_zone.target.quest_reference.instance()
-				QuestSystem.process_quest(quest_reference)
-		elif TextBox.complete:
+			detection_zone.target.start_interaction();
+			#if detection_zone.target.quest_reference != null and TextBox.complete:
+			#	var quest: Quest = detection_zone.target.quest_reference.instance()
+			#	QuestSystem.process_quest(quest)
+		elif UI.TextBox.complete:
 			state = ATTACK
 	
 	if Input.is_action_just_pressed("d_shift") and WorldStats.DIMENSION == false:
