@@ -49,6 +49,7 @@ shader_param/active = false
 
 [node name="GreenVoidBlob" instance=ExtResource( 3 )]
 script = ExtResource( 4 )
+_experience_reward = 10
 
 [node name="FullSprite" parent="." index="1"]
 material = SubResource( 3 )

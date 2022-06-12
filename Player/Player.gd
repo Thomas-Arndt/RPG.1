@@ -33,6 +33,10 @@ func _ready():
 	anim_player.play("SETUP")
 	PlayerStats.set_health(10)
 	PlayerStats.set_max_health(10)
+	PlayerStats.set_experience(0)
+	PlayerStats.set_player_level(1)
+	Inventory.set_gold(0)
+	Inventory.set_max_gold(100)
 	sword_hit_box.knockback_vector = roll_vector
 	PlayerStats.connect("no_health", self, "_on_PlayerStats_no_health")
 	
@@ -54,7 +58,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("attack"):
 		if detection_zone.can_interact() and roll_vector == Vector2.UP:
-			detection_zone.target.start_interaction();
+			detection_zone.target.start_interaction()
 			#if detection_zone.target.quest_reference != null and TextBox.complete:
 			#	var quest: Quest = detection_zone.target.quest_reference.instance()
 			#	QuestSystem.process_quest(quest)

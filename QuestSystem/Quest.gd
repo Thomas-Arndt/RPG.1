@@ -16,6 +16,7 @@ export var deliverText: Array
 
 export var reward_on_delivery: bool = false
 export var _reward_experience: int
+export var _reward_gold: int
 
 func _start():
 	for objective in get_objectives():
@@ -47,11 +48,11 @@ func notify_slay_objectives() -> void:
 		(objective as QuestSlayObjective).connect_signals()
 
 func get_rewards() -> Dictionary:
-	return {'experience': _reward_experience, 'items': null}
+	return {'experience': _reward_experience, 'gold': _reward_gold, 'items': _reward_items.get_children()}
 
 func get_rewards_as_text() -> Array:
 	var text := []
-	text.append(" - Experience: %s" % str(_reward_experience))
+	text.append(" - Experience: " + str(_reward_experience) + "\n - Gold: " + str(_reward_gold) )
 	#for item in _reward_items.get_children():
 	#	text.append(" - [%s] x (%s)\n" % [item.item.name, str(item.amount)])
 	return text 

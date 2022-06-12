@@ -9,6 +9,8 @@ export var MAX_SPEED = 35
 export var FRICTION = 200
 export var WANDER_BUFFER = 4
 
+export(int) var _experience_reward
+
 enum {
 	IDLE,
 	WANDER,
@@ -118,6 +120,7 @@ func _on_HurtBox_area_entered(area):
 
 func _on_Stats_no_health():
 	emit_signal("died", self)
+	PlayerStats.change_experience(_experience_reward)
 	queue_free()
 	death_animation()
 

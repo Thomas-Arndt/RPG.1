@@ -10,6 +10,7 @@ func _ready():
 	self.health = PlayerStats.health
 	PlayerStats.connect("health_changed", self, "set_health")
 	PlayerStats.connect("max_health_changed", self, "set_max_health")
+	healthFill.rect_size.x = 100
 
 func set_health(value):
 	health = clamp(value, 0, max_health)

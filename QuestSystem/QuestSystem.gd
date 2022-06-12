@@ -30,17 +30,19 @@ func _on_Quest_completed(quest):
 	completed_quests.add_child(quest)
 
 func deliver(quest: Quest):
-	var rewards = quest.get_rewards_as_text()
+	var rewards = quest.get_rewards()
 	completed_quests.remove_child(quest)
 	delivered_quests.add_child(quest)
-	quest.deliverText.append_array(rewards)
+	PlayerStats.change_experience(rewards.experience)
+	Inventory.change_gold(rewards.gold)
+	quest.deliverText.append_array(quest.get_rewards_as_text())
 	
-func process_quest(quest: Quest):
-	if available_quests.find(quest) != null:
-		TextBox.queue_text(quest.startText)
-		start(quest)
-	elif active_quests.find(quest) != null:
-		TextBox.queue_text(quest.progressText)
-	elif completed_quests.find(quest) != null:
-		deliver(completed_quests.find(quest))
-		TextBox.queue_text(delivered_quests.find(quest).deliverText)
+#func process_quest(quest: Quest):
+#	if available_quests.find(quest) != null:
+#		TextBox.queue_text(quest.startText)
+#		start(quest)
+#	elif active_quests.find(quest) != null:
+#		TextBox.queue_text(quest.progressText)
+#	elif completed_quests.find(quest) != null:
+#		deliver(completed_quests.find(quest))
+#		TextBox.queue_text(delivered_quests.find(quest).deliverText)

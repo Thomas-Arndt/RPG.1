@@ -12,6 +12,7 @@ progressText = [ "Please return when you have banished 3 Void Blobs for your rew
 deliverText = [ "Well done! Here are your rewards..." ]
 reward_on_delivery = true
 _reward_experience = 10
+_reward_gold = 15
 
 [node name="QuestSlayObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
 amount = 1
