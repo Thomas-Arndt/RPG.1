@@ -4,9 +4,10 @@ const CHAR_READ_RATE = 0.05
 
 signal finished
 
-onready var text_box_container = $TextBoxContainer
-onready var end_symbol = $TextBoxContainer/MarginContainer/HBoxContainer/End
-onready var label = $TextBoxContainer/MarginContainer/HBoxContainer/Label
+onready var text_box_container = $MarginContainer/TextBoxContainer
+onready var end_symbol = $MarginContainer/TextBoxContainer/MarginContainer/HBoxContainer/End
+onready var label = $MarginContainer/TextBoxContainer/MarginContainer/HBoxContainer/Label
+onready var source_label = $SourceLabel
 
 enum States {
 	READY,
@@ -46,9 +47,11 @@ func hide_text_box():
 	label.text = ""
 	label.percent_visible = 0.0
 	text_box_container.hide()
+	source_label.hide()
 
 func show_text_box():
 	text_box_container.show()
+	source_label.show()
 
 func display_text():
 	var next_text = text_queue.pop_front()
@@ -62,8 +65,9 @@ func display_text():
 func change_state(next_state):
 	state = next_state
 			
-func queue_text(text_array):
+func queue_text(text_array, source: String = ""):
 	complete = false
+	source_label.text = source
 	for text in text_array:
 
 		text_queue.push_back(text)

@@ -1,16 +1,16 @@
 extends Control
 
-export var health = 4 setget set_health
-export var max_health = 4 setget set_max_health
+export var health = 10 setget set_health
+export var max_health = 10 setget set_max_health
 
 onready var healthFill = $Fill
 
 func _ready():
-	self.max_health = PlayerStats.max_health
-	self.health = PlayerStats.health
+	self.set_max_health(PlayerStats.max_health)
+	self.set_health(PlayerStats.max_health)
 	PlayerStats.connect("health_changed", self, "set_health")
 	PlayerStats.connect("max_health_changed", self, "set_max_health")
-	healthFill.rect_size.x = 100
+	#healthFill.rect_size.x = 100
 
 func set_health(value):
 	health = clamp(value, 0, max_health)

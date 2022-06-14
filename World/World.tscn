@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=2]
+[gd_scene load_steps=116 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://QuestSystem/Quests/slay-3-voidblob-billboard-billboard.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Utils/Actions/GiveQuestAction.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Utils/Actions/InProgressQuestAction.tscn" type="PackedScene" id=15]
+[ext_resource path="res://QuestSystem/Quests/interact-chip-bill.tscn" type="PackedScene" id=16]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -1155,10 +1157,10 @@ position = Vector2( -336, 448 )
 position = Vector2( -336, 416 )
 
 [node name="Shrub9" parent="YSort/Shrubs" instance=ExtResource( 10 )]
-position = Vector2( -736, 144 )
+position = Vector2( -726, 144 )
 
 [node name="Shrub10" parent="YSort/Shrubs" instance=ExtResource( 10 )]
-position = Vector2( -800, 144 )
+position = Vector2( -809, 144 )
 
 [node name="MobileEnemies" type="YSort" parent="YSort"]
 
@@ -1185,14 +1187,30 @@ position = Vector2( -432, 720 )
 [node name="BulletinBoard" parent="YSort/Signs" instance=ExtResource( 3 )]
 position = Vector2( -448, 144 )
 
-[node name="GiveQuestAction" parent="YSort/Signs/BulletinBoard/InteractionZone/Actions" index="0" instance=ExtResource( 13 )]
-quest_reference = ExtResource( 12 )
+[node name="CompletedQuestAction" parent="YSort/Signs/BulletinBoard/InteractionZone/Actions" index="0" instance=ExtResource( 14 )]
+quest_reference = ExtResource( 16 )
+follow_up_quest = ExtResource( 12 )
+speaker_name = "Bill"
 
-[node name="CompletedQuestAction" parent="YSort/Signs/BulletinBoard/InteractionZone/Actions" index="1" instance=ExtResource( 14 )]
+[node name="InProgressQuestAction" parent="YSort/Signs/BulletinBoard/InteractionZone/Actions" index="1" instance=ExtResource( 15 )]
 quest_reference = ExtResource( 12 )
+speaker_name = "Bill"
+
+[node name="BulletinBoard2" parent="YSort/Signs" instance=ExtResource( 3 )]
+position = Vector2( -769, 156 )
+
+[node name="GiveQuestAction" parent="YSort/Signs/BulletinBoard2/InteractionZone/Actions" index="0" instance=ExtResource( 13 )]
+quest_reference = ExtResource( 16 )
+speaker_name = "Chip"
+
+[node name="CompletedQuestAction" parent="YSort/Signs/BulletinBoard2/InteractionZone/Actions" index="1" instance=ExtResource( 14 )]
+quest_reference = ExtResource( 12 )
+speaker_name = "Chip"
 
 [node name="UI" parent="." instance=ExtResource( 11 )]
 position = Vector2( -9, 9 )
 
 [editable path="YSort/Signs/BulletinBoard"]
 [editable path="YSort/Signs/BulletinBoard/InteractionZone"]
+[editable path="YSort/Signs/BulletinBoard2"]
+[editable path="YSort/Signs/BulletinBoard2/InteractionZone"]

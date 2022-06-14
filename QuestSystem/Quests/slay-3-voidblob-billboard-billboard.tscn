@@ -7,11 +7,11 @@
 [node name="slay-3-voidblob-billboard-billboard" instance=ExtResource( 1 )]
 title = "test"
 description = "testes"
-startText = [ "        ~~ NOTICE TO TRAVELERS ~~", "Please help in the annual banishing of the Void Blobs.", "Banish three Void Blobs and return here for a reward." ]
-progressText = [ "Please return when you have banished 3 Void Blobs for your reward." ]
-deliverText = [ "Well done! Here are your rewards..." ]
+startText = [ "The name's Board. Bill Board.", "Could you do me a solid and banish one of the Void Blobs in the area? Just hit it with your sword a few times...", "Once you have banished one, speak with my friend, Chip, for your reward." ]
+progressText = [ "Speak with Chip when you have banished a Void Blob to claim your reward..." ]
+deliverText = [ "Well done! Thank you for your help!" ]
 reward_on_delivery = true
-_reward_experience = 10
+_reward_experience = 100
 _reward_gold = 15
 
 [node name="QuestSlayObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]

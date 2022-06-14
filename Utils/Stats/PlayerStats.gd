@@ -1,7 +1,7 @@
 extends Node
 
-export(int) var max_health = 1 setget set_max_health
-var health: int = 1 setget set_health
+export(int) var max_health = 10 setget set_max_health
+var health: int = 10 setget set_health
 var experience: int = 0 setget set_experience
 var playerLevel: int = 1 setget set_player_level
 

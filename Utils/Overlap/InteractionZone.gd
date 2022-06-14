@@ -1,6 +1,5 @@
 extends Area2D
 class_name InteractionZone
-#export var quest_reference: PackedScene = null
 
 signal interaction_finished(node)
 
