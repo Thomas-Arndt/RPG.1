@@ -24,7 +24,6 @@ func start(reference: Quest):
 		quest._start()
 
 func _on_Quest_completed(quest):
-	available_quests.remove_child(quest)
 	active_quests.remove_child(quest)
 	completed_quests.add_child(quest)
 
@@ -35,4 +34,3 @@ func deliver(quest: Quest):
 	quest._deliver()
 	PlayerStats.change_experience(rewards.experience)
 	Inventory.change_gold(rewards.gold)
-	#quest.deliverText.append_array(quest.get_rewards_as_text())

@@ -12,3 +12,4 @@ func _on_has_follow_up_quest(quest, speaker_name):
 	Action.quest_reference = quest
 	Action.speaker_name = speaker_name
 	add_child(Action)
+	Action.interact()
