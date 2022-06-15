@@ -1199,12 +1199,16 @@ speaker_name = "Bill"
 [node name="BulletinBoard2" parent="YSort/Signs" instance=ExtResource( 3 )]
 position = Vector2( -769, 156 )
 
-[node name="GiveQuestAction" parent="YSort/Signs/BulletinBoard2/InteractionZone/Actions" index="0" instance=ExtResource( 13 )]
+[node name="CompletedQuestAction" parent="YSort/Signs/BulletinBoard2/InteractionZone/Actions" index="0" instance=ExtResource( 14 )]
+quest_reference = ExtResource( 12 )
+speaker_name = "Chip"
+
+[node name="InProgressQuestAction" parent="YSort/Signs/BulletinBoard2/InteractionZone/Actions" index="1" instance=ExtResource( 15 )]
 quest_reference = ExtResource( 16 )
 speaker_name = "Chip"
 
-[node name="CompletedQuestAction" parent="YSort/Signs/BulletinBoard2/InteractionZone/Actions" index="1" instance=ExtResource( 14 )]
-quest_reference = ExtResource( 12 )
+[node name="GiveQuestAction" parent="YSort/Signs/BulletinBoard2/InteractionZone/Actions" index="2" instance=ExtResource( 13 )]
+quest_reference = ExtResource( 16 )
 speaker_name = "Chip"
 
 [node name="UI" parent="." instance=ExtResource( 11 )]

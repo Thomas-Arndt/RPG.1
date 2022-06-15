@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://QuestSystem/Objectives/QuestInteractObjective.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Utils/Overlap/InteractionZone.tscn" type="PackedScene" id=3]
 
 [node name="interact-chip-bill" instance=ExtResource( 1 )]
+title = "Meet Bill"
 startText = [ "Hi there! My name is Chip. Please speak with Bill for me, will ya?" ]
+progressText = [ "Go find Bill, hop to it!" ]
 deliverText = [ "Chip sent you, eh? Well, I could use some help..." ]
 reward_on_delivery = true
 _reward_experience = 10
 
 [node name="QuestInteractObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
-interact_with = ExtResource( 3 )
