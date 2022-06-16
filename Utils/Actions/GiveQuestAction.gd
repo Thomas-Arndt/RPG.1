@@ -2,6 +2,7 @@ extends Node
 class_name GiveQuestAction
 
 signal finished
+signal has_follow_up_quest(quest)
 
 export var quest_reference: PackedScene
 export var speaker_name: String
