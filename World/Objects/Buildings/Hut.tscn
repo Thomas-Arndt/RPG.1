@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/Objects/Buildings/Hut.gd" type="Script" id=1]
 [ext_resource path="res://World/Objects/Shrub.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Objects/Buildings/HutExteriorUpper.png" type="Texture" id=3]
 [ext_resource path="res://Shadows/LargeShadow.png" type="Texture" id=4]
+[ext_resource path="res://World/Objects/Buildings/HutExteriorRed.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 40.0
@@ -28,9 +29,13 @@ position = Vector2( -5.48363e-06, -37 )
 scale = Vector2( 4.0625, 4.1 )
 texture = ExtResource( 4 )
 
-[node name="OuterSprite" type="Sprite" parent="."]
+[node name="GreenSprite" type="Sprite" parent="."]
 position = Vector2( 0, -49 )
 texture = ExtResource( 3 )
+
+[node name="RedSprite" type="Sprite" parent="."]
+position = Vector2( 0, -49 )
+texture = ExtResource( 5 )
 
 [node name="Footprint" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -39 )
