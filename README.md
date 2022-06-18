@@ -1,6 +1,6 @@
 This will eventually become a rad first attempt at a 2d action rpg. I am using Godot Engine to create it.
-The current idea is to create a world where travel and trade between neighboring dimensions is practical, and some select few people are even able to do it without the need of sophisticated technology.
+The current idea is to create a world where the existence of parallel dimensions is common knowledge. Occasionally these parallel universes pass close to each other, and in doing so, slightly weaken their boundaries to where beings from the void in-between diemnsions are able to push their way into the dimensions as blobs of energy. Mose are animal in nature, simply there because it is an easy source of energy to consume. Others are capable of abstrct thought, and attempt to exploit this event further than just absorbing energy. Perhaps they want to "pop the dimensional bubble" that might release all of the dimensional energy into the void-between. Not sure on thet yet. But they will be the main baddies to contend with. 
 Gameplay will include mechanics such as:
 shifting between the two dimensions: the Green Path, and the Red Dimension
-you can only see monsters in the dimension you currently are in, but the monters have somehow become capable of harming you regardless of dimension.
-The landscape will liely be different between the two dimenions, forcing the player to shift between dimensions to get past obstacles
+you can only interact with monsters in the dimension you currently are in, but the monsters have somehow become capable of harming you regardless of dimension.
+Some things may exist in one dimension and not the other, like key items or people.
