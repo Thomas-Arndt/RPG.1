@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=2]
+[gd_scene load_steps=119 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://QuestSystem/Quests/interact-chip-bill.tscn" type="PackedScene" id=16]
 [ext_resource path="res://World/Objects/Buildings/Hut.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Objects/Buildings/HutExteriorLower.png" type="Texture" id=18]
+[ext_resource path="res://NPCs/NPC.tscn" type="PackedScene" id=19]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -1221,6 +1222,9 @@ speaker_name = "Chip"
 [node name="GiveQuestAction" parent="YSort/Signs/BulletinBoard2/InteractionZone/Actions" index="2" instance=ExtResource( 13 )]
 quest_reference = ExtResource( 16 )
 speaker_name = "Chip"
+
+[node name="NPC" parent="YSort" instance=ExtResource( 19 )]
+position = Vector2( -816, 219 )
 
 [node name="UI" parent="." instance=ExtResource( 11 )]
 position = Vector2( -9, 9 )
