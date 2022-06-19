@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Enemies/VoidBlob.tscn" type="PackedScene" id=1]
+[ext_resource path="res://QuestSystem/Objectives/QuestSlayObjective.tscn" type="PackedScene" id=2]
+[ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=3]
+
+[node name="slay-3-voidblob-billboard-billboard" instance=ExtResource( 3 )]
+title = "test"
+description = "testes"
+startText = [ "As you can see, there are void blobs everywhere!", "Could you do me a solid and banish one of the Void Blobs in the area? Just hit it with your sword a few times...", "Once you have banished one, return to me." ]
+progressText = [ "Remember, you can only attack a void blob that has fully phased into our dimension." ]
+deliverText = [ "Well done! Thank you for your help!" ]
+reward_on_delivery = true
+_reward_experience = 100
+_reward_gold = 15
+
+[node name="QuestSlayObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
+amount = 1
+target_to_slay = ExtResource( 1 )

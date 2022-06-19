@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=2]
+[gd_scene load_steps=120 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
@@ -11,11 +11,11 @@
 [ext_resource path="res://World/Objects/Bush.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Objects/Shrub.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=11]
-[ext_resource path="res://QuestSystem/Quests/slay-3-voidblob-billboard-billboard.tscn" type="PackedScene" id=12]
+[ext_resource path="res://QuestSystem/Quests/bills-flyer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Utils/Actions/GiveQuestAction.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Utils/Actions/InProgressQuestAction.tscn" type="PackedScene" id=15]
-[ext_resource path="res://QuestSystem/Quests/interact-chip-bill.tscn" type="PackedScene" id=16]
+[ext_resource path="res://QuestSystem/Quests/slay-3-voidblob-bill.tscn" type="PackedScene" id=16]
 [ext_resource path="res://World/Objects/Buildings/Hut.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Objects/Buildings/HutExteriorLower.png" type="Texture" id=18]
 [ext_resource path="res://NPCs/NPC.tscn" type="PackedScene" id=19]
@@ -1061,6 +1061,8 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 1/z_index = 0
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id=149]
+
 [node name="World" type="Node2D"]
 
 [node name="GreenPath" type="TileMap" parent="."]
@@ -1197,39 +1199,38 @@ position = Vector2( -432, 720 )
 [node name="Signs" type="YSort" parent="YSort"]
 
 [node name="BulletinBoard" parent="YSort/Signs" instance=ExtResource( 3 )]
-position = Vector2( -448, 149 )
+position = Vector2( -767, 150 )
 
-[node name="CompletedQuestAction" parent="YSort/Signs/BulletinBoard/InteractionZone/Actions" index="0" instance=ExtResource( 14 )]
-quest_reference = ExtResource( 16 )
-follow_up_quest = ExtResource( 12 )
-speaker_name = "Bill"
-
-[node name="InProgressQuestAction" parent="YSort/Signs/BulletinBoard/InteractionZone/Actions" index="1" instance=ExtResource( 15 )]
+[node name="InProgressQuestAction" parent="YSort/Signs/BulletinBoard/InteractionZone/Actions" index="0" instance=ExtResource( 15 )]
 quest_reference = ExtResource( 12 )
-speaker_name = "Bill"
 
-[node name="BulletinBoard2" parent="YSort/Signs" instance=ExtResource( 3 )]
-position = Vector2( -769, 150 )
-
-[node name="CompletedQuestAction" parent="YSort/Signs/BulletinBoard2/InteractionZone/Actions" index="0" instance=ExtResource( 14 )]
+[node name="GiveQuestAction" parent="YSort/Signs/BulletinBoard/InteractionZone/Actions" index="1" instance=ExtResource( 13 )]
 quest_reference = ExtResource( 12 )
-speaker_name = "Chip"
-
-[node name="InProgressQuestAction" parent="YSort/Signs/BulletinBoard2/InteractionZone/Actions" index="1" instance=ExtResource( 15 )]
-quest_reference = ExtResource( 16 )
-speaker_name = "Chip"
-
-[node name="GiveQuestAction" parent="YSort/Signs/BulletinBoard2/InteractionZone/Actions" index="2" instance=ExtResource( 13 )]
-quest_reference = ExtResource( 16 )
-speaker_name = "Chip"
 
 [node name="NPC" parent="YSort" instance=ExtResource( 19 )]
-position = Vector2( -816, 219 )
+position = Vector2( -782, 449 )
+WANDER_RANGE = 64
+
+[node name="AnimationTree" parent="YSort/NPC" index="4"]
+parameters/playback = SubResource( 149 )
+
+[node name="CompletedQuestAction" parent="YSort/NPC/InteractionZone/Actions" index="0" instance=ExtResource( 14 )]
+quest_reference = ExtResource( 12 )
+follow_up_quest = ExtResource( 16 )
+speaker_name = "Bill"
+
+[node name="CompletedQuestAction2" parent="YSort/NPC/InteractionZone/Actions" index="1" instance=ExtResource( 14 )]
+quest_reference = ExtResource( 16 )
+speaker_name = "Bill"
+
+[node name="InProgressQuestAction" parent="YSort/NPC/InteractionZone/Actions" index="2" instance=ExtResource( 15 )]
+quest_reference = ExtResource( 16 )
+speaker_name = "Bill"
 
 [node name="UI" parent="." instance=ExtResource( 11 )]
 position = Vector2( -9, 9 )
 
 [editable path="YSort/Signs/BulletinBoard"]
 [editable path="YSort/Signs/BulletinBoard/InteractionZone"]
-[editable path="YSort/Signs/BulletinBoard2"]
-[editable path="YSort/Signs/BulletinBoard2/InteractionZone"]
+[editable path="YSort/NPC"]
+[editable path="YSort/NPC/InteractionZone"]

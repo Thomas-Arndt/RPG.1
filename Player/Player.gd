@@ -57,8 +57,8 @@ func _physics_process(delta):
 		state = ROLL
 	
 	if Input.is_action_just_pressed("attack"):
-		if detection_zone.can_interact() and roll_vector == Vector2.UP and UI.TextBox.complete:
-			detection_zone.target.start_interaction()
+		if detection_zone.can_interact() and UI.TextBox.complete:
+			detection_zone.target.start_interaction(self)
 		elif UI.TextBox.complete:
 			state = ATTACK
 	

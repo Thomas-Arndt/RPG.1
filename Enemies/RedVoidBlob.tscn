@@ -56,6 +56,7 @@ material = SubResource( 3 )
 texture = ExtResource( 1 )
 
 [node name="HalfSprite" parent="." index="2"]
+visible = true
 material = SubResource( 5 )
 texture = ExtResource( 2 )
 
@@ -64,6 +65,15 @@ texture = ExtResource( 5 )
 
 [node name="HalfAttackSprite" parent="." index="4"]
 texture = ExtResource( 6 )
+
+[node name="HurtBox" parent="." index="10"]
+visible = true
+
+[node name="PlayerDetectionZone" parent="." index="11"]
+visible = true
+
+[node name="SoftCollision" parent="." index="13"]
+visible = true
 
 [editable path="HurtBox"]
 [editable path="PlayerDetectionZone"]

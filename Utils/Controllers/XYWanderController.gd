@@ -1,13 +1,13 @@
 extends Node2D
 
-export(int) var wander_range = 32
-export(String) var axis = "X"
 
 onready var start_position = global_position
 onready var target_position = global_position
 
 onready var timer = $Timer
 
+var axis: String = "X"
+var wander_range: int = 32
 var reverse:bool = false
 
 func _ready():

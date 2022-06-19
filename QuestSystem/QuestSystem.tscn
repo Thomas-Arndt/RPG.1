@@ -2,8 +2,8 @@
 
 [ext_resource path="res://QuestSystem/QuestSystem.gd" type="Script" id=1]
 [ext_resource path="res://QuestSystem/QuestContainer.gd" type="Script" id=2]
-[ext_resource path="res://QuestSystem/Quests/slay-3-voidblob-billboard-billboard.tscn" type="PackedScene" id=3]
-[ext_resource path="res://QuestSystem/Quests/interact-chip-bill.tscn" type="PackedScene" id=4]
+[ext_resource path="res://QuestSystem/Quests/slay-3-voidblob-bill.tscn" type="PackedScene" id=3]
+[ext_resource path="res://QuestSystem/Quests/bills-flyer.tscn" type="PackedScene" id=4]
 
 [node name="QuestSystem" type="Node"]
 script = ExtResource( 1 )

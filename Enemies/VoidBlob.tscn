@@ -774,10 +774,12 @@ scale = Vector2( 1.3125, 0.9 )
 texture = ExtResource( 3 )
 
 [node name="FullSprite" type="Sprite" parent="."]
+visible = false
 material = SubResource( 18 )
 hframes = 13
 
 [node name="HalfSprite" type="Sprite" parent="."]
+visible = false
 material = SubResource( 20 )
 hframes = 13
 
