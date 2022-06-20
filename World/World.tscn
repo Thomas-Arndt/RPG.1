@@ -18,7 +18,7 @@
 [ext_resource path="res://QuestSystem/Quests/slay-3-voidblob-bill.tscn" type="PackedScene" id=16]
 [ext_resource path="res://World/Objects/Buildings/Hut.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Objects/Buildings/HutExteriorLower.png" type="Texture" id=18]
-[ext_resource path="res://NPCs/NPC.tscn" type="PackedScene" id=19]
+[ext_resource path="res://NPC/NPCs/Bill.tscn" type="PackedScene" id=20]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -1061,7 +1061,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 1/z_index = 0
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=149]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=150]
 
 [node name="World" type="Node2D"]
 
@@ -1207,23 +1207,24 @@ quest_reference = ExtResource( 12 )
 [node name="GiveQuestAction" parent="YSort/Signs/BulletinBoard/InteractionZone/Actions" index="1" instance=ExtResource( 13 )]
 quest_reference = ExtResource( 12 )
 
-[node name="NPC" parent="YSort" instance=ExtResource( 19 )]
-position = Vector2( -782, 449 )
-WANDER_RANGE = 64
+[node name="NPCs" type="YSort" parent="YSort"]
 
-[node name="AnimationTree" parent="YSort/NPC" index="4"]
-parameters/playback = SubResource( 149 )
+[node name="Bill" parent="YSort/NPCs" instance=ExtResource( 20 )]
+position = Vector2( -783, 447 )
 
-[node name="CompletedQuestAction" parent="YSort/NPC/InteractionZone/Actions" index="0" instance=ExtResource( 14 )]
+[node name="AnimationTree" parent="YSort/NPCs/Bill" index="4"]
+parameters/playback = SubResource( 150 )
+
+[node name="CompletedQuestAction" parent="YSort/NPCs/Bill/InteractionZone/Actions" index="0" instance=ExtResource( 14 )]
 quest_reference = ExtResource( 12 )
 follow_up_quest = ExtResource( 16 )
 speaker_name = "Bill"
 
-[node name="CompletedQuestAction2" parent="YSort/NPC/InteractionZone/Actions" index="1" instance=ExtResource( 14 )]
+[node name="CompletedQuestAction2" parent="YSort/NPCs/Bill/InteractionZone/Actions" index="1" instance=ExtResource( 14 )]
 quest_reference = ExtResource( 16 )
 speaker_name = "Bill"
 
-[node name="InProgressQuestAction" parent="YSort/NPC/InteractionZone/Actions" index="2" instance=ExtResource( 15 )]
+[node name="InProgressQuestAction" parent="YSort/NPCs/Bill/InteractionZone/Actions" index="2" instance=ExtResource( 15 )]
 quest_reference = ExtResource( 16 )
 speaker_name = "Bill"
 
@@ -1232,5 +1233,5 @@ position = Vector2( -9, 9 )
 
 [editable path="YSort/Signs/BulletinBoard"]
 [editable path="YSort/Signs/BulletinBoard/InteractionZone"]
-[editable path="YSort/NPC"]
-[editable path="YSort/NPC/InteractionZone"]
+[editable path="YSort/NPCs/Bill"]
+[editable path="YSort/NPCs/Bill/InteractionZone"]
