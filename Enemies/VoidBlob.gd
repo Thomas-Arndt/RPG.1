@@ -39,6 +39,8 @@ onready var wander_controller = $WanderController
 onready var attack_raduis = $AttackRadius
 
 func _ready():
+	match_dimension(WorldStats.DIMENSION)
+	WorldStats.connect("dimension_shift", self, "match_dimension")
 	stats.set_max_health(3)
 	stats.set_health(3)
 	state = pick_random_state([IDLE, WANDER])
@@ -47,7 +49,7 @@ func _ready():
 	anim_player.play("idle")
 	
 func _physics_process(delta):
-	match_dimension()
+	
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
 	knockback = move_and_slide(knockback)
 	
@@ -124,7 +126,7 @@ func _on_Stats_no_health():
 	queue_free()
 	death_animation()
 
-func match_dimension():
+func match_dimension(state):
 	pass
 
 func get_dimension():

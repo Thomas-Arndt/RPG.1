@@ -4,13 +4,11 @@ onready var red_sprite = $RedSprite
 onready var green_sprite = $GreenSprite
 
 func _ready():
-	match_dimension()
+	match_dimension(WorldStats.DIMENSION)
+	WorldStats.connect("dimension_shift", self, "match_dimension")
 
-func _process(delta):
-	match_dimension()
-	
-func match_dimension():
-	if WorldStats.DIMENSION == true:
+func match_dimension(state):
+	if state == true:
 		red_sprite.visible = true
 		green_sprite.visible = false
 	else:
