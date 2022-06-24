@@ -1235,5 +1235,8 @@ position = Vector2( -9, 9 )
 
 [editable path="YSort/Signs/BulletinBoard"]
 [editable path="YSort/Signs/BulletinBoard/InteractionZone"]
+[editable path="YSort/Signs/BulletinBoard/PlayerDetectionZone"]
+[editable path="YSort/Signs/BulletinBoard/PlayerDetectionZone/QuestBubble"]
 [editable path="YSort/NPCs/Bill"]
 [editable path="YSort/NPCs/Bill/InteractionZone"]
+[editable path="YSort/NPCs/Bill/PlayerDetectionZone"]

@@ -18,6 +18,9 @@ onready var anim_tree = $AnimationTree
 onready var anim_state = anim_tree.get("parameters/playback")
 onready var wander_controller = $XYWanderController
 onready var interaction_zone = $InteractionZone
+onready var player_detection_zone = $PlayerDetectionZone
+onready var quest_bubble = $PlayerDetectionZone/QuestBubble/Sprite
+onready var actions = $InteractionZone/Actions
 
 var velocity = Vector2.ZERO
 var state = IDLE
@@ -34,6 +37,8 @@ func _ready():
 	state = pick_random_state([IDLE, WANDER])
 
 func _physics_process(delta):
+	seek_player()
+	quest_status()
 	match state:
 		IDLE:
 			anim_state.travel("idle")
@@ -79,5 +84,27 @@ func _on_Interaction_Zone_interaction_started(node):
 	
 
 func _on_Interaction_Zone_interaction_finished(node):
-	state = IDLE
 	interaction_target = null
+	state = IDLE
+	
+
+func seek_player():
+	if player_detection_zone.can_see_player():
+		quest_bubble.visible = true
+	else:
+		quest_bubble.visible = false
+
+func quest_status():
+	var set = false
+	var current_actions = actions.get_children()
+	for action in current_actions:
+		if not set:
+			if action.active:
+				if action is CompletedQuestAction and QuestSystem.completed_quests.find(action.quest_reference.instance()) != null:
+					quest_bubble.region_rect.position = Vector2(48, 128)
+					set = true
+				elif action is GiveQuestAction and QuestSystem.available_quests.find(action.quest_reference.instance()) != null:
+					quest_bubble.region_rect.position = Vector2(32, 128)
+					set = true
+				else:
+					quest_bubble.region_rect.position = Vector2(128, 128)
