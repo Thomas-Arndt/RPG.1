@@ -49,7 +49,7 @@ func _ready():
 	anim_player.play("idle")
 	
 func _physics_process(delta):
-	
+	match_dimension(WorldStats.DIMENSION)
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
 	knockback = move_and_slide(knockback)
 	
