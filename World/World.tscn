@@ -1110,7 +1110,7 @@ script = ExtResource( 1 )
 position = Vector2( -1104, 48 )
 
 [node name="BottomRight" type="Position2D" parent="Camera2D/Limits"]
-position = Vector2( 296, 888 )
+position = Vector2( -232, 856 )
 
 [node name="YSort" type="YSort" parent="."]
 
