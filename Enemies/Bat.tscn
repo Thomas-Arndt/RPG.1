@@ -10,7 +10,8 @@
 [ext_resource path="res://Utils/Overlap/SoftCollision.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Utils/Controllers/WanderController.tscn" type="PackedScene" id=9]
 
-[sub_resource type="Shader" id=12]
+[sub_resource type="Shader" id=17]
+resource_local_to_scene = true
 code = "shader_type canvas_item;
 
 uniform bool active = false;
@@ -26,8 +27,9 @@ uniform bool active = false;
 	}"
 
 [sub_resource type="ShaderMaterial" id=13]
-shader = SubResource( 12 )
-shader_param/active = true
+resource_local_to_scene = true
+shader = SubResource( 17 )
+shader_param/active = false
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )

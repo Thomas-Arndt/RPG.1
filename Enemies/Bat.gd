@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const DeathEffect = preload("res://Effects/EnemyEffects/BatDeathEffect.tscn")
+
 export var ACCELERATION = 200
 export var MAX_SPEED = 50
 export var FRICTION = 200
@@ -81,6 +83,9 @@ func seek_player():
 
 func _on_Stats_no_health():
 	queue_free()
+	var death_effect = DeathEffect.instance()
+	get_parent().add_child(death_effect)
+	death_effect.global_position = Vector2(global_position.x, global_position.y-12)
 
 
 func _on_HurtBox_invincible_end():
