@@ -132,7 +132,6 @@ script = ExtResource( 1 )
 material = SubResource( 13 )
 position = Vector2( -24, 51 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 offset = Vector2( 24, -64 )
 
@@ -148,18 +147,19 @@ max_health = 2
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2( 0, -14 )
+position = Vector2( 0, -12 )
 shape = SubResource( 8 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+visible = false
 shape = SubResource( 9 )
 
 [node name="HitBox" parent="." instance=ExtResource( 7 )]
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2( 0, -15 )
+position = Vector2( 0, -13 )
 shape = SubResource( 10 )
 
 [node name="SoftCollision" parent="." instance=ExtResource( 8 )]

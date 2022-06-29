@@ -39,3 +39,5 @@ margin_bottom = 14.0
 rect_clip_content = true
 expand = true
 stretch_mode = 3
+
+[node name="Tween" type="Tween" parent="."]
