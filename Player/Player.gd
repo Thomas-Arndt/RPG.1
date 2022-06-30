@@ -27,10 +27,12 @@ onready var detection_zone = $DetectionZone/DetectionZone
 onready var RedDimension = get_node("/root/World/RedDimension")
 
 func _ready():
+	global_position = WorldStats.player_spawn_vector
 	anim_tree.active = true
-	anim_tree.set("parameters/roll/blend_position", Vector2.DOWN)
-	anim_tree.set("parameters/attack/blend_position", Vector2.DOWN)
 	anim_player.play("SETUP")
+	anim_tree.set("parameters/roll/blend_position", WorldStats.player_spawn_direction)
+	anim_tree.set("parameters/attack/blend_position", WorldStats.player_spawn_direction)
+	anim_tree.set("parameters/idle/blend_position", WorldStats.player_spawn_direction)
 	PlayerStats.set_max_health(10)
 	PlayerStats.set_health(10)
 	PlayerStats.set_experience(0)
