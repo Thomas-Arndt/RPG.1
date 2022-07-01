@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=2]
+[gd_scene load_steps=121 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
@@ -20,7 +20,6 @@
 [ext_resource path="res://World/Objects/Buildings/HutExteriorLower.png" type="Texture" id=18]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=19]
 [ext_resource path="res://NPC/NPCs/Bill.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=21]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -1065,9 +1064,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=150]
 
-[sub_resource type="RectangleShape2D" id=151]
-extents = Vector2( 13, 10 )
-
 [node name="World" type="Node2D"]
 
 [node name="GreenPath" type="TileMap" parent="."]
@@ -1247,16 +1243,6 @@ speaker_name = "Bill"
 [node name="UI" parent="." instance=ExtResource( 11 )]
 position = Vector2( -9, 9 )
 
-[node name="Area2D" parent="." instance=ExtResource( 21 )]
-position = Vector2( -749, 373 )
-destination_resource_path = "res://World/Houses/BillsHouse.tscn"
-exit_location = Vector2( 156, 175 )
-exit_direction = Vector2( 0, -1 )
-
-[node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2( 0, 18 )
-shape = SubResource( 151 )
-
 [editable path="YSort/Signs/BulletinBoard"]
 [editable path="YSort/Signs/BulletinBoard/InteractionZone"]
 [editable path="YSort/Signs/BulletinBoard/PlayerDetectionZone"]
@@ -1264,4 +1250,3 @@ shape = SubResource( 151 )
 [editable path="YSort/NPCs/Bill"]
 [editable path="YSort/NPCs/Bill/InteractionZone"]
 [editable path="YSort/NPCs/Bill/PlayerDetectionZone"]
-[editable path="Area2D"]

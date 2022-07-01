@@ -8,4 +8,5 @@ func _on_Area2D_body_entered(body):
 	if destination_resource_path != null:
 		WorldStats.player_spawn_vector = exit_location
 		WorldStats.player_spawn_direction = exit_direction
+		
 		get_tree().change_scene(destination_resource_path)
