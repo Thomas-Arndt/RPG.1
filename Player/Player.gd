@@ -27,18 +27,12 @@ onready var detection_zone = $DetectionZone/DetectionZone
 onready var RedDimension = get_node("/root/World/RedDimension")
 
 func _ready():
-	global_position = WorldStats.player_spawn_vector
+
 	anim_tree.active = true
 	anim_player.play("SETUP")
 	anim_tree.set("parameters/roll/blend_position", WorldStats.player_spawn_direction)
 	anim_tree.set("parameters/attack/blend_position", WorldStats.player_spawn_direction)
 	anim_tree.set("parameters/idle/blend_position", WorldStats.player_spawn_direction)
-	PlayerStats.set_max_health(10)
-	PlayerStats.set_health(10)
-	PlayerStats.set_experience(0)
-	PlayerStats.set_player_level(1)
-	Inventory.set_gold(0)
-	Inventory.set_max_gold(100)
 	sword_hit_box.knockback_vector = roll_vector
 	PlayerStats.connect("no_health", self, "_on_PlayerStats_no_health")
 	
@@ -125,3 +119,9 @@ func _on_HurtBox_invincible_end():
 
 func _on_PlayerStats_no_health():
 	queue_free()
+
+func spawn_player():
+	global_position = WorldStats.player_spawn_vector
+	anim_tree.set("parameters/roll/blend_position", WorldStats.player_spawn_direction)
+	anim_tree.set("parameters/attack/blend_position", WorldStats.player_spawn_direction)
+	anim_tree.set("parameters/idle/blend_position", WorldStats.player_spawn_direction)

@@ -9,5 +9,5 @@ func _on_DetectionZone_area_entered(area):
 	target = area
 
 
-func _on_DetectionZone_area_exited(area):
+func _on_DetectionZone_area_exited(_area):
 	target = null
