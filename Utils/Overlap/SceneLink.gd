@@ -10,6 +10,6 @@ func _on_SceneLink_body_entered(body):
 	WorldStats.player_spawn_vector = exit_location
 	WorldStats.player_spawn_direction = exit_direction
 	if destination_reference != null:
-		SignalBus.emit_signal("scene_link_entered", destination_reference)
+		SignalBus.emit_signal("scene_link_entered", destination_reference, self)
 	else:
 		SignalBus.emit_signal("scene_exited")

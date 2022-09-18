@@ -5,6 +5,7 @@ onready var ySort = $World/YSort
 onready var player = $World/YSort/Player
 
 var destination: Node2D = null
+var pause_signals = false
 
 func _ready():
 	PlayerStats.set_max_health(10)
@@ -21,16 +22,25 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		player.spawn_player()
 	
-func _on_Scene_Link_entered(destination_reference):
-	remove_child(world)
-	destination = destination_reference.instance()
-	add_child(destination)
-	move_child(destination, 0)
+func _on_Scene_Link_entered(destination_reference, source):
+	if not pause_signals:
+		pause_signals = true
+		remove_child(world)
+		destination = destination_reference.instance()
+		print(source)
+		add_child(destination)
+		move_child(destination, 0)
+		ySort.remove_child(player)
+		destination.add_child(player)
+		player.spawn_player()
+		pause_signals = false
 	
 
 func _on_Scene_exited():
+	destination.remove_child(player)
 	remove_child(destination)
 	destination.queue_free()
+	ySort.add_child(player)
+	ySort.move_child(player, 0)
 	add_child(world)
-	move_child(world, 0)
 	player.spawn_player()
