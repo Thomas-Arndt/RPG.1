@@ -24,7 +24,7 @@ onready var hurt_box = $HurtBox
 onready var blink_anim_player = $BlinkAnimationPlayer
 onready var detection_zone = $DetectionZone/DetectionZone
 
-onready var RedDimension = get_node("/root/World/RedDimension")
+onready var RedDimension = get_node("/root/Game/World/RedDimension")
 
 func _ready():
 
