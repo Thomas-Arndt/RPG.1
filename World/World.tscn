@@ -1234,7 +1234,7 @@ position = Vector2( -139, 270 )
 [node name="MobileEnemies" type="YSort" parent="YSort"]
 
 [node name="GreenVoidBlob" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
-position = Vector2( -400, 664 )
+position = Vector2( -943, 653 )
 
 [node name="GreenVoidBlob2" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
 position = Vector2( -874, 699 )
@@ -1243,13 +1243,13 @@ position = Vector2( -874, 699 )
 position = Vector2( -566, 510 )
 
 [node name="RedVoidBlob" parent="YSort/MobileEnemies" instance=ExtResource( 6 )]
-position = Vector2( -612, 562 )
+position = Vector2( -914, 208 )
 
 [node name="RedVoidBlob2" parent="YSort/MobileEnemies" instance=ExtResource( 6 )]
-position = Vector2( -928, 654 )
+position = Vector2( -946, 267 )
 
 [node name="RedVoidBlob3" parent="YSort/MobileEnemies" instance=ExtResource( 6 )]
-position = Vector2( -432, 720 )
+position = Vector2( -441, 720 )
 
 [node name="Bat" parent="YSort/MobileEnemies" instance=ExtResource( 19 )]
 position = Vector2( -123, 221 )
@@ -1266,7 +1266,7 @@ position = Vector2( 220, 353 )
 [node name="Signs" type="YSort" parent="YSort"]
 
 [node name="BulletinBoard" parent="YSort/Signs" instance=ExtResource( 3 )]
-position = Vector2( -448, 145 )
+position = Vector2( -448, 160 )
 
 [node name="InProgressQuestAction" parent="YSort/Signs/BulletinBoard/InteractionZone/Actions" index="0" instance=ExtResource( 15 )]
 quest_reference = ExtResource( 12 )
@@ -1300,10 +1300,11 @@ speaker_name = "Bill"
 [node name="SceneLink" parent="SceneLinks" instance=ExtResource( 11 )]
 position = Vector2( -749, 381 )
 destination_reference = ExtResource( 22 )
-exit_location = Vector2( 157, 158 )
+exit_location = Vector2( 157, 142 )
 exit_direction = Vector2( 0, -1 )
 
 [node name="CollisionShape2D" parent="SceneLinks/SceneLink" index="0"]
+position = Vector2( 0, 11 )
 shape = SubResource( 151 )
 
 [editable path="YSort/Signs/BulletinBoard"]

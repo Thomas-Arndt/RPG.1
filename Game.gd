@@ -27,7 +27,6 @@ func _on_Scene_Link_entered(destination_reference, source):
 		pause_signals = true
 		remove_child(world)
 		destination = destination_reference.instance()
-		print(source)
 		add_child(destination)
 		move_child(destination, 0)
 		ySort.remove_child(player)
@@ -37,10 +36,13 @@ func _on_Scene_Link_entered(destination_reference, source):
 	
 
 func _on_Scene_exited():
-	destination.remove_child(player)
-	remove_child(destination)
-	destination.queue_free()
-	ySort.add_child(player)
-	ySort.move_child(player, 0)
-	add_child(world)
-	player.spawn_player()
+	if not pause_signals:
+		pause_signals = true
+		destination.remove_child(player)
+		remove_child(destination)
+		destination.queue_free()
+		ySort.add_child(player)
+		ySort.move_child(player, 0)
+		add_child(world)
+		player.spawn_player()
+		pause_signals = false
