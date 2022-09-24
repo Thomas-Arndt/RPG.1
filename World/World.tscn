@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=2]
+[gd_scene load_steps=124 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://World/Objects/Buildings/HutExteriorLower.png" type="Texture" id=18]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=19]
 [ext_resource path="res://NPC/NPCs/Bill.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Enemies/Bosses/VoidLord.tscn" type="PackedScene" id=21]
 [ext_resource path="res://World/Houses/BillsHouse.tscn" type="PackedScene" id=22]
 
 [sub_resource type="TileSet" id=99]
@@ -1262,6 +1263,13 @@ position = Vector2( -7, 295 )
 
 [node name="Bat4" parent="YSort/MobileEnemies" instance=ExtResource( 19 )]
 position = Vector2( 220, 353 )
+
+[node name="VoidLord" parent="YSort/MobileEnemies" instance=ExtResource( 21 )]
+position = Vector2( -5, 680 )
+
+[node name="VoidLord2" parent="YSort/MobileEnemies" instance=ExtResource( 21 )]
+position = Vector2( 111, 679 )
+is_red = false
 
 [node name="Signs" type="YSort" parent="YSort"]
 

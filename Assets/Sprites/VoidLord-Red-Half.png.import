@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/VoidLord.png-ecf52427008f5e72ca295fdfca1be986.stex"
+path="res://.import/VoidLord-Red-Half.png-39ad6caef4d362f4174fe7d9d2ed65b2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/VoidLord.png"
-dest_files=[ "res://.import/VoidLord.png-ecf52427008f5e72ca295fdfca1be986.stex" ]
+source_file="res://Assets/Sprites/VoidLord-Red-Half.png"
+dest_files=[ "res://.import/VoidLord-Red-Half.png-39ad6caef4d362f4174fe7d9d2ed65b2.stex" ]
 
 [params]
 
