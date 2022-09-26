@@ -143,18 +143,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 7 ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("GreenSpriteHalf:frame_coords")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
 
 [sub_resource type="Animation" id=4]
 resource_name = "explode"
@@ -615,6 +603,7 @@ material = SubResource( 16 )
 position = Vector2( 3, -46 )
 texture = ExtResource( 3 )
 hframes = 28
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
