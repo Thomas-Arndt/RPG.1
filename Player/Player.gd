@@ -53,7 +53,7 @@ func _physics_process(delta):
 		state = ROLL
 	
 	if Input.is_action_just_pressed("attack"):
-		if detection_zone.can_interact() and UI.TextBox.complete:
+		if detection_zone.target is InteractionZone and detection_zone.can_interact() and UI.TextBox.complete:
 			detection_zone.target.start_interaction(self)
 		elif UI.TextBox.complete:
 			state = ATTACK

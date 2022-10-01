@@ -802,6 +802,7 @@ radius = 8.0
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
+collision_mask = 17
 script = ExtResource( 3 )
 
 [node name="ShadowSprite" type="Sprite" parent="."]

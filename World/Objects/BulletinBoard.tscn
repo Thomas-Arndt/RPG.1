@@ -16,7 +16,7 @@ radius = 3.0
 radius = 2.0
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 106.005
+radius = 130.004
 
 [node name="BulletinBoard" instance=ExtResource( 2 )]
 script = ExtResource( 6 )

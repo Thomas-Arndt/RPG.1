@@ -6,8 +6,16 @@ export var FRICTION = 200
 
 export (bool) var is_red = true
 
-var velocity: Vector2 = Vector2.ZERO
+enum {
+	IDLE,
+	MOVE,
+	EXPLODE,
+}
 
+var velocity: Vector2 = Vector2.ZERO
+var state = IDLE
+
+onready var anim_player = $AnimationPlayer
 onready var blink_anim_player = $BlinkAnimationPlayer
 onready var hurt_box = $HurtBox
 onready var stats = $Stats
@@ -20,16 +28,28 @@ onready var green_sprite_half = $GreenSpriteHalf
 func _ready():
 	match_dimension(WorldStats.DIMENSION)
 	WorldStats.connect("dimension_shift", self, "match_dimension")
+	anim_player.play("idle")
 
 func _physics_process(delta):
 	
-	accelerate_towards_point(wander_controller.target_position, delta)
-	wander_controller.set_position(wander_controller.start_position)
+	match state:
+		IDLE:
+			if wander_controller.get_time_left() == 0:
+				state = MOVE
+				anim_player.play("walk")
+		MOVE:
+			accelerate_towards_point(wander_controller.target_position, delta)
+			wander_controller.set_position(wander_controller.start_position)
+			if wander_controller.can_see_unit():
+				wander_controller.target_position = global_position
+				velocity = Vector2.ZERO
+				anim_player.stop()
+				state = EXPLODE
+		EXPLODE:
+			anim_player.queue("explode")
+			anim_player.queue("exploding")
+			anim_player.queue("implode")
 	
-	if wander_controller.can_see_unit():
-		wander_controller.start_timer(3)
-		wander_controller.target_position = global_position
-		velocity = Vector2.ZERO
 
 	velocity = move_and_slide(velocity)
 
@@ -78,6 +98,10 @@ func _on_HurtBox_area_entered(area):
 	stats.change_health(-area.damage)
 	hurt_box.start_invincible(0.6)
 
+func _on_explosion_animation_finished():
+	wander_controller.start_timer(3)
+	state = IDLE
+	anim_player.play("idle")
 
 func _on_Stats_no_health():
 	queue_free()

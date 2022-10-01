@@ -8,6 +8,7 @@ onready var start_position = global_position
 onready var target_position = Vector2.ZERO
 
 var target_node: Node = null
+var previous_node: Node = null
 
 func _ready():
 	update_target_position()
@@ -16,11 +17,12 @@ func _ready():
 func update_target_position():
 	var available_nodes: Array = []
 	for detection_zone in detection_zones.get_children():
-		if detection_zone != target_node:
+		if detection_zone != previous_node:
 			available_nodes.append(detection_zone)
 	var length = len(available_nodes)
 	var next_node_index = randi() % length
 	target_node = available_nodes[next_node_index]
+	previous_node = target_node
 	target_position = target_node.global_position
 	var test = 0
 
