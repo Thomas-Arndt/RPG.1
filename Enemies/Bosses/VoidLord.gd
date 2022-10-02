@@ -3,6 +3,8 @@ extends KinematicBody2D
 export var ACCELERATION = 200
 export var MAX_SPEED = 100
 export var FRICTION = 200
+export var ATK_RADIUS = 40
+export (PackedScene) var VoidMote = null
 
 export (bool) var is_red = true
 
@@ -12,6 +14,7 @@ enum {
 	EXPLODE,
 }
 
+var void_mote_barrage = preload("res://Enemies/Bosses/VoidMoteBarrage.tscn")
 var velocity: Vector2 = Vector2.ZERO
 var state = IDLE
 
@@ -98,6 +101,12 @@ func _on_HurtBox_area_entered(area):
 	stats.change_health(-area.damage)
 	hurt_box.start_invincible(0.6)
 
+func void_circle():
+	var circle = void_mote_barrage.instance()
+	circle.global_position = global_position
+	get_parent().add_child(circle)
+	circle.circle(7)
+	
 func _on_explosion_animation_finished():
 	wander_controller.start_timer(3)
 	state = IDLE

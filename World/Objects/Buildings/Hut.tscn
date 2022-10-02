@@ -3,7 +3,7 @@
 [ext_resource path="res://World/Objects/Buildings/Hut.gd" type="Script" id=1]
 [ext_resource path="res://World/Objects/Shrub.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Objects/Buildings/HutExteriorUpper.png" type="Texture" id=3]
-[ext_resource path="res://Shadows/LargeShadow.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Shadows/LargeShadow.png" type="Texture" id=4]
 [ext_resource path="res://World/Objects/Buildings/HutExteriorRed.png" type="Texture" id=5]
 
 [node name="Hut" type="StaticBody2D"]

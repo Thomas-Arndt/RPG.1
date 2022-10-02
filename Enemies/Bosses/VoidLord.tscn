@@ -1,6 +1,6 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://Shadows/MediumShadow.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Shadows/MediumShadow.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/VoidLord-Red-Full.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/VoidLord-Green-Half.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Sprites/VoidLord-Green-Full.png" type="Texture" id=4]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Utils/Hit and Hurt Boxes/HurtBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Utils/Stats/Stats.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Utils/Controllers/DetectionWanderController.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/VoidMote.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Shader" id=152]
 code = "shader_type canvas_item;
@@ -148,6 +149,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=4]
 resource_name = "explode"
 length = 1.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("RedSpriteFull:frame")
 tracks/0/interp = 1
@@ -195,6 +197,20 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 20, 19, 14, 13 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.05 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "void_circle"
+} ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -589,6 +605,7 @@ radius = 5.0
 collision_layer = 16
 collision_mask = 32
 script = ExtResource( 6 )
+VoidMote = ExtResource( 10 )
 
 [node name="ShadowSprite" type="Sprite" parent="."]
 position = Vector2( 0, 1 )

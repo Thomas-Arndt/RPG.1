@@ -4,7 +4,6 @@ onready var world = $World
 onready var ySort = $World/YSort
 onready var player = $World/YSort/Player
 
-var destination: Node2D = null
 var pause_signals = false
 
 func _ready():
@@ -17,6 +16,7 @@ func _ready():
 	player.global_position = WorldStats.player_spawn_vector
 	SignalBus.connect("scene_link_entered", self, "_on_Scene_Link_entered")
 	SignalBus.connect("scene_exited", self, "_on_Scene_exited")
+	WorldStats.add_room_to_stack(world)
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
@@ -25,24 +25,35 @@ func _process(delta):
 func _on_Scene_Link_entered(destination_reference, source):
 	if not pause_signals:
 		pause_signals = true
-		remove_child(world)
-		destination = destination_reference.instance()
+		var origin_scene = WorldStats.peek_top_of_room_stack()
+		remove_child(origin_scene)
+		var destination = destination_reference.instance()
 		add_child(destination)
 		move_child(destination, 0)
-		ySort.remove_child(player)
+		if WorldStats.peek_top_of_room_stack() == world:
+			ySort.remove_child(player)
+		else:
+			origin_scene.remove_child(player)
 		destination.add_child(player)
 		player.spawn_player()
+		WorldStats.add_room_to_stack(destination)
 		pause_signals = false
 	
 
 func _on_Scene_exited():
 	if not pause_signals:
 		pause_signals = true
-		destination.remove_child(player)
-		remove_child(destination)
-		destination.queue_free()
-		ySort.add_child(player)
-		ySort.move_child(player, 0)
-		add_child(world)
+		var origin = WorldStats.remove_room_from_stack()
+		origin.remove_child(player)
+		remove_child(origin)
+		origin.queue_free()
+		if WorldStats.peek_top_of_room_stack() == world:
+			ySort.add_child(player)
+			ySort.move_child(player, 0)
+			add_child(world)
+		else:
+			var destination = WorldStats.peek_top_of_room_stack()
+			destination.add_child(player)
+			add_child(destination)
 		player.spawn_player()
 		pause_signals = false

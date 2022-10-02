@@ -25,6 +25,7 @@ onready var blink_anim_player = $BlinkAnimationPlayer
 onready var detection_zone = $DetectionZone/DetectionZone
 
 onready var RedDimension = get_node("/root/Game/World/RedDimension")
+onready var GreenDimension = get_node("/root/Game/World/GreenDimension")
 
 func _ready():
 
@@ -61,8 +62,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("d_shift") and WorldStats.DIMENSION == false:
 		WorldStats.shift_dimension()
 		RedDimension.visible = true
+		GreenDimension.visible = false
 	elif Input.is_action_just_pressed("d_shift") and WorldStats.DIMENSION == true:
 		WorldStats.shift_dimension()
+		GreenDimension.visible = true
 		RedDimension.visible = false
 
 func move_state(delta):

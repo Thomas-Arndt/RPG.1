@@ -3,7 +3,7 @@
 [ext_resource path="res://World/Objects/RockLargeGreen.png" type="Texture" id=1]
 [ext_resource path="res://World/Objects/RockLargeRed.png" type="Texture" id=2]
 [ext_resource path="res://World/Objects/StaticWorldComponent.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Shadows/LargeShadow.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Shadows/LargeShadow.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.0

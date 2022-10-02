@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SmallShadow.png-5e32714e38d94da2c1b597c947bda29e.stex"
+path="res://.import/VoidMote-Blue.png-97f7b456727638148eb4f09025d9ff0f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Shadows/SmallShadow.png"
-dest_files=[ "res://.import/SmallShadow.png-5e32714e38d94da2c1b597c947bda29e.stex" ]
+source_file="res://Assets/Sprites/VoidMote-Blue.png"
+dest_files=[ "res://.import/VoidMote-Blue.png-97f7b456727638148eb4f09025d9ff0f.stex" ]
 
 [params]
 

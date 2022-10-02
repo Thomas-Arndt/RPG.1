@@ -2,7 +2,7 @@
 
 [ext_resource path="res://World/Objects/BushGreen.png" type="Texture" id=1]
 [ext_resource path="res://World/Objects/StaticWorldComponent.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Shadows/LargeShadow.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Shadows/LargeShadow.png" type="Texture" id=3]
 [ext_resource path="res://World/Objects/BushRed.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]

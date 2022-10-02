@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LargeShadow.png-f9f465d3bd6a830d0053dcccc744b5ab.stex"
+path="res://.import/MediumShadow.png-cbf6de91d3fe9bcfd458ed17e6e8ef00.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Shadows/LargeShadow.png"
-dest_files=[ "res://.import/LargeShadow.png-f9f465d3bd6a830d0053dcccc744b5ab.stex" ]
+source_file="res://Assets/Sprites/Shadows/MediumShadow.png"
+dest_files=[ "res://.import/MediumShadow.png-cbf6de91d3fe9bcfd458ed17e6e8ef00.stex" ]
 
 [params]
 
