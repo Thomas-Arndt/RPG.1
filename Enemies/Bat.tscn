@@ -29,7 +29,7 @@ uniform bool active = false;
 [sub_resource type="ShaderMaterial" id=13]
 resource_local_to_scene = true
 shader = SubResource( 17 )
-shader_param/active = true
+shader_param/active = false
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -63,7 +63,7 @@ animations = [ {
 radius = 4.0
 
 [sub_resource type="CapsuleShape2D" id=8]
-radius = 7.0
+radius = 6.0
 height = 6.0
 
 [sub_resource type="CircleShape2D" id=9]
@@ -73,7 +73,7 @@ radius = 52.469
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id=11]
-radius = 6.0
+radius = 7.0
 
 [sub_resource type="Animation" id=14]
 length = 0.001
@@ -87,7 +87,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -132,7 +132,7 @@ script = ExtResource( 1 )
 material = SubResource( 13 )
 position = Vector2( -24, 51 )
 frames = SubResource( 6 )
-frame = 2
+frame = 4
 playing = true
 offset = Vector2( 24, -64 )
 
@@ -160,7 +160,6 @@ shape = SubResource( 9 )
 [node name="HitBox" parent="." instance=ExtResource( 7 )]
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2( 0, -13 )
 shape = SubResource( 10 )
 
 [node name="SoftCollision" parent="." instance=ExtResource( 8 )]

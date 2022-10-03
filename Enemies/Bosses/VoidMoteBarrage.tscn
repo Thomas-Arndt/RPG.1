@@ -4,6 +4,7 @@
 
 [node name="VoidMoteBarrage" type="YSort"]
 script = ExtResource( 1 )
+circle_radius = 55
 
 [node name="Pivot" type="Position2D" parent="."]
 

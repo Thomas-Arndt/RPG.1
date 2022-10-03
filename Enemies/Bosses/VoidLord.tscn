@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Assets/Sprites/Shadows/MediumShadow.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/VoidLord-Red-Full.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Utils/Stats/Stats.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Utils/Controllers/DetectionWanderController.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Enemies/VoidMote.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Utils/Hit and Hurt Boxes/HitBox.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Shader" id=152]
 code = "shader_type canvas_item;
@@ -598,6 +599,9 @@ tracks/3/keys = {
 radius = 6.0
 height = 6.0
 
+[sub_resource type="CircleShape2D" id=160]
+radius = 8.0
+
 [sub_resource type="CircleShape2D" id=159]
 radius = 5.0
 
@@ -662,13 +666,19 @@ anims/start = SubResource( 8 )
 anims/stop = SubResource( 18 )
 
 [node name="Stats" parent="." instance=ExtResource( 8 )]
-max_health = 5
+max_health = 17
 
 [node name="HurtBox" parent="." instance=ExtResource( 7 )]
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2( 0, -7 )
 shape = SubResource( 19 )
+
+[node name="HitBox" parent="." instance=ExtResource( 11 )]
+damage = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource( 160 )
 
 [node name="DetectionWanderController" parent="." instance=ExtResource( 9 )]
 
@@ -685,4 +695,5 @@ shape = SubResource( 159 )
 [connection signal="invincible_start" from="HurtBox" to="." method="_on_HurtBox_invincible_start"]
 
 [editable path="HurtBox"]
+[editable path="HitBox"]
 [editable path="DetectionWanderController"]

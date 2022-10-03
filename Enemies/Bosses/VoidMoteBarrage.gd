@@ -3,6 +3,8 @@ extends Node2D
 
 const void_mote = preload("res://Enemies/VoidMote.tscn")
 
+export var circle_radius = 50
+
 var mote_quantity = 0
 var mote_count = 0
 
@@ -12,7 +14,7 @@ onready var void_motes = $VoidMotes
 onready var timer = $Timer
 
 func _ready():
-	radius.position.y += 40
+	radius.position.y += circle_radius
 
 func circle(quantity):
 	mote_quantity = quantity

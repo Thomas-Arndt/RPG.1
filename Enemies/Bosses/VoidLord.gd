@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name VoidLord
 
 export var ACCELERATION = 200
 export var MAX_SPEED = 100

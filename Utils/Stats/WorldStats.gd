@@ -6,7 +6,8 @@ export(bool) var DIMENSION = false
 
 var room_stack: Array = []
 
-var player_spawn_vector: Vector2 = Vector2(270, 165)
+#var player_spawn_vector: Vector2 = Vector2(270, 165)
+var player_spawn_vector: Vector2 = Vector2(100, 680)
 var player_spawn_direction: Vector2 = Vector2.DOWN
 
 func shift_dimension():

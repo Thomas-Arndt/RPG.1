@@ -9,6 +9,7 @@ onready var timer = $Timer
 
 func _ready():
 	update_target_position()
+	randomize()
 	
 func update_target_position():
 	var target_vector = Vector2(rand_range(-wander_range, wander_range), rand_range(-wander_range, wander_range))
