@@ -879,6 +879,8 @@ shape = SubResource( 51 )
 position = Vector2( 0, 13 )
 shape = SubResource( 57 )
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="invincible_end" from="HurtBox" to="." method="_on_HurtBox_invincible_end"]
 [connection signal="invincible_start" from="HurtBox" to="." method="_on_HurtBox_invincible_start"]

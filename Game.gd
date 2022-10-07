@@ -17,6 +17,7 @@ func _ready():
 	SignalBus.connect("scene_link_entered", self, "_on_Scene_Link_entered")
 	SignalBus.connect("scene_exited", self, "_on_Scene_exited")
 	WorldStats.add_room_to_stack(world)
+	connect_camera_remote_transform(world)
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
@@ -57,3 +58,9 @@ func _on_Scene_exited():
 			add_child(destination)
 		player.spawn_player()
 		pause_signals = false
+
+func connect_camera_remote_transform(destination):
+	for child in destination.get_children():
+		if child is Camera2D:
+			
+			break

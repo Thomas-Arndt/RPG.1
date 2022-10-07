@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 export var ACCELERATION = 500
 export var MAX_SPEED = 80
@@ -23,6 +24,7 @@ onready var sword_hit_box = $HitBoxPivot/SwordHitBox
 onready var hurt_box = $HurtBox
 onready var blink_anim_player = $BlinkAnimationPlayer
 onready var detection_zone = $DetectionZone/DetectionZone
+onready var remote_transform = $RemoteTransform2D
 
 onready var RedDimension = get_node("/root/Game/World/RedDimension")
 onready var GreenDimension = get_node("/root/Game/World/GreenDimension")

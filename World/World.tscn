@@ -1215,7 +1215,7 @@ position = Vector2( 370, 862 )
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 267, 154 )
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
 
 [node name="Buildings" type="YSort" parent="YSort"]
