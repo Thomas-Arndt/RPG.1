@@ -5,6 +5,7 @@ export var ACCELERATION = 200
 export var MAX_SPEED = 100
 export var FRICTION = 200
 export var ATK_RADIUS = 40
+export var spawn_with_cutscene = false
 export (PackedScene) var VoidMote = null
 
 export (bool) var is_red = true
@@ -18,6 +19,7 @@ enum {
 var void_mote_barrage = preload("res://Enemies/Bosses/VoidMoteBarrage.tscn")
 var velocity: Vector2 = Vector2.ZERO
 var state = IDLE
+var state_machine_paused = false
 
 onready var anim_player = $AnimationPlayer
 onready var blink_anim_player = $BlinkAnimationPlayer
@@ -32,27 +34,30 @@ onready var green_sprite_half = $GreenSpriteHalf
 func _ready():
 	match_dimension(WorldStats.DIMENSION)
 	WorldStats.connect("dimension_shift", self, "match_dimension")
+	if spawn_with_cutscene:
+		state_machine_pause()
 	anim_player.play("idle")
 
 func _physics_process(delta):
 	
-	match state:
-		IDLE:
-			if wander_controller.get_time_left() == 0:
-				state = MOVE
-				anim_player.play("walk")
-		MOVE:
-			accelerate_towards_point(wander_controller.target_position, delta)
-			wander_controller.set_position(wander_controller.start_position)
-			if wander_controller.can_see_unit():
-				wander_controller.target_position = global_position
-				velocity = Vector2.ZERO
-				anim_player.stop()
-				state = EXPLODE
-		EXPLODE:
-			anim_player.queue("explode")
-			anim_player.queue("exploding")
-			anim_player.queue("implode")
+	if !state_machine_paused:
+		match state:
+			IDLE:
+				if wander_controller.get_time_left() == 0:
+					state = MOVE
+					anim_player.play("walk")
+			MOVE:
+				accelerate_towards_point(wander_controller.target_position, delta)
+				wander_controller.set_position(wander_controller.start_position)
+				if wander_controller.can_see_unit():
+					wander_controller.target_position = global_position
+					velocity = Vector2.ZERO
+					anim_player.stop()
+					state = EXPLODE
+			EXPLODE:
+				anim_player.queue("explode")
+				anim_player.queue("exploding")
+				anim_player.queue("implode")
 	
 
 	velocity = move_and_slide(velocity)
@@ -115,3 +120,9 @@ func _on_explosion_animation_finished():
 
 func _on_Stats_no_health():
 	queue_free()
+
+func state_machine_pause():
+	state_machine_paused = true
+
+func state_machine_run():
+	state_machine_paused = false

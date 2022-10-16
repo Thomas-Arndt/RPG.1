@@ -16,15 +16,15 @@ func _ready():
 		
 func update_target_position():
 	var available_nodes: Array = []
-	for detection_zone in detection_zones.get_children():
-		if detection_zone != previous_node:
-			available_nodes.append(detection_zone)
-	var length = len(available_nodes)
-	var next_node_index = randi() % length
-	target_node = available_nodes[next_node_index]
-	previous_node = target_node
-	target_position = target_node.global_position
-	var test = 0
+	if len(detection_zones.get_children()) > 0:
+		for detection_zone in detection_zones.get_children():
+			if detection_zone != previous_node:
+				available_nodes.append(detection_zone)
+		var length = len(available_nodes)
+		var next_node_index = randi() % length
+		target_node = available_nodes[next_node_index]
+		previous_node = target_node
+		target_position = target_node.global_position
 
 func can_see_unit():
 	for detection_zone in detection_zones.get_children():
