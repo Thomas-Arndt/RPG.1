@@ -35,6 +35,7 @@ func _ready():
 	match_dimension(WorldStats.DIMENSION)
 	WorldStats.connect("dimension_shift", self, "match_dimension")
 	if spawn_with_cutscene:
+		self.visible = false
 		state_machine_pause()
 	anim_player.play("idle")
 
@@ -88,8 +89,13 @@ func match_dimension(state):
 		hurt_box.monitorable = true
 		hurt_box.monitoring = true
 
-func flip_sprite():
-	if velocity.x != 0:
+func flip_sprite(delta_x = null):
+	if delta_x != null:
+		red_sprite_full.flip_h = delta_x > 0
+		red_sprite_half.flip_h = delta_x > 0
+		green_sprite_full.flip_h = delta_x > 0
+		green_sprite_half.flip_h = delta_x > 0
+	elif velocity.x != 0:
 		red_sprite_full.flip_h = velocity.x > 0
 		red_sprite_half.flip_h = velocity.x > 0
 		green_sprite_full.flip_h = velocity.x > 0
@@ -126,3 +132,4 @@ func state_machine_pause():
 
 func state_machine_run():
 	state_machine_paused = false
+	state = IDLE

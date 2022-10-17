@@ -42,6 +42,14 @@ func start_timer(duration):
 
 func set_position(position):
 	global_position = position
+	
+func monitorable_on():
+	for child in detection_zones.get_children():
+		child.get_child(0).monitorable = true
+
+func monitorable_off():
+	for child in detection_zones.get_children():
+		child.get_child(0).monitorable = false
 
 func _on_Timer_timeout():
 	update_target_position()

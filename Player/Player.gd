@@ -16,6 +16,7 @@ var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
 var knockback = Vector2()
+var is_running = true
 
 onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
@@ -76,7 +77,7 @@ func move_state(delta):
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
 	
-	if input_vector != Vector2.ZERO:
+	if input_vector != Vector2.ZERO and is_running:
 		roll_vector = input_vector
 		sword_hit_box.knockback_vector = input_vector
 		anim_tree.set("parameters/idle/blend_position", input_vector)
@@ -131,3 +132,6 @@ func spawn_player():
 	anim_tree.set("parameters/roll/blend_position", WorldStats.player_spawn_direction)
 	anim_tree.set("parameters/attack/blend_position", WorldStats.player_spawn_direction)
 	anim_tree.set("parameters/idle/blend_position", WorldStats.player_spawn_direction)
+
+func paused(state):
+	is_running = !state

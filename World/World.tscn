@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=2]
+[gd_scene load_steps=148 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
@@ -24,6 +24,13 @@
 [ext_resource path="res://World/Houses/BillsHouse.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Utils/Overlap/DetectionZone.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Utils/Controllers/CutSceneController.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Utils/Overlap/CutSceneTrigger.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Utils/Controllers/VoidLord1Controller.gd" type="Script" id=26]
+[ext_resource path="res://Utils/Controllers/Portal1Controller.gd" type="Script" id=27]
+[ext_resource path="res://World/Portals/Portal.tscn" type="PackedScene" id=28]
+[ext_resource path="res://World/Objects/RockLarge.tscn" type="PackedScene" id=29]
+[ext_resource path="res://World/Objects/RockMedium.tscn" type="PackedScene" id=30]
+[ext_resource path="res://World/Objects/RockSmall.tscn" type="PackedScene" id=31]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -773,7 +780,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 1/autotile/occluder_map = [  ]
 1/autotile/navpoly_map = [  ]
 1/autotile/priority_map = [  ]
-1/autotile/z_index_map = [  ]
+1/autotile/z_index_map = [ Vector3( 0, 0, 1 ), Vector3( 1, 0, 1 ), Vector3( 2, 0, 1 ), Vector3( 3, 0, 1 ) ]
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
@@ -1163,6 +1170,9 @@ shader_param/active = false
 [sub_resource type="RectangleShape2D" id=151]
 extents = Vector2( 8, 6.5 )
 
+[sub_resource type="RectangleShape2D" id=166]
+extents = Vector2( 10, 177.5 )
+
 [node name="World" type="Node2D"]
 
 [node name="GreenDimension" type="TileMap" parent="."]
@@ -1326,6 +1336,36 @@ position = Vector2( -145, 160 )
 [node name="Shrub18" parent="YSort/Shrubs" instance=ExtResource( 10 )]
 position = Vector2( -139, 270 )
 
+[node name="Rocks" type="YSort" parent="YSort"]
+
+[node name="RockLarge" parent="YSort/Rocks" instance=ExtResource( 29 )]
+position = Vector2( -332, 655 )
+
+[node name="RockLarge2" parent="YSort/Rocks" instance=ExtResource( 29 )]
+position = Vector2( -296, 698 )
+
+[node name="RockMedium" parent="YSort/Rocks" instance=ExtResource( 30 )]
+position = Vector2( -328, 696 )
+
+[node name="RockLarge3" parent="YSort/Rocks" instance=ExtResource( 29 )]
+position = Vector2( -206, 622 )
+
+[node name="RockSmall" parent="YSort/Rocks" instance=ExtResource( 31 )]
+position = Vector2( -180, 587 )
+
+[node name="RockSmall2" parent="YSort/Rocks" instance=ExtResource( 31 )]
+position = Vector2( -182, 763 )
+
+[node name="RockMedium2" parent="YSort/Rocks" instance=ExtResource( 30 )]
+position = Vector2( -145, 787 )
+
+[node name="RockSmall3" parent="YSort/Rocks" instance=ExtResource( 31 )]
+position = Vector2( -304, 650 )
+
+[node name="Portal" parent="YSort" instance=ExtResource( 28 )]
+position = Vector2( 7, 681 )
+spawn_with_cut_scene = true
+
 [node name="MobileEnemies" type="YSort" parent="YSort"]
 
 [node name="GreenVoidBlob" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
@@ -1360,6 +1400,7 @@ position = Vector2( 220, 353 )
 
 [node name="VoidLord" parent="YSort/MobileEnemies" instance=ExtResource( 21 )]
 position = Vector2( -27, 680 )
+spawn_with_cutscene = true
 is_red = false
 
 [node name="RedSpriteFull" parent="YSort/MobileEnemies/VoidLord" index="1"]
@@ -1442,10 +1483,6 @@ speaker_name = "Bill"
 quest_reference = ExtResource( 16 )
 speaker_name = "Bill"
 
-[node name="CutSceneController" parent="YSort" instance=ExtResource( 24 )]
-position = Vector2( 22, 746 )
-actor_reference = ExtResource( 21 )
-
 [node name="SceneLinks" type="Node2D" parent="."]
 
 [node name="SceneLink" parent="SceneLinks" instance=ExtResource( 11 )]
@@ -1457,6 +1494,21 @@ exit_direction = Vector2( 0, -1 )
 [node name="CollisionShape2D" parent="SceneLinks/SceneLink" index="0"]
 position = Vector2( 0, 11 )
 shape = SubResource( 151 )
+
+[node name="CutSceneTrigger" parent="." instance=ExtResource( 25 )]
+position = Vector2( -27, 680 )
+
+[node name="CollisionShape2D" parent="CutSceneTrigger/TriggerArea" index="0"]
+position = Vector2( -87, -12 )
+shape = SubResource( 166 )
+
+[node name="Portal1Controller" parent="CutSceneTrigger/ActorControllers" index="0" instance=ExtResource( 24 )]
+script = ExtResource( 27 )
+actor_path = NodePath("../../../YSort/Portal")
+
+[node name="VoidLord1Controller" parent="CutSceneTrigger/ActorControllers" index="1" instance=ExtResource( 24 )]
+script = ExtResource( 26 )
+actor_path = NodePath("../../../YSort/MobileEnemies/VoidLord")
 
 [editable path="YSort/MobileEnemies/VoidLord"]
 [editable path="YSort/MobileEnemies/VoidLord/HurtBox"]
@@ -1475,6 +1527,5 @@ shape = SubResource( 151 )
 [editable path="YSort/NPCs/Bill"]
 [editable path="YSort/NPCs/Bill/InteractionZone"]
 [editable path="YSort/NPCs/Bill/PlayerDetectionZone"]
-[editable path="YSort/CutSceneController"]
-[editable path="YSort/CutSceneController/DetectionZonePivot"]
 [editable path="SceneLinks/SceneLink"]
+[editable path="CutSceneTrigger"]
