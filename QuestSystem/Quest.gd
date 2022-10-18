@@ -7,6 +7,7 @@ signal delivered
 
 onready var objectives = $Objectives
 onready var _reward_items: Node = $ItemRewards
+onready var _environment_rewards: Node = $EnvironmentRewards
 
 export var title: String
 export var description: String
@@ -39,7 +40,13 @@ func _on_Objective_completed(objective) -> void:
 		emit_signal("completed")
 
 func _deliver():
+	if len(_environment_rewards.get_children()) > 0:
+		_apply_environmental_rewards()
 	emit_signal("delivered")
+
+func _apply_environmental_rewards():
+	for reward in _environment_rewards.get_children():
+		reward.apply()
 	
 func notify_slay_objectives() -> void:
 	for objective in get_objectives():
@@ -52,7 +59,7 @@ func get_rewards() -> Dictionary:
 
 func get_rewards_as_text() -> Array:
 	var text := []
+	#	text.append(" - [%s] x (%s)\n" % [item.item.name, str(item.amount)])
 	text.append(" - Experience: " + str(_reward_experience) + "\n - Gold: " + str(_reward_gold) )
 	#for item in _reward_items.get_children():
-	#	text.append(" - [%s] x (%s)\n" % [item.item.name, str(item.amount)])
 	return text 
