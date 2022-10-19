@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://QuestSystem/EnvironmentRewards/RemoveNodeReceiver.gd" type="Script" id=1]
+[ext_resource path="res://Utils/Receivers/RemoveNodeReceiver.gd" type="Script" id=1]
 
 [node name="RemoveNodeReceiver" type="Node"]
 script = ExtResource( 1 )

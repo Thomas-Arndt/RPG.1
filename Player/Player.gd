@@ -93,13 +93,15 @@ func move_state(delta):
 	
 
 func roll_state():
-	velocity = roll_vector * ROLL_SPEED
-	anim_state.travel("roll")
-	move()
+	if is_running:
+		velocity = roll_vector * ROLL_SPEED
+		anim_state.travel("roll")
+		move()
 	
 func attack_state():
-	velocity = Vector2.ZERO
-	anim_state.travel("attack")
+	if is_running:
+		velocity = Vector2.ZERO
+		anim_state.travel("attack")
 
 func move():
 	velocity = move_and_slide(velocity)

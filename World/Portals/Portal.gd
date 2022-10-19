@@ -6,12 +6,13 @@ onready var anim_player = $AnimationPlayer
 onready var green_sprite = $GreenSprite
 onready var red_sprite = $RedSprite
 
-
 func _ready():
 	WorldStats.connect("dimension_shift", self, "match_dimension")
 	match_dimension(WorldStats.DIMENSION)
 	if spawn_with_cut_scene:
 		self.visible = false
+	else:
+		open_and_hold()
 
 func match_dimension(dimension):
 	if dimension == false:

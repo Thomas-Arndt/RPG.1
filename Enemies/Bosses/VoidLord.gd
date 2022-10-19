@@ -17,6 +17,8 @@ enum {
 }
 
 var void_mote_barrage = preload("res://Enemies/Bosses/VoidMoteBarrage.tscn")
+var death_animation_red = preload("res://Effects/EnemyEffects/VoidBlob/RedVoidBlobDeathEffect.tscn")
+var death_animation_green = preload("res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn")
 var velocity: Vector2 = Vector2.ZERO
 var state = IDLE
 var state_machine_paused = false
@@ -125,6 +127,10 @@ func _on_explosion_animation_finished():
 	anim_player.play("idle")
 
 func _on_Stats_no_health():
+	var death_effect = death_animation_red.instance()
+	death_effect.global_position = global_position
+	get_parent().add_child(death_effect)
+	SignalBus.emit_signal("add_node", "blib_portal")
 	queue_free()
 
 func state_machine_pause():

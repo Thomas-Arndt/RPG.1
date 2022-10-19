@@ -1,5 +1,7 @@
 extends Area2D
 
+signal animation_finished
+
 onready var full_sprite = $FullSprite
 onready var anim_player = $AnimationPlayer
 
@@ -11,6 +13,7 @@ func _ready():
 	anim_player.play("death")
 
 func _on_animation_finish():
+	emit_signal("animation_finished")
 	queue_free()
 
 func get_dimension():

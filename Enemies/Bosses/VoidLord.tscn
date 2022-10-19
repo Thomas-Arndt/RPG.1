@@ -666,7 +666,7 @@ anims/start = SubResource( 8 )
 anims/stop = SubResource( 18 )
 
 [node name="Stats" parent="." instance=ExtResource( 8 )]
-max_health = 17
+max_health = 20
 
 [node name="HurtBox" parent="." instance=ExtResource( 7 )]
 

@@ -5,8 +5,8 @@
 [ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=3]
 [ext_resource path="res://QuestSystem/EnvironmentRewards/RemoveNode.tscn" type="PackedScene" id=4]
 
-[node name="slay-3-voidblob-billboard-billboard" instance=ExtResource( 3 )]
-startText = [ "As you can see, there are void blobs everywhere!", "Could you do me a solid and banish one of the Void Blobs in the area? Just hit it with your sword a few times...", "Once you have banished one, return to me." ]
+[node name="protect-bills-house" instance=ExtResource( 3 )]
+startText = [ "As you can see, there are void blobs everywhere!", "Could you do me a solid and banish the 'Void Blob' roaming my yard? Just go and hit it with your sword a few times...", "Once you have banished it, return to me." ]
 progressText = [ "Remember, you can only attack a void blob that has fully phased into our dimension." ]
 deliverText = [ "Well done! While you were doing that, I had a chance to remove the boulders blocking the road to the 'Old Quarry'.", "It was odd. Right as I was leaving, the air suddenly felt 'charged'. Like lightning was about to strike...", "...anyways, thank you for you help. Here's some gold for your troubles. Have a nice day!" ]
 reward_on_delivery = true

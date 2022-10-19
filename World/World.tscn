@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=2]
+[gd_scene load_steps=150 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
@@ -15,7 +15,7 @@
 [ext_resource path="res://Utils/Actions/GiveQuestAction.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Utils/Actions/InProgressQuestAction.tscn" type="PackedScene" id=15]
-[ext_resource path="res://QuestSystem/Quests/slay-3-voidblob-bill.tscn" type="PackedScene" id=16]
+[ext_resource path="res://QuestSystem/Quests/protect-bills-house.tscn" type="PackedScene" id=16]
 [ext_resource path="res://World/Objects/Buildings/Hut.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Objects/Buildings/HutExteriorLower.png" type="Texture" id=18]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=19]
@@ -31,7 +31,8 @@
 [ext_resource path="res://World/Objects/RockLarge.tscn" type="PackedScene" id=29]
 [ext_resource path="res://World/Objects/RockMedium.tscn" type="PackedScene" id=30]
 [ext_resource path="res://World/Objects/RockSmall.tscn" type="PackedScene" id=31]
-[ext_resource path="res://QuestSystem/EnvironmentRewards/RemoveNodeReceiver.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Utils/Receivers/RemoveNodeReceiver.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Utils/Receivers/AddNodeReceiver.tscn" type="PackedScene" id=33]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -1369,10 +1370,6 @@ position = Vector2( -308, 676 )
 [node name="RemoveNodeReceiver" parent="YSort/Rocks/RockLarge4" instance=ExtResource( 32 )]
 signal_code = "bill_moves_rocks"
 
-[node name="Portal" parent="YSort" instance=ExtResource( 28 )]
-position = Vector2( 7, 681 )
-spawn_with_cut_scene = true
-
 [node name="MobileEnemies" type="YSort" parent="YSort"]
 
 [node name="GreenVoidBlob" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
@@ -1394,7 +1391,7 @@ position = Vector2( -946, 267 )
 position = Vector2( -441, 720 )
 
 [node name="Bat" parent="YSort/MobileEnemies" instance=ExtResource( 19 )]
-position = Vector2( -123, 221 )
+position = Vector2( -161, 206 )
 
 [node name="Bat2" parent="YSort/MobileEnemies" instance=ExtResource( 19 )]
 position = Vector2( 107, 226 )
@@ -1490,6 +1487,17 @@ speaker_name = "Bill"
 quest_reference = ExtResource( 16 )
 speaker_name = "Bill"
 
+[node name="Portals" type="YSort" parent="YSort"]
+
+[node name="BlibPortal" parent="YSort/Portals" instance=ExtResource( 33 )]
+position = Vector2( 79, 669 )
+signal_code = "blib_portal"
+new_node_reference = ExtResource( 28 )
+
+[node name="Portal" parent="YSort/Portals" instance=ExtResource( 28 )]
+position = Vector2( 7, 681 )
+spawn_with_cut_scene = true
+
 [node name="SceneLinks" type="Node2D" parent="."]
 
 [node name="SceneLink" parent="SceneLinks" instance=ExtResource( 11 )]
@@ -1511,7 +1519,7 @@ shape = SubResource( 166 )
 
 [node name="Portal1Controller" parent="CutSceneTrigger/ActorControllers" index="0" instance=ExtResource( 24 )]
 script = ExtResource( 27 )
-actor_path = NodePath("../../../YSort/Portal")
+actor_path = NodePath("../../../YSort/Portals/Portal")
 
 [node name="VoidLord1Controller" parent="CutSceneTrigger/ActorControllers" index="1" instance=ExtResource( 24 )]
 script = ExtResource( 26 )
