@@ -25,7 +25,8 @@ enum {
 	RELEASE_PLAYER,
 	VISIBLE_OFF,
 	VISIBLE_ON,
-	CUSTOM
+	CUSTOM,
+	DELETE_ACTOR,
 }
 
 func _ready():
@@ -56,6 +57,8 @@ func run_cut_scene():
 				toggle_visible_off()	
 			CUSTOM:
 				custom_actions(action[1], action[2])
+			DELETE_ACTOR:
+				delete_actor()
 	else:
 		cut_scene_finished()
 
@@ -83,12 +86,16 @@ func move_actor_to(destination : Vector2, duration: float, move_animation_name: 
 	tween.start()
 
 func exit_actor():
-	remove_child(actor)
+	actor.get_parent().remove_child(actor)
 
 func release_actor():
 	if actor.has_method("state_machine_run"):
 		actor.state_machine_run()
 	run_cut_scene()
+
+func delete_actor():
+	actor.queue_free()
+	#run_cut_scene()
 	
 func start_timer(duration : float):
 	is_acting = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=2]
+[gd_scene load_steps=151 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://World/Objects/RockSmall.tscn" type="PackedScene" id=31]
 [ext_resource path="res://Utils/Receivers/RemoveNodeReceiver.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Utils/Receivers/AddNodeReceiver.tscn" type="PackedScene" id=33]
+[ext_resource path="res://World/World.gd" type="Script" id=34]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -1176,6 +1177,7 @@ extents = Vector2( 8, 6.5 )
 extents = Vector2( 10, 177.5 )
 
 [node name="World" type="Node2D"]
+script = ExtResource( 34 )
 
 [node name="GreenDimension" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )

@@ -30,3 +30,7 @@ func close():
 	anim_player.stop()
 	anim_player.play("close")
 
+
+
+func _on_Portal_body_entered(body):
+	WorldStats.shift_dimension()

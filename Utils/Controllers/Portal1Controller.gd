@@ -7,6 +7,7 @@ func package_choreography():
 	choreography.append([WAIT, 4])
 	choreography.append([CUSTOM, "close", []])
 	choreography.append([EXIT])
+	choreography.append([DELETE_ACTOR])
 
 
 func custom_actions(action_name, args):
