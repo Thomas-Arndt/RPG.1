@@ -70,6 +70,9 @@ func _physics_process(delta):
 		WorldStats.shift_dimension()
 		#GreenDimension.visible = true
 		#RedDimension.visible = false
+	
+	if Input.is_action_just_pressed("inventory_display"):
+		UI.InventoryDisplay.toggle_inventory_display()
 
 func move_state(delta):
 	var input_vector = Vector2.ZERO
