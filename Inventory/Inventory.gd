@@ -36,10 +36,15 @@ func set_max_gold(value):
 	emit_signal("max_gold_changed", value)
 
 func pick_up_item(item_index, item):
-	var previousItem = inventory[item_index]
-	inventory[item_index] = item.duplicate()
-	emit_signal("item_changed", [item_index])
-	return previousItem
+	if inventory[item_index] == null:
+		var previousItem = inventory[item_index]
+		inventory[item_index] = item.duplicate()
+		emit_signal("item_changed", [item_index])
+		return previousItem
+	else:
+		inventory[item_index].quantity += item.quantity
+		emit_signal("item_changed", [item_index])
+		return inventory[item_index]
 
 func set_item(item_index, item):
 	var previousItem = inventory[item_index]

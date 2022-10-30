@@ -8,3 +8,4 @@ script = ExtResource( 1 )
 name = "Major Red Potion"
 texture = ExtResource( 2 )
 type = "potion"
+heal = 9

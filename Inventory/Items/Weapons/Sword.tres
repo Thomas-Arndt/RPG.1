@@ -8,3 +8,4 @@ script = ExtResource( 1 )
 name = "Sword"
 texture = ExtResource( 2 )
 type = "weapon"
+heal = 1

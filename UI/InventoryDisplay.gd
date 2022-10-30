@@ -23,3 +23,10 @@ func _unhandled_input(event):
 	if event.is_action_released("ui_left_mouse"):
 		if Inventory.drag_data is Dictionary:
 			Inventory.set_item(Inventory.drag_data.item_index, Inventory.drag_data.item)
+	if event.is_action_pressed("belt_1"):
+		if Inventory.inventory[0] is Item:
+			Inventory.inventory[0].action()
+			Inventory.inventory[0].quantity -= 1
+			if Inventory.inventory[0].quantity <= 0:
+				Inventory.inventory[0] = null
+		Inventory.emit_signal("item_changed", [0])

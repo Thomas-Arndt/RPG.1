@@ -7,9 +7,9 @@ onready var label = $Label
 var state = false
 
 func _ready():
-	background.rect_position.y = 157
-	inventory.rect_position.y = 161
-	label.rect_position.y = 146
+	background.rect_position.y = 158
+	inventory.rect_position.y = 162
+	label.rect_position.y = 147
 
 
 func toggle_backpack():
@@ -19,6 +19,6 @@ func toggle_backpack():
 		inventory.rect_position.y = 80
 		label.rect_position.y = 65
 	else:
-		background.rect_position.y = 157
-		inventory.rect_position.y = 161
-		label.rect_position.y = 146
+		background.rect_position.y = 158
+		inventory.rect_position.y = 162
+		label.rect_position.y = 147
