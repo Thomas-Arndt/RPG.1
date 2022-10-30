@@ -19,10 +19,6 @@ func _ready():
 	WorldStats.add_room_to_stack(world)
 
 	
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		player.spawn_player()
-	
 func _on_Scene_Link_entered(destination_reference, source):
 	if not pause_signals:
 		pause_signals = true

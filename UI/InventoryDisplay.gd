@@ -2,11 +2,8 @@ extends GridContainer
 
 func _ready():
 	Inventory.connect("item_changed", self, "_on_items_changed")
+	Inventory.make_items_unique()
 	update_inventory_display()
-
-func toggle_inventory_display():
-	update_inventory_display()
-	self.visible = !self.visible
 
 func update_inventory_display():
 	for item_index in Inventory.inventory.size():

@@ -11,6 +11,9 @@ signal max_health_changed(value)
 signal experience_changed(value)
 signal player_level_changed(value)
 
+func _ready():
+	self.health = max_health
+
 func set_max_health(value):
 	max_health = value
 	self.health = min(health, max_health)
@@ -44,5 +47,8 @@ func set_player_level(value):
 func calculate_player_level():
 	playerLevel = floor(experience / 40) + 1
 
-func _ready():
-	self.health = max_health
+func has_weapon_equipped():
+	for i in range(4):
+		if Inventory.inventory[i] != null and Inventory.inventory[i].type == "weapon":
+			return true
+	return false

@@ -54,10 +54,11 @@ func _physics_process(delta):
 		state = ROLL
 	
 	if Input.is_action_just_pressed("attack"):
-		if detection_zone.target is InteractionZone and detection_zone.can_interact() and UI.TextBox.complete:
-			detection_zone.target.start_interaction(self)
-		elif UI.TextBox.complete:
-			state = ATTACK
+		if is_running:
+			if detection_zone.target is InteractionZone and detection_zone.can_interact() and UI.TextBox.complete:
+				detection_zone.target.start_interaction(self)
+			elif UI.TextBox.complete and PlayerStats.has_weapon_equipped():
+				state = ATTACK
 	
 	if Input.is_action_just_pressed("d_shift") and WorldStats.DIMENSION == false:
 		WorldStats.shift_dimension()
@@ -65,6 +66,7 @@ func _physics_process(delta):
 		WorldStats.shift_dimension()
 	
 	if Input.is_action_just_pressed("backpack"):
+		is_running = !is_running
 		UI.Backpack.toggle_backpack()
 
 func move_state(delta):
@@ -95,9 +97,8 @@ func roll_state():
 		move()
 	
 func attack_state():
-	if is_running:
-		velocity = Vector2.ZERO
-		anim_state.travel("attack")
+	velocity = Vector2.ZERO
+	anim_state.travel("attack")
 
 func move():
 	velocity = move_and_slide(velocity)

@@ -11,7 +11,7 @@ func _ready():
 	else:
 		var drop_result = randf()
 		if drop_result <= 0.25:
-			drop_item(Inventory.ItemResources.MAJOR_RED)
+			drop_item(Inventory.ItemResources.MINOR_RED)
 		elif drop_result > 0.25 && drop_result <= 0.5:
 			drop_item(Inventory.ItemResources.RED)
 		elif drop_result > 0.5:
@@ -25,4 +25,14 @@ func drop_item(resource: Resource):
 			add_child(new_potion)
 			new_potion.global_position = global_position
 			new_potion.set_item_resource(resource)
+		"weapon":
+			var new_weapon = Inventory.ItemScenes.WEAPON.instance()
+			add_child(new_weapon)
+			new_weapon.global_position = global_position
+			new_weapon.set_item_resource(resource)
+		"key":
+			var new_key = Inventory.ItemScenes.KEY.instance()
+			add_child(new_key)
+			new_key.global_position = global_position
+			new_key.set_item_resource(resource)
 
