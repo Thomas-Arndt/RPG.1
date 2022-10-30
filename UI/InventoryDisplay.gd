@@ -1,8 +1,5 @@
 extends GridContainer
 
-
-const Potion = preload("res://Inventory/Items/Potions/Red/red_normal.tres")
-
 func _ready():
 	Inventory.connect("item_changed", self, "_on_items_changed")
 	update_inventory_display()

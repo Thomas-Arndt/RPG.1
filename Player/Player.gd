@@ -27,9 +27,6 @@ onready var blink_anim_player = $BlinkAnimationPlayer
 onready var detection_zone = $DetectionZone/DetectionZone
 onready var remote_transform = $RemoteTransform2D
 
-onready var RedDimension = get_node("/root/Game/World/RedDimension")
-onready var GreenDimension = get_node("/root/Game/World/GreenDimension")
-
 func _ready():
 
 	anim_tree.active = true
@@ -64,15 +61,11 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("d_shift") and WorldStats.DIMENSION == false:
 		WorldStats.shift_dimension()
-		#RedDimension.visible = true
-		#GreenDimension.visible = false
 	elif Input.is_action_just_pressed("d_shift") and WorldStats.DIMENSION == true:
 		WorldStats.shift_dimension()
-		#GreenDimension.visible = true
-		#RedDimension.visible = false
 	
-	if Input.is_action_just_pressed("inventory_display"):
-		UI.InventoryDisplay.toggle_inventory_display()
+	if Input.is_action_just_pressed("backpack"):
+		UI.Backpack.toggle_backpack()
 
 func move_state(delta):
 	var input_vector = Vector2.ZERO

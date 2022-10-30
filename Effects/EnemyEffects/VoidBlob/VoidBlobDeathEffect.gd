@@ -14,6 +14,7 @@ func _ready():
 
 func _on_animation_finish():
 	emit_signal("animation_finished")
+	Inventory.drop_item_container(global_position, self.get_parent())
 	queue_free()
 
 func get_dimension():

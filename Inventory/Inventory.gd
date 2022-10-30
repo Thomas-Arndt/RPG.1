@@ -12,7 +12,7 @@ var max_gold: int = 99 setget set_max_gold
 var potion = preload("res://Inventory/Items/Potions/Red/red_normal.tres")
 
 export (Array, Resource) var inventory: Array = [
-	null, null, null, null, null, null, null, null, null, null, null, null
+	null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
 ]
 
 func _ready():
@@ -55,3 +55,22 @@ func remove_item(item_index):
 	inventory[item_index] = null
 	emit_signal("item_changed", [item_index])
 	return previousItem
+
+func drop_item_container(pos: Vector2, parent_node: Node):
+	var item_container = ItemScenes.CONTAINER.instance()
+	item_container.global_position = pos
+	parent_node.add_child(item_container)
+
+
+
+var ItemResources = {
+	"MINOR_RED": preload("res://Inventory/Items/Potions/Red/red_minor.tres"),
+	"RED": preload("res://Inventory/Items/Potions/Red/red_normal.tres"),
+	"MAJOR_RED": preload("res://Inventory/Items/Potions/Red/red_major.tres"),
+	"SUPER_RED": preload("res://Inventory/Items/Potions/Red/red_super.tres"),
+}
+
+var ItemScenes = {
+	"CONTAINER": preload("res://Inventory/Items/ItemContainer.tscn"),
+	"POTION": preload("res://Inventory/Items/Potions/Potion.tscn"),
+}

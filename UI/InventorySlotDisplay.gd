@@ -30,7 +30,7 @@ func can_drop_data(_position, data):
 
 func drop_data(_position, data):
 	var my_item_index = get_index()
-	var _my_item = Inventory.items[my_item_index]
+	var _my_item = Inventory.inventory[my_item_index]
 	Inventory.swap_items(my_item_index, data.item_index)
 	Inventory.set_item(my_item_index, data.item)
 	Inventory.drag_data = null

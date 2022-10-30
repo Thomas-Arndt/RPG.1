@@ -6,4 +6,5 @@ func _ready():
 	play("animate")
 
 func _on_animation_finished():
+	Inventory.drop_item_container(global_position, self.get_parent())
 	queue_free()

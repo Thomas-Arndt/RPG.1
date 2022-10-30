@@ -7,4 +7,4 @@
 script = ExtResource( 1 )
 name = "Super Red Potion"
 texture = ExtResource( 2 )
-type = "red_super"
+type = "potion"

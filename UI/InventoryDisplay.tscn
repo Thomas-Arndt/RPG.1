@@ -1,0 +1,115 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/InventoryDisplay.gd" type="Script" id=1]
+[ext_resource path="res://UI/InventorySlotDisplay.tscn" type="PackedScene" id=2]
+
+[node name="InventoryDisplay" type="GridContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -264.0
+margin_bottom = -122.0
+columns = 4
+script = ExtResource( 1 )
+
+[node name="Inventory Slot Display" parent="." instance=ExtResource( 2 )]
+rect_min_size = Vector2( 16, 16 )
+
+[node name="Inventory Slot Display2" parent="." instance=ExtResource( 2 )]
+margin_left = 20.0
+margin_right = 36.0
+
+[node name="Inventory Slot Display3" parent="." instance=ExtResource( 2 )]
+margin_left = 40.0
+margin_right = 56.0
+
+[node name="Inventory Slot Display4" parent="." instance=ExtResource( 2 )]
+margin_left = 60.0
+margin_right = 76.0
+
+[node name="Inventory Slot Display5" parent="." instance=ExtResource( 2 )]
+margin_top = 20.0
+margin_bottom = 36.0
+
+[node name="Inventory Slot Display6" parent="." instance=ExtResource( 2 )]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 36.0
+margin_bottom = 36.0
+
+[node name="Inventory Slot Display7" parent="." instance=ExtResource( 2 )]
+margin_left = 40.0
+margin_top = 20.0
+margin_right = 56.0
+margin_bottom = 36.0
+
+[node name="Inventory Slot Display8" parent="." instance=ExtResource( 2 )]
+margin_left = 60.0
+margin_top = 20.0
+margin_right = 76.0
+margin_bottom = 36.0
+
+[node name="Inventory Slot Display9" parent="." instance=ExtResource( 2 )]
+margin_top = 40.0
+margin_bottom = 56.0
+
+[node name="Inventory Slot Display10" parent="." instance=ExtResource( 2 )]
+margin_left = 20.0
+margin_top = 40.0
+margin_right = 36.0
+margin_bottom = 56.0
+
+[node name="Inventory Slot Display11" parent="." instance=ExtResource( 2 )]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 56.0
+margin_bottom = 56.0
+
+[node name="Inventory Slot Display12" parent="." instance=ExtResource( 2 )]
+margin_left = 60.0
+margin_top = 40.0
+margin_right = 76.0
+margin_bottom = 56.0
+
+[node name="Inventory Slot Display13" parent="." instance=ExtResource( 2 )]
+margin_top = 60.0
+margin_bottom = 76.0
+
+[node name="Inventory Slot Display14" parent="." instance=ExtResource( 2 )]
+margin_left = 20.0
+margin_top = 60.0
+margin_right = 36.0
+margin_bottom = 76.0
+
+[node name="Inventory Slot Display15" parent="." instance=ExtResource( 2 )]
+margin_left = 40.0
+margin_top = 60.0
+margin_right = 56.0
+margin_bottom = 76.0
+
+[node name="Inventory Slot Display16" parent="." instance=ExtResource( 2 )]
+margin_left = 60.0
+margin_top = 60.0
+margin_right = 76.0
+margin_bottom = 76.0
+
+[node name="Inventory Slot Display17" parent="." instance=ExtResource( 2 )]
+margin_top = 80.0
+margin_bottom = 96.0
+
+[node name="Inventory Slot Display18" parent="." instance=ExtResource( 2 )]
+margin_left = 20.0
+margin_top = 80.0
+margin_right = 36.0
+margin_bottom = 96.0
+
+[node name="Inventory Slot Display19" parent="." instance=ExtResource( 2 )]
+margin_left = 40.0
+margin_top = 80.0
+margin_right = 56.0
+margin_bottom = 96.0
+
+[node name="Inventory Slot Display20" parent="." instance=ExtResource( 2 )]
+margin_left = 60.0
+margin_top = 80.0
+margin_right = 76.0
+margin_bottom = 96.0
