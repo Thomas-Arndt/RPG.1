@@ -51,19 +51,18 @@ func _physics_process(delta):
 			attack_state()
 	
 	if Input.is_action_just_pressed("roll"):
-		state = ROLL
+		if is_running:
+			state = ROLL
 	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("quick_action_4"):
 		if is_running:
 			if detection_zone.target is InteractionZone and detection_zone.can_interact() and UI.TextBox.complete:
+				detection_zone.target.connect("interaction_finished", self, "_on_interaction_finished")
+				paused(true)
 				detection_zone.target.start_interaction(self)
 			elif UI.TextBox.complete and PlayerStats.has_weapon_equipped():
-				state = ATTACK
-	
-	if Input.is_action_just_pressed("d_shift") and WorldStats.DIMENSION == false:
-		WorldStats.shift_dimension()
-	elif Input.is_action_just_pressed("d_shift") and WorldStats.DIMENSION == true:
-		WorldStats.shift_dimension()
+				Inventory.inventory[3].action(self)
+				#state = ATTACK
 	
 	if Input.is_action_just_pressed("backpack"):
 		is_running = !is_running
@@ -134,3 +133,6 @@ func spawn_player():
 
 func paused(state):
 	is_running = !state
+
+func _on_interaction_finished(node):
+	paused(false)

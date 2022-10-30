@@ -2,7 +2,6 @@ extends GridContainer
 
 func _ready():
 	Inventory.connect("item_changed", self, "_on_items_changed")
-	Inventory.make_items_unique()
 	update_inventory_display()
 
 func update_inventory_display():
@@ -23,10 +22,16 @@ func _unhandled_input(event):
 	if event.is_action_released("ui_left_mouse"):
 		if Inventory.drag_data is Dictionary:
 			Inventory.set_item(Inventory.drag_data.item_index, Inventory.drag_data.item)
-	if event.is_action_pressed("belt_1"):
-		if Inventory.inventory[0] is Item:
-			Inventory.inventory[0].action()
-			Inventory.inventory[0].quantity -= 1
-			if Inventory.inventory[0].quantity <= 0:
-				Inventory.inventory[0] = null
-		Inventory.emit_signal("item_changed", [0])
+
+func _input(event):
+	if event.is_action_pressed("quick_action_1"):
+		process_action(0)
+
+func process_action(index):
+	if Inventory.inventory[index] is Item:
+		Inventory.inventory[index].action()
+		if Inventory.inventory[index].type == "potion":
+			Inventory.inventory[index].quantity -= 1
+		if Inventory.inventory[index].quantity <= 0:
+			Inventory.inventory[index] = null
+	Inventory.emit_signal("item_changed", [index])

@@ -8,4 +8,5 @@ script = ExtResource( 1 )
 name = "Minor Red Potion"
 texture = ExtResource( 2 )
 type = "potion"
-heal = 3
+heal = 2
+damage = 0

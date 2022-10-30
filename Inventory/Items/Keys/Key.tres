@@ -8,4 +8,5 @@ script = ExtResource( 1 )
 name = "Plain Key"
 texture = ExtResource( 2 )
 type = "key"
-heal = 1
+heal = 0
+damage = 0

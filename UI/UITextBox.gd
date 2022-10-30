@@ -29,13 +29,13 @@ func _process(delta):
 				end_symbol.text = ""
 				display_text()
 		States.READING:
-			if Input.is_action_just_pressed("attack") and label.percent_visible > 0.05:
+			if Input.is_action_just_pressed("quick_action_4") and label.percent_visible > 0.05:
 				label.percent_visible = 1.0
 				$Tween.remove_all()
 				end_symbol.text = "v"
 				change_state(States.FINISHED)
 		States.FINISHED:
-			if Input.is_action_just_pressed("attack"):
+			if Input.is_action_just_pressed("quick_action_4"):
 				change_state(States.READY)
 				if len(text_queue) == 0:
 					complete = true

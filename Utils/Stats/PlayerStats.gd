@@ -27,6 +27,7 @@ func set_health(value):
 		
 func change_health(value):
 	health += value
+	health = clamp(health, 0, max_health)
 	emit_signal("health_changed", health)
 	if health <= 0:
 		emit_signal("no_health")
