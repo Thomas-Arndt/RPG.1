@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=2]
+[gd_scene load_steps=152 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://Utils/Receivers/RemoveNodeReceiver.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Utils/Receivers/AddNodeReceiver.tscn" type="PackedScene" id=33]
 [ext_resource path="res://World/World.gd" type="Script" id=34]
+[ext_resource path="res://World/Objects/LargeChest.tscn" type="PackedScene" id=35]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -1488,6 +1489,11 @@ speaker_name = "Bill"
 [node name="InProgressQuestAction" parent="YSort/NPCs/Bill/InteractionZone/Actions" index="2" instance=ExtResource( 15 )]
 quest_reference = ExtResource( 16 )
 speaker_name = "Bill"
+
+[node name="Chests" type="YSort" parent="YSort"]
+
+[node name="LargeChest" parent="YSort/Chests" instance=ExtResource( 35 )]
+position = Vector2( -1009, 233 )
 
 [node name="Portals" type="YSort" parent="YSort"]
 
