@@ -8,7 +8,7 @@ onready var Actions: Node = $Actions
 
 func start_interaction(node) -> void:
 	var has_follow_up: bool = false
-	emit_signal("interaction_started", node)
+	emit_signal("interaction_started")
 	var actions = Actions.get_children()
 	if (len(actions) > 0):
 		for action in actions:

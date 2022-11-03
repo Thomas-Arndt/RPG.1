@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Inventory/Items/Weapons/Swords/Sword.tres" type="Resource" id=1]
+[ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://QuestSystem/QuestItemReward.tscn" type="PackedScene" id=3]
+
+[node name="LargeChest" instance=ExtResource( 2 )]
+title = "Large Chest"
+deliverText = [ "You pull a sword from the chest!" ]
+is_chest = true
+reward_on_delivery = true
+
+[node name="QuestItemReward" parent="ItemRewards" index="0" instance=ExtResource( 3 )]
+item = ExtResource( 1 )

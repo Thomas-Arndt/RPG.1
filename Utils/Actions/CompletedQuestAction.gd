@@ -7,15 +7,19 @@ signal has_follow_up_quest(quest)
 export var quest_reference: PackedScene
 export var follow_up_quest: PackedScene
 export var speaker_name: String 
+export var active: bool = false
 
 var quest: Quest = null
 
-var active: bool = false
 
 func _ready():
 	assert(quest_reference)
-	quest = QuestSystem.find_available(quest_reference.instance())
-	quest.connect("completed", self, "_on_Quest_completed")
+	var reference_instance = quest_reference.instance()
+	if !reference_instance.is_chest:
+		quest = QuestSystem.find_available(reference_instance)
+		quest.connect("completed", self, "_on_Quest_completed")
+	else:
+		quest = QuestSystem.completed_quests.find(reference_instance)
 
 func _on_Quest_completed():
 	active = true
