@@ -16,10 +16,8 @@ func _ready():
 				drop_item(Inventory.ItemResources.MINOR_RED)
 			elif drop_result > 0.75 and drop_result <= 0.9:
 				drop_item(Inventory.ItemResources.RED)
-			elif drop_result > 0.9 and drop_result <= 0.97:
+			elif drop_result > 0.9:
 				drop_item(Inventory.ItemResources.MAJOR_RED)
-			elif drop_result > 0.97:
-				drop_item(Inventory.ItemResources.SUPER_RED)
 		else:
 			queue_free()
 

@@ -23,15 +23,6 @@ func _unhandled_input(event):
 		if Inventory.drag_data is Dictionary:
 			Inventory.set_item(Inventory.drag_data.item_index, Inventory.drag_data.item)
 
-func _input(event):
-	if event.is_action_pressed("quick_action_1"):
-		process_action(0)
 
-func process_action(index):
-	if Inventory.inventory[index] is Item:
-		Inventory.inventory[index].action()
-		if Inventory.inventory[index].type == "potion":
-			Inventory.inventory[index].quantity -= 1
-		if Inventory.inventory[index].quantity <= 0:
-			Inventory.inventory[index] = null
-	Inventory.emit_signal("item_changed", [index])
+
+

@@ -17,3 +17,5 @@ func action(player = null):
 		"weapon":
 			player.sword_hit_box.damage = damage
 			player.state = player.ATTACK
+		"boots":
+			player.state = player.ROLL

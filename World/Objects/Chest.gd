@@ -6,6 +6,7 @@ export (Resource) var loot = null
 export (int) var quantity = 1
 
 onready var interaction_zone = $InteractionZone
+onready var action = $InteractionZone/Actions/CompletedQuestAction
 onready var anim_player = $AnimationPlayer
 
 func _ready():
@@ -13,8 +14,10 @@ func _ready():
 	interaction_zone.connect("interaction_finished", self, "_on_Interaction_finished")
 	
 func _on_Interaction_started():
-	print("test")
-	anim_player.play("open")
+	if action.active:
+		anim_player.play("open")
 
-#func _on_Interaction_finished(node):
-#	queue_free()
+func _on_Interaction_finished(node):
+	interaction_zone.queue_free()
+	if action.active:
+		anim_player.play("close")

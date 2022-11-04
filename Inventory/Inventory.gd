@@ -77,7 +77,6 @@ var ItemResources = {
 	"MINOR_RED": preload("res://Inventory/Items/Potions/Red/red_minor.tres"),
 	"RED": preload("res://Inventory/Items/Potions/Red/red_normal.tres"),
 	"MAJOR_RED": preload("res://Inventory/Items/Potions/Red/red_major.tres"),
-	"SUPER_RED": preload("res://Inventory/Items/Potions/Red/red_super.tres"),
 	"SWORD": preload("res://Inventory/Items/Weapons/Swords/Sword.tres"),
 	"KEY": preload("res://Inventory/Items/Keys/Key.tres"),
 }

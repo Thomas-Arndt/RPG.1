@@ -50,18 +50,28 @@ func _physics_process(delta):
 		ATTACK:
 			attack_state()
 	
-	if Input.is_action_just_pressed("roll"):
-		if is_running:
-			state = ROLL
 	
+	if Input.is_action_just_pressed("quick_action_1"):
+		process_action(0)
+	if Input.is_action_just_pressed("quick_action_2"):
+		process_action(1)
+	if Input.is_action_just_pressed("quick_action_3"):
+		process_action(2)
 	if Input.is_action_just_pressed("quick_action_4"):
-		if is_running:
-			if detection_zone.target is InteractionZone and detection_zone.can_interact() and UI.TextBox.complete:
-				detection_zone.target.connect("interaction_finished", self, "_on_interaction_finished")
-				paused(true)
-				detection_zone.target.start_interaction(self)
-			elif UI.TextBox.complete and PlayerStats.has_weapon_equipped():
-				Inventory.inventory[3].action(self)
+		process_action(3)
+		
+	#if Input.is_action_just_pressed("roll"):
+	#	if is_running:
+	#		state = ROLL
+	
+	#if Input.is_action_just_pressed("quick_action_4"):
+	#	if is_running:
+	#		if detection_zone.target is InteractionZone and detection_zone.can_interact() and UI.TextBox.complete:
+	#			detection_zone.target.connect("interaction_finished", self, "_on_interaction_finished")
+	#			paused(true)
+	#			detection_zone.target.start_interaction(self)
+	#		elif UI.TextBox.complete and PlayerStats.has_weapon_equipped():
+	#			Inventory.inventory[3].action(self)
 				#state = ATTACK
 	
 	if Input.is_action_just_pressed("backpack"):
@@ -136,3 +146,17 @@ func paused(state):
 
 func _on_interaction_finished(node):
 	paused(false)
+	
+func process_action(index):
+	if is_running:
+		if index == 3 and detection_zone.target is InteractionZone and detection_zone.can_interact() and UI.TextBox.complete:
+			detection_zone.target.connect("interaction_finished", self, "_on_interaction_finished")
+			paused(true)
+			detection_zone.target.start_interaction(self)
+		elif Inventory.inventory[index] is Item:
+			Inventory.inventory[index].action(self)
+			if Inventory.inventory[index].type == "potion":
+				Inventory.inventory[index].quantity -= 1
+			if Inventory.inventory[index].quantity <= 0:
+				Inventory.inventory[index] = null
+			Inventory.emit_signal("item_changed", [index])

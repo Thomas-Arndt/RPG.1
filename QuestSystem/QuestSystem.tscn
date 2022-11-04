@@ -4,7 +4,7 @@
 [ext_resource path="res://QuestSystem/QuestContainer.gd" type="Script" id=2]
 [ext_resource path="res://QuestSystem/Quests/protect-bills-house.tscn" type="PackedScene" id=3]
 [ext_resource path="res://QuestSystem/Quests/bills-flyer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://QuestSystem/Quests/large-chest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://QuestSystem/Quests/Chests/chest-boots.tscn" type="PackedScene" id=5]
 
 [node name="QuestSystem" type="Node"]
 script = ExtResource( 1 )
@@ -22,7 +22,7 @@ script = ExtResource( 2 )
 [node name="Completed" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="LargeChest" parent="Completed" instance=ExtResource( 5 )]
+[node name="ChestQuest" parent="Completed" instance=ExtResource( 5 )]
 
 [node name="Delivered" type="Node" parent="."]
 script = ExtResource( 2 )
