@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=2]
+[gd_scene load_steps=154 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://World/World.gd" type="Script" id=34]
 [ext_resource path="res://World/Objects/LargeChest.tscn" type="PackedScene" id=35]
 [ext_resource path="res://QuestSystem/Quests/Chests/chest-boots.tscn" type="PackedScene" id=36]
+[ext_resource path="res://QuestSystem/Quests/Chests/chest-test.tscn" type="PackedScene" id=37]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -1499,8 +1500,17 @@ position = Vector2( -833, 806 )
 quest_reference = ExtResource( 36 )
 active = true
 
-[node name="ChestQuest" parent="YSort/Chests/LargeChest/InteractionZone/Actions/CompletedQuestAction" index="0" instance=ExtResource( 36 )]
+[node name="ChestBoots" parent="YSort/Chests/LargeChest/InteractionZone/Actions/CompletedQuestAction" index="0" instance=ExtResource( 36 )]
 title = ""
+
+[node name="LargeChest2" parent="YSort/Chests" instance=ExtResource( 35 )]
+position = Vector2( 305, 171 )
+
+[node name="CompletedQuestAction" parent="YSort/Chests/LargeChest2/InteractionZone/Actions" index="0"]
+quest_reference = ExtResource( 37 )
+active = true
+
+[node name="ChestTest" parent="YSort/Chests/LargeChest2/InteractionZone/Actions/CompletedQuestAction" index="0" instance=ExtResource( 37 )]
 
 [node name="Portals" type="YSort" parent="YSort"]
 
@@ -1562,5 +1572,7 @@ actor_path = NodePath("../../../../YSort/MobileEnemies/VoidLord")
 [editable path="YSort/NPCs/Bill/PlayerDetectionZone"]
 [editable path="YSort/Chests/LargeChest"]
 [editable path="YSort/Chests/LargeChest/InteractionZone"]
+[editable path="YSort/Chests/LargeChest2"]
+[editable path="YSort/Chests/LargeChest2/InteractionZone"]
 [editable path="SceneLinks/SceneLink"]
 [editable path="CutSceneTriggers/CutSceneTrigger"]

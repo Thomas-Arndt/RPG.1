@@ -4,7 +4,7 @@
 [ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://QuestSystem/QuestItemReward.tscn" type="PackedScene" id=3]
 
-[node name="ChestQuest" instance=ExtResource( 2 )]
+[node name="ChestBoots" instance=ExtResource( 2 )]
 title = "Large Chest"
 deliverText = [ "You find boots in the chest...they feel surprisingly light." ]
 is_chest = true
