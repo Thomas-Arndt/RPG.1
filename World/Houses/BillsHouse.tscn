@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://World/Houses/HutInterior.png" type="Texture" id=1]
-[ext_resource path="res://Inventory/Items/Keys/Key.tres" type="Resource" id=2]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Inventory/Items/ItemContainer.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19.5, 10 )
@@ -32,10 +30,5 @@ exit_location = Vector2( -750, 425 )
 [node name="CollisionShape2D" parent="SceneLinks/SceneLink" index="0"]
 position = Vector2( -0.5, 0 )
 shape = SubResource( 1 )
-
-[node name="ItemContainer" parent="." instance=ExtResource( 4 )]
-position = Vector2( 156, 101 )
-drop_item = ExtResource( 2 )
-drop_rate = 1.0
 
 [editable path="SceneLinks/SceneLink"]
