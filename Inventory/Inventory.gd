@@ -36,10 +36,11 @@ func set_max_gold(value):
 	max_gold = value
 	emit_signal("max_gold_changed", value)
 
-func pick_up_item(item_index, item):
+func pick_up_item(item_index, item, quantity=1):
 	if inventory[item_index] == null:
 		var previousItem = inventory[item_index]
 		inventory[item_index] = item.duplicate()
+		inventory[item_index].quantity = quantity
 		emit_signal("item_changed", [item_index])
 		return previousItem
 	else:
@@ -78,6 +79,7 @@ var ItemResources = {
 	"RED": preload("res://Inventory/Items/Potions/Red/red_normal.tres"),
 	"MAJOR_RED": preload("res://Inventory/Items/Potions/Red/red_major.tres"),
 	"SWORD": preload("res://Inventory/Items/Weapons/Swords/Sword.tres"),
+	"BOOTS": preload("res://Inventory/Items/Boots.tres"),
 	"KEY": preload("res://Inventory/Items/Keys/Key.tres"),
 }
 

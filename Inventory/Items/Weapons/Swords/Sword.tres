@@ -9,5 +9,6 @@ name = "Sword"
 texture = ExtResource( 1 )
 type = "weapon"
 can_stack = false
+consumable = false
 heal = 0
 damage = 1

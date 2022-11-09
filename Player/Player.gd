@@ -155,7 +155,7 @@ func process_action(index):
 			detection_zone.target.start_interaction(self)
 		elif Inventory.inventory[index] is Item:
 			Inventory.inventory[index].action(self)
-			if Inventory.inventory[index].type == "potion":
+			if Inventory.inventory[index].consumable:
 				Inventory.inventory[index].quantity -= 1
 			if Inventory.inventory[index].quantity <= 0:
 				Inventory.inventory[index] = null

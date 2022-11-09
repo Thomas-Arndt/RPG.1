@@ -9,5 +9,6 @@ name = "Spring Boots"
 texture = ExtResource( 2 )
 type = "boots"
 can_stack = false
+consumable = false
 heal = 0
 damage = 0
