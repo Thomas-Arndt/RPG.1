@@ -1411,11 +1411,11 @@ position = Vector2( 332, 696 )
 show_red = false
 
 [node name="RockSmall7" parent="YSort/Rocks" instance=ExtResource( 31 )]
-position = Vector2( 328, 674 )
+position = Vector2( 327, 679 )
 show_red = false
 
 [node name="RockSmall8" parent="YSort/Rocks" instance=ExtResource( 31 )]
-position = Vector2( 314, 650 )
+position = Vector2( 314, 651 )
 show_red = false
 
 [node name="RockSmall9" parent="YSort/Rocks" instance=ExtResource( 31 )]
