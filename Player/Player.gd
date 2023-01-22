@@ -59,20 +59,6 @@ func _physics_process(delta):
 		process_action(2)
 	if Input.is_action_just_pressed("quick_action_4"):
 		process_action(3)
-		
-	#if Input.is_action_just_pressed("roll"):
-	#	if is_running:
-	#		state = ROLL
-	
-	#if Input.is_action_just_pressed("quick_action_4"):
-	#	if is_running:
-	#		if detection_zone.target is InteractionZone and detection_zone.can_interact() and UI.TextBox.complete:
-	#			detection_zone.target.connect("interaction_finished", self, "_on_interaction_finished")
-	#			paused(true)
-	#			detection_zone.target.start_interaction(self)
-	#		elif UI.TextBox.complete and PlayerStats.has_weapon_equipped():
-	#			Inventory.inventory[3].action(self)
-				#state = ATTACK
 	
 	if Input.is_action_just_pressed("backpack"):
 		is_running = !is_running

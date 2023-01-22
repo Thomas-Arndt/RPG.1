@@ -23,7 +23,7 @@ script = ExtResource( 2 )
 [node name="Completed" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="ChestQuest" parent="Completed" instance=ExtResource( 5 )]
+[node name="ChestBoots" parent="Completed" instance=ExtResource( 5 )]
 
 [node name="ChestTest" parent="Completed" instance=ExtResource( 6 )]
 

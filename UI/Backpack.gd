@@ -24,6 +24,8 @@ func _process(delta):
 			inventory_cursor.update_cursor_location(4)
 		if Input.is_action_just_pressed("ui_left"):
 			inventory_cursor.update_cursor_location(-1)
+		if Input.is_action_just_pressed("quick_action_4"):
+			inventory_cursor.set_selected_item()
 	
 func toggle_backpack():
 	state = !state
@@ -34,6 +36,7 @@ func toggle_backpack():
 		label.rect_position.y = 65
 		inventory_cursor.visible = true
 	else:
+		inventory_cursor.snap_item()
 		background.rect_position.y = 158
 		inventory.rect_position.y = 162
 		inventory_cursor.rect_position.y = 162

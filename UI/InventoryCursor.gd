@@ -1,10 +1,13 @@
 extends GridContainer
 
-var cursor = preload("res://UI/InventoryCursor.tres")
+var cursor_item = preload("res://UI/InventoryCursor.tres")
 
+var cursor = null;
 var cursor_index: int = 0
+var selected_item_index: int = 0
 
 func _ready():
+	cursor = cursor_item;
 	update_cursor_display()	
 
 func update_cursor_display():
@@ -21,7 +24,7 @@ func update_inventory_slot_display(item_index, item):
 
 func update_cursor_location(d_index):
 	var new_index = cursor_index + d_index
-	if new_index > len(get_children()) and d_index == 4:
+	if new_index > len(get_children())-1 and d_index == 4:
 		cursor_index -= 16
 	elif new_index < 0 and d_index == -4:
 		cursor_index += 16
@@ -36,3 +39,20 @@ func update_cursor_location(d_index):
 	
 func get_cursor_index():
 	return cursor_index
+	
+func set_selected_item():
+	selected_item_index = cursor_index;
+	if cursor == cursor_item:
+		cursor = Inventory.set_item(cursor_index, null)
+	else:
+		cursor = Inventory.set_item(cursor_index, cursor)
+	if cursor == null:
+		cursor = cursor_item
+	update_cursor_display()
+
+func snap_item():
+	if cursor != cursor_item:
+		Inventory.set_item(selected_item_index, cursor)
+		Inventory.emit_signal("item_changed")
+		cursor = cursor_item
+	update_cursor_display()
