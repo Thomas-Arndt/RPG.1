@@ -52,7 +52,14 @@ func set_selected_item():
 
 func snap_item():
 	if cursor != cursor_item:
-		Inventory.set_item(selected_item_index, cursor)
-		Inventory.emit_signal("item_changed")
+		if (Inventory.inventory[selected_item_index] == null):
+			Inventory.set_item(selected_item_index, cursor)
+		else:
+			var index = 0;
+			while index < len(Inventory.inventory):
+				if Inventory.inventory[index] == null:
+					Inventory.set_item(index, cursor)
+					index = len(Inventory.inventory)
+				index += 1
 		cursor = cursor_item
 	update_cursor_display()
