@@ -78,9 +78,10 @@ func drop_item_container(pos: Vector2, parent_node: Node):
 	
 func pick_up_index(item_resource):
 	var existing_index = null
-	for i in len(Inventory.inventory):
-		if inventory[i] is Item and inventory[i].name == item_resource.name:
-			existing_index = i
+	if item_resource.can_stack:
+		for i in len(Inventory.inventory):
+			if inventory[i] is Item and inventory[i].name == item_resource.name:
+				existing_index = i
 	var new_index = 0
 	while (inventory[new_index] != null && new_index < len(inventory)):
 		new_index += 1

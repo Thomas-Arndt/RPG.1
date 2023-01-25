@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=2]
+[gd_scene load_steps=157 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=2]
@@ -38,6 +38,8 @@
 [ext_resource path="res://QuestSystem/Quests/Chests/chest-boots.tscn" type="PackedScene" id=36]
 [ext_resource path="res://QuestSystem/Quests/Chests/chest-test.tscn" type="PackedScene" id=37]
 [ext_resource path="res://Utils/Controllers/SpawnController.tscn" type="PackedScene" id=38]
+[ext_resource path="res://World/Forage/ForageWorldComponent.tscn" type="PackedScene" id=39]
+[ext_resource path="res://World/Forage/Mushroom.tres" type="Resource" id=40]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -1602,6 +1604,36 @@ new_node_reference = ExtResource( 28 )
 position = Vector2( 7, 681 )
 spawn_with_cut_scene = true
 
+[node name="Forage" type="YSort" parent="YSort"]
+
+[node name="ForageWorldComponent" parent="YSort/Forage" instance=ExtResource( 39 )]
+position = Vector2( 159, 166 )
+forage_item = ExtResource( 40 )
+
+[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent/InteractionZone/Actions" index="0"]
+forage_items = [ ExtResource( 40 ) ]
+
+[node name="ForageWorldComponent2" parent="YSort/Forage" instance=ExtResource( 39 )]
+position = Vector2( 174, 308 )
+forage_item = ExtResource( 40 )
+
+[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent2/InteractionZone/Actions" index="0"]
+forage_items = [ ExtResource( 40 ) ]
+
+[node name="ForageWorldComponent3" parent="YSort/Forage" instance=ExtResource( 39 )]
+position = Vector2( -563, 153 )
+forage_item = ExtResource( 40 )
+
+[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent3/InteractionZone/Actions" index="0"]
+forage_items = [ ExtResource( 40 ) ]
+
+[node name="ForageWorldComponent4" parent="YSort/Forage" instance=ExtResource( 39 )]
+position = Vector2( -802, 780 )
+forage_item = ExtResource( 40 )
+
+[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent4/InteractionZone/Actions" index="0"]
+forage_items = [ ExtResource( 40 ), ExtResource( 40 ) ]
+
 [node name="SceneLinks" type="Node2D" parent="."]
 
 [node name="SceneLink" parent="SceneLinks" instance=ExtResource( 11 )]
@@ -1653,5 +1685,13 @@ actor_path = NodePath("../../../../YSort/MobileEnemies/VoidLord")
 [editable path="YSort/Chests/LargeChest/InteractionZone"]
 [editable path="YSort/Chests/LargeChest2"]
 [editable path="YSort/Chests/LargeChest2/InteractionZone"]
+[editable path="YSort/Forage/ForageWorldComponent"]
+[editable path="YSort/Forage/ForageWorldComponent/InteractionZone"]
+[editable path="YSort/Forage/ForageWorldComponent2"]
+[editable path="YSort/Forage/ForageWorldComponent2/InteractionZone"]
+[editable path="YSort/Forage/ForageWorldComponent3"]
+[editable path="YSort/Forage/ForageWorldComponent3/InteractionZone"]
+[editable path="YSort/Forage/ForageWorldComponent4"]
+[editable path="YSort/Forage/ForageWorldComponent4/InteractionZone"]
 [editable path="SceneLinks/SceneLink"]
 [editable path="CutSceneTriggers/CutSceneTrigger"]
