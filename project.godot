@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://Utils/Actions/CompletedQuestAction.gd"
 }, {
 "base": "Node",
+"class": "ForageAction",
+"language": "GDScript",
+"path": "res://Utils/Actions/ForageAction.gd"
+}, {
+"base": "Node",
 "class": "GiveQuestAction",
 "language": "GDScript",
 "path": "res://Utils/Actions/GiveQuestAction.gd"
@@ -92,6 +97,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Chest": "",
 "CompletedQuestAction": "",
+"ForageAction": "",
 "GiveQuestAction": "",
 "InProgressQuestAction": "",
 "InteractionZone": "",

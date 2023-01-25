@@ -20,7 +20,7 @@ export (Array, Resource) var inventory: Array = [
 ]
 
 func _ready():
-	pick_up_item(3, sword)
+	pick_up_item(sword, 1, 3)
 
 func set_gold(value):
 	gold = value
@@ -35,7 +35,12 @@ func set_max_gold(value):
 	max_gold = value
 	emit_signal("max_gold_changed", value)
 
-func pick_up_item(item_index, item, quantity=1):
+func pick_up_item(item, quantity=1, index = null):
+	var item_index = 0
+	if index != null:
+		item_index = index
+	else:
+		item_index = pick_up_index(item)
 	if inventory[item_index] == null:
 		var previousItem = inventory[item_index]
 		inventory[item_index] = item.duplicate()
@@ -70,6 +75,20 @@ func drop_item_container(pos: Vector2, parent_node: Node):
 	var item_container = ItemScenes.CONTAINER.instance()
 	item_container.global_position = Vector2(pos.x, pos.y+8)
 	parent_node.add_child(item_container)
+	
+func pick_up_index(item_resource):
+	var existing_index = null
+	for i in len(Inventory.inventory):
+		if inventory[i] is Item and inventory[i].name == item_resource.name:
+			existing_index = i
+	var new_index = 0
+	while (inventory[new_index] != null && new_index < len(inventory)):
+		new_index += 1
+	if existing_index != null:
+		return existing_index
+	elif (new_index < len(Inventory.inventory)):
+		return new_index
+
 
 
 
