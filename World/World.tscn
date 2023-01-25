@@ -1439,21 +1439,6 @@ show_red = false
 
 [node name="MobileEnemies" type="YSort" parent="YSort"]
 
-[node name="GreenVoidBlob" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
-position = Vector2( -943, 653 )
-
-[node name="GreenVoidBlob2" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
-position = Vector2( -874, 699 )
-
-[node name="RedVoidBlob" parent="YSort/MobileEnemies" instance=ExtResource( 6 )]
-position = Vector2( -914, 208 )
-
-[node name="RedVoidBlob2" parent="YSort/MobileEnemies" instance=ExtResource( 6 )]
-position = Vector2( -946, 267 )
-
-[node name="RedVoidBlob3" parent="YSort/MobileEnemies" instance=ExtResource( 6 )]
-position = Vector2( -441, 720 )
-
 [node name="VoidLord" parent="YSort/MobileEnemies" instance=ExtResource( 21 )]
 position = Vector2( -27, 680 )
 spawn_with_cutscene = true
@@ -1510,32 +1495,47 @@ shape = SubResource( 165 )
 [node name="SpawnController" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
 position = Vector2( 218, 337 )
 spawn_unit = ExtResource( 19 )
-spawn_interval = 30.0
-spawn_quantity = 1
 
 [node name="SpawnController2" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
 position = Vector2( -6, 293 )
 spawn_unit = ExtResource( 19 )
-spawn_interval = 30.0
-spawn_quantity = 1
 
 [node name="SpawnController3" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
 position = Vector2( 122, 213 )
 spawn_unit = ExtResource( 19 )
-spawn_interval = 30.0
-spawn_quantity = 1
 
 [node name="SpawnController4" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
 position = Vector2( -152, 202 )
 spawn_unit = ExtResource( 19 )
-spawn_interval = 30.0
-spawn_quantity = 1
 
 [node name="SpawnController5" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
 position = Vector2( -578, 546 )
 spawn_unit = ExtResource( 7 )
-spawn_interval = 30.0
-spawn_quantity = 1
+quest_reference = ExtResource( 16 )
+
+[node name="SpawnController6" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
+position = Vector2( -416, 718 )
+spawn_unit = ExtResource( 6 )
+quest_reference = ExtResource( 16 )
+
+[node name="SpawnController7" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
+position = Vector2( -939, 658 )
+spawn_unit = ExtResource( 7 )
+quest_reference = ExtResource( 16 )
+
+[node name="SpawnController8" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
+position = Vector2( -887, 705 )
+spawn_unit = ExtResource( 7 )
+quest_reference = ExtResource( 16 )
+
+[node name="SpawnController9" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
+position = Vector2( -903, 206 )
+spawn_unit = ExtResource( 6 )
+quest_reference = ExtResource( 16 )
+
+[node name="SpawnController10" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
+position = Vector2( -949, 251 )
+spawn_unit = ExtResource( 6 )
 quest_reference = ExtResource( 16 )
 
 [node name="Signs" type="YSort" parent="YSort"]
