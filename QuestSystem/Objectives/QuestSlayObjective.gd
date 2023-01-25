@@ -4,10 +4,6 @@ class_name QuestSlayObjective
 export var amount: int
 export var target_to_slay: PackedScene
 
-func connect_signals() -> void:
-	for enemy in get_tree().get_nodes_in_group("enemies"):
-		enemy.connect("died", self, "_on_enemy_died")
-
 func _on_enemy_died(enemy) -> void:
 	var quest = get_parent().get_parent()
 	var is_active = QuestSystem.active_quests.find(quest) != null

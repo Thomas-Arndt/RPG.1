@@ -48,12 +48,6 @@ func _deliver():
 func _apply_environmental_rewards():
 	for reward in _environment_rewards.get_children():
 		reward.apply()
-	
-func notify_slay_objectives() -> void:
-	for objective in get_objectives():
-		if not objective is QuestSlayObjective:
-			continue
-		(objective as QuestSlayObjective).connect_signals()
 
 func get_rewards() -> Dictionary:
 	return {'experience': _reward_experience, 'gold': _reward_gold, 'items': _reward_items.get_children()}

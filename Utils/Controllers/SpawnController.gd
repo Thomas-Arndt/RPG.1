@@ -23,7 +23,7 @@ func check_spawn():
 func spawn_new_unit():
 	if spawn_unit != null:
 		var new_unit = spawn_unit.instance()
-		new_unit.global_position = self.global_position
+		new_unit.global_position = global_position
 		new_unit.connect("died", self, "_on_Spawn_died")
 		if quest != null:
 			for objective in quest.objectives.get_children():

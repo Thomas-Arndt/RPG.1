@@ -1534,7 +1534,7 @@ spawn_quantity = 1
 [node name="SpawnController5" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
 position = Vector2( -578, 546 )
 spawn_unit = ExtResource( 7 )
-spawn_interval = 10.0
+spawn_interval = 30.0
 spawn_quantity = 1
 quest_reference = ExtResource( 16 )
 

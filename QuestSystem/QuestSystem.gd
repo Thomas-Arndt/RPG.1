@@ -20,7 +20,6 @@ func start(reference: Quest):
 		quest.connect("completed", self, "_on_Quest_completed", [quest])
 		available_quests.remove_child(quest)
 		active_quests.add_child(quest)
-		quest.notify_slay_objectives()
 		quest._start()
 
 func _on_Quest_completed(quest):
