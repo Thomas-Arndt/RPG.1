@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal died(node)
+
 const DeathEffect = preload("res://Effects/EnemyEffects/BatDeathEffect.tscn")
 
 export var ACCELERATION = 200
@@ -82,6 +84,7 @@ func seek_player():
 		state = CHASE
 
 func _on_Stats_no_health():
+	emit_signal("died", self)
 	queue_free()
 	var death_effect = DeathEffect.instance()
 	get_parent().add_child(death_effect)
