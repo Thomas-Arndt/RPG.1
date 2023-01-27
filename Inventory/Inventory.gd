@@ -10,6 +10,7 @@ var gold: int = 0 setget set_gold
 var max_gold: int = 99 setget set_max_gold
 
 var sword  = preload("res://Inventory/Items/Weapons/Swords/Sword.tres")
+var boots = preload("res://Inventory/Items/Boots.tres")
 
 export (Array, Resource) var inventory: Array = [
 	null, null, null, null, 
@@ -21,6 +22,7 @@ export (Array, Resource) var inventory: Array = [
 
 func _ready():
 	pick_up_item(sword, 1, 3)
+	pick_up_item(boots, 1, 2)
 
 func set_gold(value):
 	gold = value

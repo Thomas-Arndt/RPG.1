@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Mushroom.png-88422c6f2f0e14976b6aa7e48d324c97.stex"
+path="res://.import/CopperVein.png-829d8f2a000bcde44ec3971b5a6f5573.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Forage/Mushroom.png"
-dest_files=[ "res://.import/Mushroom.png-88422c6f2f0e14976b6aa7e48d324c97.stex" ]
+source_file="res://World/Minerals/CopperVein.png"
+dest_files=[ "res://.import/CopperVein.png-829d8f2a000bcde44ec3971b5a6f5573.stex" ]
 
 [params]
 

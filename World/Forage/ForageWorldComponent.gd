@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 export (Resource) var forage_item
-export (float) var respawn_time = 30
+export (float) var respawn_time = 300
 
 onready var sprite = $Sprite
 onready var shadow_sprite = $ShadowSprite

@@ -60,7 +60,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("quick_action_4"):
 		process_action(3)
 	
-	if Input.is_action_just_pressed("backpack"):
+	if Input.is_action_just_pressed("backpack") and UI.TextBox.complete:
 		is_running = !is_running
 		UI.Backpack.toggle_backpack()
 

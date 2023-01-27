@@ -1,7 +1,7 @@
 extends Node2D
 
 export var spawn_unit: PackedScene
-export var spawn_interval: float = 30
+export var spawn_interval: float = 60
 export var spawn_quantity: int = 1
 export var quest_reference: PackedScene
 
