@@ -1249,8 +1249,10 @@ remote_path = NodePath("../../../Camera2D")
 
 [node name="Hut" parent="YSort/Buildings/Starting Area" instance=ExtResource( 17 )]
 position = Vector2( -749, 422 )
+show_red = false
 
 [node name="HutFloor" parent="YSort/Buildings/Starting Area" instance=ExtResource( 18 )]
+show_red = false
 
 [node name="Trees" type="YSort" parent="YSort"]
 

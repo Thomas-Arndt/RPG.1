@@ -23,23 +23,23 @@ func match_dimension(state):
 		red_sprite.visible = true
 		green_sprite.visible = false
 		shadow_sprite.visible = true
-		collision_shape.disabled = false
+		collision_shape.set_deferred("disabled", false)
 		emit_signal("set_Scene_Link_Active", true)
 	elif state == true and show_red == false:
 		red_sprite.visible = false
 		green_sprite.visible = false
 		shadow_sprite.visible = false
-		collision_shape.disabled = true
+		collision_shape.set_deferred("disabled", true)
 		emit_signal("set_Scene_Link_Active", false)
 	elif state == false and show_green == true:
 		red_sprite.visible = false
 		green_sprite.visible = true
 		shadow_sprite.visible = true
-		collision_shape.disabled = false
+		collision_shape.set_deferred("disabled", false)
 		emit_signal("set_Scene_Link_Active", true)
 	elif state == false and show_green == false:
 		red_sprite.visible = false
 		green_sprite.visible = false
 		shadow_sprite.visible = false
-		collision_shape.disabled = true
+		collision_shape.set_deferred("disabled", true)
 		emit_signal("set_Scene_Link_Active", false)
