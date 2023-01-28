@@ -21,8 +21,7 @@ export (Array, Resource) var inventory: Array = [
 ]
 
 func _ready():
-	pick_up_item(sword, 1, 3)
-	pick_up_item(boots, 1, 2)
+	pass
 
 func set_gold(value):
 	gold = value

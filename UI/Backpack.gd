@@ -1,17 +1,11 @@
 extends CanvasLayer
 
-onready var background = $BackpackBackground
-onready var inventory = $InventoryDisplay
 onready var inventory_cursor = $InventoryCursor
-onready var label = $Label
+onready var tween = $Tween
 
 var state = false
 
 func _ready():
-	background.rect_position.y = 158
-	inventory.rect_position.y = 162
-	inventory_cursor.rect_position.y = 162
-	label.rect_position.y = 147
 	inventory_cursor.visible = false
 	
 func _process(delta):
@@ -29,16 +23,13 @@ func _process(delta):
 	
 func toggle_backpack():
 	state = !state
+	tween.remove_all()
 	if state:
-		background.rect_position.y = 76
-		inventory.rect_position.y = 80
-		inventory_cursor.rect_position.y = 80
-		label.rect_position.y = 65
 		inventory_cursor.visible = true
+		tween.interpolate_property(self, "offset:y", offset.y, -82, 0.8, Tween.TRANS_CIRC ,Tween.EASE_OUT)
 	else:
 		inventory_cursor.snap_item()
-		background.rect_position.y = 158
-		inventory.rect_position.y = 162
-		inventory_cursor.rect_position.y = 162
-		label.rect_position.y = 147
 		inventory_cursor.visible = false
+		tween.interpolate_property(self, "offset:y", offset.y, 0, 0.8, Tween.TRANS_CIRC ,Tween.EASE_OUT)
+	tween.start()
+		
