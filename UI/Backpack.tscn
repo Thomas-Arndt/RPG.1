@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/UI/backpack_v1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/backpack_v2.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/Born2bSportyV2.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/InventoryDisplay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Backpack.gd" type="Script" id=4]
