@@ -90,8 +90,19 @@ func pick_up_index(item_resource):
 		return existing_index
 	elif (new_index < len(Inventory.inventory)):
 		return new_index
+	return null
 
+func has_item(item) -> bool:
+	for inventory_item in inventory:
+		if inventory_item != null and inventory_item.type == item.type && inventory_item.name == item.name:
+			return true
+	return false
 
+func consume_item(index):
+	inventory[index].quantity -= 1
+	if inventory[index].quantity <= 0:
+		inventory[index] = null
+	UI.Backpack.inventory_display.update_inventory_display()
 
 
 var ItemResources = {

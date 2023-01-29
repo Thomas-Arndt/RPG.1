@@ -142,7 +142,5 @@ func process_action(index):
 		elif Inventory.inventory[index] is Item:
 			Inventory.inventory[index].action(self)
 			if Inventory.inventory[index].consumable:
-				Inventory.inventory[index].quantity -= 1
-			if Inventory.inventory[index].quantity <= 0:
-				Inventory.inventory[index] = null
+				Inventory.consume_item(index)
 			Inventory.emit_signal("item_changed", [index])

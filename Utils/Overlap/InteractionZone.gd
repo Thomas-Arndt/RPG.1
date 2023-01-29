@@ -15,8 +15,6 @@ func start_interaction(node) -> void:
 		for action in actions:
 			if action.active:
 				action.interact()
-				if not action is ForageAction: 
-					yield(action, "finished")
 				if action is CompletedQuestAction:
 					if action.follow_up_quest != null:
 						has_follow_up = true

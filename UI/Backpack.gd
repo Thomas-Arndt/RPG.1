@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 onready var inventory_cursor = $InventoryCursor
+onready var inventory_display = $InventoryDisplay
 onready var tween = $Tween
 
 var state = false
