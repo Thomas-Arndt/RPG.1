@@ -25,7 +25,7 @@ func interact() -> void:
 		return
 	var quest: Quest = quest_reference.instance()
 	if QuestSystem.find_available(quest) and UI.TextBox.complete:
+		QuestSystem.start(quest)
 		UI.TextBox.queue_text(quest.startText, speaker_name)
 		yield(UI.TextBox, "finished")
-		QuestSystem.start(quest)
 		emit_signal("finished")	

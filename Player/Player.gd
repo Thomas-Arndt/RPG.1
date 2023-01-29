@@ -139,7 +139,7 @@ func process_action(index):
 			detection_zone.target.connect("interaction_finished", self, "_on_interaction_finished")
 			paused(true)
 			detection_zone.target.start_interaction(self)
-		elif Inventory.inventory[index] is Item:
+		elif Inventory.inventory[index] is Item and UI.TextBox.complete:
 			Inventory.inventory[index].action(self)
 			if Inventory.inventory[index].consumable:
 				Inventory.consume_item(index)

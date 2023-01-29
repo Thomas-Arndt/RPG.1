@@ -95,16 +95,15 @@ func seek_player():
 		quest_bubble.visible = false
 
 func quest_status():
-	var set = false
 	var current_actions = actions.get_children()
 	for action in current_actions:
-		if not set:
-			if action.active:
-				if action is CompletedQuestAction and QuestSystem.completed_quests.find(action.quest_reference.instance()) != null:
-					quest_bubble.region_rect.position = Vector2(48, 128)
-					set = true
-				elif action is GiveQuestAction and QuestSystem.available_quests.find(action.quest_reference.instance()) != null:
-					quest_bubble.region_rect.position = Vector2(32, 128)
-					set = true
-				else:
-					quest_bubble.region_rect.position = Vector2(128, 128)
+		if action.active:
+			if action is CompletedQuestAction and QuestSystem.completed_quests.find(action.quest_reference.instance()) != null:
+				quest_bubble.region_rect.position = Vector2(48, 128)
+				return
+			elif action is GiveQuestAction and QuestSystem.available_quests.find(action.quest_reference.instance()) != null:
+				quest_bubble.region_rect.position = Vector2(32, 128)
+				return
+		else:
+			quest_bubble.region_rect.position = Vector2(128, 128)
+
