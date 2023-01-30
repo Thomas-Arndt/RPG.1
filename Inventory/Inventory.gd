@@ -9,10 +9,7 @@ var drag_data = null
 var gold: int = 0 setget set_gold
 var max_gold: int = 99 setget set_max_gold
 
-var sword  = preload("res://Inventory/Items/Weapons/Swords/Sword.tres")
-var boots = preload("res://Inventory/Items/Boots.tres")
-
-export (Array, Resource) var inventory: Array = [
+export (Array, Resource) var inventory = [
 	null, null, null, null, 
 	null, null, null, null, 
 	null, null, null, null, 
@@ -98,20 +95,26 @@ func has_item(item) -> bool:
 			return true
 	return false
 
-func consume_item(index):
-	inventory[index].quantity -= 1
+func consume_item(index, quantity = 1):
+	inventory[index].quantity -= quantity
 	if inventory[index].quantity <= 0:
 		inventory[index] = null
 	UI.Backpack.inventory_display.update_inventory_display()
 
+func get_item_index(item) -> int:
+	for index in len(inventory):
+		if inventory[index] != null and inventory[index].type == item.type && inventory[index].name == item.name:
+			return index
+	return -1
 
 var ItemResources = {
 	"MINOR_RED": preload("res://Inventory/Items/Potions/Red/red_minor.tres"),
 	"RED": preload("res://Inventory/Items/Potions/Red/red_normal.tres"),
 	"MAJOR_RED": preload("res://Inventory/Items/Potions/Red/red_major.tres"),
 	"SWORD": preload("res://Inventory/Items/Weapons/Swords/Sword.tres"),
-	"BOOTS": preload("res://Inventory/Items/Boots.tres"),
+	"BOOTS": preload("res://Inventory/Items/Clothing/Boots.tres"),
 	"KEY": preload("res://Inventory/Items/Keys/Key.tres"),
+	"REDBERRY": preload("res://World/Forage/RedBerry.tres"),
 }
 
 var ItemScenes = {

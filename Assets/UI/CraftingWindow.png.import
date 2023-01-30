@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Boots.png-19d3d1842a46ed496999338a228d4e2f.stex"
+path="res://.import/CraftingWindow.png-b0e463f7945d872d3853af25dd50ca5e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Inventory/Items/Boots.png"
-dest_files=[ "res://.import/Boots.png-19d3d1842a46ed496999338a228d4e2f.stex" ]
+source_file="res://Assets/UI/CraftingWindow.png"
+dest_files=[ "res://.import/CraftingWindow.png-b0e463f7945d872d3853af25dd50ca5e.stex" ]
 
 [params]
 

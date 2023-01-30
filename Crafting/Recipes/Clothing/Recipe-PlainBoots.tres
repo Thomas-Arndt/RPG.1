@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Crafting/Recipes/Recipe.gd" type="Script" id=1]
+[ext_resource path="res://Inventory/Items/Clothing/Boots.tres" type="Resource" id=2]
+[ext_resource path="res://World/Forage/LeatherLeaf.tres" type="Resource" id=3]
+[ext_resource path="res://World/Forage/WhiteCap.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Plain Boots"
+recipe = [ {
+"item": ExtResource( 3 ),
+"quantity": 3
+}, {
+"item": ExtResource( 4 ),
+"quantity": 1
+} ]
+product = ExtResource( 2 )

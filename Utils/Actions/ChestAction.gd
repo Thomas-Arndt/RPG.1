@@ -18,14 +18,17 @@ func interact() -> void:
 		for item in items:
 			Inventory.pick_up_item(item)
 		Inventory.change_gold(gold)
-		UI.TextBox.queue_text(create_alert_text_array())
 		active = false
+		UI.TextBox.queue_text(create_alert_text_array())
+		yield(UI.TextBox, "finished")
 		emit_signal("finished")
 	elif locked and !Inventory.has_item(Inventory.ItemResources.KEY):
 		UI.TextBox.queue_text(["The chest appears to be locked."])
+		yield(UI.TextBox, "finished")
 		emit_signal("finished")
 	else:
 		UI.TextBox.queue_text(["Something went wrong."])
+		yield(UI.TextBox, "finished")
 		emit_signal("finished")
 		
 	

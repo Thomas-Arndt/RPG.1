@@ -63,6 +63,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("backpack") and UI.TextBox.complete:
 		is_running = !is_running
 		UI.Backpack.toggle_backpack()
+	
+	if Input.is_action_just_pressed("crafting_menu") and UI.TextBox.complete:
+		UI.Backpack.toggle_crafting_menu()
 
 func move_state(delta):
 	var input_vector = Vector2.ZERO

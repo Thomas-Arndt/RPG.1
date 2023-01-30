@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/UI/backpack_v2.png" type="Texture" id=1]
+[ext_resource path="res://UI/CraftingMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/InventoryDisplay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Backpack.gd" type="Script" id=4]
 [ext_resource path="res://UI/InventoryCursor.tscn" type="PackedScene" id=5]
 
 [node name="Backpack" type="CanvasLayer"]
 script = ExtResource( 4 )
+
+[node name="CraftingMenu" parent="." instance=ExtResource( 2 )]
 
 [node name="BackpackBackground" type="TextureRect" parent="."]
 margin_left = 48.0
