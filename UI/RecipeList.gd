@@ -1,5 +1,7 @@
 extends GridContainer
 
+signal recipe_changed(recipe)
+
 export (Array, Resource) var recipe_list
 var start_index: int = 0
 var end_index: int = 4
@@ -31,6 +33,7 @@ func update_recipe_display():
 		if len(recipe_list) - 1 >= index:
 			child.text = recipe_list[start_index + index].name
 	highlight_active_row()
+	emit_signal("recipe_changed", recipe_list[start_index + cursor_index])
 
 
 func highlight_active_row():

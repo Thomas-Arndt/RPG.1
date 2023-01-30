@@ -3,7 +3,7 @@ extends CanvasLayer
 onready var inventory_cursor = $InventoryCursor
 onready var inventory_display = $InventoryDisplay
 onready var crafting_menu = $CraftingMenu
-onready var recipe_display = $CraftingMenu/RecipeDisplay
+onready var recipe_list = $CraftingMenu/RecipeList
 onready var tween = $Tween
 
 var state = false
@@ -24,13 +24,17 @@ func _process(delta):
 			inventory_cursor.update_cursor_location(-1)
 		if Input.is_action_just_pressed("quick_action_4"):
 			inventory_cursor.set_selected_item()
-	if state and crafting:
+		if Input.is_action_just_pressed("quick_action_2"):
+			toggle_crafting_menu()
+	elif state and crafting:
 		if Input.is_action_just_pressed("ui_up"):
-			recipe_display.update_cursor_index(-1)
+			recipe_list.update_cursor_index(-1)
 		if Input.is_action_just_pressed("ui_down"):
-			recipe_display.update_cursor_index(1)
+			recipe_list.update_cursor_index(1)
 		if Input.is_action_just_pressed("quick_action_4"):
-			recipe_display.craft_item()
+			recipe_list.craft_item()
+		if Input.is_action_just_pressed("quick_action_2"):
+			toggle_crafting_menu()
 	
 func toggle_backpack():
 	state = !state
