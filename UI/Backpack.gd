@@ -47,6 +47,7 @@ func toggle_backpack():
 		tween.interpolate_property(self, "offset:y", offset.y, 0, 0.8, Tween.TRANS_CIRC ,Tween.EASE_OUT)
 		if crafting:
 			tween.interpolate_property(crafting_menu, "rect_position:x", crafting_menu.rect_position.x, 0, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT)
+			crafting = !crafting
 	tween.start()
 		
 func toggle_crafting_menu():
