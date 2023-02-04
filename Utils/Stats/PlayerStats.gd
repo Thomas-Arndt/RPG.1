@@ -1,7 +1,7 @@
 extends Node
 
-export(int) var max_health = 10 setget set_max_health
-var health: int = 10 setget set_health
+export(int) var max_health setget set_max_health
+var health: int setget set_health
 var experience: int = 0 setget set_experience
 var playerLevel: int = 1 setget set_player_level
 
@@ -12,7 +12,8 @@ signal experience_changed(value)
 signal player_level_changed(value)
 
 func _ready():
-	self.health = max_health
+	set_max_health(100)
+	set_health(100)
 
 func set_max_health(value):
 	max_health = value

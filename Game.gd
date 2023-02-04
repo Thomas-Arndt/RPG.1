@@ -7,8 +7,6 @@ onready var player = $World/YSort/Player
 var pause_signals = false
 
 func _ready():
-	PlayerStats.set_max_health(10)
-	PlayerStats.set_health(10)
 	PlayerStats.set_experience(0)
 	PlayerStats.set_player_level(1)
 	Inventory.set_gold(0)

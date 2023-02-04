@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-onready var inventory_cursor = $InventoryCursor
-onready var inventory_display = $InventoryDisplay
+onready var inventory_cursor = $InventoryMenu/InventoryCursor
+onready var inventory_display = $InventoryMenu/InventoryDisplay
 onready var crafting_menu = $CraftingMenu
 onready var recipe_list = $CraftingMenu/RecipeList
 onready var tween = $Tween
