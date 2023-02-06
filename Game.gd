@@ -21,6 +21,7 @@ func _on_Scene_Link_entered(destination_reference, source):
 	if not pause_signals:
 		pause_signals = true
 		var origin_scene = WorldStats.peek_top_of_room_stack()
+		world.save_scene()
 		remove_child(origin_scene)
 		var destination = destination_reference.instance()
 		add_child(destination)

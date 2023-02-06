@@ -12,8 +12,8 @@ signal experience_changed(value)
 signal player_level_changed(value)
 
 func _ready():
-	set_max_health(100)
-	set_health(100)
+	set_max_health(10)
+	set_health(10)
 
 func set_max_health(value):
 	max_health = value

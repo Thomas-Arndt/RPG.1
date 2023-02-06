@@ -33,18 +33,22 @@ func interact() -> void:
 		
 	
 func create_alert_text_array():
-	var alert_text = "You found a "
+	var alert_text = "You found "
 	for index in len(items):
+		alert_text += 'a '
 		alert_text += items[index].name
 		if index < len(items) - 2:
-			alert_text += ", a "
+			alert_text += ", "
 		elif index == len(items)-2:
 			if gold > 0:
-				alert_text += ", a "
+				alert_text += ", "
 			else:
-				alert_text += ", and a "
+				alert_text += ", and "
 	if gold > 0:
-		alert_text += ", and " + str(gold) + " gold"
+		if len(items) > 0:
+			alert_text += ", and " + str(gold) + " gold"
+		else:
+			alert_text += str(gold) + " gold"
 	alert_text += " in the chest."
 	return [alert_text]
 	
@@ -53,3 +57,14 @@ func consume_key():
 		if Inventory.inventory[index] != null and Inventory.inventory[index].type == "key":
 			Inventory.consume_item(index)
 			break
+
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"items" : items,
+		"gold" : gold,
+		"locked" : locked,
+		"active" : active,
+	}
+	return save_dict

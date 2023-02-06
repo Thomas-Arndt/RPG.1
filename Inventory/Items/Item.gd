@@ -20,5 +20,3 @@ func action(player = null):
 			player.state = player.ATTACK
 		"boots":
 			player.state = player.ROLL
-		"key":
-			WorldStats.shift_dimension()

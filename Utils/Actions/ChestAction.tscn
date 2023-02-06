@@ -2,5 +2,5 @@
 
 [ext_resource path="res://Utils/Actions/ChestAction.gd" type="Script" id=1]
 
-[node name="ChestAction" type="Node"]
+[node name="ChestAction" type="Node" groups=["Persist"]]
 script = ExtResource( 1 )
