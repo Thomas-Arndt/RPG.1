@@ -1648,12 +1648,6 @@ position = Vector2( -969, 181 )
 gold = 100
 locked = true
 
-[node name="LargeChest2" parent="YSort/Chests" instance=ExtResource( 35 )]
-position = Vector2( 304, 176 )
-
-[node name="ChestAction" parent="YSort/Chests/LargeChest2/InteractionZone/Actions" index="0"]
-gold = 10
-
 [node name="Portals" type="YSort" parent="YSort"]
 
 [node name="BlibPortal" parent="YSort/Portals" instance=ExtResource( 33 )]
@@ -1814,8 +1808,6 @@ actor_path = NodePath("../../../../YSort/MobileEnemies/VoidLord")
 [editable path="YSort/NPCs/Bill/PlayerDetectionZone"]
 [editable path="YSort/Chests/LargeChest"]
 [editable path="YSort/Chests/LargeChest/InteractionZone"]
-[editable path="YSort/Chests/LargeChest2"]
-[editable path="YSort/Chests/LargeChest2/InteractionZone"]
 [editable path="YSort/Forage/ForageWorldComponent"]
 [editable path="YSort/Forage/ForageWorldComponent/InteractionZone"]
 [editable path="YSort/Forage/ForageWorldComponent2"]

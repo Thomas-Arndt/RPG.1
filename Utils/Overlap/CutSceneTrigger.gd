@@ -23,6 +23,7 @@ func _on_Area2D_area_entered(area):
 func _on_Actor_finished():
 	if len(actor_controllers.get_children()) > action:
 		action += 1
+	# Probably need to get rid of this when saving logic is added
 	else:	
 		queue_free()
 	

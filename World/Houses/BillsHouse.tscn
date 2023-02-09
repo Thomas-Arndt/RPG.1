@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://World/Houses/HutInterior.png" type="Texture" id=1]
+[ext_resource path="res://Inventory/Items/Weapons/Swords/KingsSword.tres" type="Resource" id=2]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Objects/LargeChest.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Houses/BillsHouse.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19.5, 10 )
 
 [node name="BillsHouse" type="StaticBody2D"]
+script = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 320.0
@@ -31,4 +35,12 @@ exit_location = Vector2( -750, 425 )
 position = Vector2( -0.5, 0 )
 shape = SubResource( 1 )
 
+[node name="LargeChest" parent="." instance=ExtResource( 4 )]
+position = Vector2( 158, 101 )
+
+[node name="ChestAction" parent="LargeChest/InteractionZone/Actions" index="0"]
+items = [ ExtResource( 2 ) ]
+
 [editable path="SceneLinks/SceneLink"]
+[editable path="LargeChest"]
+[editable path="LargeChest/InteractionZone"]

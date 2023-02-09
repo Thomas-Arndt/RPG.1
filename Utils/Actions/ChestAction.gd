@@ -3,6 +3,7 @@ class_name ChestAction
 
 signal started
 signal finished
+signal opened
 
 export (Array, Resource) var items
 export (int) var gold
@@ -11,25 +12,29 @@ export (bool) var locked
 var active: bool = true
 
 func interact() -> void:
-	if (locked and Inventory.has_item(Inventory.ItemResources.KEY)) or !locked:
-		locked = false
-		consume_key()
-		emit_signal("started")
-		for item in items:
-			Inventory.pick_up_item(item)
-		Inventory.change_gold(gold)
-		active = false
-		UI.TextBox.queue_text(create_alert_text_array())
-		yield(UI.TextBox, "finished")
-		emit_signal("finished")
-	elif locked and !Inventory.has_item(Inventory.ItemResources.KEY):
-		UI.TextBox.queue_text(["The chest appears to be locked."])
-		yield(UI.TextBox, "finished")
-		emit_signal("finished")
+	if active:
+		if (locked and Inventory.has_item(Inventory.ItemResources.KEY)) or !locked:
+			locked = false
+			consume_key()
+			emit_signal("started")
+			for item in items:
+				Inventory.pick_up_item(item)
+			Inventory.change_gold(gold)
+			active = false
+			UI.TextBox.queue_text(create_alert_text_array())
+			yield(UI.TextBox, "finished")
+			active = false
+			emit_signal("finished")
+		elif locked and !Inventory.has_item(Inventory.ItemResources.KEY):
+			UI.TextBox.queue_text(["The chest appears to be locked."])
+			yield(UI.TextBox, "finished")
+			emit_signal("finished")
+		else:
+			UI.TextBox.queue_text(["Something went wrong."])
+			yield(UI.TextBox, "finished")
+			emit_signal("finished")
 	else:
-		UI.TextBox.queue_text(["Something went wrong."])
-		yield(UI.TextBox, "finished")
-		emit_signal("finished")
+		emit_signal("finished")		
 		
 	
 func create_alert_text_array():
@@ -61,7 +66,7 @@ func consume_key():
 func save():
 	var save_dict = {
 		"filename" : get_filename(),
-		"parent" : get_parent().get_path(),
+		"path" : get_path(),
 		"items" : items,
 		"gold" : gold,
 		"locked" : locked,
