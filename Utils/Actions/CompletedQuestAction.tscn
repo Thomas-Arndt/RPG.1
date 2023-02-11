@@ -2,5 +2,5 @@
 
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.gd" type="Script" id=1]
 
-[node name="CompletedQuestAction" type="Node"]
+[node name="CompletedQuestAction" type="Node" groups=["Persist"]]
 script = ExtResource( 1 )

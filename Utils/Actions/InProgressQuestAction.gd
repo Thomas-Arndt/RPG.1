@@ -14,8 +14,13 @@ var active: bool = false
 func _ready():
 	assert(quest_reference)
 	quest = QuestSystem.find_available(quest_reference.instance())
-	quest.connect("started", self, "_on_Quest_started")
-	quest.connect("delivered", self, "_on_Quest_completed")
+	if quest == null:
+		quest = QuestSystem.active_quests.find(quest_reference.instance())
+	if quest == null:
+		quest = QuestSystem.completed_quests.find(quest_reference.instance())
+	if quest != null:
+		quest.connect("started", self, "_on_Quest_started")
+		quest.connect("completed", self, "_on_Quest_completed")
 
 func _on_Quest_started():
 	active = true
@@ -32,3 +37,11 @@ func interact() -> void:
 		UI.TextBox.queue_text(quest.progressText, speaker_name)
 		yield(UI.TextBox, "finished")
 		emit_signal("finished")	
+
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"path" : get_path(),
+		"active" : active,
+	}
+	return save_dict

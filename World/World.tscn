@@ -1,4 +1,4 @@
-[gd_scene load_steps=157 format=2]
+[gd_scene load_steps=156 format=2]
 
 [ext_resource path="res://Camera/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/CliffTileset.png" type="Texture" id=2]
@@ -21,7 +21,6 @@
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=19]
 [ext_resource path="res://NPC/NPCs/Bill.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Enemies/Bosses/VoidLord.tscn" type="PackedScene" id=21]
-[ext_resource path="res://World/Houses/BillsHouse.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Utils/Overlap/DetectionZone.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Utils/Controllers/CutSceneController.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Utils/Overlap/CutSceneTrigger.tscn" type="PackedScene" id=25]
@@ -1182,7 +1181,7 @@ extents = Vector2( 8, 6.5 )
 [sub_resource type="RectangleShape2D" id=166]
 extents = Vector2( 10, 177.5 )
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" groups=["World"]]
 script = ExtResource( 34 )
 
 [node name="GreenDimension" type="TileMap" parent="."]
@@ -1231,7 +1230,7 @@ position = Vector2( -1104, 48 )
 [node name="BottomRight" type="Position2D" parent="Camera2D/Limits"]
 position = Vector2( 567, 861 )
 
-[node name="YSort" type="YSort" parent="."]
+[node name="YSort" type="YSort" parent="." groups=["PlayerLocation"]]
 
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 267, 154 )
@@ -1761,9 +1760,9 @@ forage_items = [ ExtResource( 43 ) ]
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
-[node name="SceneLink" parent="SceneLinks" instance=ExtResource( 11 )]
+[node name="SceneLink" parent="SceneLinks" groups=["World"] instance=ExtResource( 11 )]
 position = Vector2( -749, 381 )
-destination_reference = ExtResource( 22 )
+destination_reference = "res://World/Houses/BillsHouse.tscn"
 exit_location = Vector2( 157, 142 )
 exit_direction = Vector2( 0, -1 )
 paired_object = NodePath("../../YSort/Buildings/Starting Area/Hut")

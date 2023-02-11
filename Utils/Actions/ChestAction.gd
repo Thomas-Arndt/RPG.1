@@ -14,8 +14,9 @@ var active: bool = true
 func interact() -> void:
 	if active:
 		if (locked and Inventory.has_item(Inventory.ItemResources.KEY)) or !locked:
-			locked = false
-			consume_key()
+			if locked:
+				locked = false
+				consume_key()
 			emit_signal("started")
 			for item in items:
 				Inventory.pick_up_item(item)
@@ -67,7 +68,7 @@ func save():
 	var save_dict = {
 		"filename" : get_filename(),
 		"path" : get_path(),
-		"items" : items,
+
 		"gold" : gold,
 		"locked" : locked,
 		"active" : active,

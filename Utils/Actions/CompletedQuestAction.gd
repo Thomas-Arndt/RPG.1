@@ -15,11 +15,14 @@ var quest: Quest = null
 func _ready():
 	assert(quest_reference)
 	var reference_instance = quest_reference.instance()
-	if !reference_instance.is_chest:
-		quest = QuestSystem.find_available(reference_instance)
+	quest = QuestSystem.find_available(reference_instance)
+	if quest == null:
+		quest = QuestSystem.active_quests.find(quest_reference.instance())
+	if quest == null:
+		quest = QuestSystem.completed_quests.find(quest_reference.instance())
+	if quest != null:
+
 		quest.connect("completed", self, "_on_Quest_completed")
-	else:
-		quest = QuestSystem.completed_quests.find(reference_instance)
 
 func _on_Quest_completed():
 	active = true
@@ -28,7 +31,8 @@ func interact() -> void:
 	if not active:
 		emit_signal("finished")
 		return
-	if QuestSystem.completed_quests.find(quest) != null and UI.TextBox.complete:
+	quest = QuestSystem.completed_quests.find(quest_reference.instance())
+	if quest != null and UI.TextBox.complete:
 		QuestSystem.deliver(quest)
 		active = false
 		UI.TextBox.queue_text(quest.deliverText, speaker_name)
@@ -38,3 +42,10 @@ func interact() -> void:
 		else:
 			emit_signal("finished")
 
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"path" : get_path(),
+		"active" : active,
+	}
+	return save_dict

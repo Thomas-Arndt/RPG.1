@@ -13,6 +13,10 @@ var spawn_count = 0
 func _ready():
 	if quest_reference != null:
 		quest = QuestSystem.find_available(quest_reference.instance())
+		if quest == null:
+			quest = QuestSystem.active_quests.find(quest_reference.instance())
+		if quest == null:
+			quest = QuestSystem.completed_quests.find(quest_reference.instance())
 	timer.start(0.1)
 
 func check_spawn():

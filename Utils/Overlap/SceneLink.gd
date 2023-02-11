@@ -2,7 +2,7 @@ extends Area2D
 
 class_name SceneLink
 
-export (PackedScene) var destination_reference = null
+export (String) var destination_reference = null
 export (Vector2) var exit_location = Vector2.ZERO
 export (Vector2) var exit_direction = Vector2.DOWN
 export (NodePath) var paired_object = null
