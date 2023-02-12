@@ -30,7 +30,7 @@ polygon = PoolVector2Array( 0, 180, 143, 180, 142, 167, 129, 163, 115, 155, 106,
 
 [node name="SceneLink" parent="SceneLinks" groups=["World"] instance=ExtResource( 3 )]
 position = Vector2( 157, 192 )
-destination_reference = "res://World/World.tscn"
+destination_reference = "res://World/Areas/World.tscn"
 exit_location = Vector2( -750, 425 )
 
 [node name="CollisionShape2D" parent="SceneLinks/SceneLink" index="0"]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Utils/Controllers/SpawnController.gd" type="Script" id=1]
 
-[node name="SpawnController" type="Node2D"]
+[node name="SpawnController" type="Node2D" groups=["Persist"]]
 script = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]

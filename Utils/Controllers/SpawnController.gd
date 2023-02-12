@@ -1,4 +1,5 @@
 extends Node2D
+class_name SpawnController
 
 export var spawn_unit: PackedScene
 export var spawn_interval: float = 60
@@ -17,7 +18,8 @@ func _ready():
 			quest = QuestSystem.active_quests.find(quest_reference.instance())
 		if quest == null:
 			quest = QuestSystem.completed_quests.find(quest_reference.instance())
-	timer.start(0.1)
+	if !ResourceLoader.exists(get_tree().get_nodes_in_group("World")[0].save_file):	
+		timer.start(0.1)
 
 func check_spawn():
 	if (spawn_count < spawn_quantity):
@@ -31,7 +33,7 @@ func spawn_new_unit():
 		new_unit.connect("died", self, "_on_Spawn_died")
 		if quest != null:
 			for objective in quest.objectives.get_children():
-				if objective is QuestSlayObjective:
+				if objective is QuestSlayObjective and not objective.completed:
 					new_unit.connect("died", objective, "_on_enemy_died")
 		get_parent().add_child(new_unit)
 		spawn_count += 1
@@ -42,3 +44,12 @@ func _on_Timer_timeout():
 func _on_Spawn_died(node):
 	spawn_count -= 1
 	timer.start(spawn_interval)
+
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"path" : get_path(),
+		"spawn_count" : spawn_count,
+		"time_remaining" : timer.time_left
+	}
+	return save_dict
