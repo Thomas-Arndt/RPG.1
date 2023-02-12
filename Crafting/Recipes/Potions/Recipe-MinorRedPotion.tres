@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Crafting/Recipes/Recipe.gd" type="Script" id=1]
 [ext_resource path="res://Inventory/Items/Potions/Red/red_minor.tres" type="Resource" id=2]
-[ext_resource path="res://World/Forage/RedBerry.tres" type="Resource" id=3]
+[ext_resource path="res://Inventory/Forage/RedBerry.tres" type="Resource" id=3]
 
 [resource]
 script = ExtResource( 1 )

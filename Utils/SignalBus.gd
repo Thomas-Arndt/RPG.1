@@ -1,7 +1,7 @@
 extends Node
 
 #Scene Links
-signal scene_link_entered(destination_reference, source)
+signal scene_link_entered(destination_reference)
 
 #Environment Rewards Receivers
 signal remove_node(signal_code)

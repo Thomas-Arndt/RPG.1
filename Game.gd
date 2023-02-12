@@ -9,21 +9,17 @@ func _ready():
 	Inventory.set_max_gold(100)
 	get_tree().get_nodes_in_group("Player")[0].global_position = WorldStats.player_spawn_vector
 	SignalBus.connect("scene_link_entered", self, "_on_Scene_Link_entered")
-	SignalBus.connect("scene_exited", self, "_on_Scene_exited")
 
 	
-func _on_Scene_Link_entered(destination_reference, source):
-	if not pause_signals:
-		pause_signals = true
-		if ResourceLoader.exists(destination_reference):
-			var origin = get_tree().get_nodes_in_group("World")[0]
-			origin.save_scene()
-			remove_child(origin)
-			origin.queue_free()
-			var destination = ResourceLoader.load(destination_reference).instance()
-			add_child(destination)
-			destination.load_scene()
-			var player = get_tree().get_nodes_in_group("Player")[0]
-			player.spawn_player()
-			pause_signals = false
+func _on_Scene_Link_entered(destination_reference):
+	if ResourceLoader.exists(destination_reference):
+		var origin = get_tree().get_nodes_in_group("World")[0]
+		origin.save_scene()
+		remove_child(origin)
+		origin.queue_free()
+		var destination = ResourceLoader.load(destination_reference).instance()
+		add_child(destination)
+		destination.load_scene()
+		var player = get_tree().get_nodes_in_group("Player")[0]
+		player.spawn_player()
 

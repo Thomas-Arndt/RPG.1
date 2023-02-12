@@ -114,7 +114,7 @@ var ItemResources = {
 	"SWORD": preload("res://Inventory/Items/Weapons/Swords/Sword.tres"),
 	"BOOTS": preload("res://Inventory/Items/Clothing/Boots.tres"),
 	"KEY": preload("res://Inventory/Items/Keys/Key.tres"),
-	"REDBERRY": preload("res://World/Forage/RedBerry.tres"),
+	"REDBERRY": preload("res://Inventory/Forage/RedBerry.tres"),
 }
 
 var ItemScenes = {

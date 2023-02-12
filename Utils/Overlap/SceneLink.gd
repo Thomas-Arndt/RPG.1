@@ -18,7 +18,7 @@ func _on_SceneLink_body_entered(body):
 	if active:
 		WorldStats.player_spawn_vector = exit_location
 		WorldStats.player_spawn_direction = exit_direction
-		SignalBus.emit_signal("scene_link_entered", destination_reference, self)
+		SignalBus.emit_signal("scene_link_entered", destination_reference)
 
 func _on_Update_Visibility_State(state):
 	if state == true:
