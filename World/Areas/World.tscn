@@ -1618,6 +1618,7 @@ quest_reference = ExtResource( 17 )
 
 [node name="Bill" parent="YSort/NPCs" instance=ExtResource( 23 )]
 position = Vector2( -783, 447 )
+show_green = false
 
 [node name="AnimationTree" parent="YSort/NPCs/Bill" index="4"]
 parameters/playback = SubResource( 150 )
