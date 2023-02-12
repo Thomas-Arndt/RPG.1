@@ -1,9 +1,5 @@
 extends Node
 
-#onready var world = $World
-#onready var ySort = $World/YSort
-#onready var player = $World/YSort/Player
-
 var pause_signals = false
 
 func _ready():
@@ -14,27 +10,9 @@ func _ready():
 	get_tree().get_nodes_in_group("Player")[0].global_position = WorldStats.player_spawn_vector
 	SignalBus.connect("scene_link_entered", self, "_on_Scene_Link_entered")
 	SignalBus.connect("scene_exited", self, "_on_Scene_exited")
-#	WorldStats.add_room_to_stack(world)
 
 	
 func _on_Scene_Link_entered(destination_reference, source):
-#	if not pause_signals:
-#		pause_signals = true
-#		var origin_scene = WorldStats.peek_top_of_room_stack()
-#		origin_scene.save_scene()
-#		remove_child(origin_scene)
-#		var destination = destination_reference.instance()
-#		add_child(destination)
-#		destination.load_scene()
-#		move_child(destination, 0)
-#		if WorldStats.peek_top_of_room_stack() == world:
-#			ySort.remove_child(player)
-#		else:
-#			origin_scene.remove_child(player)
-#		destination.add_child(player)
-#		player.spawn_player()
-#		WorldStats.add_room_to_stack(destination)
-#		pause_signals = false
 	if not pause_signals:
 		pause_signals = true
 		if ResourceLoader.exists(destination_reference):
@@ -48,24 +26,4 @@ func _on_Scene_Link_entered(destination_reference, source):
 			var player = get_tree().get_nodes_in_group("Player")[0]
 			player.spawn_player()
 			pause_signals = false
-		
-#func _on_Scene_exited():
-#	if not pause_signals:
-#		pause_signals = true
-#		var origin = WorldStats.remove_room_from_stack()
-#		origin.save_scene()
-#		origin.remove_child(player)
-#		remove_child(origin)
-#		origin.queue_free()
-#		if WorldStats.peek_top_of_room_stack() == world:
-#			ySort.add_child(player)
-#			ySort.move_child(player, 0)
-#			add_child(world)
-#			world.load_scene()
-#		else:
-#			var destination = WorldStats.peek_top_of_room_stack()
-#			destination.load_scene()
-#			destination.add_child(player)
-#			add_child(destination)
-#		player.spawn_player()
-#		pause_signals = false
+

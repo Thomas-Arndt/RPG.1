@@ -34,7 +34,6 @@ func set_max_gold(value):
 	emit_signal("max_gold_changed", value)
 
 func pick_up_item(item, quantity=1, index = null):
-	print(item)
 	var item_index = 0
 	if index != null:
 		item_index = index
