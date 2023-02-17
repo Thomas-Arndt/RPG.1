@@ -1365,11 +1365,11 @@ position = Vector2( -145, 787 )
 [node name="RockSmall3" parent="YSort/Rocks" instance=ExtResource( 34 )]
 position = Vector2( -304, 650 )
 
-[node name="RockLarge4" parent="YSort/Rocks" instance=ExtResource( 32 )]
-position = Vector2( -308, 676 )
-
-[node name="RemoveNodeReceiver" parent="YSort/Rocks/RockLarge4" instance=ExtResource( 35 )]
+[node name="RemoveNodeReceiver" parent="YSort/Rocks" instance=ExtResource( 35 )]
 signal_code = "bill_moves_rocks"
+
+[node name="RockLarge4" parent="YSort/Rocks/RemoveNodeReceiver" instance=ExtResource( 32 )]
+position = Vector2( -308, 676 )
 
 [node name="RockLarge5" parent="YSort/Rocks" instance=ExtResource( 32 )]
 position = Vector2( 369, 719 )
@@ -1609,7 +1609,7 @@ quest_reference = ExtResource( 17 )
 
 [node name="Bill" parent="YSort/NPCs" instance=ExtResource( 23 )]
 position = Vector2( -783, 447 )
-show_green = false
+show_red = false
 
 [node name="AnimationTree" parent="YSort/NPCs/Bill" index="4"]
 parameters/playback = SubResource( 150 )

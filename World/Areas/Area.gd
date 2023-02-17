@@ -55,7 +55,9 @@ func load_scene():
 						continue
 					if node is ForageNode:
 						node.forage(node_data["time_remaining"])
-					
+				if i == "triggered":
+					if node_data[i] and node is RemoveNodeReceiver:
+						node.remove_node(node.signal_code)
 				node.set(i, node_data[i])
 			
 	save_game.close()

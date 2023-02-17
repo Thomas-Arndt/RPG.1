@@ -89,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Crafting/Recipes/Recipe.gd"
 }, {
+"base": "Node",
+"class": "RemoveNodeReceiver",
+"language": "GDScript",
+"path": "res://Utils/Receivers/RemoveNodeReceiver.gd"
+}, {
 "base": "Area2D",
 "class": "SceneLink",
 "language": "GDScript",
@@ -131,6 +136,7 @@ _global_script_class_icons={
 "QuestObjective": "",
 "QuestSlayObjective": "",
 "Recipe": "",
+"RemoveNodeReceiver": "",
 "SceneLink": "",
 "SpawnController": "",
 "VoidBlob": "",

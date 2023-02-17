@@ -15,7 +15,6 @@ height = 6.0
 
 [node name="ForageWorldComponent" type="StaticBody2D" groups=["Persist"]]
 script = ExtResource( 1 )
-respawn_time = 30.0
 
 [node name="ShadowSprite" type="Sprite" parent="."]
 position = Vector2( -8.9407e-08, 0.4 )
