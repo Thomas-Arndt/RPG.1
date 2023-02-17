@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Inventory/Items/Item.gd"
 }, {
+"base": "YSort",
+"class": "ModifyPropertyReceiver",
+"language": "GDScript",
+"path": "res://Utils/Receivers/ModifyPropertyReceiver.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -129,6 +134,7 @@ _global_script_class_icons={
 "InProgressQuestAction": "",
 "InteractionZone": "",
 "Item": "",
+"ModifyPropertyReceiver": "",
 "Player": "",
 "Quest": "",
 "QuestInteractObjective": "",
