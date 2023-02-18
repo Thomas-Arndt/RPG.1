@@ -1,5 +1,7 @@
 extends Node2D
 
+export var active : bool = false
+
 var action = 0
 var triggered = false
 var player = null
@@ -12,8 +14,8 @@ func _ready():
 		actor.connect("release_player", self, "release_player")
 
 func _on_Area2D_area_entered(area):
-	player = area.get_parent().get_parent()
-	if not triggered:
+	if active and not triggered:
+		player = area.get_parent().get_parent()
 		player.paused(true)
 		action += 1
 		triggered = true
@@ -23,10 +25,15 @@ func _on_Area2D_area_entered(area):
 func _on_Actor_finished():
 	if len(actor_controllers.get_children()) > action:
 		action += 1
-	# Probably need to get rid of this when saving logic is added
-	else:	
-		queue_free()
 	
 func release_player():
 	player.paused(false)
 
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"path" : get_path(),
+		"active" : active,
+		"triggered": triggered
+	}
+	return save_dict

@@ -53,3 +53,8 @@ func monitorable_off():
 
 func _on_Timer_timeout():
 	update_target_position()
+
+func add_detection_zone(position):
+	var new_detection_zone = ResourceLoader.load("res://Utils/Overlap/DetectionZone.tscn").instance()
+	new_detection_zone.global_position = position
+	detection_zones.add_child(new_detection_zone)

@@ -2,7 +2,8 @@ extends "res://Utils/Controllers/CutSceneController.gd"
 
 
 func package_choreography():
-	choreography.append([ENTER, Vector2.ZERO])
+	choreography.append([ENTER, Vector2(-27, 685)])
+	choreography.append([CUSTOM, "initialize", []])
 	choreography.append([CUSTOM, "open_and_hold", []])
 	choreography.append([WAIT, 4])
 	choreography.append([CUSTOM, "close", []])
@@ -18,4 +19,9 @@ func custom_actions(action_name, args):
 			run_cut_scene()
 		"close":
 			actor.close()
+			run_cut_scene()
+		"initialize":
+			actor.spawn_with_cut_scene = true
+			actor.get_parent().move_child(actor, 0)
+			actor.match_dimension(WorldStats.DIMENSION)
 			run_cut_scene()

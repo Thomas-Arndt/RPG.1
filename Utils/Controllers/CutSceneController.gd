@@ -68,7 +68,7 @@ func enter_actor(position : Vector2) -> void:
 		actor.global_position = position
 		if actor.has_method("state_machine_pause"):
 			actor.state_machine_pause()
-		add_child(actor)
+		get_tree().get_nodes_in_group("Mobs")[0].add_child(actor)
 	else:
 		actor = get_node(actor_path)
 		if actor.has_method("state_machine_pause"):

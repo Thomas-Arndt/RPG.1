@@ -3,9 +3,10 @@ extends "res://Utils/Controllers/CutSceneController.gd"
 
 func package_choreography():
 	choreography.append([WAIT, 3])
-	choreography.append([ENTER, Vector2.ZERO])
+	choreography.append([ENTER, Vector2(-27, 680)])
+	choreography.append([CUSTOM, "initialize", []])
 	choreography.append([CUSTOM, "monitorable_off", []])
-	choreography.append([WAIT, 1.5])
+	#choreography.append([WAIT, 1.5])
 	choreography.append([MOVE_TO, Vector2(-80, 680), 1, "walk"])
 	var monologue = [
 		"Hello!"
@@ -46,6 +47,7 @@ func package_choreography():
 		"I mUsT hAvE iT!!!"
 	]
 	choreography.append([DIALOGUE, monologue, "Blib"])
+	choreography.append([CUSTOM, "set_detection_zones", []])
 	choreography.append([RELEASE_PLAYER])
 	choreography.append([CUSTOM, "monitorable_on", []])
 	choreography.append([RELEASE_ACTOR])
@@ -64,5 +66,19 @@ func custom_actions(action_name, args):
 			run_cut_scene()
 		"look_right":
 			actor.flip_sprite(1)
+			run_cut_scene()
+		"initialize":
+			actor.is_red = false
+			actor.spawn_with_cutscene = true
+			actor.match_dimension(WorldStats.DIMENSION)
+			run_cut_scene()
+		"set_detection_zones":
+			actor.wander_controller.add_detection_zone(Vector2(-56, -86))
+			actor.wander_controller.add_detection_zone(Vector2(106, -86))
+			actor.wander_controller.add_detection_zone(Vector2(256, -86))
+			actor.wander_controller.add_detection_zone(Vector2(-56, 72))
+			actor.wander_controller.add_detection_zone(Vector2(106, 72))
+			actor.wander_controller.add_detection_zone(Vector2(256, 72))
+			actor.wander_controller.update_target_position()
 			run_cut_scene()
 			

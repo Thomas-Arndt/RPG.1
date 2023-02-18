@@ -1,9 +1,8 @@
-[gd_scene load_steps=157 format=2]
+[gd_scene load_steps=142 format=2]
 
 [ext_resource path="res://Inventory/Forage/RedBerry.tres" type="Resource" id=1]
 [ext_resource path="res://Inventory/Forage/LeatherLeaf.tres" type="Resource" id=2]
 [ext_resource path="res://Inventory/Forage/WhiteCap.tres" type="Resource" id=3]
-[ext_resource path="res://Utils/Overlap/DetectionZone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Sprites/CliffTileset.png" type="Texture" id=5]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Sprites/sheet.png" type="Texture" id=7]
@@ -1081,98 +1080,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 1/z_index = 0
 
-[sub_resource type="Shader" id=152]
-code = "shader_type canvas_item;
-
-uniform bool active = false;
-
-	void fragment() {
-		vec4 previous_color = texture(TEXTURE, UV);
-		vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
-		vec4 new_color = previous_color;
-		if (active){
-			new_color = white_color;
-		}
-		COLOR = new_color;
-	}"
-
-[sub_resource type="ShaderMaterial" id=153]
-resource_local_to_scene = true
-shader = SubResource( 152 )
-shader_param/active = false
-
-[sub_resource type="Shader" id=154]
-code = "shader_type canvas_item;
-
-uniform bool active = false;
-
-	void fragment() {
-		vec4 previous_color = texture(TEXTURE, UV);
-		vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
-		vec4 new_color = previous_color;
-		if (active){
-			new_color = white_color;
-		}
-		COLOR = new_color;
-	}"
-
-[sub_resource type="ShaderMaterial" id=155]
-resource_local_to_scene = true
-shader = SubResource( 154 )
-shader_param/active = false
-
-[sub_resource type="Shader" id=156]
-code = "shader_type canvas_item;
-
-uniform bool active = false;
-
-	void fragment() {
-		vec4 previous_color = texture(TEXTURE, UV);
-		vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
-		vec4 new_color = previous_color;
-		if (active){
-			new_color = white_color;
-		}
-		COLOR = new_color;
-	}"
-
-[sub_resource type="ShaderMaterial" id=157]
-resource_local_to_scene = true
-shader = SubResource( 156 )
-shader_param/active = false
-
-[sub_resource type="Shader" id=158]
-code = "shader_type canvas_item;
-
-uniform bool active = false;
-
-	void fragment() {
-		vec4 previous_color = texture(TEXTURE, UV);
-		vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
-		vec4 new_color = previous_color;
-		if (active){
-			new_color = white_color;
-		}
-		COLOR = new_color;
-	}"
-
-[sub_resource type="ShaderMaterial" id=159]
-resource_local_to_scene = true
-shader = SubResource( 158 )
-shader_param/active = false
-
-[sub_resource type="CircleShape2D" id=160]
-
-[sub_resource type="CircleShape2D" id=161]
-
-[sub_resource type="CircleShape2D" id=162]
-
-[sub_resource type="CircleShape2D" id=163]
-
-[sub_resource type="CircleShape2D" id=164]
-
-[sub_resource type="CircleShape2D" id=165]
-
 [sub_resource type="AnimationNodeStateMachinePlayback" id=150]
 
 [sub_resource type="RectangleShape2D" id=151]
@@ -1369,7 +1276,7 @@ position = Vector2( -304, 650 )
 signal_code = "bill_moves_rocks"
 
 [node name="RockLarge4" parent="YSort/Rocks/RemoveNodeReceiver" instance=ExtResource( 32 )]
-position = Vector2( -308, 676 )
+position = Vector2( -314, 677 )
 
 [node name="RockLarge5" parent="YSort/Rocks" instance=ExtResource( 32 )]
 position = Vector2( 369, 719 )
@@ -1493,60 +1400,7 @@ show_green = false
 position = Vector2( 357, 554 )
 show_green = false
 
-[node name="MobileEnemies" type="YSort" parent="YSort"]
-
-[node name="VoidLord" parent="YSort/MobileEnemies" instance=ExtResource( 25 )]
-position = Vector2( -27, 680 )
-spawn_with_cutscene = true
-is_red = false
-
-[node name="RedSpriteFull" parent="YSort/MobileEnemies/VoidLord" index="1"]
-material = SubResource( 153 )
-
-[node name="RedSpriteHalf" parent="YSort/MobileEnemies/VoidLord" index="2"]
-material = SubResource( 155 )
-
-[node name="GrenSpriteFull" parent="YSort/MobileEnemies/VoidLord" index="3"]
-material = SubResource( 157 )
-
-[node name="GreenSpriteHalf" parent="YSort/MobileEnemies/VoidLord" index="4"]
-material = SubResource( 159 )
-
-[node name="DetectionZonePivot" parent="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones" index="0" instance=ExtResource( 4 )]
-position = Vector2( -56, -86 )
-
-[node name="CollisionShape2D" parent="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones/DetectionZonePivot/DetectionZone" index="0"]
-shape = SubResource( 160 )
-
-[node name="DetectionZonePivot2" parent="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones" index="1" instance=ExtResource( 4 )]
-position = Vector2( 106, 72 )
-
-[node name="CollisionShape2D" parent="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones/DetectionZonePivot2/DetectionZone" index="0"]
-shape = SubResource( 161 )
-
-[node name="DetectionZonePivot3" parent="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones" index="2" instance=ExtResource( 4 )]
-position = Vector2( 263, -86 )
-
-[node name="CollisionShape2D" parent="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones/DetectionZonePivot3/DetectionZone" index="0"]
-shape = SubResource( 162 )
-
-[node name="DetectionZonePivot4" parent="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones" index="3" instance=ExtResource( 4 )]
-position = Vector2( 263, 72 )
-
-[node name="CollisionShape2D" parent="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones/DetectionZonePivot4/DetectionZone" index="0"]
-shape = SubResource( 163 )
-
-[node name="DetectionZonePivot5" parent="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones" index="4" instance=ExtResource( 4 )]
-position = Vector2( 106, -86 )
-
-[node name="CollisionShape2D" parent="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones/DetectionZonePivot5/DetectionZone" index="0"]
-shape = SubResource( 164 )
-
-[node name="DetectionZonePivot6" parent="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones" index="5" instance=ExtResource( 4 )]
-position = Vector2( -56, 72 )
-
-[node name="CollisionShape2D" parent="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones/DetectionZonePivot6/DetectionZone" index="0"]
-shape = SubResource( 165 )
+[node name="MobileEnemies" type="YSort" parent="YSort" groups=["Mobs"]]
 
 [node name="SpawnController" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
 position = Vector2( 218, 337 )
@@ -1645,10 +1499,6 @@ locked = true
 position = Vector2( 79, 669 )
 signal_code = "blib_portal"
 new_node_reference = ExtResource( 31 )
-
-[node name="Portal" parent="YSort/Portals" instance=ExtResource( 31 )]
-position = Vector2( 7, 681 )
-spawn_with_cut_scene = true
 
 [node name="Forage" type="YSort" parent="YSort"]
 
@@ -1783,23 +1633,13 @@ shape = SubResource( 166 )
 
 [node name="Portal1Controller" parent="CutSceneTriggers/CutSceneTrigger/ActorControllers" index="0" instance=ExtResource( 27 )]
 script = ExtResource( 30 )
-actor_path = NodePath("../../../../YSort/Portals/Portal")
+actor_reference = ExtResource( 31 )
 
 [node name="VoidLord1Controller" parent="CutSceneTriggers/CutSceneTrigger/ActorControllers" index="1" instance=ExtResource( 27 )]
 script = ExtResource( 29 )
-actor_path = NodePath("../../../../YSort/MobileEnemies/VoidLord")
+actor_reference = ExtResource( 25 )
 
 [editable path="Camera2D"]
-[editable path="YSort/MobileEnemies/VoidLord"]
-[editable path="YSort/MobileEnemies/VoidLord/HurtBox"]
-[editable path="YSort/MobileEnemies/VoidLord/HitBox"]
-[editable path="YSort/MobileEnemies/VoidLord/DetectionWanderController"]
-[editable path="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones/DetectionZonePivot"]
-[editable path="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones/DetectionZonePivot2"]
-[editable path="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones/DetectionZonePivot3"]
-[editable path="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones/DetectionZonePivot4"]
-[editable path="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones/DetectionZonePivot5"]
-[editable path="YSort/MobileEnemies/VoidLord/DetectionWanderController/DetectionZones/DetectionZonePivot6"]
 [editable path="YSort/Signs/BulletinBoard"]
 [editable path="YSort/Signs/BulletinBoard/InteractionZone"]
 [editable path="YSort/Signs/BulletinBoard/PlayerDetectionZone"]
