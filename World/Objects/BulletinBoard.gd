@@ -1,12 +1,21 @@
 extends "res://World/Objects/StaticWorldComponent.gd"
 
+export var quest_bubble_active : bool = true
+
 onready var player_detection_zone = $PlayerDetectionZone
 onready var quest_bubble = $PlayerDetectionZone/QuestBubble/Sprite
 onready var actions = $InteractionZone/Actions
 
+var disable_process : bool = false
+
 func _process(delta):
-	seek_player()
-	quest_status()
+	if not disable_process:
+		if quest_bubble_active:
+			seek_player()
+			quest_status()
+		else:
+			quest_bubble.visible = false
+			disable_process = true
 
 func seek_player():
 	if player_detection_zone.can_see_player():

@@ -68,7 +68,6 @@ func save():
 	var save_dict = {
 		"filename" : get_filename(),
 		"path" : get_path(),
-
 		"gold" : gold,
 		"locked" : locked,
 		"active" : active,
