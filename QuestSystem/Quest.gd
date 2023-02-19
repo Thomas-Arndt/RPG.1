@@ -14,7 +14,6 @@ export var description: String
 export var startText: Array
 export var progressText: Array
 export var deliverText: Array
-export var is_chest: bool = false;
 
 export var reward_on_delivery: bool = false
 export var _reward_experience: int

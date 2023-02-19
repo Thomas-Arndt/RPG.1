@@ -6,7 +6,7 @@ func _ready():
 	PlayerStats.set_experience(0)
 	PlayerStats.set_player_level(1)
 	Inventory.set_gold(0)
-	Inventory.set_max_gold(100)
+	Inventory.set_max_gold(1000)
 	get_tree().get_nodes_in_group("Player")[0].global_position = WorldStats.player_spawn_vector
 	SignalBus.connect("scene_link_entered", self, "_on_Scene_Link_entered")
 
