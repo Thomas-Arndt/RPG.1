@@ -33,6 +33,7 @@ func load_scene():
 		return
 		
 	save_game.open(save_file, File.READ)
+	print(save_game.get_len())
 	while save_game.get_position() < save_game.get_len():
 		var node_data = parse_json(save_game.get_line())
 		
@@ -69,7 +70,7 @@ func update_scene(scene_name:String, node_path:String, property_name:String, val
 	if not save_game.file_exists(scene_save_location):
 		return
 		
-	save_game.open(scene_save_location, File.READ_WRITE)
+	save_game.open(scene_save_location, File.READ)
 	while save_game.get_position() < save_game.get_len():
 		var sava_data = save_game.get_line()
 		var node_data = parse_json(sava_data)
@@ -78,6 +79,8 @@ func update_scene(scene_name:String, node_path:String, property_name:String, val
 			node_data[property_name] = value
 		
 		write_stack.push_back(node_data)
+	save_game.close()
+	save_game.open(scene_save_location, File.WRITE)
 	while len(write_stack) > 0:
 		save_game.store_line(to_json(write_stack.pop_back()))
 	

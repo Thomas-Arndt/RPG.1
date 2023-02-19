@@ -4,6 +4,5 @@
 [ext_resource path="res://World/Objects/Buildings/HutFloor.gd" type="Script" id=2]
 
 [node name="HutFloor" type="Sprite"]
-position = Vector2( -749, 373 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://World/Areas/Terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -12,9 +12,15 @@
 [ext_resource path="res://World/Objects/Bush.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Objects/Shrub.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Utils/Controllers/SpawnController.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Inventory/Forage/RedBerry.tres" type="Resource" id=13]
+[ext_resource path="res://Inventory/Forage/ForageWorldComponent.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Inventory/Forage/WhiteCap.tres" type="Resource" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 73 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 64, 10 )
 
 [node name="FirstForest" type="Node2D" groups=["World"]]
 script = ExtResource( 4 )
@@ -358,6 +364,9 @@ position = Vector2( 847, -949 )
 [node name="Shrub25" parent="YSort/Shrubs" instance=ExtResource( 11 )]
 position = Vector2( 371, -657 )
 
+[node name="Shrub26" parent="YSort/Shrubs" instance=ExtResource( 11 )]
+position = Vector2( -178, -721 )
+
 [node name="MobileEnemies" type="YSort" parent="YSort"]
 
 [node name="SpawnController" parent="YSort/MobileEnemies" instance=ExtResource( 12 )]
@@ -380,6 +389,7 @@ spawn_unit = ExtResource( 7 )
 [node name="SpawnController5" parent="YSort/MobileEnemies" instance=ExtResource( 12 )]
 position = Vector2( 864, -639 )
 spawn_unit = ExtResource( 7 )
+spawn_quantity = 2
 
 [node name="SpawnController6" parent="YSort/MobileEnemies" instance=ExtResource( 12 )]
 position = Vector2( 422, -916 )
@@ -393,6 +403,29 @@ position = Vector2( -50, -568 )
 [node name="ChestAction" parent="YSort/Chests/LargeChest/InteractionZone/Actions" index="0"]
 items = [ ExtResource( 8 ) ]
 
+[node name="Forage" type="YSort" parent="YSort"]
+
+[node name="ForageWorldComponent" parent="YSort/Forage" instance=ExtResource( 14 )]
+position = Vector2( 789, -300 )
+forage_item = ExtResource( 13 )
+
+[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent/InteractionZone/Actions" index="0"]
+forage_items = [ ExtResource( 13 ) ]
+
+[node name="ForageWorldComponent2" parent="YSort/Forage" instance=ExtResource( 14 )]
+position = Vector2( 420, -632 )
+forage_item = ExtResource( 15 )
+
+[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent2/InteractionZone/Actions" index="0"]
+forage_items = [ ExtResource( 15 ) ]
+
+[node name="ForageWorldComponent3" parent="YSort/Forage" instance=ExtResource( 14 )]
+position = Vector2( -213, -733 )
+forage_item = ExtResource( 13 )
+
+[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent3/InteractionZone/Actions" index="0"]
+forage_items = [ ExtResource( 13 ) ]
+
 [node name="SceneLinks" type="Node2D" parent="."]
 
 [node name="BillsFarm" parent="SceneLinks" instance=ExtResource( 5 )]
@@ -404,8 +437,23 @@ exit_direction = Vector2( -1, 0 )
 [node name="CollisionShape2D" parent="SceneLinks/BillsFarm" index="0"]
 shape = SubResource( 1 )
 
+[node name="TinyTown" parent="SceneLinks" instance=ExtResource( 5 )]
+position = Vector2( 689, -1276 )
+destination_reference = "res://World/Areas/TinyTown.tscn"
+exit_location = Vector2( -80, 215 )
+
+[node name="CollisionShape2D" parent="SceneLinks/TinyTown" index="0"]
+shape = SubResource( 2 )
+
 [editable path="Terrain"]
 [editable path="Camera2D"]
 [editable path="YSort/Chests/LargeChest"]
 [editable path="YSort/Chests/LargeChest/InteractionZone"]
+[editable path="YSort/Forage/ForageWorldComponent"]
+[editable path="YSort/Forage/ForageWorldComponent/InteractionZone"]
+[editable path="YSort/Forage/ForageWorldComponent2"]
+[editable path="YSort/Forage/ForageWorldComponent2/InteractionZone"]
+[editable path="YSort/Forage/ForageWorldComponent3"]
+[editable path="YSort/Forage/ForageWorldComponent3/InteractionZone"]
 [editable path="SceneLinks/BillsFarm"]
+[editable path="SceneLinks/TinyTown"]
