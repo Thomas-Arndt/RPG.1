@@ -7,7 +7,7 @@ func _ready():
 	assert(save_file)
 
 func set_save_file():
-	pass
+	save_file = "res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]
 
 func save_scene():
 	var save_game = File.new()

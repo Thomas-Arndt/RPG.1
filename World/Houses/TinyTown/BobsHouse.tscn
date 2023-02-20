@@ -1,20 +1,20 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://World/Houses/HutInterior.png" type="Texture" id=1]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/Houses/HutInterior.png" type="Texture" id=3]
 [ext_resource path="res://World/Areas/Area.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18, 10 )
 
-[node name="TinyTown_GeneralStore" type="StaticBody2D" groups=["World"]]
+[node name="TinyTown_BobsHouse" type="StaticBody2D" groups=["World"]]
 script = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
@@ -26,15 +26,15 @@ position = Vector2( 158, 90 )
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Player" parent="YSort" instance=ExtResource( 2 )]
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 158, 151 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
-[node name="TinyTown" parent="SceneLinks" instance=ExtResource( 3 )]
+[node name="TinyTown" parent="SceneLinks" instance=ExtResource( 2 )]
 position = Vector2( 157, 191 )
 destination_reference = "res://World/Areas/TinyTown.tscn"
-exit_location = Vector2( 82, 80 )
+exit_location = Vector2( 238, 80 )
 
 [node name="CollisionShape2D" parent="SceneLinks/TinyTown" index="0"]
 shape = SubResource( 1 )
