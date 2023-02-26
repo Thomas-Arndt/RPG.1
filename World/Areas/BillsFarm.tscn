@@ -1,8 +1,9 @@
-[gd_scene load_steps=142 format=2]
+[gd_scene load_steps=143 format=2]
 
 [ext_resource path="res://Inventory/Forage/RedBerry.tres" type="Resource" id=1]
 [ext_resource path="res://QuestSystem/Quests/message-from-bill.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Inventory/Forage/WhiteCap.tres" type="Resource" id=3]
+[ext_resource path="res://World/Portals/Portal1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Sprites/CliffTileset.png" type="Texture" id=5]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Sprites/sheet.png" type="Texture" id=7]
@@ -1274,10 +1275,11 @@ position = Vector2( -145, 787 )
 position = Vector2( -304, 650 )
 
 [node name="RemoveNodeReceiver" parent="YSort/Rocks" instance=ExtResource( 35 )]
+position = Vector2( -42, 27 )
 signal_code = "bill_moves_rocks"
 
 [node name="RockLarge4" parent="YSort/Rocks/RemoveNodeReceiver" instance=ExtResource( 32 )]
-position = Vector2( -314, 677 )
+position = Vector2( -274, 651 )
 
 [node name="RockLarge5" parent="YSort/Rocks" instance=ExtResource( 32 )]
 position = Vector2( 369, 719 )
@@ -1498,9 +1500,9 @@ locked = true
 [node name="Portals" type="YSort" parent="YSort"]
 
 [node name="BlibPortal" parent="YSort/Portals" instance=ExtResource( 36 )]
-position = Vector2( 79, 669 )
+position = Vector2( 80, 670 )
 signal_code = "blib_portal"
-new_node_reference = ExtResource( 31 )
+new_node_reference = ExtResource( 4 )
 
 [node name="Forage" type="YSort" parent="YSort"]
 
@@ -1557,10 +1559,9 @@ shape = SubResource( 167 )
 [node name="CutSceneTriggers" type="Node2D" parent="."]
 
 [node name="CutSceneTrigger" parent="CutSceneTriggers" instance=ExtResource( 28 )]
-position = Vector2( -27, 680 )
+position = Vector2( -108, 676 )
 
 [node name="CollisionShape2D" parent="CutSceneTriggers/CutSceneTrigger/TriggerArea" index="0"]
-position = Vector2( -87, -12 )
 shape = SubResource( 166 )
 
 [node name="Portal1Controller" parent="CutSceneTriggers/CutSceneTrigger/ActorControllers" index="0" instance=ExtResource( 27 )]

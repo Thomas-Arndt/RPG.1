@@ -11,15 +11,15 @@ func _ready():
 	WorldStats.connect("dimension_shift", self, "match_dimension")
 
 func match_dimension(state):
-	if state == true and show_red == true:
+	if state == WorldStats.Dimensions.Red and show_red == true:
 		sprite.visible = true
 		collision_shape.set_deferred("disabled", false)
-	elif state == true and show_red == false:
+	elif state == WorldStats.Dimensions.Red and show_red == false:
 		sprite.visible = false
 		collision_shape.set_deferred("disabled", true)
-	elif state == false and show_green == true:
+	elif state == WorldStats.Dimensions.Green and show_green == true:
 		sprite.visible = true
 		collision_shape.set_deferred("disabled", false)
-	elif state == false and show_green == false:
+	elif state == WorldStats.Dimensions.Green and show_green == false:
 		sprite.visible = false
 		collision_shape.set_deferred("disabled", true)

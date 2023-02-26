@@ -10,7 +10,6 @@ export (NodePath) var paired_object = null
 var active: bool = true
 
 func _ready():
-	assert(destination_reference)
 	if paired_object != null:
 		get_node(paired_object).connect("set_Scene_Link_Active", self, "_on_Update_Visibility_State")
 

@@ -14,7 +14,7 @@ reward_on_delivery = true
 _reward_gold = 50
 
 [node name="UpdateSaveProperty" parent="EnvironmentRewards" index="0" instance=ExtResource( 2 )]
-scene_name = "World"
+scene_name = "BillsFarm"
 node_path = "/root/Game/BillsFarm/CutSceneTriggers/CutSceneTrigger"
 property_name = "active"
 value = [ true ]

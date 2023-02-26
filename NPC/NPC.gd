@@ -116,28 +116,28 @@ func quest_status():
 			quest_bubble.region_rect.position = Vector2(128, 128)
 
 func match_dimension(state):
-	if state == true and show_red == true:
+	if state == WorldStats.Dimensions.Red and show_red == true:
 		active = true
 		sprite.visible = true
 		shadow.visible = true
 		player_detection_zone.set_deferred("monitoring", true)
 		interaction_zone.set_deferred("monitorable", true)
 		collision_shape.set_deferred("disabled", false)
-	elif state == true and show_red == false:
+	elif state == WorldStats.Dimensions.Red and show_red == false:
 		active = false
 		sprite.visible = false
 		shadow.visible = false
 		player_detection_zone.set_deferred("monitoring", false)
 		interaction_zone.set_deferred("monitorable", false)
 		collision_shape.set_deferred("disabled", true)
-	elif state == false and show_green == true:
+	elif state == WorldStats.Dimensions.Green and show_green == true:
 		active = true
 		sprite.visible = true
 		shadow.visible = true
 		player_detection_zone.set_deferred("monitoring", true)
 		interaction_zone.set_deferred("monitorable", true)
 		collision_shape.set_deferred("disabled", false)
-	elif state == false and show_green == false:
+	elif state == WorldStats.Dimensions.Green and show_green == false:
 		active = false
 		sprite.visible = false
 		shadow.visible = false

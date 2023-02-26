@@ -3,8 +3,8 @@ extends "res://Enemies/VoidBlob.gd"
 const DeathEffect = preload("res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn")
 const masterScene: PackedScene = preload("res://Enemies/VoidBlob.tscn")
 
-func match_dimension(state):
-	if state == true:
+func match_dimension(dimension):
+	if dimension != WorldStats.Dimensions.Green:
 		full_sprite.visible = false
 		hurt_box.monitorable = false
 		hurt_box.monitoring = false
@@ -14,7 +14,7 @@ func match_dimension(state):
 		hurt_box.monitoring = true
 		
 func get_dimension():
-	return true
+	return WorldStats.Dimensions.Green
 
 func death_animation():
 	var death_effect = DeathEffect.instance()

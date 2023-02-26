@@ -33,7 +33,7 @@ func load_scene():
 		return
 		
 	save_game.open(save_file, File.READ)
-	print(save_game.get_len())
+
 	while save_game.get_position() < save_game.get_len():
 		var node_data = parse_json(save_game.get_line())
 		
@@ -59,6 +59,11 @@ func load_scene():
 				if i == "triggered":
 					if node_data[i] and node is RemoveNodeReceiver:
 						node.remove_node(node.signal_code)
+					if node_data[i] and node is AddNodeReceiver:
+						var new_node = node.add_node_to(node.signal_code)
+						if new_node is PortalNode:
+							new_node.anim_player.stop()
+							new_node.anim_player.play("holding")
 				node.set(i, node_data[i])
 			
 	save_game.close()
@@ -66,7 +71,7 @@ func load_scene():
 func update_scene(scene_name:String, node_path:String, property_name:String, value):
 	var write_stack : Array = []
 	var save_game = File.new()
-	var scene_save_location = "res://Saves/%s.save" % scene_name
+	var scene_save_location = "res://Saves/%s/%s.save" % [WorldStats.save_block, scene_name]
 	if not save_game.file_exists(scene_save_location):
 		return
 		

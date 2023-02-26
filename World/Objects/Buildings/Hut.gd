@@ -19,25 +19,25 @@ func _ready():
 	WorldStats.connect("dimension_shift", self, "match_dimension")
 	
 func match_dimension(state):
-	if state == true and show_red == true:
+	if state == WorldStats.Dimensions.Red and show_red == true:
 		red_sprite.visible = true
 		green_sprite.visible = false
 		shadow_sprite.visible = true
 		collision_shape.set_deferred("disabled", false)
 		emit_signal("set_Scene_Link_Active", true)
-	elif state == true and show_red == false:
+	elif state == WorldStats.Dimensions.Red and show_red == false:
 		red_sprite.visible = false
 		green_sprite.visible = false
 		shadow_sprite.visible = false
 		collision_shape.set_deferred("disabled", true)
 		emit_signal("set_Scene_Link_Active", false)
-	elif state == false and show_green == true:
+	elif state == WorldStats.Dimensions.Green and show_green == true:
 		red_sprite.visible = false
 		green_sprite.visible = true
 		shadow_sprite.visible = true
 		collision_shape.set_deferred("disabled", false)
 		emit_signal("set_Scene_Link_Active", true)
-	elif state == false and show_green == false:
+	elif state == WorldStats.Dimensions.Green and show_green == false:
 		red_sprite.visible = false
 		green_sprite.visible = false
 		shadow_sprite.visible = false

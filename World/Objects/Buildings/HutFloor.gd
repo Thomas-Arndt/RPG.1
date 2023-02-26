@@ -8,11 +8,11 @@ func _ready():
 	WorldStats.connect("dimension_shift", self, "match_dimension")
 
 func match_dimension(state):
-	if state == true and show_red == true:
+	if state == WorldStats.Dimensions.Red and show_red == true:
 		self.visible = true
-	elif state == true and show_red == false:
+	elif state == WorldStats.Dimensions.Red and show_red == false:
 		self.visible = false
-	elif state == false and show_green == true:
+	elif state == WorldStats.Dimensions.Green and show_green == true:
 		self.visible = true
-	elif state == false and show_green == false:
+	elif state == WorldStats.Dimensions.Green and show_green == false:
 		self.visible = false

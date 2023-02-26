@@ -78,15 +78,15 @@ func match_dimension(state):
 	hurt_box.monitorable = false
 	hurt_box.monitoring = false
 	
-	if state == true and is_red:
+	if state == WorldStats.Dimensions.Red and is_red:
 		red_sprite_full.visible = true
 		hurt_box.monitorable = true
 		hurt_box.monitoring = true
-	elif state == false and is_red:
+	elif state == WorldStats.Dimensions.Green and is_red:
 		red_sprite_half.visible = true
-	elif state == true and not is_red:
+	elif state == WorldStats.Dimensions.Red and not is_red:
 		green_sprite_half.visible = true
-	elif state == false and not is_red:
+	elif state == WorldStats.Dimensions.Green and not is_red:
 		green_sprite_full.visible = true
 		hurt_box.monitorable = true
 		hurt_box.monitoring = true

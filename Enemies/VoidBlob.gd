@@ -84,11 +84,11 @@ func _physics_process(delta):
 			if velocity == Vector2.ZERO:
 				hit_box.damage = 3
 				if WorldStats.DIMENSION == get_dimension():
-					full_attack_sprite.visible = false
-					half_attack_sprite.visible = true
-				else:
 					full_attack_sprite.visible = true
 					half_attack_sprite.visible = false
+				else:
+					full_attack_sprite.visible = false
+					half_attack_sprite.visible = true
 				attack_anim_player.play("explosion")
 		
 	if soft_collision.is_colliding():

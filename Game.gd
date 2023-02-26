@@ -13,6 +13,8 @@ func _ready():
 	
 func _on_Scene_Link_entered(destination_reference):
 	if ResourceLoader.exists(destination_reference):
+		TransitionLayer.scene_out()
+		yield(TransitionLayer, "finished")
 		var origin = get_tree().get_nodes_in_group("World")[0]
 		origin.save_scene()
 		remove_child(origin)
@@ -22,4 +24,7 @@ func _on_Scene_Link_entered(destination_reference):
 		destination.load_scene()
 		var player = get_tree().get_nodes_in_group("Player")[0]
 		player.spawn_player()
+		yield(get_tree().create_timer(1.0), "timeout")
+		TransitionLayer.scene_in()
+		yield(TransitionLayer, "finished")
 
