@@ -3,7 +3,7 @@
 [ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://QuestSystem/Objectives/QuestInteractObjective.tscn" type="PackedScene" id=2]
 
-[node name="interact-chip-bill" instance=ExtResource( 1 )]
+[node name="bills-flyer" instance=ExtResource( 1 )]
 title = "Meet Bill"
 startText = [ "             ~~ In Need of Help! ~~", "My land is overrun with void blobs! Find me at my house if you are able to help.   Bill" ]
 progressText = [ "             ~~ In Need of Help! ~~", "My land is overrun with void blobs! Find me at my house if you are able to help.   Bill" ]

@@ -57,3 +57,11 @@ func get_rewards_as_text() -> Array:
 	text.append(" - Experience: " + str(_reward_experience) + "\n - Gold: " + str(_reward_gold) )
 	#for item in _reward_items.get_children():
 	return text 
+
+func save() -> Dictionary:
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"name" : get_name(),
+	}
+	return save_dict

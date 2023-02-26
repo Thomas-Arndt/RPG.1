@@ -52,7 +52,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "scene_in"
-length = 0.5
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
@@ -60,7 +60,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -72,7 +72,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.05 ]
@@ -84,7 +84,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.5 ),
+"times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -94,7 +94,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "scene_out"
-length = 0.5
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
@@ -114,7 +114,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 1.05, 0.0 ]
@@ -126,7 +126,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.5 ),
+"times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -134,7 +134,7 @@ tracks/2/keys = {
 } ]
 }
 
-[node name="CircleTransition" type="CanvasLayer"]
+[node name="Transition" type="CanvasLayer"]
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]

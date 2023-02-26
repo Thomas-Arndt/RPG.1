@@ -8,6 +8,8 @@ func _ready():
 	Inventory.set_gold(0)
 	Inventory.set_max_gold(1000)
 	get_tree().get_nodes_in_group("Player")[0].global_position = WorldStats.player_spawn_vector
+	QuestSystem.load_quest_progress()
+	get_tree().get_nodes_in_group("World")[0].load_scene()
 	SignalBus.connect("scene_link_entered", self, "_on_Scene_Link_entered")
 
 	

@@ -21,17 +21,51 @@ func start(reference: Quest):
 		available_quests.remove_child(quest)
 		active_quests.add_child(quest)
 		quest._start()
+		save_quest_progress()
 
 func _on_Quest_completed(quest):
 	active_quests.remove_child(quest)
 	completed_quests.add_child(quest)
+	save_quest_progress()
 
 func deliver(quest: Quest):
 	var rewards = quest.get_rewards()
 	completed_quests.remove_child(quest)
 	delivered_quests.add_child(quest)
 	quest._deliver()
+	save_quest_progress()
 	PlayerStats.change_experience(rewards.experience)
 	Inventory.change_gold(rewards.gold)
 	for item in rewards.items:
 		Inventory.pick_up_item(item.item, item.quantity)
+
+func save_quest_progress():
+	var save_game = File.new()
+	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.WRITE)
+	var save_nodes = get_tree().get_nodes_in_group("QuestPersist")
+	for node in save_nodes:
+		if node.filename.empty():
+			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
+			continue
+		if !node.has_method("save"):
+			print("persistent node '%s' is missing a save() function, skipped" % node.name)
+			continue
+		var node_data = node.call("save")
+		save_game.store_line(to_json(node_data))
+	save_game.close()
+	get_tree().get_nodes_in_group("World")[0].save_scene()
+
+func load_quest_progress():
+	var save_game = File.new()
+	if not save_game.file_exists("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]):
+		return
+	var save_nodes = get_tree().get_nodes_in_group("QuestPersist")
+	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
+	while save_game.get_position() < save_game.get_len():
+		var node_data = parse_json(save_game.get_line())
+		for quest in available_quests.get_children():
+			if quest.get_name() == node_data["name"]:
+				available_quests.remove_child(quest)
+				get_node(node_data["parent"]).add_child(quest)
+				break
+	save_game.close()
