@@ -41,7 +41,7 @@ func pick_up_item(item, quantity=1, index = null):
 		item_index = pick_up_index(item)
 	if inventory[item_index] == null:
 		var previousItem = inventory[item_index]
-		inventory[item_index] = item.duplicate()
+		inventory[item_index] = item
 		inventory[item_index].quantity = quantity
 		emit_signal("item_changed", [item_index])
 		return previousItem
@@ -106,6 +106,43 @@ func get_item_index(item) -> int:
 		if inventory[index] != null and inventory[index].type == item.type && inventory[index].name == item.name:
 			return index
 	return -1
+	
+func save_inventory():
+	var inventory_resources_array : Array = []
+	print(inventory)
+	for slot in inventory:
+		if slot != null:
+			inventory_resources_array.append(slot.get_path())
+		else:
+			inventory_resources_array.append(null)
+	var save_game = File.new()
+	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.WRITE)
+	var node_data = {
+		"gold" : gold,
+		"max_gold" : max_gold,
+		"inventory" : inventory_resources_array
+	}
+	save_game.store_line(to_json(node_data))
+	save_game.close()
+
+func load_inventory():
+	var save_game = File.new()
+	if not save_game.file_exists("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]):
+		return
+	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
+	var node_data = parse_json(save_game.get_line())
+	for i in node_data.keys():
+		if i == "inventory":
+			for index in len(node_data[i]):
+				if node_data[i][index] != null:
+					inventory[index] = ResourceLoader.load(node_data[i][index])
+				else: 
+					inventory[index] = null
+				emit_signal("item_changed", [index])
+			continue
+		else:
+			set(i, node_data[i])
+	save_game.close()
 
 var ItemResources = {
 	"MINOR_RED": preload("res://Inventory/Items/Potions/Red/red_minor.tres"),
@@ -115,6 +152,10 @@ var ItemResources = {
 	"BOOTS": preload("res://Inventory/Items/Clothing/Boots.tres"),
 	"KEY": preload("res://Inventory/Items/Keys/Key.tres"),
 	"REDBERRY": preload("res://Inventory/Forage/RedBerry.tres"),
+	"BLUEBELL": preload("res://Inventory/Forage/BlueBell.tres"),
+	"LEATHERLEAF": preload("res://Inventory/Forage/LeatherLeaf.tres"),
+	"SILVERTHORN": preload("res://Inventory/Forage/Silverthorn.tres"),
+	"WHITECAP": preload("res://Inventory/Forage/WhiteCap.tres"),
 }
 
 var ItemScenes = {

@@ -11,6 +11,7 @@ func _ready():
 	QuestSystem.load_quest_progress()
 	get_tree().get_nodes_in_group("World")[0].load_scene()
 	SignalBus.connect("scene_link_entered", self, "_on_Scene_Link_entered")
+	Inventory.load_inventory()
 
 	
 func _on_Scene_Link_entered(destination_reference):
@@ -20,6 +21,7 @@ func _on_Scene_Link_entered(destination_reference):
 		yield(TransitionLayer, "finished")
 		var origin = get_tree().get_nodes_in_group("World")[0]
 		origin.save_scene()
+		Inventory.save_inventory()
 		remove_child(origin)
 		origin.queue_free()
 		var destination = ResourceLoader.load(destination_reference).instance()

@@ -10,6 +10,7 @@ export (int) var heal = 0
 export (int) var damage = 0
 
 var quantity: int = 1
+var path : String
 
 func action(player = null):
 	match type:
