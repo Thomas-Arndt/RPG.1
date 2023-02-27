@@ -67,4 +67,5 @@ func _on_Portal_body_entered(body):
 					WorldStats.set_dimension(WorldStats.Dimensions.Green)
 				WorldStats.player_spawn_vector = from_between_exit_location
 				WorldStats.player_spawn_direction = from_between_exit_direction
+		WorldStats.set_last_loaded_scene(destination_reference)
 		SignalBus.emit_signal("scene_link_entered", destination_reference)

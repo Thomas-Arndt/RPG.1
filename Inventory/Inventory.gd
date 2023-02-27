@@ -109,7 +109,6 @@ func get_item_index(item) -> int:
 	
 func save_inventory():
 	var inventory_resources_array : Array = []
-	print(inventory)
 	for slot in inventory:
 		if slot != null:
 			inventory_resources_array.append(slot.get_path())

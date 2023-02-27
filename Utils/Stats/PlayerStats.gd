@@ -54,3 +54,25 @@ func has_weapon_equipped():
 		if Inventory.inventory[i] != null and Inventory.inventory[i].type == "weapon":
 			return true
 	return false
+
+func save_stats():
+	var save_game = File.new()
+	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.WRITE)
+	var node_data = {
+		"max_health" : max_health,
+		"health" : health,
+		"experience" : experience,
+		"playerLevel" : playerLevel
+	}
+	save_game.store_line(to_json(node_data))
+	save_game.close()
+
+func load_stats():
+	var save_game = File.new()
+	if not save_game.file_exists("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]):
+		return
+	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
+	var node_data = parse_json(save_game.get_line())
+	for i in node_data.keys():
+		set(i, node_data[i])
+	save_game.close()
