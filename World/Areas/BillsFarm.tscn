@@ -1089,8 +1089,8 @@ extents = Vector2( 8, 6.5 )
 [sub_resource type="RectangleShape2D" id=167]
 extents = Vector2( 10, 68.5 )
 
-[sub_resource type="RectangleShape2D" id=166]
-extents = Vector2( 10, 177.5 )
+[sub_resource type="CircleShape2D" id=168]
+radius = 126.254
 
 [node name="BillsFarm" type="Node2D" groups=["World"]]
 script = ExtResource( 37 )
@@ -1403,6 +1403,120 @@ show_green = false
 position = Vector2( 357, 554 )
 show_green = false
 
+[node name="RockLarge14" parent="YSort/Rocks" instance=ExtResource( 32 )]
+position = Vector2( -108, 817 )
+
+[node name="RockLarge15" parent="YSort/Rocks" instance=ExtResource( 32 )]
+position = Vector2( -28, 795 )
+
+[node name="RockLarge16" parent="YSort/Rocks" instance=ExtResource( 32 )]
+position = Vector2( 121, 803 )
+
+[node name="RockLarge17" parent="YSort/Rocks" instance=ExtResource( 32 )]
+position = Vector2( 220, 819 )
+
+[node name="RockLarge18" parent="YSort/Rocks" instance=ExtResource( 32 )]
+position = Vector2( 271, 817 )
+
+[node name="RockLarge19" parent="YSort/Rocks" instance=ExtResource( 32 )]
+position = Vector2( 302, 628 )
+
+[node name="RockLarge20" parent="YSort/Rocks" instance=ExtResource( 32 )]
+position = Vector2( 222, 524 )
+
+[node name="RockLarge21" parent="YSort/Rocks" instance=ExtResource( 32 )]
+position = Vector2( 66, 520 )
+
+[node name="RockLarge22" parent="YSort/Rocks" instance=ExtResource( 32 )]
+position = Vector2( 31, 521 )
+
+[node name="RockLarge23" parent="YSort/Rocks" instance=ExtResource( 32 )]
+position = Vector2( -110, 526 )
+
+[node name="RockMedium14" parent="YSort/Rocks" instance=ExtResource( 33 )]
+position = Vector2( -40, 808 )
+
+[node name="RockMedium15" parent="YSort/Rocks" instance=ExtResource( 33 )]
+position = Vector2( 152, 806 )
+
+[node name="RockMedium16" parent="YSort/Rocks" instance=ExtResource( 33 )]
+position = Vector2( 247, 803 )
+
+[node name="RockMedium17" parent="YSort/Rocks" instance=ExtResource( 33 )]
+position = Vector2( 259, 705 )
+
+[node name="RockMedium18" parent="YSort/Rocks" instance=ExtResource( 33 )]
+position = Vector2( 188, 521 )
+
+[node name="RockMedium19" parent="YSort/Rocks" instance=ExtResource( 33 )]
+position = Vector2( 54, 530 )
+
+[node name="RockMedium20" parent="YSort/Rocks" instance=ExtResource( 33 )]
+position = Vector2( 1, 518 )
+
+[node name="RockMedium21" parent="YSort/Rocks" instance=ExtResource( 33 )]
+position = Vector2( -61, 551 )
+
+[node name="RockMedium22" parent="YSort/Rocks" instance=ExtResource( 33 )]
+position = Vector2( -103, 718 )
+
+[node name="RockMedium23" parent="YSort/Rocks" instance=ExtResource( 33 )]
+position = Vector2( 253, 594 )
+
+[node name="RockMedium24" parent="YSort/Rocks" instance=ExtResource( 33 )]
+position = Vector2( 214, 780 )
+
+[node name="RockSmall24" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( -1, 793 )
+
+[node name="RockSmall25" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( -10, 804 )
+
+[node name="RockSmall26" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( 141, 788 )
+
+[node name="RockSmall27" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( 131, 822 )
+
+[node name="RockSmall28" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( 108, 820 )
+
+[node name="RockSmall29" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( 265, 689 )
+
+[node name="RockSmall30" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( 259, 609 )
+
+[node name="RockSmall31" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( 260, 580 )
+
+[node name="RockSmall32" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( 13, 549 )
+
+[node name="RockSmall33" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( 197, 541 )
+
+[node name="RockSmall34" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( -147, 552 )
+
+[node name="RockSmall35" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( -122, 548 )
+
+[node name="RockSmall36" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( -78, 568 )
+
+[node name="RockSmall37" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( -139, 631 )
+
+[node name="RockSmall38" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( -124, 617 )
+
+[node name="RockSmall39" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( 128, 560 )
+
+[node name="RockSmall40" parent="YSort/Rocks" instance=ExtResource( 34 )]
+position = Vector2( 49, 822 )
+
 [node name="MobileEnemies" type="YSort" parent="YSort" groups=["Mobs"]]
 
 [node name="SpawnController" parent="YSort/MobileEnemies" instance=ExtResource( 38 )]
@@ -1559,10 +1673,11 @@ shape = SubResource( 167 )
 [node name="CutSceneTriggers" type="Node2D" parent="."]
 
 [node name="CutSceneTrigger" parent="CutSceneTriggers" instance=ExtResource( 28 )]
-position = Vector2( -108, 676 )
+position = Vector2( 80, 670 )
 
 [node name="CollisionShape2D" parent="CutSceneTriggers/CutSceneTrigger/TriggerArea" index="0"]
-shape = SubResource( 166 )
+visible = false
+shape = SubResource( 168 )
 
 [node name="Portal1Controller" parent="CutSceneTriggers/CutSceneTrigger/ActorControllers" index="0" instance=ExtResource( 27 )]
 script = ExtResource( 30 )

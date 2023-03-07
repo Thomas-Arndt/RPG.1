@@ -4,7 +4,7 @@ class_name PortalNode
 export var is_red : bool = false
 export var is_green : bool = true
 export var show_both : bool = false
-export var active : bool = true
+export var active : bool = false
 export (String) var destination_reference
 export (Vector2) var from_red_exit_location = Vector2.ZERO
 export (Vector2) var from_red_exit_direction = Vector2.DOWN

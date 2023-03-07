@@ -3,7 +3,7 @@ extends Node
 signal dimension_shift(value)
 
 var DIMENSION : int = Dimensions.Green
-var last_loaded_scene : String
+var last_loaded_scene : String = ""
 
 var player_spawn_vector: Vector2 = Vector2(270, 165)
 var player_spawn_direction: Vector2 = Vector2.DOWN
@@ -27,9 +27,12 @@ func save_stats():
 	var save_game = File.new()
 	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.WRITE)
 	var node_data = {
+		"DIMENSION" : DIMENSION,
+		"player_spawn_vector_x" : player_spawn_vector.x,
+		"player_spawn_vector_y" : player_spawn_vector.y,
+		"player_spawn_direction_x" : player_spawn_direction.x,
+		"player_spawn_direction_y" : player_spawn_direction.y,
 		"last_loaded_scene" : last_loaded_scene,
-		"player_spawn_vector" : player_spawn_vector,
-		"player_spawn_direction" : player_spawn_direction
 	}
 	save_game.store_line(to_json(node_data))
 	save_game.close()
@@ -41,7 +44,21 @@ func load_stats():
 	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
 	var node_data = parse_json(save_game.get_line())
 	for i in node_data.keys():
-		set(i, node_data[i])
+		print(node_data[i])
+		match i:
+			"player_spawn_vector_x":
+				player_spawn_vector.x = node_data[i]
+				continue
+			"player_spawn_vector_y":
+				player_spawn_vector.y = node_data[i]
+				continue
+			"player_spawn_direction_x":
+				player_spawn_direction.x = node_data[i]
+				continue
+			"player_spawn_direction_y":
+				player_spawn_direction.y = node_data[i]
+				continue
+		self.set(i, node_data[i])
 	save_game.close()
 	
 enum Dimensions {

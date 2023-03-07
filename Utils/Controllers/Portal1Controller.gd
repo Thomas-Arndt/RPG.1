@@ -2,7 +2,7 @@ extends "res://Utils/Controllers/CutSceneController.gd"
 
 
 func package_choreography():
-	choreography.append([ENTER, Vector2(-27, 685)])
+	choreography.append([ENTER, Vector2(80, 670)])
 	choreography.append([CUSTOM, "initialize", []])
 	choreography.append([CUSTOM, "open_and_hold", []])
 	choreography.append([WAIT, 4])

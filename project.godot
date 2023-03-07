@@ -176,10 +176,10 @@ config/icon="res://icon.png"
 
 [autoload]
 
+SignalBus="*res://Utils/SignalBus.gd"
 PlayerStats="*res://Utils/Stats/PlayerStats.tscn"
 WorldStats="*res://Utils/Stats/WorldStats.gd"
 Inventory="*res://Inventory/Inventory.tscn"
-SignalBus="*res://Utils/SignalBus.gd"
 QuestSystem="*res://QuestSystem/QuestSystem.tscn"
 UI="*res://UI/UI.tscn"
 TransitionLayer="*res://Utils/SceneTransitions/TransitionLayer.tscn"

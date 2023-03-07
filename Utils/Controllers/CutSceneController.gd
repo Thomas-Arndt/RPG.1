@@ -18,6 +18,7 @@ onready var timer = $Timer
 enum {
 	ENTER,
 	MOVE_TO,
+	SEEK_PLAYER,
 	EXIT,
 	DIALOGUE,
 	WAIT,
@@ -41,6 +42,8 @@ func run_cut_scene():
 				enter_actor(action[1])
 			MOVE_TO:
 				move_actor_to(action[1], action[2], action[3])
+			SEEK_PLAYER:
+				seek_player(action[1], action[2], action[3], action[4])
 			EXIT:
 				exit_actor()
 			DIALOGUE:
@@ -85,10 +88,21 @@ func move_actor_to(destination : Vector2, duration: float, move_animation_name: 
 	is_acting = true
 	tween.start()
 
+func seek_player(start_position: Vector2, distance: int, duration: float, move_animation_name: String):
+	var destination = start_position.move_toward(get_tree().get_nodes_in_group("Player")[0].position, distance)
+	if actor.anim_player:
+		actor.anim_player.play(move_animation_name)
+	if actor.has_method("flip_sprite"):
+		actor.flip_sprite(destination.x - global_position.x)
+	tween.interpolate_property(actor, "global_position", actor.global_position, destination, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	is_acting = true
+	tween.start()
+
 func exit_actor():
 	actor.get_parent().remove_child(actor)
 
 func release_actor():
+	actor.position = actor.global_position
 	if actor.has_method("state_machine_run"):
 		actor.state_machine_run()
 	run_cut_scene()

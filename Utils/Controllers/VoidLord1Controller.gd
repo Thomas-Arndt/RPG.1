@@ -3,11 +3,12 @@ extends "res://Utils/Controllers/CutSceneController.gd"
 
 func package_choreography():
 	choreography.append([WAIT, 3])
-	choreography.append([ENTER, Vector2(-27, 680)])
+	choreography.append([ENTER, Vector2(80, 670)])
 	choreography.append([CUSTOM, "initialize", []])
 	choreography.append([CUSTOM, "monitorable_off", []])
 	#choreography.append([WAIT, 1.5])
-	choreography.append([MOVE_TO, Vector2(-80, 680), 1, "walk"])
+
+	choreography.append([SEEK_PLAYER, Vector2(80, 670), 100, 1, "walk"])
 	var monologue = [
 		"Hello!"
 	]
@@ -19,21 +20,21 @@ func package_choreography():
 	]
 	choreography.append([DIALOGUE, monologue, "Blib"])
 	choreography.append([WAIT, 1])
-	choreography.append([MOVE_TO, Vector2(-25,620), 0.5, "walk"])
-	choreography.append([CUSTOM, "look_right", []])
-	choreography.append([WAIT, .75])
-	choreography.append([CUSTOM, "look_left", []])
-	choreography.append([WAIT, 0.75])
-	choreography.append([CUSTOM, "look_right", []])
-	choreography.append([WAIT, 1])
-	choreography.append([MOVE_TO, Vector2(-25,740), 0.8, "walk"])
-	choreography.append([WAIT, .75])
-	choreography.append([CUSTOM, "look_left", []])
-	choreography.append([WAIT, 0.75])
-	choreography.append([CUSTOM, "look_right", []])
-	choreography.append([WAIT, 1])
-	choreography.append([MOVE_TO, Vector2(-25,680), 0.5, "walk"])
-	choreography.append([WAIT, 0.35])
+#	choreography.append([MOVE_TO, Vector2(-25,620), 0.5, "walk"])
+#	choreography.append([CUSTOM, "look_right", []])
+#	choreography.append([WAIT, .75])
+#	choreography.append([CUSTOM, "look_left", []])
+#	choreography.append([WAIT, 0.75])
+#	choreography.append([CUSTOM, "look_right", []])
+#	choreography.append([WAIT, 1])
+#	choreography.append([MOVE_TO, Vector2(-25,740), 0.8, "walk"])
+#	choreography.append([WAIT, .75])
+#	choreography.append([CUSTOM, "look_left", []])
+#	choreography.append([WAIT, 0.75])
+#	choreography.append([CUSTOM, "look_right", []])
+#	choreography.append([WAIT, 1])
+#	choreography.append([MOVE_TO, Vector2(-25,680), 0.5, "walk"])
+#	choreography.append([WAIT, 0.35])
 	monologue = [
 		"All of this energy!"
 	]
@@ -73,12 +74,12 @@ func custom_actions(action_name, args):
 			actor.match_dimension(WorldStats.DIMENSION)
 			run_cut_scene()
 		"set_detection_zones":
-			actor.wander_controller.add_detection_zone(Vector2(-56, -86))
-			actor.wander_controller.add_detection_zone(Vector2(106, -86))
-			actor.wander_controller.add_detection_zone(Vector2(256, -86))
-			actor.wander_controller.add_detection_zone(Vector2(-56, 72))
-			actor.wander_controller.add_detection_zone(Vector2(106, 72))
-			actor.wander_controller.add_detection_zone(Vector2(256, 72))
+			actor.wander_controller.add_detection_zone(Vector2(-150, -86))
+			actor.wander_controller.add_detection_zone(Vector2(0, -86))
+			actor.wander_controller.add_detection_zone(Vector2(150, -86))
+			actor.wander_controller.add_detection_zone(Vector2(-150, 72))
+			actor.wander_controller.add_detection_zone(Vector2(0, 72))
+			actor.wander_controller.add_detection_zone(Vector2(150, 72))
 			actor.wander_controller.update_target_position()
 			run_cut_scene()
 			
