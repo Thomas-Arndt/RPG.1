@@ -43,6 +43,7 @@ func _ready():
 
 func _physics_process(delta):
 	
+	wander_controller.set_position(wander_controller.start_position)
 	if !state_machine_paused:
 		match state:
 			IDLE:
@@ -51,7 +52,6 @@ func _physics_process(delta):
 					anim_player.play("walk")
 			MOVE:
 				accelerate_towards_point(wander_controller.target_position, delta)
-				wander_controller.set_position(wander_controller.start_position)
 				if wander_controller.can_see_unit():
 					wander_controller.target_position = global_position
 					velocity = Vector2.ZERO

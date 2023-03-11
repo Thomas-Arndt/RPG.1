@@ -25,7 +25,6 @@ onready var sword_hit_box = $HitBoxPivot/SwordHitBox
 onready var hurt_box = $HurtBox
 onready var blink_anim_player = $BlinkAnimationPlayer
 onready var detection_zone = $DetectionZone/DetectionZone
-onready var remote_transform = $RemoteTransform2D
 
 func _ready():
 
@@ -34,6 +33,7 @@ func _ready():
 	anim_tree.set("parameters/roll/blend_position", WorldStats.player_spawn_direction)
 	anim_tree.set("parameters/attack/blend_position", WorldStats.player_spawn_direction)
 	anim_tree.set("parameters/idle/blend_position", WorldStats.player_spawn_direction)
+	anim_tree.set("parameters/push/blend_position", WorldStats.player_spawn_direction)
 	sword_hit_box.knockback_vector = roll_vector
 	PlayerStats.connect("no_health", self, "_on_PlayerStats_no_health")
 	
@@ -77,6 +77,7 @@ func move_state(delta):
 		anim_tree.set("parameters/run/blend_position", input_vector)
 		anim_tree.set("parameters/roll/blend_position", input_vector)
 		anim_tree.set("parameters/attack/blend_position", input_vector)
+		anim_tree.set("parameters/push/blend_position", input_vector)
 		anim_state.travel("run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
@@ -126,6 +127,7 @@ func spawn_player():
 	anim_tree.set("parameters/roll/blend_position", WorldStats.player_spawn_direction)
 	anim_tree.set("parameters/attack/blend_position", WorldStats.player_spawn_direction)
 	anim_tree.set("parameters/idle/blend_position", WorldStats.player_spawn_direction)
+	anim_tree.set("parameters/push/blend_position", WorldStats.player_spawn_direction)
 
 func paused(state):
 	is_running = !state
