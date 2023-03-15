@@ -9,7 +9,8 @@ export var FRICTION = 500
 enum {
 	MOVE,
 	ROLL,
-	ATTACK
+	ATTACK,
+	PUSH
 }
 
 var state = MOVE
@@ -25,6 +26,7 @@ onready var sword_hit_box = $HitBoxPivot/SwordHitBox
 onready var hurt_box = $HurtBox
 onready var blink_anim_player = $BlinkAnimationPlayer
 onready var detection_zone = $DetectionZone/DetectionZone
+onready var push_detection_zone = $PushDetectionZone/PushDetectionZone
 
 func _ready():
 
@@ -36,6 +38,7 @@ func _ready():
 	anim_tree.set("parameters/push/blend_position", WorldStats.player_spawn_direction)
 	sword_hit_box.knockback_vector = roll_vector
 	PlayerStats.connect("no_health", self, "_on_PlayerStats_no_health")
+	push_detection_zone.connect("is_colliding", self, "push_zone_entered")
 	
 func _physics_process(delta):
 
@@ -49,6 +52,8 @@ func _physics_process(delta):
 			roll_state()
 		ATTACK:
 			attack_state()
+		PUSH:
+			push_state(delta)
 	
 	
 	if Input.is_action_just_pressed("quick_action_1"):
@@ -65,27 +70,34 @@ func _physics_process(delta):
 		UI.Backpack.toggle_backpack()
 	
 func move_state(delta):
-	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	input_vector = input_vector.normalized()
+	var input_vector = get_input_vector()
 	
 	if input_vector != Vector2.ZERO and is_running:
-		roll_vector = input_vector
-		sword_hit_box.knockback_vector = input_vector
-		anim_tree.set("parameters/idle/blend_position", input_vector)
-		anim_tree.set("parameters/run/blend_position", input_vector)
-		anim_tree.set("parameters/roll/blend_position", input_vector)
-		anim_tree.set("parameters/attack/blend_position", input_vector)
-		anim_tree.set("parameters/push/blend_position", input_vector)
+		apply_input_vector(input_vector)
 		anim_state.travel("run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
 		anim_state.travel("idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	move()
-	
 
+func push_state(delta):
+	var input_vector = get_input_vector()
+	
+	if input_vector != Vector2.ZERO and is_running:
+		if input_vector == roll_vector:
+			apply_input_vector(input_vector)
+			anim_state.travel("push")
+			velocity = velocity.move_toward(input_vector * (MAX_SPEED/4), ACCELERATION * delta)
+		else:
+			anim_state.travel("idle")
+			#push_detection_zone.reset_target()
+			state = MOVE
+	else:
+		anim_state.travel("idle")
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	move()
+	
 func roll_state():
 	if is_running:
 		velocity = roll_vector * ROLL_SPEED
@@ -95,6 +107,22 @@ func roll_state():
 func attack_state():
 	velocity = Vector2.ZERO
 	anim_state.travel("attack")
+
+func get_input_vector() -> Vector2:
+	var input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector = input_vector.normalized()
+	return input_vector
+
+func apply_input_vector(input_vector):
+	roll_vector = input_vector
+	sword_hit_box.knockback_vector = input_vector
+	anim_tree.set("parameters/idle/blend_position", input_vector)
+	anim_tree.set("parameters/run/blend_position", input_vector)
+	anim_tree.set("parameters/roll/blend_position", input_vector)
+	anim_tree.set("parameters/attack/blend_position", input_vector)
+	anim_tree.set("parameters/push/blend_position", input_vector)
 
 func move():
 	velocity = move_and_slide(velocity)
@@ -134,6 +162,9 @@ func paused(state):
 
 func _on_interaction_finished(node):
 	paused(false)
+	
+func push_zone_entered(target):
+	state = PUSH
 	
 func process_action(index):
 	if is_running:

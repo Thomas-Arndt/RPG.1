@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Player/Capey Mac Manbun.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/Shadows/MediumShadow.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Utils/Hit and Hurt Boxes/HitBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Utils/Hit and Hurt Boxes/HurtBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Utils/Overlap/DetectionZone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Utils/Overlap/PushDetectionZone.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Shader" id=52]
 code = "shader_type canvas_item;
@@ -918,6 +919,10 @@ height = 4.0
 [sub_resource type="CircleShape2D" id=57]
 radius = 8.0
 
+[sub_resource type="CapsuleShape2D" id=70]
+radius = 5.0
+height = 6.0
+
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 17
@@ -1003,6 +1008,12 @@ shape = SubResource( 51 )
 position = Vector2( 0, 13 )
 shape = SubResource( 57 )
 
+[node name="PushDetectionZone" parent="." instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D" parent="PushDetectionZone/PushDetectionZone" index="0"]
+rotation = 1.5708
+shape = SubResource( 70 )
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="invincible_end" from="HurtBox" to="." method="_on_HurtBox_invincible_end"]
 [connection signal="invincible_start" from="HurtBox" to="." method="_on_HurtBox_invincible_start"]
@@ -1010,3 +1021,4 @@ shape = SubResource( 57 )
 [editable path="HitBoxPivot/SwordHitBox"]
 [editable path="HurtBox"]
 [editable path="DetectionZone"]
+[editable path="PushDetectionZone"]

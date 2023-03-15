@@ -44,7 +44,6 @@ func load_stats():
 	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
 	var node_data = parse_json(save_game.get_line())
 	for i in node_data.keys():
-		print(node_data[i])
 		match i:
 			"player_spawn_vector_x":
 				player_spawn_vector.x = node_data[i]
