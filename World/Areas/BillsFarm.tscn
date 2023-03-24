@@ -1648,6 +1648,8 @@ forage_item = ExtResource( 1 )
 [node name="ForageAction" parent="YSort/Forage/ForageWorldComponent/InteractionZone/Actions" index="0"]
 forage_items = [ ExtResource( 1 ) ]
 
+[node name="PushObjects" type="YSort" parent="YSort"]
+
 [node name="SceneLinks" type="Node2D" parent="."]
 
 [node name="BillsHouse" parent="SceneLinks" groups=["World"] instance=ExtResource( 16 )]

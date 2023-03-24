@@ -6,10 +6,18 @@
 
 [node name="PushDetectionZone" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 33
+collision_mask = 128
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PushDetectionZone"]
 
+[node name="DetectorPivot" type="Position2D" parent="PushDetectionZone"]
+
+[node name="ForwardDetector" type="Area2D" parent="PushDetectionZone/DetectorPivot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PushDetectionZone/DetectorPivot/ForwardDetector"]
+
 [connection signal="body_entered" from="PushDetectionZone" to="PushDetectionZone" method="_on_PushDetectionZone_body_entered"]
 [connection signal="body_exited" from="PushDetectionZone" to="PushDetectionZone" method="_on_PushDetectionZone_body_exited"]
+[connection signal="body_entered" from="PushDetectionZone/DetectorPivot/ForwardDetector" to="PushDetectionZone" method="_on_ForwardDetector_body_entered"]
+[connection signal="body_exited" from="PushDetectionZone/DetectorPivot/ForwardDetector" to="PushDetectionZone" method="_on_ForwardDetector_body_exited"]

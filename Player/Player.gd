@@ -88,10 +88,11 @@ func push_state(delta):
 		if input_vector == roll_vector:
 			apply_input_vector(input_vector)
 			anim_state.travel("push")
-			velocity = velocity.move_toward(input_vector * (MAX_SPEED/4), ACCELERATION * delta)
+			velocity = velocity.move_toward(input_vector * (MAX_SPEED/5), ACCELERATION * delta)
+			if push_detection_zone.has_target():
+				push_detection_zone.target.move(velocity)
 		else:
 			anim_state.travel("idle")
-			#push_detection_zone.reset_target()
 			state = MOVE
 	else:
 		anim_state.travel("idle")
