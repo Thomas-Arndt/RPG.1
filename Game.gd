@@ -17,8 +17,8 @@ func _ready():
 	else:
 		yield(mount_scene(default_scene, false), "completed")
 	
-	#get_tree().get_nodes_in_group("Player")[0].spawn_player()
-	get_tree().get_nodes_in_group("Player")[0].global_position = Vector2.ZERO
+	get_tree().get_nodes_in_group("Player")[0].spawn_player()
+	#get_tree().get_nodes_in_group("Player")[0].global_position = Vector2.ZERO
 	PlayerStats.load_stats()
 	
 	SignalBus.connect("scene_link_entered", self, "_on_Scene_Link_entered")

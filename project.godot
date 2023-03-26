@@ -105,6 +105,11 @@ _global_script_classes=[ {
 "path": "res://Crafting/Recipes/Recipe.gd"
 }, {
 "base": "Node",
+"class": "RedBlueSwitchAction",
+"language": "GDScript",
+"path": "res://Utils/Actions/RedBlueSwitchAction.gd"
+}, {
+"base": "Node",
 "class": "RemoveNodeReceiver",
 "language": "GDScript",
 "path": "res://Utils/Receivers/RemoveNodeReceiver.gd"
@@ -159,6 +164,7 @@ _global_script_class_icons={
 "QuestObjective": "",
 "QuestSlayObjective": "",
 "Recipe": "",
+"RedBlueSwitchAction": "",
 "RemoveNodeReceiver": "",
 "SceneLink": "",
 "SpawnController": "",

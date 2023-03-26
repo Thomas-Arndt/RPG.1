@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+export var signal_code : String
+
 onready var anim_player = $AnimationPlayer
 
 enum {
@@ -8,6 +10,9 @@ enum {
 }
 
 var state = CLOSED
+
+func _ready():
+	SignalBus.connect("red_blue_switch_state_changed", self, "on_red_blue_switch_changed")
 
 func open():
 	anim_player.stop()
@@ -19,9 +24,10 @@ func close():
 	anim_player.play("close")
 	state = CLOSED
 	
-func _process(delta):
-	if Input.is_action_just_pressed("quick_action_4"):
-		if state == OPEN:
-			close()
-		elif state == CLOSED:
-			open()
+func on_red_blue_switch_changed(signal_code, state, states):
+	if signal_code == self.signal_code:
+		match state:
+			states.RED:
+				close()
+			states.BLUE:
+				open()

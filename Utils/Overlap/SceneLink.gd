@@ -14,7 +14,6 @@ func _ready():
 		get_node(paired_object).connect("set_Scene_Link_Active", self, "_on_Update_Visibility_State")
 
 func _on_SceneLink_body_entered(body):
-	print(destination_reference)
 	if active:
 		WorldStats.player_spawn_vector = exit_location
 		WorldStats.player_spawn_direction = exit_direction

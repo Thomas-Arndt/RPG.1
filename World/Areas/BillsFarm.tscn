@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=2]
+[gd_scene load_steps=144 format=2]
 
 [ext_resource path="res://Inventory/Forage/RedBerry.tres" type="Resource" id=1]
 [ext_resource path="res://QuestSystem/Quests/message-from-bill.tscn" type="PackedScene" id=2]
@@ -39,6 +39,7 @@
 [ext_resource path="res://World/Areas/BillsFarm.gd" type="Script" id=37]
 [ext_resource path="res://Utils/Controllers/SpawnController.tscn" type="PackedScene" id=38]
 [ext_resource path="res://Inventory/Forage/ForageWorldComponent.tscn" type="PackedScene" id=39]
+[ext_resource path="res://World/Objects/Doors/LadderUpper.tscn" type="PackedScene" id=40]
 
 [sub_resource type="TileSet" id=99]
 2/name = "sheet.png 2"
@@ -1612,6 +1613,11 @@ gold = 100
 locked = true
 
 [node name="Portals" type="YSort" parent="YSort"]
+
+[node name="LadderUpper" parent="YSort/Portals" instance=ExtResource( 40 )]
+position = Vector2( 465, 766 )
+destination_reference = "res://World/Below/Below_Vestibule.tscn"
+exit_location = Vector2( 64, 30 )
 
 [node name="BlibPortal" parent="YSort/Portals" instance=ExtResource( 36 )]
 position = Vector2( 80, 670 )
