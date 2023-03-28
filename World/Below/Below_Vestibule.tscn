@@ -316,7 +316,6 @@ position = Vector2( 359, 356 )
 
 [node name="Door" parent="." instance=ExtResource( 5 )]
 position = Vector2( 16, -128 )
-scale = Vector2( 2, 2 )
 signal_code = "r-b-sw-1"
 
 [node name="YSort" type="YSort" parent="."]
@@ -346,6 +345,7 @@ exit_location = Vector2( 462, 805 )
 position = Vector2( 16, -128 )
 destination_reference = "res://World/Below/Below_Hallway_1.tscn"
 exit_location = Vector2( 14, 15 )
+exit_direction = Vector2( 0, -1 )
 
 [node name="CollisionShape2D" parent="SceneLinks/SceneLink" index="0"]
 shape = SubResource( 36 )
