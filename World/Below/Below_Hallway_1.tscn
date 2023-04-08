@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/dungeon_sheet.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://World/Areas/Area.gd" type="Script" id=5]
 [ext_resource path="res://World/Objects/Doors/BelowDoors.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Objects/Doors/LadderUpper.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/Below/FloorSpikes.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 16, 8, 4, 8, 4, 16, 0, 16, 0, 0, 16, 0 )
@@ -570,6 +572,78 @@ position = Vector2( 14, 15 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="FloorSpikes" type="YSort" parent="YSort"]
+
+[node name="FloorSpikes" parent="YSort/FloorSpikes" instance=ExtResource( 8 )]
+position = Vector2( 16, -55 )
+trigger_delay = 0.5
+
+[node name="FloorSpikes2" parent="YSort/FloorSpikes" instance=ExtResource( 8 )]
+position = Vector2( 16, -88 )
+trigger_delay = 0.5
+
+[node name="FloorSpikes3" parent="YSort/FloorSpikes" instance=ExtResource( 8 )]
+position = Vector2( 16, -121 )
+trigger_delay = 0.5
+
+[node name="FloorSpikes4" parent="YSort/FloorSpikes" instance=ExtResource( 8 )]
+position = Vector2( 239, -721 )
+trigger_delay = 0.5
+
+[node name="FloorSpikes5" parent="YSort/FloorSpikes" instance=ExtResource( 8 )]
+position = Vector2( 239, -817 )
+trigger_delay = 0.5
+
+[node name="FloorSpikes6" parent="YSort/FloorSpikes" instance=ExtResource( 8 )]
+position = Vector2( 335, -817 )
+trigger_delay = 0.5
+
+[node name="FloorSpikes7" parent="YSort/FloorSpikes" instance=ExtResource( 8 )]
+position = Vector2( 335, -721 )
+trigger_delay = 0.5
+
+[node name="FloorSpikes8" parent="YSort/FloorSpikes" instance=ExtResource( 8 )]
+position = Vector2( 431, -721 )
+trigger_delay = 0.5
+
+[node name="FloorSpikes9" parent="YSort/FloorSpikes" instance=ExtResource( 8 )]
+position = Vector2( 431, -817 )
+trigger_delay = 0.5
+
+[node name="FloorSpikes10" parent="YSort/FloorSpikes" instance=ExtResource( 8 )]
+position = Vector2( -19, -171 )
+trigger_delay = 0.0
+frequency = 1.0
+
+[node name="FloorSpikes11" parent="YSort/FloorSpikes" instance=ExtResource( 8 )]
+position = Vector2( 16, -171 )
+frequency = 1.0
+
+[node name="FloorSpikes12" parent="YSort/FloorSpikes" instance=ExtResource( 8 )]
+position = Vector2( 51, -171 )
+trigger_delay = 0.0
+frequency = 1.0
+
+[node name="Bats" type="YSort" parent="YSort"]
+
+[node name="Bat" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 145, -875 )
+
+[node name="Bat2" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 216, -615 )
+
+[node name="Bat3" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 376, -720 )
+
+[node name="Bat4" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 526, -621 )
+
+[node name="Bat5" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 437, -889 )
+
+[node name="Bat6" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 285, -814 )
 
 [node name="Portals" type="YSort" parent="YSort"]
 
