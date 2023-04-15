@@ -152,7 +152,6 @@ anims/extend = SubResource( 2 )
 anims/retract = SubResource( 3 )
 
 [node name="HitBox" parent="." instance=ExtResource( 2 )]
-damage = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2( 0.5, 1.5 )

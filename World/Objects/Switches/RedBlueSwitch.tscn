@@ -121,7 +121,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 13, 7 )
+extents = Vector2( 11, 5 )
 
 [node name="RedBlueSwitch" type="StaticBody2D"]
 position = Vector2( 2, -6 )

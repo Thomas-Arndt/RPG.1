@@ -341,14 +341,14 @@ exit_location = Vector2( 462, 805 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
-[node name="SceneLink" parent="SceneLinks" instance=ExtResource( 7 )]
+[node name="Below_1" parent="SceneLinks" instance=ExtResource( 7 )]
 position = Vector2( 16, -128 )
 destination_reference = "res://World/Below/Below_Hallway_1.tscn"
 exit_location = Vector2( 14, 15 )
 exit_direction = Vector2( 0, -1 )
 
-[node name="CollisionShape2D" parent="SceneLinks/SceneLink" index="0"]
+[node name="CollisionShape2D" parent="SceneLinks/Below_1" index="0"]
 shape = SubResource( 36 )
 
 [editable path="Camera2D"]
-[editable path="SceneLinks/SceneLink"]
+[editable path="SceneLinks/Below_1"]
