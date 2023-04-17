@@ -3,6 +3,7 @@ extends CanvasLayer
 onready var inventory_cursor = $InventoryMenu/InventoryCursor
 onready var inventory_display = $InventoryMenu/InventoryDisplay
 onready var crafting_menu = $CraftingMenu
+onready var inventory_menu = $InventoryMenu
 onready var recipe_list = $CraftingMenu/RecipeList
 onready var tween = $Tween
 
@@ -60,3 +61,11 @@ func toggle_crafting_menu():
 			inventory_cursor.visible = true
 			tween.interpolate_property(crafting_menu, "rect_position:x", crafting_menu.rect_position.x, 0, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT)
 		tween.start()
+
+func hide():
+	crafting_menu.visible = false
+	inventory_menu.visible = false
+
+func show():
+	crafting_menu.visible = true
+	inventory_menu.visible = true

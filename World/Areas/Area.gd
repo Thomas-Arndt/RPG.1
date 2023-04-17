@@ -1,4 +1,5 @@
 extends Node2D
+class_name WorldScene
 
 var save_file:String
 

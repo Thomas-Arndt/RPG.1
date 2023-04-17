@@ -1,6 +1,6 @@
 extends Node
 
-export var default_scene : String = "res://World/Areas/BillsFarm.tscn"
+export var default_scene : String = "res://UI/Backgrounds/ScrollingStarfield.tscn"
 
 var pause_signals = false
 
@@ -16,10 +16,11 @@ func _ready():
 		yield(mount_scene(WorldStats.last_loaded_scene, false), "completed")
 	else:
 		yield(mount_scene(default_scene, false), "completed")
-	
-	get_tree().get_nodes_in_group("Player")[0].spawn_player()
-	#get_tree().get_nodes_in_group("Player")[0].global_position = Vector2.ZERO
-	PlayerStats.load_stats()
+	var player = get_tree().get_nodes_in_group("Player")
+	if len(player) > 0:
+		player[0].spawn_player()
+		#player[0].global_position = Vector2.ZERO
+		PlayerStats.load_stats()
 	
 	SignalBus.connect("scene_link_entered", self, "_on_Scene_Link_entered")
 
@@ -47,13 +48,20 @@ func mount_scene(destination_reference, transition : bool = true):
 	WorldStats.set_last_loaded_scene(destination_reference)
 	WorldStats.save_stats()
 	add_child(destination)
-	get_tree().get_nodes_in_group("Player")[0].paused(true)
-	destination.load_scene()
-	var player = get_tree().get_nodes_in_group("Player")[0]
-	player.spawn_player()
+	var player = get_tree().get_nodes_in_group("Player")
+	if destination is WorldScene:
+		player[0].paused(true)
+		destination.load_scene()
+		UI.set_state(UI.states.OVERWORLD)
+		player = get_tree().get_nodes_in_group("Player")[0]
+		player.spawn_player()
+	else:
+		UI.set_state(UI.states.MAIN)
+		
 	if transition:
 		yield(get_tree().create_timer(0.5), "timeout")
 		TransitionLayer.scene_in()
 		yield(TransitionLayer, "finished")
-	get_tree().get_nodes_in_group("Player")[0].paused(false)
+	if destination is WorldScene:
+		player.paused(false)
 	yield(get_tree(), "idle_frame")

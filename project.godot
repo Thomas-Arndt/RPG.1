@@ -143,6 +143,11 @@ _global_script_classes=[ {
 "class": "VoidMote",
 "language": "GDScript",
 "path": "res://Enemies/VoidMote.gd"
+}, {
+"base": "Node2D",
+"class": "WorldScene",
+"language": "GDScript",
+"path": "res://World/Areas/Area.gd"
 } ]
 _global_script_class_icons={
 "AddNodeReceiver": "",
@@ -171,7 +176,8 @@ _global_script_class_icons={
 "SpeechAction": "",
 "VoidBlob": "",
 "VoidLord": "",
-"VoidMote": ""
+"VoidMote": "",
+"WorldScene": ""
 }
 
 [application]

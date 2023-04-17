@@ -57,6 +57,7 @@ func _physics_process(delta):
 	
 	
 	if Input.is_action_just_pressed("quick_action_1"):
+		UI.MainMenu.toggle_visible()
 		process_action(0)
 	if Input.is_action_just_pressed("quick_action_2"):
 		process_action(1)
@@ -139,6 +140,7 @@ func _on_HurtBox_area_entered(area):
 	PlayerStats.change_health(-area.damage)
 	area.set_knockback_vector(self) 
 	knockback = area.knockback_vector * 130
+	move_and_slide(knockback)
 	hurt_box.start_invincible(0.6)
 
 func _on_HurtBox_invincible_start():

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Sprites/space_prev.jpeg" type="Texture" id=1]
+[ext_resource path="res://UI/Backgrounds/ScrollingBackground.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+uniform float scroll_speed_x;
+uniform float scroll_speed_y;
+
+void fragment(){
+    vec2 shifteduv = UV;
+    shifteduv.x += TIME * scroll_speed_x;
+    shifteduv.y += TIME * scroll_speed_y;
+    vec4 color = texture(TEXTURE, shifteduv);
+    COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/scroll_speed_x = null
+shader_param/scroll_speed_y = null
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource( 2 )
+margin_right = 768.0
+margin_bottom = 768.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+stretch_mode = 2
+script = ExtResource( 2 )
+scroll_speed_x = 0.025
+scroll_speed_y = 0.005
