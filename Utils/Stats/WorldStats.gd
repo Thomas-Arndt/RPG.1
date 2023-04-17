@@ -5,6 +5,7 @@ signal dimension_shift(value)
 var DIMENSION : int = Dimensions.Green
 var last_loaded_scene : String = ""
 
+var player_name : String = ""
 var player_spawn_vector: Vector2 = Vector2(270, 165)
 var player_spawn_direction: Vector2 = Vector2.DOWN
 
@@ -32,6 +33,7 @@ func save_stats():
 		"player_spawn_vector_y" : player_spawn_vector.y,
 		"player_spawn_direction_x" : player_spawn_direction.x,
 		"player_spawn_direction_y" : player_spawn_direction.y,
+		"player_name": player_name,
 		"last_loaded_scene" : last_loaded_scene,
 	}
 	save_game.store_line(to_json(node_data))
