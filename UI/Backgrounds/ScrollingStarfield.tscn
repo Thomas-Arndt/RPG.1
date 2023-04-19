@@ -21,7 +21,7 @@ shader = SubResource( 1 )
 shader_param/scroll_speed_x = null
 shader_param/scroll_speed_y = null
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Node2D" groups=["Menu"]]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource( 2 )

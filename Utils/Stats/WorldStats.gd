@@ -9,7 +9,7 @@ var player_name : String = ""
 var player_spawn_vector: Vector2 = Vector2(270, 165)
 var player_spawn_direction: Vector2 = Vector2.DOWN
 
-var save_block : String = "0"
+var save_block : String
 
 func set_dimension(value : int):
 	DIMENSION = value

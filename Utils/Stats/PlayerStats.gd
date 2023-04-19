@@ -75,5 +75,10 @@ func load_stats():
 	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
 	var node_data = parse_json(save_game.get_line())
 	for i in node_data.keys():
-		set(i, node_data[i])
+		if i == "health":
+			set_health(node_data[i])
+		elif i == "max_health":
+			set_max_health(node_data[i])
+		else:
+			set(i, node_data[i])
 	save_game.close()

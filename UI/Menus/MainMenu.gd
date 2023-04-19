@@ -24,6 +24,8 @@ enum directions {
 
 var state = states.NOL
 
+var active : bool = true
+
 var nol_cursor : int = 0
 var new_cursor : int = 0
 var load_cursor : int = 0
@@ -34,25 +36,26 @@ func _ready():
 	highlight_active_row(new_keyboard_keys, new_cursor)
 
 func _input(event):
-	if event.is_action("ui_up") and event.is_pressed() and not event.is_echo():
-		move_cursor(directions.UP)
-	if event.is_action("ui_down") and event.is_pressed() and not event.is_echo():
-		move_cursor(directions.DOWN)
-	if event.is_action("ui_left") and event.is_pressed() and not event.is_echo():
-		move_cursor(directions.LEFT)
-	if event.is_action("ui_right") and event.is_pressed() and not event.is_echo():
-		move_cursor(directions.RIGHT)
-	if event.is_action("quick_action_4") and event.is_pressed() and not event.is_echo():
-		match state:
-			states.NOL:
-				apply_action(nol_selector.get_children()[nol_cursor].action)
-			states.NEW:
-				if new_cursor <= new_keyboard_keys.get_child_count() - 1:
-					apply_action(new_keyboard_keys.get_child(new_cursor).action)
-				else:
-					apply_action(new_specials.get_child(new_cursor - new_keyboard_keys.get_child_count()).action)
-			states.LOAD:
-				apply_action("nol_menu")
+	if active:
+		if event.is_action("ui_up") and event.is_pressed() and not event.is_echo():
+			move_cursor(directions.UP)
+		if event.is_action("ui_down") and event.is_pressed() and not event.is_echo():
+			move_cursor(directions.DOWN)
+		if event.is_action("ui_left") and event.is_pressed() and not event.is_echo():
+			move_cursor(directions.LEFT)
+		if event.is_action("ui_right") and event.is_pressed() and not event.is_echo():
+			move_cursor(directions.RIGHT)
+		if event.is_action("quick_action_4") and event.is_pressed() and not event.is_echo():
+			match state:
+				states.NOL:
+					apply_action(nol_selector.get_children()[nol_cursor].action)
+				states.NEW:
+					if new_cursor <= new_keyboard_keys.get_child_count() - 1:
+						apply_action(new_keyboard_keys.get_child(new_cursor).action)
+					else:
+						apply_action(new_specials.get_child(new_cursor - new_keyboard_keys.get_child_count()).action)
+				states.LOAD:
+					apply_action("nol_menu")
 
 func apply_action(action):
 	match action:
@@ -61,7 +64,8 @@ func apply_action(action):
 		"new_menu":
 			change_menu(states.NEW)
 		"load_menu":
-			change_menu(states.LOAD)
+			#change_menu(states.LOAD)
+			load_game("1")
 		"keyboard_key_pressed":
 			if new_cursor <= new_keyboard_keys.get_child_count() - 1:
 				var new_char = new_keyboard_keys.get_child(new_cursor).value
@@ -69,11 +73,6 @@ func apply_action(action):
 			else:
 				var special_key = new_specials.get_child(new_cursor - new_keyboard_keys.get_child_count())
 				apply_special_action(special_key)
-
-func apply_character(character):
-	var text = new_name.text
-	text += character
-	new_name.text = text
 
 func apply_special_action(key):
 	match key.value:
@@ -87,10 +86,20 @@ func apply_special_action(key):
 			new_keyboard.toggle_case()
 		"OK":
 			print(new_name.text)
+		"Back":
+			new_cursor = 0
+			new_name.text = ""
+			change_menu(states.NOL)
+
+func apply_character(character):
+	var text = new_name.text
+	text += character
+	new_name.text = text
 
 func change_menu(menu):
 	state = menu
 	apply_menu_change()
+	apply_cursor_change()	
 
 func apply_menu_change():
 	hide()
@@ -123,7 +132,16 @@ func move_cursor(direction):
 			if state == states.NOL:
 				update_active_cursor(1)
 			elif state == states.NEW:
-				update_active_cursor(13)
+				if new_cursor > 13 and new_cursor <= 16:
+					update_active_cursor(26-new_cursor)
+				elif new_cursor > 16 and new_cursor <= 19:
+					update_active_cursor(27-new_cursor)
+				elif new_cursor > 19 and new_cursor <= 22:
+					update_active_cursor(28-new_cursor)
+				elif new_cursor > 22 and new_cursor <= 25:
+					update_active_cursor(29-new_cursor)
+				else:
+					update_active_cursor(13)
 		directions.LEFT:
 			if state == states.NEW:
 				update_active_cursor(-1)
@@ -176,6 +194,21 @@ func clear_highlights():
 		var child = new_specials.get_child(index)
 		child.set("custom_styles/normal", null)
 
+func load_game(save_block):
+	print(save_block)
+	set_active(false)
+	WorldStats.save_block = save_block
+	Inventory.load_inventory()
+	WorldStats.load_stats()
+	QuestSystem.load_quest_progress()
+	PlayerStats.load_stats()
+	
+	if ResourceLoader.exists(WorldStats.last_loaded_scene):
+		SignalBus.emit_signal("scene_link_entered", WorldStats.last_loaded_scene)
+	else:
+		SignalBus.emit_signal("scene_link_entered", "res://World/Areas/BillsFarm.tscn")
+
+
 func hide():
 	new_or_load.visible = false
 	new.visible = false
@@ -183,3 +216,7 @@ func hide():
 
 func show():
 	apply_menu_change()
+	active = true
+	
+func set_active(value):
+	active = value

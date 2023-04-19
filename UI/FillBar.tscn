@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/FillBarLeft.png" type="Texture" id=1]
 [ext_resource path="res://UI/FillBarMiddle.png" type="Texture" id=2]
 [ext_resource path="res://UI/FillBarRight.png" type="Texture" id=3]
+[ext_resource path="res://UI/FillBarRed.png" type="Texture" id=4]
 
 [node name="FillBar" type="Control"]
 anchor_right = 1.0
@@ -37,6 +38,7 @@ margin_top = 6.0
 margin_right = 106.0
 margin_bottom = 14.0
 rect_clip_content = true
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 3
 
