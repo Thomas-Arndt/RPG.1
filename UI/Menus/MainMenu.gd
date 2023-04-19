@@ -63,9 +63,9 @@ func apply_action(action):
 			change_menu(states.NOL)
 		"new_menu":
 			change_menu(states.NEW)
-		"load_menu":
+		"load":
 			#change_menu(states.LOAD)
-			load_game("1")
+			load_game(nol_selector.get_children()[nol_cursor].code)
 		"keyboard_key_pressed":
 			if new_cursor <= new_keyboard_keys.get_child_count() - 1:
 				var new_char = new_keyboard_keys.get_child(new_cursor).value

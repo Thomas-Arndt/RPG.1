@@ -22,25 +22,39 @@ margin_top = 57.0
 margin_right = 232.0
 margin_bottom = 126.0
 
-[node name="NewGame" type="Label" parent="NoLSelector"]
-margin_right = 131.0
+[node name="SaveBlock1" type="Label" parent="NoLSelector"]
+margin_right = 146.0
 margin_bottom = 28.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "New Game"
+text = "(1) New Game"
 align = 1
 valign = 1
 script = ExtResource( 2 )
-action = "new_menu"
+action = "load"
 
-[node name="Load" type="Label" parent="NoLSelector"]
+[node name="SaveBlock2" type="Label" parent="NoLSelector"]
 margin_top = 32.0
-margin_right = 131.0
+margin_right = 148.0
 margin_bottom = 60.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "Load Game"
+text = "(2) New Game"
 align = 1
 valign = 1
 script = ExtResource( 2 )
-action = "load_menu"
+code = 1
+action = "load"
+
+[node name="SaveBlock3" type="Label" parent="NoLSelector"]
+margin_top = 64.0
+margin_right = 148.0
+margin_bottom = 92.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "(3) New Game"
+align = 1
+valign = 1
+script = ExtResource( 2 )
+code = 2
+action = "load"
