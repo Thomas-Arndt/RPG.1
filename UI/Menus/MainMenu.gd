@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 onready var new_or_load : Node = $NewOrLoad
-onready var nol_selector : Node = $NewOrLoad/NoLSelector
+onready var nol_selector : Node = $NewOrLoad/CenterContainer/NoLSelector
 onready var lode : Node = $Load
 onready var new : Node = $New
 onready var new_keyboard : Node = $New/VBoxContainer/Keyboard
@@ -65,6 +65,7 @@ func apply_action(action):
 			change_menu(states.NEW)
 		"load":
 			#change_menu(states.LOAD)
+			new_or_load.active = false
 			load_game(nol_selector.get_children()[nol_cursor].code)
 		"keyboard_key_pressed":
 			if new_cursor <= new_keyboard_keys.get_child_count() - 1:
@@ -85,7 +86,10 @@ func apply_special_action(key):
 		"Shift":
 			new_keyboard.toggle_case()
 		"OK":
-			print(new_name.text)
+			WorldStats.player_name = new_name.text
+			WorldStats.save_block = nol_selector.get_children()[nol_cursor].code
+			WorldStats.save_stats()
+			apply_action("load")
 		"Back":
 			new_cursor = 0
 			new_name.text = ""
@@ -195,7 +199,6 @@ func clear_highlights():
 		child.set("custom_styles/normal", null)
 
 func load_game(save_block):
-	print(save_block)
 	set_active(false)
 	WorldStats.save_block = save_block
 	Inventory.load_inventory()
