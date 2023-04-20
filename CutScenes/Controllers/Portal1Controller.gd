@@ -1,4 +1,4 @@
-extends "res://Utils/Controllers/CutSceneController.gd"
+extends "res://CutScenes/Controllers/CutSceneController.gd"
 
 
 func package_choreography():
