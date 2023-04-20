@@ -10,6 +10,7 @@ enum states {
 	TITLE,
 	MAIN,
 	OVERWORLD,
+	CUTSCENE,
 }
 
 var state = states.TITLE
@@ -40,4 +41,10 @@ func apply_state():
 			TextBox.hide_text_box()
 			HealthBar.show()
 			Backpack.show()
+			MainMenu.hide()
+		states.CUTSCENE:
+			GoldDisplay.hide()
+			TextBox.hide_text_box()
+			HealthBar.hide()
+			Backpack.hide()
 			MainMenu.hide()

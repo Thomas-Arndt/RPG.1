@@ -100,7 +100,8 @@ func seek_player(start_position: Vector2, distance: int, duration: float, move_a
 
 func exit_actor():
 	actor.get_parent().remove_child(actor)
-
+	run_cut_scene()
+	
 func release_actor():
 	actor.position = actor.global_position
 	if actor.has_method("state_machine_run"):

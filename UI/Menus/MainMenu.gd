@@ -209,7 +209,7 @@ func load_game(save_block):
 	if ResourceLoader.exists(WorldStats.last_loaded_scene):
 		SignalBus.emit_signal("scene_link_entered", WorldStats.last_loaded_scene)
 	else:
-		SignalBus.emit_signal("scene_link_entered", "res://World/Areas/BillsFarm.tscn")
+		SignalBus.emit_signal("scene_link_entered", "res://CutScenes/Scenes/CutScene_NewGame.tscn")
 
 
 func hide():
