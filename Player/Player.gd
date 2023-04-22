@@ -18,6 +18,7 @@ var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
 var knockback = Vector2()
 var is_running = true
+var active : bool = true
 
 onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
@@ -41,6 +42,8 @@ func _ready():
 	push_detection_zone.connect("is_colliding", self, "push_zone_entered")
 	
 func _physics_process(delta):
+	if not active:
+		return
 
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
 	knockback = move_and_slide(knockback)
@@ -180,3 +183,11 @@ func process_action(index):
 			if Inventory.inventory[index].consumable:
 				Inventory.consume_item(index)
 			Inventory.emit_signal("item_changed", [index])
+
+func state_machine_pause():
+	active = false
+
+func state_machine_run():
+	active = true
+	state = MOVE
+	

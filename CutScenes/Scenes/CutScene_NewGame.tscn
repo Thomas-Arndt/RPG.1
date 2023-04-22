@@ -1,18 +1,33 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Backgrounds/ScrollingStarfield.tscn" type="PackedScene" id=1]
 [ext_resource path="res://CutScenes/Controllers/NewGameOpening.gd" type="Script" id=2]
 [ext_resource path="res://CutScenes/Controllers/CutSceneController.tscn" type="PackedScene" id=3]
 [ext_resource path="res://CutScenes/Scenes/CutScene.gd" type="Script" id=4]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Utils/Camera/ScreenShakeRandom.tscn" type="PackedScene" id=6]
 
 [node name="CutScene_NewGame" type="Node2D"]
 script = ExtResource( 4 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="ScreenShakeRandom" parent="Camera2D" instance=ExtResource( 6 )]
+signal_code = "screen_shake"
+
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
+position = Vector2( -30, -26 )
 
 [node name="CutSceneController" parent="." instance=ExtResource( 3 )]
 script = ExtResource( 2 )
 actor_reference = ExtResource( 5 )
 
 [node name="Actors" type="Node2D" parent="." groups=["Mobs"]]
+
+[node name="ColorRect" type="ColorRect" parent="." groups=["Mask"]]
+margin_right = 320.0
+margin_bottom = 180.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )

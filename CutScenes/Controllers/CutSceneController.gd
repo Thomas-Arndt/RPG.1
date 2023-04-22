@@ -142,7 +142,8 @@ func dialogue_complete():
 
 func _on_Tween_tween_all_completed():
 	if is_acting:
-		actor.anim_player.play("idle")
+		if not actor == null and actor.anim_player.has_animation("idle"):
+			actor.anim_player.play("idle")
 		is_acting = false
 		run_cut_scene()
 	
