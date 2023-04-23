@@ -33,11 +33,11 @@ func deliver(quest: Quest):
 	completed_quests.remove_child(quest)
 	delivered_quests.add_child(quest)
 	quest._deliver()
-	save_quest_progress()
 	PlayerStats.change_experience(rewards.experience)
 	Inventory.change_gold(rewards.gold)
 	for item in rewards.items:
 		Inventory.pick_up_item(item.item, item.quantity)
+	save_quest_progress()
 
 func save_quest_progress():
 	var save_game = File.new()
@@ -67,5 +67,8 @@ func load_quest_progress():
 			if quest.get_name() == node_data["name"]:
 				available_quests.remove_child(quest)
 				get_node(node_data["parent"]).add_child(quest)
+				for objective in quest.get_objectives():
+					objective.connect("completed", quest, "_on_Objective_completed")
+				quest.connect("completed", self, "_on_Quest_completed", [quest])
 				break
 	save_game.close()

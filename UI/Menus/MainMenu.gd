@@ -223,3 +223,6 @@ func show():
 	
 func set_active(value):
 	active = value
+
+func save_scene():
+	pass

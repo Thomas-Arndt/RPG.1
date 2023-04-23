@@ -13,7 +13,7 @@ func _ready():
 	SignalBus.connect("screen_shake", self, "start")
 	SignalBus.connect("stop_camera_effect", self, "stop")
 
-func start(duration = 0.2, frequency = 15, amplitude = 16, priority = 0):
+func start(duration = 1, frequency = 15, amplitude = 5, priority = 0):
 	if (priority >= self.priority and not is_shaking):
 		self.is_shaking = true
 		self.priority = priority
@@ -27,8 +27,8 @@ func start(duration = 0.2, frequency = 15, amplitude = 16, priority = 0):
 
 		_new_shake()
 
-func stop(code):
-	if code == signal_code:
+func stop(transmitted_code):
+	if transmitted_code == signal_code:
 		_on_Duration_timeout()
 
 func _new_shake():

@@ -1654,6 +1654,13 @@ forage_item = ExtResource( 1 )
 [node name="ForageAction" parent="YSort/Forage/ForageWorldComponent/InteractionZone/Actions" index="0"]
 forage_items = [ ExtResource( 1 ) ]
 
+[node name="ForageWorldComponent3" parent="YSort/Forage" instance=ExtResource( 39 )]
+position = Vector2( -798, 786 )
+forage_item = ExtResource( 3 )
+
+[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent3/InteractionZone/Actions" index="0"]
+forage_items = [ ExtResource( 3 ), ExtResource( 3 ) ]
+
 [node name="PushObjects" type="YSort" parent="YSort"]
 
 [node name="SceneLinks" type="Node2D" parent="."]
@@ -1713,6 +1720,8 @@ actor_reference = ExtResource( 25 )
 [editable path="YSort/Forage/ForageWorldComponent10/InteractionZone"]
 [editable path="YSort/Forage/ForageWorldComponent"]
 [editable path="YSort/Forage/ForageWorldComponent/InteractionZone"]
+[editable path="YSort/Forage/ForageWorldComponent3"]
+[editable path="YSort/Forage/ForageWorldComponent3/InteractionZone"]
 [editable path="SceneLinks/BillsHouse"]
 [editable path="SceneLinks/FirstForest"]
 [editable path="CutSceneTriggers/CutSceneTrigger"]

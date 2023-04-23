@@ -39,25 +39,35 @@ func interact() -> void:
 		
 	
 func create_alert_text_array():
+	var item_table : Dictionary = get_items_hash_table()
 	var alert_text = "You found "
-	for index in len(items):
-		alert_text += 'a '
-		alert_text += items[index].name
-		if index < len(items) - 2:
+	var index = 0
+	for key in item_table.keys():
+		alert_text += str(item_table[key]) + " " + key
+		if index < len(item_table.keys()) - 2:
 			alert_text += ", "
-		elif index == len(items)-2:
+		elif index == len(item_table.keys())-2:
 			if gold > 0:
 				alert_text += ", "
 			else:
 				alert_text += ", and "
 	if gold > 0:
-		if len(items) > 0:
-			alert_text += ", and " + str(gold) + " gold"
+		if len(item_table.keys()) > 0:
+			alert_text += "and " + str(gold) + " gold"
 		else:
 			alert_text += str(gold) + " gold"
 	alert_text += " in the chest."
 	return [alert_text]
-	
+
+func get_items_hash_table() -> Dictionary:
+	var item_table : Dictionary = {}
+	for item in items:
+		if item_table.has(item.name):
+			item_table[item.name] += 1
+		else:
+			item_table[item.name] = 1
+	return item_table
+
 func consume_key():
 	for index in len(Inventory.inventory):
 		if Inventory.inventory[index] != null and Inventory.inventory[index].type == "key":

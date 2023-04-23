@@ -60,7 +60,6 @@ func _physics_process(delta):
 	
 	
 	if Input.is_action_just_pressed("quick_action_1"):
-		UI.MainMenu.toggle_visible()
 		process_action(0)
 	if Input.is_action_just_pressed("quick_action_2"):
 		process_action(1)
