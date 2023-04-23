@@ -8,6 +8,7 @@ onready var new_keyboard : Node = $New/VBoxContainer/Keyboard
 onready var new_keyboard_keys : Node = $New/VBoxContainer/Keyboard/VBoxContainer/GridContainer
 onready var new_specials : Node = $New/VBoxContainer/Keyboard/VBoxContainer/HBoxContainer
 onready var new_name : Node = $New/VBoxContainer/HBoxContainer/Label
+onready var new_cursor_node : Node = $New/VBoxContainer/HBoxContainer/Cursor
 
 enum states {
 	NOL,
@@ -83,6 +84,7 @@ func apply_special_action(key):
 			var text = new_name.text
 			text.erase(len(text)-1, 1)
 			new_name.text = text
+			set_cursor(text)
 		"Shift":
 			new_keyboard.toggle_case()
 		"OK":
@@ -97,8 +99,16 @@ func apply_special_action(key):
 
 func apply_character(character):
 	var text = new_name.text
-	text += character
-	new_name.text = text
+	if len(text) < 13:
+		text += character
+		new_name.text = text
+	set_cursor(text)
+
+func set_cursor(text):
+	if len(text) >= 13:
+		new_cursor_node.text = ""
+	else:
+		new_cursor_node.text = "_"
 
 func change_menu(menu):
 	state = menu
