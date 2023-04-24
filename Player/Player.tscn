@@ -827,6 +827,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, 30.0, 60.0, 90.0, 120.0, 150.0, 180.0, 210.0, 240.0, 270.0, 300.0, 330.0, 360.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 18 ]
+}
 
 [sub_resource type="Animation" id=55]
 length = 0.001
@@ -1058,6 +1070,7 @@ collision_mask = 177
 script = ExtResource( 3 )
 
 [node name="ShadowSprite" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 offset = Vector2( 0, 1 )
 

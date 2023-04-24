@@ -17,12 +17,12 @@ _global_script_classes=[ {
 "base": "StaticBody2D",
 "class": "Chest",
 "language": "GDScript",
-"path": "res://World/Objects/Chest.gd"
+"path": "res://World/Objects/Chests/Chest.gd"
 }, {
 "base": "Node",
 "class": "ChestAction",
 "language": "GDScript",
-"path": "res://Utils/Actions/ChestAction.gd"
+"path": "res://Utils/Actions/InformationAction.gd"
 }, {
 "base": "Node",
 "class": "CompletedQuestAction",
@@ -53,6 +53,11 @@ _global_script_classes=[ {
 "class": "InProgressQuestAction",
 "language": "GDScript",
 "path": "res://Utils/Actions/InProgressQuestAction.gd"
+}, {
+"base": "Node",
+"class": "InformationAction",
+"language": "GDScript",
+"path": "res://Utils/Actions/ChestAction.gd"
 }, {
 "base": "Area2D",
 "class": "InteractionZone",
@@ -164,6 +169,7 @@ _global_script_class_icons={
 "ForageNode": "",
 "GiveQuestAction": "",
 "InProgressQuestAction": "",
+"InformationAction": "",
 "InteractionZone": "",
 "Item": "",
 "ModifyPropertyReceiver": "",

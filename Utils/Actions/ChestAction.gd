@@ -1,5 +1,5 @@
 extends Node
-class_name ChestAction
+class_name InformationAction
 
 signal started
 signal finished

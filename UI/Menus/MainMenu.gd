@@ -225,7 +225,6 @@ func load_game(save_block):
 func hide():
 	new_or_load.visible = false
 	new.visible = false
-	lode.visible = false
 
 func show():
 	apply_menu_change()

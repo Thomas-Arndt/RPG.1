@@ -1,21 +1,20 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://World/Areas/Terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/Objects/Buildings/Hut.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Objects/Buildings/HutFloor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://World/Objects/Tree.tscn" type="PackedScene" id=6]
-[ext_resource path="res://World/Objects/Bush.tscn" type="PackedScene" id=7]
-[ext_resource path="res://World/Objects/Shrub.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Objects/Plants/Tree.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/Objects/Plants/Bush.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Areas/Area.gd" type="Script" id=10]
 [ext_resource path="res://NPC/NPCs/Bill.tscn" type="PackedScene" id=11]
 [ext_resource path="res://QuestSystem/Quests/message-from-bill.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=13]
-[ext_resource path="res://World/Objects/BulletinBoard.tscn" type="PackedScene" id=14]
+[ext_resource path="res://World/Objects/Signs/InformationBoard.tscn" type="PackedScene" id=14]
 [ext_resource path="res://World/Objects/Buildings/HutDoor.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Utils/Actions/SpeechAction.tscn" type="PackedScene" id=16]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -156,25 +155,19 @@ quest_reference = ExtResource( 12 )
 speaker_name = "Bob"
 active = true
 
-[node name="YSort" type="YSort" parent="YSort"]
+[node name="Signs" type="YSort" parent="YSort"]
 
-[node name="BulletinBoard" parent="YSort/YSort" instance=ExtResource( 14 )]
-position = Vector2( 47, 120 )
+[node name="InformationBoard" parent="YSort/Signs" instance=ExtResource( 14 )]
+position = Vector2( 41, 128 )
 
-[node name="SpeechAction" parent="YSort/YSort/BulletinBoard/InteractionZone/Actions" index="0" instance=ExtResource( 16 )]
-text_array = [ "General Store" ]
+[node name="InformationAction" parent="YSort/Signs/InformationBoard/InteractionZone/Actions" index="0"]
+information_array = [ "General Store" ]
 
-[node name="CollisionShape2D" parent="YSort/YSort/BulletinBoard/PlayerDetectionZone" index="0"]
-visible = false
+[node name="InformationBoard2" parent="YSort/Signs" instance=ExtResource( 14 )]
+position = Vector2( -192, 128 )
 
-[node name="BulletinBoard2" parent="YSort/YSort" instance=ExtResource( 14 )]
-position = Vector2( -203, 119 )
-
-[node name="SpeechAction" parent="YSort/YSort/BulletinBoard2/InteractionZone/Actions" index="0" instance=ExtResource( 16 )]
-text_array = [ "Inn" ]
-
-[node name="CollisionShape2D" parent="YSort/YSort/BulletinBoard2/PlayerDetectionZone" index="0"]
-visible = false
+[node name="InformationAction" parent="YSort/Signs/InformationBoard2/InteractionZone/Actions" index="0"]
+information_array = [ "Inn" ]
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
@@ -217,14 +210,10 @@ shape = SubResource( 5 )
 [editable path="YSort/NPCs/Bill"]
 [editable path="YSort/NPCs/Bill/InteractionZone"]
 [editable path="YSort/NPCs/Bill/PlayerDetectionZone"]
-[editable path="YSort/YSort/BulletinBoard"]
-[editable path="YSort/YSort/BulletinBoard/InteractionZone"]
-[editable path="YSort/YSort/BulletinBoard/PlayerDetectionZone"]
-[editable path="YSort/YSort/BulletinBoard/PlayerDetectionZone/QuestBubble"]
-[editable path="YSort/YSort/BulletinBoard2"]
-[editable path="YSort/YSort/BulletinBoard2/InteractionZone"]
-[editable path="YSort/YSort/BulletinBoard2/PlayerDetectionZone"]
-[editable path="YSort/YSort/BulletinBoard2/PlayerDetectionZone/QuestBubble"]
+[editable path="YSort/Signs/InformationBoard"]
+[editable path="YSort/Signs/InformationBoard/InteractionZone"]
+[editable path="YSort/Signs/InformationBoard2"]
+[editable path="YSort/Signs/InformationBoard2/InteractionZone"]
 [editable path="SceneLinks/FirstForest"]
 [editable path="SceneLinks/GeneralStore"]
 [editable path="SceneLinks/Inn"]
