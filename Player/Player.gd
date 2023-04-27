@@ -30,7 +30,6 @@ onready var detection_zone = $DetectionZone/DetectionZone
 onready var push_detection_zone = $PushDetectionZone/PushDetectionZone
 
 func _ready():
-
 	anim_tree.active = true
 	anim_player.play("SETUP")
 	anim_tree.set("parameters/roll/blend_position", WorldStats.player_spawn_direction)
@@ -58,7 +57,6 @@ func _physics_process(delta):
 		PUSH:
 			push_state(delta)
 	
-	
 	if Input.is_action_just_pressed("quick_action_1"):
 		process_action(0)
 	if Input.is_action_just_pressed("quick_action_2"):
@@ -71,6 +69,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("backpack") and UI.TextBox.complete:
 		is_running = !is_running
 		UI.Backpack.toggle_backpack()
+	
+	# Debug Input Key
+	if Input.is_action_just_pressed("debug"):
+		pass
 	
 func move_state(delta):
 	var input_vector = get_input_vector()

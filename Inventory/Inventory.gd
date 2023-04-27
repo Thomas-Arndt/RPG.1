@@ -7,7 +7,7 @@ signal item_changed(indices)
 var drag_data = null
 
 var gold: int = 0 setget set_gold
-var max_gold: int = 99 setget set_max_gold
+var max_gold: int = 999 setget set_max_gold
 
 export (Array, Resource) var inventory = [
 	null, null, null, null, 

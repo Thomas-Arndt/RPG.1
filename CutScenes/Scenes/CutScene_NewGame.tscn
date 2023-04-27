@@ -6,7 +6,7 @@
 [ext_resource path="res://CutScenes/Scenes/CutScene.gd" type="Script" id=4]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Utils/Camera/ScreenShakeRandom.tscn" type="PackedScene" id=6]
-[ext_resource path="res://UI/Backgrounds/ScrollingRockfieldFG.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/Backgrounds/ScrollingRockfield.tscn" type="PackedScene" id=7]
 
 [node name="CutScene_NewGame" type="Node2D"]
 script = ExtResource( 4 )
@@ -21,10 +21,12 @@ signal_code = "screen_shake"
 [node name="ScrollingStarfield" parent="." instance=ExtResource( 1 )]
 position = Vector2( -30, -26 )
 
+[node name="ScrollingRockfieldBG" parent="." instance=ExtResource( 7 )]
+depth = false
+
 [node name="Actors" type="Node2D" parent="." groups=["Mobs"]]
 
-[node name="ScrollingRockfield" parent="." instance=ExtResource( 7 )]
-position = Vector2( -41, 51 )
+[node name="ScrollingRockfieldFG" parent="." instance=ExtResource( 7 )]
 
 [node name="CutSceneController" parent="." instance=ExtResource( 3 )]
 script = ExtResource( 2 )

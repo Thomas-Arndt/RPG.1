@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/Sprites/4.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Gold/4.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/HelvetiPixel.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/GoldDisplay.gd" type="Script" id=3]
 
