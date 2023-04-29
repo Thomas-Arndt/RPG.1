@@ -92,3 +92,5 @@ func update_scene(scene_name:String, node_path:String, property_name:String, val
 	
 	save_game.close()
 		
+func get_class():
+	return "WorldScene"

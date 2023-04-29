@@ -41,10 +41,7 @@ func mount_scene(destination_reference, transition : bool = true):
 	if len(player) > 0:
 		player[0].paused(true)
 	destination.load_scene()
-	if destination is WorldScene:
-		UI.set_state(UI.states.OVERWORLD)
-	elif destination is CutScene:
-		UI.set_state(UI.states.CUTSCENE)
+	set_UI_state(destination.get_class())
 	player = get_tree().get_nodes_in_group("Player")
 	if len(player) > 0:
 		player[0].spawn_player()
@@ -55,3 +52,10 @@ func mount_scene(destination_reference, transition : bool = true):
 	if len(player) > 0:
 		player[0].paused(false)
 	yield(get_tree(), "idle_frame")
+
+func set_UI_state(type):
+	match type:
+		"WorldScene":
+			UI.set_state(UI.states.OVERWORLD)
+		"CutScene":
+			UI.set_state(UI.states.CUTSCENE)

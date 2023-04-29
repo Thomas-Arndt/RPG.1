@@ -110,7 +110,7 @@ func release_actor():
 
 func delete_actor():
 	actor.queue_free()
-	#run_cut_scene()
+	run_cut_scene()
 	
 func start_timer(duration : float):
 	is_acting = true

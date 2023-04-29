@@ -8,3 +8,6 @@ func _ready():
 
 func load_scene():
 	pass
+
+func get_class():
+	return "CutScene"
