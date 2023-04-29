@@ -18,7 +18,7 @@ func _ready():
 func _on_Gold_changed(value):
 	var gold = Inventory.gold
 	number_display.text = str(gold)
-	show()
+	set_gold_icon(Inventory.gold)
 
 func set_gold_icon(value):
 	if value == 0:
