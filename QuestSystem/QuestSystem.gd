@@ -39,6 +39,20 @@ func deliver(quest: Quest):
 		Inventory.pick_up_item(item.item, item.quantity)
 	save_quest_progress()
 
+func get_quest_log():
+	var quest_log_array : Array = []
+	for quest in active_quests.get_quests():
+		var objectives : Array = []
+		for objective in quest.objectives.get_children():
+			objectives.append(objective.as_text())
+		quest_log_array.append({
+			"title": quest.title,
+			"description": quest.description,
+			"objectives": objectives,
+			"rewards": quest.get_rewards()
+		})
+	return quest_log_array
+
 func save_quest_progress():
 	var save_game = File.new()
 	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.WRITE)

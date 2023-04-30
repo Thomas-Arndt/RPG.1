@@ -5,7 +5,7 @@ export var default_scene : String = "res://UI/Backgrounds/ScrollingStarfield.tsc
 func _ready():
 	var destination = ResourceLoader.load(default_scene).instance()
 	add_child(destination)
-	UI.set_state(UI.states.MAIN)
+	set_UI_state("Main")
 	SignalBus.connect("scene_link_entered", self, "_on_Scene_Link_entered")
 
 func _on_Scene_Link_entered(destination_reference):
@@ -14,9 +14,7 @@ func _on_Scene_Link_entered(destination_reference):
 		yield(mount_scene(destination_reference), "completed")
 
 func unmount_scene(transition : bool = true):
-	var player = get_tree().get_nodes_in_group("Player")
-	if len(player) > 0:
-		player[0].paused(true)
+	pause_player()
 	PlayerStats.save_stats()
 	if transition:
 		TransitionLayer.scene_out()
@@ -37,20 +35,15 @@ func mount_scene(destination_reference, transition : bool = true):
 	WorldStats.set_last_loaded_scene(destination_reference)
 	WorldStats.save_stats()
 	add_child(destination)
-	var player = get_tree().get_nodes_in_group("Player")
-	if len(player) > 0:
-		player[0].paused(true)
+	pause_player()
 	destination.load_scene()
 	set_UI_state(destination.get_class())
-	player = get_tree().get_nodes_in_group("Player")
-	if len(player) > 0:
-		player[0].spawn_player()
+	spawn_player()
 	if transition:
 		yield(get_tree().create_timer(0.5), "timeout")
 		TransitionLayer.scene_in()
 		yield(TransitionLayer, "finished")
-	if len(player) > 0:
-		player[0].paused(false)
+	unpause_player()
 	yield(get_tree(), "idle_frame")
 
 func set_UI_state(type):
@@ -59,3 +52,26 @@ func set_UI_state(type):
 			UI.set_state(UI.states.OVERWORLD)
 		"CutScene":
 			UI.set_state(UI.states.CUTSCENE)
+		"Main":
+			UI.set_state(UI.states.MAIN)
+
+func get_player():
+	var player = get_tree().get_nodes_in_group("Player")
+	if len(player) > 0:
+		return player[0]
+	return null
+
+func pause_player():
+	var player = get_player()
+	if player != null:
+		player.paused(true)
+
+func unpause_player():
+	var player = get_player()
+	if player != null:
+		player.paused(false)
+
+func spawn_player():
+	var player = get_player()
+	if player != null:
+		player.spawn_player()

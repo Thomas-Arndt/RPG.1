@@ -15,6 +15,8 @@ enum {
 	CHASE,
 }
 
+var Name= "Bat"
+
 var velocity = Vector2.ZERO
 var knockback = Vector2.ZERO
 

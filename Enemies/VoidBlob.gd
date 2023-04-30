@@ -18,6 +18,8 @@ enum {
 	ATTACK
 }
 
+var Name = "Void Blob"
+
 var velocity = Vector2.ZERO
 var knockback = Vector2.ZERO
 

@@ -17,7 +17,10 @@ func _on_enemy_died(enemy) -> void:
 
 func as_text() -> String:
 	return(
-		"Banish %s %s(s) %s"
-		% [str(amount), target_to_slay.instance().name, "(completed)" if completed else ""]
+		"Banish %s %s%s %s" % 
+		[str(amount), 
+		target_to_slay.instance().Name.to_lower(), 
+		"s" if amount > 1 else "", 
+		"(completed)" if completed else ""]
 	)
 

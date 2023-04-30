@@ -53,9 +53,7 @@ func get_rewards() -> Dictionary:
 
 func get_rewards_as_text() -> Array:
 	var text := []
-	#	text.append(" - [%s] x (%s)\n" % [item.item.name, str(item.amount)])
 	text.append(" - Experience: " + str(_reward_experience) + "\n - Gold: " + str(_reward_gold) )
-	#for item in _reward_items.get_children():
 	return text 
 
 func save() -> Dictionary:
