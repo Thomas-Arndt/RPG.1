@@ -72,17 +72,9 @@ func _physics_process(delta):
 	
 	# Debug Input Key
 	if Input.is_action_just_pressed("debug"):
-		var quest_array = QuestSystem.get_quest_log()
-		for quest in quest_array:
-			print("%s - %s" % [quest.title, quest.description])
-			print("objectives:")
-			for objective in quest.objectives:
-				print(objective)
-			print("exp: " + str(quest.rewards.experience))
-			print("gold: " + str(quest.rewards.gold))
-			print("items:")
-			for item in quest.rewards.items:
-				print(item.item.name)
+		get_tree().get_nodes_in_group("test")[0].get_quest_log_array()
+		get_tree().get_nodes_in_group("test")[0].build_quest_log()
+		get_tree().get_nodes_in_group("test")[0].highlight_active_row()
 		pass
 	
 func move_state(delta):

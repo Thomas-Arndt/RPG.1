@@ -1,6 +1,9 @@
 extends KinematicBody2D
+class_name Push_Object
 
 export var movement_locked : bool = false
+
+onready var collision_shape : Node = $CollisionShape2D
 
 var effect_applied : bool = false
 var initial_position : Vector2 = Vector2.ZERO

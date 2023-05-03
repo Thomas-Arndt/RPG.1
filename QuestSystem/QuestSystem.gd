@@ -40,18 +40,33 @@ func deliver(quest: Quest):
 	save_quest_progress()
 
 func get_quest_log():
-	var quest_log_array : Array = []
+	var quest_log_dict : Dictionary = {
+		"active_quests": [],
+		"completed_quests": [],
+	}
 	for quest in active_quests.get_quests():
 		var objectives : Array = []
 		for objective in quest.objectives.get_children():
 			objectives.append(objective.as_text())
-		quest_log_array.append({
+		quest_log_dict.active_quests.append({
 			"title": quest.title,
 			"description": quest.description,
 			"objectives": objectives,
-			"rewards": quest.get_rewards()
+			"rewards": quest.get_rewards(),
+			"state": "active",
 		})
-	return quest_log_array
+	for quest in completed_quests.get_quests():
+		var objectives : Array = []
+		for objective in quest.objectives.get_children():
+			objectives.append(objective.as_text())
+		quest_log_dict.completed_quests.append({
+			"title": quest.title,
+			"description": quest.description,
+			"objectives": objectives,
+			"rewards": quest.get_rewards(),
+			"state": "completed",
+		})
+	return quest_log_dict
 
 func save_quest_progress():
 	var save_game = File.new()

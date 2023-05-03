@@ -14,9 +14,10 @@ func reset_target():
 	target = null
 
 func _on_PushDetectionZone_body_entered(body):
-	target = body
-	if target == forward_target:
-		emit_signal("is_colliding", target)
+	if body is Push_Object and not body.movement_locked:
+		target = body
+		if target == forward_target:
+			emit_signal("is_colliding", target)
 
 
 func _on_PushDetectionZone_body_exited(body):
@@ -24,7 +25,8 @@ func _on_PushDetectionZone_body_exited(body):
 
 
 func _on_ForwardDetector_body_entered(body):
-	forward_target = body
+	if body is Push_Object and not body.movement_locked:
+		forward_target = body
 
 
 func _on_ForwardDetector_body_exited(body):

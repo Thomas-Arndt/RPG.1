@@ -46,41 +46,33 @@ position = Vector2( 157, 166 )
 [node name="Boxes" type="YSort" parent="YSort"]
 
 [node name="PBox" parent="YSort/Boxes" instance=ExtResource( 2 )]
-position = Vector2( 213, 92 )
+position = Vector2( 215, 100 )
 movement_locked = true
 
 [node name="PBox2" parent="YSort/Boxes" instance=ExtResource( 2 )]
-position = Vector2( 197, 92 )
-movement_locked = true
-
-[node name="PBox3" parent="YSort/Boxes" instance=ExtResource( 2 )]
-position = Vector2( 181, 92 )
+position = Vector2( 192, 100 )
 movement_locked = true
 
 [node name="PBox4" parent="YSort/Boxes" instance=ExtResource( 2 )]
-position = Vector2( 165, 109 )
+position = Vector2( 169, 118 )
 
 [node name="PBox5" parent="YSort/Boxes" instance=ExtResource( 2 )]
-position = Vector2( 149, 109 )
-
-[node name="PBox6" parent="YSort/Boxes" instance=ExtResource( 2 )]
-position = Vector2( 133, 92 )
-movement_locked = true
+position = Vector2( 146, 118 )
 
 [node name="PBox7" parent="YSort/Boxes" instance=ExtResource( 2 )]
-position = Vector2( 117, 92 )
+position = Vector2( 123, 100 )
 movement_locked = true
 
 [node name="PBox8" parent="YSort/Boxes" instance=ExtResource( 2 )]
-position = Vector2( 101, 92 )
+position = Vector2( 100, 100 )
 movement_locked = true
 
 [node name="PBox9" parent="YSort/Boxes" instance=ExtResource( 2 )]
-position = Vector2( 149, 75 )
+position = Vector2( 146, 83 )
 movement_locked = true
 
 [node name="PBox10" parent="YSort/Boxes" instance=ExtResource( 2 )]
-position = Vector2( 165, 59 )
+position = Vector2( 169, 67 )
 movement_locked = true
 
 [node name="Chests" type="YSort" parent="YSort"]
