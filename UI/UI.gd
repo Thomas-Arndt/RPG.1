@@ -11,6 +11,7 @@ enum states {
 	MAIN,
 	OVERWORLD,
 	CUTSCENE,
+	CONTINUE,
 }
 
 var state = states.TITLE
