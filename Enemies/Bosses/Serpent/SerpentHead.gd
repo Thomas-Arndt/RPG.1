@@ -4,7 +4,6 @@ export var ACCELERATION = 600
 export var MAX_SPEED = 200
 export var FRICTION = 500
 
-export var segments : int = 1
 
 onready var red_sprite_full : Node = $RedSpriteFull
 onready var red_sprite_half : Node = $RedSpriteHalf
@@ -13,21 +12,26 @@ onready var green_sprite_half : Node = $GreenSpriteHalf
 
 var segment = preload("res://Enemies/Bosses/Serpent/SerpentSegment.tscn")
 
+var segments : int = 0
+
 var next_segment : Node = null
 var runner : Node = self
 
 var velocity = Vector2.ZERO
 
 func _physics_process(delta):
-	var input_vector = get_input_vector()
-	
-	if input_vector != Vector2.ZERO:
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
-		flip_sprites()
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	move()
-	next_segment.follow_the_leader(global_position, delta)
+	if false:
+		var input_vector = get_input_vector()
+		
+		if input_vector != Vector2.ZERO:
+			velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+			flip_sprites()
+		else:
+			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		move()
+		
+	if next_segment != null:
+		next_segment.follow_the_leader(global_position, delta)
 
 func get_input_vector() -> Vector2:
 	var input_vector = Vector2.ZERO
@@ -45,7 +49,7 @@ func build_serpent():
 	while count < segments:
 		count+=1
 		var new_segment = segment.instance()
-		new_segment.global_position = Vector2(runner.global_position.x + 30, runner.global_position.y)
+		new_segment.position = Vector2(runner.position.x + 30, runner.position.y)
 		new_segment.previous_segment = runner
 		runner.next_segment = new_segment
 		get_parent().add_child(new_segment)

@@ -53,7 +53,7 @@ func _ready():
 func _physics_process(delta):
 	match_dimension(WorldStats.DIMENSION)
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
-	knockback = move_and_slide(knockback)
+	apply_knockback()
 	
 	match state:
 		IDLE:
@@ -115,6 +115,9 @@ func accelerate_towards_point(point, delta):
 	hit_box.knockback_vector = velocity.normalized()
 	full_sprite.flip_h = velocity.x > 0
 	half_sprite.flip_h = velocity.x > 0
+
+func apply_knockback():
+	knockback = move_and_slide(knockback)
 
 func _on_HurtBox_area_entered(area):
 	stats.change_health(-area.damage)
