@@ -9,10 +9,14 @@ onready var red_sprite_full : Node = $RedSpriteFull
 onready var red_sprite_half : Node = $RedSpriteHalf
 onready var green_sprite_full : Node = $GreenSpriteFull
 onready var green_sprite_half : Node = $GreenSpriteHalf
+onready var stats : Node = $Stats
+onready var hurt_box : Node = $HurtBox
+onready var blink_anim_player : Node = $BlinkAnimationPlayer
 
 var segment = preload("res://Enemies/Bosses/Serpent/SerpentSegment.tscn")
 
 var segments : int = 0
+var knockback : Vector2 = Vector2.ZERO
 
 var next_segment : Node = null
 var runner : Node = self
@@ -63,3 +67,28 @@ func flip_sprites():
 	red_sprite_half.flip_h = velocity.x > 0
 	green_sprite_full.flip_h = velocity.x > 0
 	green_sprite_half.flip_h = velocity.x > 0
+
+
+func _on_HurtBox_area_entered(area):
+	stats.change_health(-area.damage)
+	area.set_knockback_vector(self) 
+	knockback = area.knockback_vector * 130
+	move_and_slide(knockback)
+	hurt_box.start_invincible(0.6)
+
+func _on_HurtBox_invincible_start():
+	blink_anim_player.play("start")
+
+func _on_HurtBox_invincible_end():
+	blink_anim_player.play("stop")
+
+
+
+func _on_Stats_no_health():
+	var runner : Node = self
+	while runner.next_segment != null:
+		runner = runner.next_segment
+	while runner != self:
+		runner = runner.previous_segment
+		runner.next_segment.queue_free()
+	queue_free()
