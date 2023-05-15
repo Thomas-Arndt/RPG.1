@@ -12,6 +12,7 @@ onready var green_sprite_half : Node = $GreenSpriteHalf
 onready var stats : Node = $Stats
 onready var hurt_box : Node = $HurtBox
 onready var blink_anim_player : Node = $BlinkAnimationPlayer
+onready var wander_controller : Node = $StampedeWanderController
 
 var segment = preload("res://Enemies/Bosses/Serpent/SerpentSegment.tscn")
 
@@ -21,31 +22,63 @@ var knockback : Vector2 = Vector2.ZERO
 var next_segment : Node = null
 var runner : Node = self
 
+enum states {
+	STAMPEDE,
+}
+var state = states.STAMPEDE
+
 var velocity = Vector2.ZERO
 
 func _physics_process(delta):
-	if false:
-		var input_vector = get_input_vector()
-		
-		if input_vector != Vector2.ZERO:
-			velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
-			flip_sprites()
-		else:
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-		move()
+	wander_controller.set_position(wander_controller.start_position)
+	match state:
+		states.STAMPEDE:
+			accelerate_towards_point(wander_controller.target_position, delta)
+			if wander_controller.can_see_unit():
+				wander_controller.target_position = global_position
+				velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+				wander_controller.start_timer(0.01)
+			move()
 		
 	if next_segment != null:
 		next_segment.follow_the_leader(global_position, delta)
 
-func get_input_vector() -> Vector2:
-	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	input_vector = input_vector.normalized()
-	return input_vector
+func accelerate_towards_point(point, delta):
+	var direction = global_position.direction_to(point)
+	velocity = velocity.move_toward(direction * MAX_SPEED, FRICTION * delta)
 	
 func move():
 	velocity = move_and_slide(velocity)
+	flip_sprites()
+	
+func flip_sprites():
+	red_sprite_full.flip_h = velocity.x > 0
+	red_sprite_half.flip_h = velocity.x > 0
+	green_sprite_full.flip_h = velocity.x > 0
+	green_sprite_half.flip_h = velocity.x > 0
+
+func _on_HurtBox_area_entered(area):
+	if next_segment == null:
+		stats.change_health(-area.damage)
+		area.set_knockback_vector(self) 
+		knockback = area.knockback_vector * 130
+		move_and_slide(knockback)
+		hurt_box.start_invincible(0.6)
+
+func _on_HurtBox_invincible_start():
+	blink_anim_player.play("start")
+
+func _on_HurtBox_invincible_end():
+	blink_anim_player.play("stop")
+
+func _on_Stats_no_health():
+	var runner : Node = self
+	while runner.next_segment != null:
+		runner = runner.next_segment
+	while runner != self:
+		runner = runner.previous_segment
+		runner.next_segment.queue_free()
+	queue_free()
 
 func build_serpent():
 	runner = self
@@ -62,33 +95,3 @@ func build_serpent():
 func is_head():
 	return true
 	
-func flip_sprites():
-	red_sprite_full.flip_h = velocity.x > 0
-	red_sprite_half.flip_h = velocity.x > 0
-	green_sprite_full.flip_h = velocity.x > 0
-	green_sprite_half.flip_h = velocity.x > 0
-
-
-func _on_HurtBox_area_entered(area):
-	stats.change_health(-area.damage)
-	area.set_knockback_vector(self) 
-	knockback = area.knockback_vector * 130
-	move_and_slide(knockback)
-	hurt_box.start_invincible(0.6)
-
-func _on_HurtBox_invincible_start():
-	blink_anim_player.play("start")
-
-func _on_HurtBox_invincible_end():
-	blink_anim_player.play("stop")
-
-
-
-func _on_Stats_no_health():
-	var runner : Node = self
-	while runner.next_segment != null:
-		runner = runner.next_segment
-	while runner != self:
-		runner = runner.previous_segment
-		runner.next_segment.queue_free()
-	queue_free()

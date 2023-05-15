@@ -341,7 +341,7 @@ exit_location = Vector2( 462, 805 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
-[node name="Below_1" parent="SceneLinks" instance=ExtResource( 7 )]
+[node name="Below_1" parent="SceneLinks" groups=["World"] instance=ExtResource( 7 )]
 position = Vector2( 16, -128 )
 destination_reference = "res://World/Below/Below_Hallway_1.tscn"
 exit_location = Vector2( 14, 15 )

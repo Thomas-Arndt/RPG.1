@@ -681,6 +681,7 @@ damage = 2
 shape = SubResource( 160 )
 
 [node name="DetectionWanderController" parent="." instance=ExtResource( 9 )]
+random = true
 
 [node name="LocatorArea" type="Area2D" parent="."]
 collision_layer = 64

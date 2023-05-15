@@ -29,11 +29,14 @@ func _ready():
 	anim_player.play("move")
 
 func follow_the_leader(leader_position, delta):
-	var follow_vector = global_position.direction_to(leader_position)
-	follow_vector = follow_vector.normalized()
-	if (previous_segment.is_head() and global_position.distance_to(leader_position) <= 24) or (not previous_segment.is_head() and global_position.distance_to(leader_position) <= 20):
+	var distance_to_leader = global_position.distance_to(leader_position)
+	if previous_segment.is_head() and distance_to_leader <= 26:
+		velocity = Vector2.ZERO
+	elif not previous_segment.is_head() and distance_to_leader <= 22:
 		velocity = Vector2.ZERO
 	else:
+		var follow_vector = global_position.direction_to(leader_position)
+		follow_vector = follow_vector.normalized()
 		velocity = velocity.move_toward(follow_vector * MAX_SPEED, ACCELERATION * delta)
 		flip_sprites()
 	velocity = move_and_slide(velocity)

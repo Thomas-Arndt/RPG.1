@@ -2,6 +2,8 @@ extends Node2D
 
 signal arrived
 
+export var random : bool = false
+
 onready var detection_zones = $DetectionZones
 onready var timer = $Timer
 onready var start_position = global_position
@@ -9,21 +11,30 @@ onready var target_position = Vector2.ZERO
 
 var target_node: Node = null
 var previous_node: Node = null
+var sequential_index : int = 0
 
 func _ready():
 	update_target_position()
-	randomize()
+	if random:
+		randomize()
 		
 func update_target_position():
 	var available_nodes: Array = []
 	if len(detection_zones.get_children()) > 0:
-		for detection_zone in detection_zones.get_children():
-			if detection_zone != previous_node:
-				available_nodes.append(detection_zone)
-		var length = len(available_nodes)
-		var next_node_index = randi() % length
-		target_node = available_nodes[next_node_index]
-		previous_node = target_node
+		if random:
+			for detection_zone in detection_zones.get_children():
+				if detection_zone != previous_node:
+					available_nodes.append(detection_zone)
+			var length = len(available_nodes)
+			var next_node_index = randi() % length
+			target_node = available_nodes[next_node_index]
+			previous_node = target_node
+		else:
+			target_node = detection_zones.get_child(sequential_index)
+			if sequential_index < detection_zones.get_child_count() - 1:
+				sequential_index += 1
+			else:
+				sequential_index = 0
 		target_position = target_node.global_position
 
 func can_see_unit():
@@ -40,8 +51,8 @@ func start_timer(duration):
 	target_node = null
 	timer.start(duration)
 
-func set_position(position):
-	global_position = position
+func set_position(pos):
+	global_position = pos
 	
 func monitorable_on():
 	for child in detection_zones.get_children():
