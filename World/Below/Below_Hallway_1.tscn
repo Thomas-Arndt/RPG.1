@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/dungeon_sheet.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://World/Below/FloorSpikes.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Objects/Switches/RedBlueSwitch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/Objects/PushObjects/PStoneBlock.tscn" type="PackedScene" id=11]
+[ext_resource path="res://World/Objects/PushObjects/PBox.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=67]
 points = PoolVector2Array( 16, 8, 4, 8, 4, 16, 0, 16, 0, 0, 16, 0 )
@@ -400,10 +402,10 @@ extents = Vector2( 54, 10 )
 script = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -763.0
-margin_top = -1594.0
-margin_right = 1541.0
-margin_bottom = 804.0
+margin_left = -726.0
+margin_top = -1601.0
+margin_right = 1578.0
+margin_bottom = 797.0
 color = Color( 0.411765, 0.568627, 0.576471, 1 )
 
 [node name="BelowWalls" type="TileMap" parent="."]
@@ -617,6 +619,173 @@ position = Vector2( 582, -72 )
 destination_reference = "res://World/Below/SerpentsLair.tscn"
 exit_location = Vector2( 50, 0 )
 exit_direction = Vector2( 0, -1 )
+
+[node name="PushObjects" type="YSort" parent="YSort"]
+
+[node name="PStoneBlock" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 611, -99 )
+
+[node name="PStoneBlock2" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 588, -99 )
+
+[node name="PStoneBlock3" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 565, -99 )
+
+[node name="PBox" parent="YSort/PushObjects" instance=ExtResource( 12 )]
+position = Vector2( 542, -116 )
+
+[node name="PBox2" parent="YSort/PushObjects" instance=ExtResource( 12 )]
+position = Vector2( 519, -116 )
+
+[node name="PStoneBlock4" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 496, -99 )
+
+[node name="PStoneBlock5" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 519, -82 )
+
+[node name="PStoneBlock6" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 473, -82 )
+
+[node name="PStoneBlock7" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 473, -65 )
+
+[node name="PStoneBlock8" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 473, -48 )
+
+[node name="PStoneBlock9" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 473, -31 )
+
+[node name="PStoneBlock10" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 473, -14 )
+
+[node name="PStoneBlock11" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 427, -82 )
+
+[node name="PStoneBlock12" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 450, -48 )
+
+[node name="PBox4" parent="YSort/PushObjects" instance=ExtResource( 12 )]
+position = Vector2( 427, -31 )
+
+[node name="PBox5" parent="YSort/PushObjects" instance=ExtResource( 12 )]
+position = Vector2( 404, -31 )
+
+[node name="PStoneBlock13" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 519, -65 )
+
+[node name="PStoneBlock14" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 530, -22 )
+
+[node name="PStoneBlock15" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 381, -48 )
+
+[node name="PStoneBlock16" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 358, -48 )
+
+[node name="PStoneBlock17" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 335, -48 )
+
+[node name="PStoneBlock18" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 312, -48 )
+
+[node name="PStoneBlock19" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 312, -65 )
+
+[node name="PStoneBlock20" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 312, -82 )
+
+[node name="PStoneBlock21" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 312, -99 )
+
+[node name="PStoneBlock22" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 312, -116 )
+
+[node name="PStoneBlock23" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 312, -133 )
+
+[node name="PStoneBlock24" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 312, -150 )
+
+[node name="PStoneBlock25" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 312, -167 )
+
+[node name="PStoneBlock26" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 312, -184 )
+
+[node name="PStoneBlock27" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 335, -184 )
+
+[node name="PStoneBlock28" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 358, -184 )
+
+[node name="PStoneBlock29" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 381, -184 )
+
+[node name="PStoneBlock30" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 404, -184 )
+
+[node name="PStoneBlock31" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 450, -150 )
+
+[node name="PBox3" parent="YSort/PushObjects" instance=ExtResource( 12 )]
+position = Vector2( 450, -184 )
+
+[node name="PStoneBlock32" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 507, -37 )
+
+[node name="PStoneBlock33" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 565, -167 )
+
+[node name="PStoneBlock34" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 427, -184 )
+
+[node name="PStoneBlock35" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 519, -184 )
+
+[node name="PStoneBlock36" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 542, -184 )
+
+[node name="PStoneBlock37" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 611, -116 )
+
+[node name="PStoneBlock38" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 588, -150 )
+
+[node name="PStoneBlock39" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 611, -133 )
+
+[node name="PStoneBlock40" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 496, -167 )
+
+[node name="PStoneBlock41" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 473, -150 )
+
+[node name="PStoneBlock42" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 450, -133 )
+
+[node name="PStoneBlock43" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 427, -116 )
+
+[node name="PStoneBlock44" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 404, -116 )
+
+[node name="PStoneBlock45" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 381, -116 )
+
+[node name="PStoneBlock46" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 358, -116 )
+
+[node name="PStoneBlock47" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 404, -99 )
+
+[node name="PStoneBlock48" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 404, -82 )
+
+[node name="PStoneBlock49" parent="YSort/PushObjects" instance=ExtResource( 11 )]
+position = Vector2( 404, -65 )
+
+[node name="PBox6" parent="YSort/PushObjects" instance=ExtResource( 12 )]
+position = Vector2( 473, -184 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 

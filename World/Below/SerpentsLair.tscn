@@ -92,10 +92,10 @@ shader_param/active = false
 script = ExtResource( 6 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -1329.0
-margin_top = -1252.0
-margin_right = 2338.0
-margin_bottom = 1680.0
+margin_left = -576.0
+margin_top = -691.0
+margin_right = 551.0
+margin_bottom = 564.0
 color = Color( 0.411765, 0.568627, 0.576471, 1 )
 
 [node name="BelowWalls" parent="." instance=ExtResource( 1 )]
@@ -105,10 +105,10 @@ tile_data = PoolIntArray( -1441811, 0, 65537, -1441810, 0, 65537, -1441809, 0, 6
 position = Vector2( 50, 0 )
 
 [node name="TopLeft" parent="Camera2D/Limits" index="0"]
-position = Vector2( -2495, -2087 )
+position = Vector2( -576, -713 )
 
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
-position = Vector2( 2579, 2152 )
+position = Vector2( 586, 596 )
 
 [node name="YSort" type="YSort" parent="."]
 
