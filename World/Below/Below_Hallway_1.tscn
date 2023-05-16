@@ -402,10 +402,10 @@ extents = Vector2( 54, 10 )
 script = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -726.0
-margin_top = -1601.0
-margin_right = 1578.0
-margin_bottom = 797.0
+margin_left = -706.0
+margin_top = -1580.0
+margin_right = 1598.0
+margin_bottom = 818.0
 color = Color( 0.411765, 0.568627, 0.576471, 1 )
 
 [node name="BelowWalls" type="TileMap" parent="."]
@@ -441,7 +441,7 @@ position = Vector2( -449, -41 )
 position = Vector2( -526, -176 )
 
 [node name="Bat3" parent="YSort/Bats" instance=ExtResource( 9 )]
-position = Vector2( -362, -179 )
+position = Vector2( -378, -149 )
 
 [node name="Bat4" parent="YSort/Bats" instance=ExtResource( 9 )]
 position = Vector2( -252, -67 )
@@ -674,7 +674,7 @@ position = Vector2( 382, -31 )
 position = Vector2( 497, -65 )
 
 [node name="PStoneBlock14" parent="YSort/PushObjects" instance=ExtResource( 11 )]
-position = Vector2( 508, -22 )
+position = Vector2( 520, -65 )
 
 [node name="PStoneBlock15" parent="YSort/PushObjects" instance=ExtResource( 11 )]
 position = Vector2( 359, -48 )
@@ -731,7 +731,7 @@ position = Vector2( 428, -150 )
 position = Vector2( 428, -184 )
 
 [node name="PStoneBlock32" parent="YSort/PushObjects" instance=ExtResource( 11 )]
-position = Vector2( 485, -37 )
+position = Vector2( 405, -133 )
 
 [node name="PStoneBlock33" parent="YSort/PushObjects" instance=ExtResource( 11 )]
 position = Vector2( 543, -167 )
@@ -799,8 +799,8 @@ shape = SubResource( 37 )
 
 [node name="LeftDoor" parent="SceneLinks" instance=ExtResource( 3 )]
 position = Vector2( -400, -259 )
-destination_reference = "res://World/Below/Below_Hallway_1.tscn"
-exit_location = Vector2( 14, 15 )
+destination_reference = "res://World/Below/SerpentsLair_2_a.tscn"
+exit_location = Vector2( 17, 133 )
 exit_direction = Vector2( 0, -1 )
 
 [node name="CollisionShape2D" parent="SceneLinks/LeftDoor" index="0"]
