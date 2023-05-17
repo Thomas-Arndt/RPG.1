@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/dungeon_sheet.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://World/Objects/Switches/RedBlueSwitch.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Objects/PushObjects/PStoneBlock.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Objects/PushObjects/PBox.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Utils/Controllers/SpawnController.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=67]
 points = PoolVector2Array( 16, 8, 4, 8, 4, 16, 0, 16, 0, 0, 16, 0 )
@@ -402,10 +403,10 @@ extents = Vector2( 54, 10 )
 script = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -706.0
-margin_top = -1580.0
-margin_right = 1598.0
-margin_bottom = 818.0
+margin_left = -643.0
+margin_top = -1705.0
+margin_right = 1661.0
+margin_bottom = 693.0
 color = Color( 0.411765, 0.568627, 0.576471, 1 )
 
 [node name="BelowWalls" type="TileMap" parent="."]
@@ -432,19 +433,23 @@ position = Vector2( 14, 15 )
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
 
-[node name="Bats" type="YSort" parent="YSort"]
+[node name="MobileEnemies" type="YSort" parent="YSort"]
 
-[node name="Bat" parent="YSort/Bats" instance=ExtResource( 9 )]
-position = Vector2( -449, -41 )
+[node name="SpawnController" parent="YSort/MobileEnemies" instance=ExtResource( 13 )]
+position = Vector2( -250, -58 )
+spawn_unit = ExtResource( 9 )
 
-[node name="Bat2" parent="YSort/Bats" instance=ExtResource( 9 )]
-position = Vector2( -526, -176 )
+[node name="SpawnController2" parent="YSort/MobileEnemies" instance=ExtResource( 13 )]
+position = Vector2( -458, -38 )
+spawn_unit = ExtResource( 9 )
 
-[node name="Bat3" parent="YSort/Bats" instance=ExtResource( 9 )]
-position = Vector2( -378, -149 )
+[node name="SpawnController3" parent="YSort/MobileEnemies" instance=ExtResource( 13 )]
+position = Vector2( -349, -161 )
+spawn_unit = ExtResource( 9 )
 
-[node name="Bat4" parent="YSort/Bats" instance=ExtResource( 9 )]
-position = Vector2( -252, -67 )
+[node name="SpawnController4" parent="YSort/MobileEnemies" instance=ExtResource( 13 )]
+position = Vector2( -521, -161 )
+spawn_unit = ExtResource( 9 )
 
 [node name="FloorSpikes" type="YSort" parent="YSort"]
 
@@ -671,7 +676,7 @@ position = Vector2( 405, -31 )
 position = Vector2( 382, -31 )
 
 [node name="PStoneBlock13" parent="YSort/PushObjects" instance=ExtResource( 11 )]
-position = Vector2( 497, -65 )
+position = Vector2( 498, -48 )
 
 [node name="PStoneBlock14" parent="YSort/PushObjects" instance=ExtResource( 11 )]
 position = Vector2( 520, -65 )
@@ -767,13 +772,13 @@ position = Vector2( 428, -133 )
 position = Vector2( 405, -116 )
 
 [node name="PStoneBlock44" parent="YSort/PushObjects" instance=ExtResource( 11 )]
-position = Vector2( 382, -116 )
+position = Vector2( 328, -89 )
 
 [node name="PStoneBlock45" parent="YSort/PushObjects" instance=ExtResource( 11 )]
 position = Vector2( 359, -116 )
 
 [node name="PStoneBlock46" parent="YSort/PushObjects" instance=ExtResource( 11 )]
-position = Vector2( 336, -116 )
+position = Vector2( 336, -133 )
 
 [node name="PStoneBlock47" parent="YSort/PushObjects" instance=ExtResource( 11 )]
 position = Vector2( 382, -99 )
