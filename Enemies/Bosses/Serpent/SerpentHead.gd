@@ -72,7 +72,7 @@ func _on_HurtBox_invincible_end():
 	blink_anim_player.play("stop")
 
 func _on_Stats_no_health():
-	var runner : Node = self
+	runner = self
 	while runner.next_segment != null:
 		runner = runner.next_segment
 	while runner != self:
@@ -95,3 +95,16 @@ func build_serpent():
 func is_head():
 	return true
 	
+
+func _on_BlobGrabber_body_entered(body):
+	if body is VoidBlob:
+		runner = self
+		while runner.next_segment != null:
+			runner = runner.next_segment
+		var new_segment = segment.instance()
+		var spawn_position = runner.position + runner.previous_segment.position.direction_to(runner.position).normalized() * 30
+		new_segment.position = spawn_position
+		runner.next_segment = new_segment
+		new_segment.previous_segment = runner
+		get_parent().add_child(new_segment)
+		body.queue_free()

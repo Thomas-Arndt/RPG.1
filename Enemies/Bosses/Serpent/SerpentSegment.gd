@@ -21,7 +21,7 @@ var next_segment : Node = null
 var velocity = Vector2.ZERO
 var knockback : Vector2 = Vector2.ZERO
 
-var blob_clones : int = 2
+var blob_clones : int = 1
 var active : bool = true
 
 func _ready():
