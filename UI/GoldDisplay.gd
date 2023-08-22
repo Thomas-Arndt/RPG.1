@@ -12,17 +12,22 @@ onready var number_display = $MarginContainer/HBoxContainer/Label
 onready var texture : Node = $MarginContainer/HBoxContainer/TextureRect
 
 func _ready():
-	show()
+	_on_Gold_changed(Inventory.gold)
 	Inventory.connect("gold_changed", self, "_on_Gold_changed")
 
 func _on_Gold_changed(value):
+	print(value)
 	var gold = Inventory.gold
+	print(gold)
 	number_display.text = str(gold)
-	set_gold_icon(Inventory.gold)
+	if gold > 0:
+		show()
+	else:
+		hide()
 
 func set_gold_icon(value):
-	if value == 0:
-		hide()
+	if value <= 0:
+		return
 	if value - 500 > 0:
 		texture.texture = gold_6
 		return
@@ -46,5 +51,6 @@ func hide():
 	margin_container.visible = false
 
 func show():
-	margin_container.visible = true
-	set_gold_icon(Inventory.gold)
+	if Inventory.gold > 0:
+		margin_container.visible = true
+		set_gold_icon(Inventory.gold)
