@@ -239,14 +239,14 @@ is_red = true
 is_green = false
 show_both = true
 active = true
-destination_reference = "res://World/Areas/BillsFarm.tscn"
+destination_reference = "res://World/Above/BillsFarm.tscn"
 from_between_exit_location = Vector2( 80, 690 )
 
 [node name="Portal2" parent="SceneLinks" instance=ExtResource( 5 )]
 position = Vector2( 14, -23 )
 show_both = true
 active = true
-destination_reference = "res://World/Areas/BillsFarm.tscn"
+destination_reference = "res://World/Above/BillsFarm.tscn"
 from_between_exit_location = Vector2( 80, 690 )
 
 [editable path="Camera2D"]

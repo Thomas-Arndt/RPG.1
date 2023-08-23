@@ -40,7 +40,7 @@ func package_choreography():
 func custom_actions(action_name, args):
 	match action_name:
 		"change_scene":
-			SignalBus.emit_signal("scene_link_entered", "res://World/Areas/BillsFarm.tscn")
+			SignalBus.emit_signal("scene_link_entered", "res://World/Above/BillsFarm.tscn")
 			run_cut_scene()
 		"disappear":
 			is_acting = true

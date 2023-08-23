@@ -336,7 +336,7 @@ signal_code = "r-b-sw-1"
 
 [node name="Ladder" parent="YSort/Portals" instance=ExtResource( 6 )]
 position = Vector2( 64, 10 )
-destination_reference = "res://World/Areas/BillsFarm.tscn"
+destination_reference = "res://World/Above/BillsFarm.tscn"
 exit_location = Vector2( 462, 805 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
