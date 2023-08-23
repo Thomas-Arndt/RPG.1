@@ -8,6 +8,12 @@
 
 [node name="MobileEnemies" type="YSort" parent="." groups=["Mobs"]]
 
+[node name="NPCs" type="YSort" parent="."]
+
+[node name="Buildings" type="YSort" parent="."]
+
+[node name="Signs" type="YSort" parent="."]
+
 [node name="Trees" type="YSort" parent="."]
 
 [node name="Bushes" type="YSort" parent="."]
@@ -17,5 +23,3 @@
 [node name="Rocks" type="YSort" parent="."]
 
 [node name="Forage" type="YSort" parent="."]
-
-[node name="Signs" type="YSort" parent="."]
