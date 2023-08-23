@@ -368,7 +368,7 @@ position = Vector2( 371, -657 )
 [node name="Shrub26" parent="YSort/Shrubs" instance=ExtResource( 2 )]
 position = Vector2( -178, -721 )
 
-[node name="MobileEnemies" type="YSort" parent="YSort"]
+[node name="MobileEnemies" type="YSort" parent="YSort" groups=["Mobs"]]
 
 [node name="SpawnController" parent="YSort/MobileEnemies" instance=ExtResource( 4 )]
 position = Vector2( 491, -629 )
