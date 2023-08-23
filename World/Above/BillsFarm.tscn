@@ -1679,7 +1679,7 @@ shape = SubResource( 151 )
 
 [node name="FirstForest" parent="SceneLinks" instance=ExtResource( 13 )]
 position = Vector2( 589, 496 )
-destination_reference = "res://World/Areas/FirstForest.tscn"
+destination_reference = "res://World/Above/FirstForest.tscn"
 exit_location = Vector2( -300, 15 )
 exit_direction = Vector2( 1, 0 )
 

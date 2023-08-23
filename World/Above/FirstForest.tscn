@@ -439,7 +439,7 @@ forage_items = [ ExtResource( 11 ) ]
 
 [node name="BillsFarm" parent="SceneLinks" instance=ExtResource( 1 )]
 position = Vector2( -333, 18 )
-destination_reference = "res://World/Areas/BillsFarm.tscn"
+destination_reference = "res://World/Above/BillsFarm.tscn"
 exit_location = Vector2( 560, 512 )
 exit_direction = Vector2( -1, 0 )
 
@@ -448,7 +448,7 @@ shape = SubResource( 1 )
 
 [node name="TinyTown" parent="SceneLinks" instance=ExtResource( 1 )]
 position = Vector2( 689, -1276 )
-destination_reference = "res://World/Areas/TinyTown.tscn"
+destination_reference = "res://World/Above/TinyTown.tscn"
 exit_location = Vector2( -80, 215 )
 
 [node name="CollisionShape2D" parent="SceneLinks/TinyTown" index="0"]
