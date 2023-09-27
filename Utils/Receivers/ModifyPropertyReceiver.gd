@@ -14,5 +14,4 @@ func modify_property(transmitted_code):
 	if (transmitted_code == signal_code):
 		triggered = true
 		var child = get_child(0)
-		print(child[property])
 		child[property] = value_array[0]

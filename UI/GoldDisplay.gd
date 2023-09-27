@@ -16,9 +16,7 @@ func _ready():
 	Inventory.connect("gold_changed", self, "_on_Gold_changed")
 
 func _on_Gold_changed(value):
-	print(value)
 	var gold = Inventory.gold
-	print(gold)
 	number_display.text = str(gold)
 	if gold > 0:
 		show()
