@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://World/Areas/AreaYSort.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=2]
@@ -11,6 +11,9 @@ extents = Vector2( 90, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 52.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 85.5, 10 )
 
 [node name="A11" type="Node2D" groups=["World"]]
 script = ExtResource( 4 )
@@ -58,8 +61,19 @@ exit_direction = Vector2( -1, 0 )
 position = Vector2( 0, 1.5 )
 shape = SubResource( 2 )
 
+[node name="A12" parent="SceneLinks" instance=ExtResource( 5 )]
+position = Vector2( 431, -810 )
+destination_reference = "res://World/Above/A12.tscn"
+exit_location = Vector2( -400, 630 )
+exit_direction = Vector2( 0, -1 )
+
+[node name="CollisionShape2D" parent="SceneLinks/A12" index="0"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 3 )
+
 [editable path="Terrain"]
 [editable path="Camera2D"]
 [editable path="YSort"]
 [editable path="SceneLinks/A10"]
 [editable path="SceneLinks/A5"]
+[editable path="SceneLinks/A12"]
