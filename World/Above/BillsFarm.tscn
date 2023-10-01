@@ -1886,7 +1886,7 @@ position = Vector2( -152, 202 )
 spawn_unit = ExtResource( 37 )
 
 [node name="SpawnController5" parent="YSort/MobileEnemies" instance=ExtResource( 28 )]
-position = Vector2( -592, 540 )
+position = Vector2( -642, 327 )
 spawn_unit = ExtResource( 14 )
 quest_reference = ExtResource( 17 )
 
