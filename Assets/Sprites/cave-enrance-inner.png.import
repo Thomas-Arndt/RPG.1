@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CliffTileset.png-7224a2ed51656a4a178150a7287efef3.stex"
+path="res://.import/cave-enrance-inner.png-97490f7d6622fa5c457510cb1cb8d813.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/CliffTileset.png"
-dest_files=[ "res://.import/CliffTileset.png-7224a2ed51656a4a178150a7287efef3.stex" ]
+source_file="res://Assets/Sprites/cave-enrance-inner.png"
+dest_files=[ "res://.import/cave-enrance-inner.png-97490f7d6622fa5c457510cb1cb8d813.stex" ]
 
 [params]
 

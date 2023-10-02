@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CliffTileset.png-7224a2ed51656a4a178150a7287efef3.stex"
+path="res://.import/cave-tile-set.png-4bb629251560beb320e01046b2f490b9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/CliffTileset.png"
-dest_files=[ "res://.import/CliffTileset.png-7224a2ed51656a4a178150a7287efef3.stex" ]
+source_file="res://Assets/Sprites/cave-tile-set.png"
+dest_files=[ "res://.import/cave-tile-set.png-4bb629251560beb320e01046b2f490b9.stex" ]
 
 [params]
 
