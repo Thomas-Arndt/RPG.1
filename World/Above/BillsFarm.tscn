@@ -1965,7 +1965,7 @@ locked = true
 
 [node name="VestibuleLadder" parent="YSort/Portals" instance=ExtResource( 32 )]
 position = Vector2( 465, 766 )
-destination_reference = "res://World/Below/Below_Vestibule.tscn"
+destination_reference = "res://World/Below/BC1.tscn"
 exit_location = Vector2( 64, 30 )
 
 [node name="BlibPortal" parent="YSort/Portals" instance=ExtResource( 6 )]

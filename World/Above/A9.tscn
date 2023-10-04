@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/Areas/AreaYSort.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Areas/Terrain.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Areas/Area.gd" type="Script" id=5]
 [ext_resource path="res://World/Objects/Plants/Tree.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/Objects/Plants/Bush.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/Objects/Rocks/RockSmall.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80.5, 10 )
@@ -142,6 +145,36 @@ position = Vector2( 380, -704 )
 
 [node name="Tree35" parent="YSort/Trees" index="35" instance=ExtResource( 6 )]
 position = Vector2( 120, -673 )
+
+[node name="Bush" parent="YSort/Bushes" index="0" instance=ExtResource( 7 )]
+position = Vector2( 729, -762 )
+
+[node name="Bush2" parent="YSort/Bushes" index="1" instance=ExtResource( 7 )]
+position = Vector2( 817, -556 )
+
+[node name="Shrub" parent="YSort/Shrubs" index="0" instance=ExtResource( 9 )]
+position = Vector2( 758, -782 )
+
+[node name="Shrub2" parent="YSort/Shrubs" index="1" instance=ExtResource( 9 )]
+position = Vector2( 821, -725 )
+
+[node name="Shrub3" parent="YSort/Shrubs" index="2" instance=ExtResource( 9 )]
+position = Vector2( 806, -706 )
+
+[node name="Shrub4" parent="YSort/Shrubs" index="3" instance=ExtResource( 9 )]
+position = Vector2( 825, -669 )
+
+[node name="Shrub5" parent="YSort/Shrubs" index="4" instance=ExtResource( 9 )]
+position = Vector2( 814, -603 )
+
+[node name="Shrub6" parent="YSort/Shrubs" index="5" instance=ExtResource( 9 )]
+position = Vector2( 829, -582 )
+
+[node name="RockSmall" parent="YSort/Rocks" index="0" instance=ExtResource( 8 )]
+position = Vector2( 824, -693 )
+
+[node name="RockSmall2" parent="YSort/Rocks" index="1" instance=ExtResource( 8 )]
+position = Vector2( 799, -681 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 

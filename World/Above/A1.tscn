@@ -1027,11 +1027,10 @@ position = Vector2( -53, -378 )
 [node name="RockSmall2" parent="YSort/Rocks" index="2" instance=ExtResource( 9 )]
 position = Vector2( -62, -352 )
 
-[node name="Portals" type="YSort" parent="YSort"]
-
-[node name="CaveEntrance" parent="YSort/Portals" instance=ExtResource( 7 )]
+[node name="CaveEntrance" parent="YSort/Portals" index="0" instance=ExtResource( 7 )]
 position = Vector2( -80, -393 )
-scale = Vector2( 0.75, 0.75 )
+
+[node name="Portals" type="YSort" parent="YSort"]
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
@@ -1047,8 +1046,8 @@ shape = SubResource( 1 )
 
 [node name="CA1" parent="SceneLinks" instance=ExtResource( 5 )]
 position = Vector2( -79, -402 )
-destination_reference = "res://World/Above/A1.tscn"
-exit_location = Vector2( -79, -360 )
+destination_reference = "res://World/Caves/CA1.tscn"
+exit_location = Vector2( 9, -27 )
 
 [node name="CollisionShape2D" parent="SceneLinks/CA1" index="0"]
 position = Vector2( 0, -5 )

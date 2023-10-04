@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://World/Areas/Area.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/dungeon_sheet.png" type="Texture" id=2]
@@ -8,22 +8,6 @@
 [ext_resource path="res://World/Objects/Doors/LadderLower.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Objects/Switches/RedBlueSwitch.tscn" type="PackedScene" id=8]
-
-[sub_resource type="TileSet" id=2]
-0/name = "dungeon_sheet.png 0"
-0/texture = ExtResource( 2 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 96, 32, 16, 16 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
 
 [sub_resource type="ConvexPolygonShape2D" id=37]
 points = PoolVector2Array( 16, 8, 4, 8, 4, 16, 0, 16, 0, 0, 16, 0 )
@@ -287,16 +271,15 @@ points = PoolVector2Array( 12, 16, 4, 16, 4, 0, 12, 0 )
 [sub_resource type="RectangleShape2D" id=36]
 extents = Vector2( 60, 10 )
 
-[node name="Below_Vestibule" type="Node2D" groups=["World"]]
+[node name="BC1" type="Node2D" groups=["World"]]
 script = ExtResource( 1 )
 
-[node name="Ground" type="TileMap" parent="."]
-position = Vector2( 420, 420 )
-scale = Vector2( 50, 50 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 16, 16 )
-format = 1
-tile_data = PoolIntArray( -1, 0, 0 )
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -4888.0
+margin_top = -3455.0
+margin_right = 4898.0
+margin_bottom = 3480.0
+color = Color( 0.411765, 0.568627, 0.576471, 1 )
 
 [node name="Walls" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
@@ -336,19 +319,19 @@ signal_code = "r-b-sw-1"
 
 [node name="Ladder" parent="YSort/Portals" instance=ExtResource( 6 )]
 position = Vector2( 64, 10 )
-destination_reference = "res://World/Above/BillsFarm.tscn"
-exit_location = Vector2( 462, 805 )
+destination_reference = "res://World/Above/A14.tscn"
+exit_location = Vector2( 224, 290 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
-[node name="Below_1" parent="SceneLinks" groups=["World"] instance=ExtResource( 7 )]
+[node name="BC2" parent="SceneLinks" groups=["World"] instance=ExtResource( 7 )]
 position = Vector2( 16, -128 )
-destination_reference = "res://World/Below/Below_Hallway_1.tscn"
-exit_location = Vector2( 14, 15 )
+destination_reference = "res://World/Below/BB1.tscn"
+exit_location = Vector2( 14, -100 )
 exit_direction = Vector2( 0, -1 )
 
-[node name="CollisionShape2D" parent="SceneLinks/Below_1" index="0"]
+[node name="CollisionShape2D" parent="SceneLinks/BC2" index="0"]
 shape = SubResource( 36 )
 
 [editable path="Camera2D"]
-[editable path="SceneLinks/Below_1"]
+[editable path="SceneLinks/BC2"]

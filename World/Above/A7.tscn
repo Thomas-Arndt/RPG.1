@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://World/Areas/AreaYSort.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Areas/Terrain.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Areas/Area.gd" type="Script" id=6]
 [ext_resource path="res://World/Objects/Plants/Tree.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Objects/Plants/Bush.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 74.5 )
@@ -167,6 +169,24 @@ position = Vector2( 412, -85 )
 
 [node name="Tree40" parent="YSort/Trees" index="39" instance=ExtResource( 7 )]
 position = Vector2( 219, -91 )
+
+[node name="Bush" parent="YSort/Bushes" index="0" instance=ExtResource( 9 )]
+position = Vector2( 515, -363 )
+
+[node name="Bush2" parent="YSort/Bushes" index="1" instance=ExtResource( 9 )]
+position = Vector2( 567, -192 )
+
+[node name="Bush3" parent="YSort/Bushes" index="2" instance=ExtResource( 9 )]
+position = Vector2( -114, 542 )
+
+[node name="Shrub" parent="YSort/Shrubs" index="0" instance=ExtResource( 8 )]
+position = Vector2( -345, 501 )
+
+[node name="Shrub2" parent="YSort/Shrubs" index="1" instance=ExtResource( 8 )]
+position = Vector2( -345, 501 )
+
+[node name="Shrub3" parent="YSort/Shrubs" index="2" instance=ExtResource( 8 )]
+position = Vector2( 59, 578 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 

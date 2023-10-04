@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://World/Areas/Area.gd" type="Script" id=1]
 [ext_resource path="res://World/Areas/Terrain.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://World/Objects/Doors/CaveEntrance.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Sprites/CliffTileset.png" type="Texture" id=9]
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/Objects/Plants/Bush.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=207]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -691,7 +692,7 @@ position = Vector2( -269, -502 )
 position = Vector2( -301, -450 )
 
 [node name="Tree4" parent="YSort/Trees" index="3" instance=ExtResource( 6 )]
-position = Vector2( -350, -488 )
+position = Vector2( -358, -452 )
 
 [node name="Tree5" parent="YSort/Trees" index="4" instance=ExtResource( 6 )]
 position = Vector2( -415, -464 )
@@ -771,8 +772,14 @@ position = Vector2( -326, -352 )
 [node name="Tree30" parent="YSort/Trees" index="29" instance=ExtResource( 6 )]
 position = Vector2( -225, -245 )
 
+[node name="Bush" parent="YSort/Bushes" index="0" instance=ExtResource( 11 )]
+position = Vector2( -441, 174 )
+
 [node name="Shrub" parent="YSort/Shrubs" index="0" instance=ExtResource( 10 )]
 position = Vector2( 18, 40 )
+
+[node name="Shrub2" parent="YSort/Shrubs" index="1" instance=ExtResource( 10 )]
+position = Vector2( -250, -450 )
 
 [node name="RockSmall" parent="YSort/Rocks" index="0" instance=ExtResource( 7 )]
 position = Vector2( 69, 37 )
@@ -780,11 +787,10 @@ position = Vector2( 69, 37 )
 [node name="RockSmall2" parent="YSort/Rocks" index="1" instance=ExtResource( 7 )]
 position = Vector2( 98, 58 )
 
-[node name="Portals" type="YSort" parent="YSort"]
-
-[node name="CaveEntrance" parent="YSort/Portals" instance=ExtResource( 8 )]
+[node name="CaveEntrance" parent="YSort/Portals" index="0" instance=ExtResource( 8 )]
 position = Vector2( 47, 23 )
-scale = Vector2( 0.75, 0.75 )
+
+[node name="Portals" type="YSort" parent="YSort"]
 
 [node name="SceneLinks" type="Node2D" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/Areas/Terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Objects/Doors/LadderUpper.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Objects/Plants/Tree.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 37, 10 )
@@ -288,12 +289,15 @@ position = Vector2( -163, -209 )
 [node name="Tree73" parent="YSort/Trees" index="81" instance=ExtResource( 7 )]
 position = Vector2( -157, -357 )
 
-[node name="Portals" type="YSort" parent="YSort"]
+[node name="Shrub" parent="YSort/Shrubs" index="0" instance=ExtResource( 8 )]
+position = Vector2( 323, 117 )
 
-[node name="LadderUpper" parent="YSort/Portals" instance=ExtResource( 6 )]
+[node name="LadderUpper" parent="YSort/Portals" index="0" instance=ExtResource( 6 )]
 position = Vector2( 224, 238 )
-destination_reference = "res://World/Above/A14.tscn"
-exit_location = Vector2( 191, -435 )
+destination_reference = "res://World/Below/BB1.tscn"
+exit_location = Vector2( 64, 30 )
+
+[node name="Portals" type="YSort" parent="YSort"]
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
