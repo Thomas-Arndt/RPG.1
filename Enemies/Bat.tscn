@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Enemies/Bat.gd" type="Script" id=1]
 [ext_resource path="res://Utils/Stats/Stats.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Utils/Hit and Hurt Boxes/HitBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Utils/Overlap/SoftCollision.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Utils/Controllers/WanderController.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Sprites/red-bat-full.png" type="Texture" id=10]
 
 [sub_resource type="Shader" id=17]
 resource_local_to_scene = true
@@ -30,6 +31,26 @@ uniform bool active = false;
 resource_local_to_scene = true
 shader = SubResource( 17 )
 shader_param/active = false
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 10 )
+region = Rect2( 32, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 10 )
+region = Rect2( 48, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -53,6 +74,11 @@ region = Rect2( 64, 0, 16, 24 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "New Anim",
+"speed": 10.0
+}, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "default",
@@ -132,7 +158,7 @@ script = ExtResource( 1 )
 material = SubResource( 13 )
 position = Vector2( -24, 51 )
 frames = SubResource( 6 )
-frame = 4
+animation = "New Anim"
 playing = true
 offset = Vector2( 24, -64 )
 

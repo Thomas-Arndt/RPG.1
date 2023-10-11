@@ -5,6 +5,6 @@
 [node name="Portal1" instance=ExtResource( 1 )]
 is_red = true
 active = true
-destination_reference = "res://World/InBetween/InBetween_1.tscn"
+destination_reference = "res://World/InBetween/IB1.tscn"
 from_red_exit_location = Vector2( 30, 210 )
 from_green_exit_location = Vector2( 14, 5 )

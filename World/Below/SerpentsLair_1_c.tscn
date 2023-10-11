@@ -4,7 +4,7 @@
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Objects/Doors/LadderLower.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/Areas/Area.gd" type="Script" id=5]
+[ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=5]
 
 [node name="SerpentsLair_1_c" type="Node2D" groups=["World"]]
 script = ExtResource( 5 )

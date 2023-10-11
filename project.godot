@@ -162,7 +162,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "WorldScene",
 "language": "GDScript",
-"path": "res://World/Areas/Area.gd"
+"path": "res://World/AreaUtils/Area.gd"
 } ]
 _global_script_class_icons={
 "AddNodeReceiver": "",

@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://World/Areas/Terrain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/Above/Terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=2]
-[ext_resource path="res://World/Areas/AreaYSort.tscn" type="PackedScene" id=3]
-[ext_resource path="res://World/Areas/Area.gd" type="Script" id=4]
+[ext_resource path="res://World/AreaUtils/AreaYSort.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=4]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Objects/Plants/Tree.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Objects/Plants/Bush.tscn" type="PackedScene" id=7]

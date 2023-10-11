@@ -5,7 +5,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Sprites/space_prev.jpeg" type="Texture" id=4]
 [ext_resource path="res://World/Portals/Portal.tscn" type="PackedScene" id=5]
-[ext_resource path="res://World/Areas/Area.gd" type="Script" id=6]
+[ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 16, 16, 2, 16, 4, 4, 16, 2 )

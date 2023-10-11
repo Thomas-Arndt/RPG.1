@@ -13,8 +13,8 @@
 [ext_resource path="res://Inventory/Forage/RedBerry.tres" type="Resource" id=11]
 [ext_resource path="res://Inventory/Minerals/IronOre.tres" type="Resource" id=12]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=13]
-[ext_resource path="res://World/Areas/Area.gd" type="Script" id=14]
-[ext_resource path="res://World/Areas/Terrain.tscn" type="PackedScene" id=15]
+[ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=14]
+[ext_resource path="res://World/Above/Terrain.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]

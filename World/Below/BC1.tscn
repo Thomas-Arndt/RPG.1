@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://World/Areas/Area.gd" type="Script" id=1]
+[ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/dungeon_sheet.png" type="Texture" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=4]
@@ -326,8 +326,8 @@ exit_location = Vector2( 462, 805 )
 
 [node name="BC2" parent="SceneLinks" groups=["World"] instance=ExtResource( 7 )]
 position = Vector2( 16, -128 )
-destination_reference = "res://World/Below/BC1.tscn"
-exit_location = Vector2( 14, -100 )
+destination_reference = "res://World/Below/BC2.tscn"
+exit_location = Vector2( 16, 0 )
 exit_direction = Vector2( 0, -1 )
 
 [node name="CollisionShape2D" parent="SceneLinks/BC2" index="0"]

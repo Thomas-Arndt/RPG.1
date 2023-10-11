@@ -1,4 +1,4 @@
-extends "res://World/Areas/Area.gd"
+extends "res://World/AreaUtils/Area.gd"
 
 onready var green_dimension = $GreenDimension
 onready var red_dimension = $RedDimension
