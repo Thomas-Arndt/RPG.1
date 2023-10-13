@@ -5,6 +5,7 @@ export var spawn_unit: PackedScene
 export var spawn_interval: float = 60
 export var spawn_quantity: int = 1
 export var quest_reference: PackedScene
+export var is_red: bool = false
 
 onready var timer = $Timer
 
@@ -35,6 +36,8 @@ func spawn_new_unit():
 			for objective in quest.objectives.get_children():
 				if objective is QuestSlayObjective and not objective.completed:
 					new_unit.connect("died", objective, "_on_enemy_died")
+		if "is_red" in new_unit:
+			new_unit.is_red = is_red
 		get_parent().add_child(new_unit)
 		spawn_count += 1
 
