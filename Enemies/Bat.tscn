@@ -435,6 +435,7 @@ shape = SubResource( 11 )
 [node name="WanderController" parent="." instance=ExtResource( 9 )]
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "stop"
 anims/RESET = SubResource( 14 )
 anims/start = SubResource( 15 )
 anims/stop = SubResource( 16 )

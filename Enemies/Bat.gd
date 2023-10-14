@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 signal died(node)
 
-const DeathEffect = preload("res://Effects/EnemyEffects/BatDeathEffect.tscn")
 
 export var ACCELERATION = 200
 export var MAX_SPEED = 50
@@ -22,6 +21,7 @@ var velocity = Vector2.ZERO
 var knockback = Vector2.ZERO
 
 var state = IDLE
+var DeathEffect : String = "res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn"
 
 onready var stats = $Stats
 onready var player_detection_zone = $PlayerDetectionZone
@@ -37,7 +37,6 @@ onready var blink_animation_player = $BlinkAnimationPlayer
 func _ready():
 	match_dimension(WorldStats.DIMENSION)
 	WorldStats.connect("dimension_shift", self, "match_dimension")
-	blink_animation_player.play("stop")
 	state = pick_random_state([IDLE, WANDER])
 	
 func _physics_process(delta):
@@ -85,7 +84,7 @@ func update_wander():
 func accelerate_towards_point(point, delta):
 	var direction = global_position.direction_to(point)
 	velocity = velocity.move_toward(direction * MAX_SPEED, FRICTION * delta)
-	red_full_sprite.flip_h = velocity.x < 0
+	flip_h(velocity.x < 0)
 
 func seek_player():
 	if player_detection_zone.can_see_player():
@@ -94,7 +93,8 @@ func seek_player():
 func _on_Stats_no_health():
 	emit_signal("died", self)
 	queue_free()
-	var death_effect = DeathEffect.instance()
+	var death_fx = ResourceLoader.load(DeathEffect)
+	var death_effect = death_fx.instance()
 	get_parent().add_child(death_effect)
 	death_effect.global_position = Vector2(global_position.x, global_position.y-12)
 
@@ -121,15 +121,25 @@ func match_dimension(state):
 		red_full_sprite.visible = true
 		hurt_box.monitorable = true
 		hurt_box.monitoring = true
+		DeathEffect = "res://Effects/EnemyEffects/VoidBlob/RedVoidBlobDeathEffect.tscn"
 	elif is_red and not state == WorldStats.Dimensions.Red:
 		red_half_sprite.visible = true
 		hurt_box.monitorable = false
 		hurt_box.monitoring = false
+		DeathEffect = "res://Effects/EnemyEffects/VoidBlob/RedVoidBlobDeathEffect.tscn"
 	elif not is_red and state == WorldStats.Dimensions.Green:
 		green_full_sprite.visible = true
 		hurt_box.monitorable = true
 		hurt_box.monitoring = true
+		DeathEffect = "res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn"
 	elif not is_red and not state == WorldStats.Dimensions.Green:
 		green_half_sprite.visible = true
 		hurt_box.monitorable = false
 		hurt_box.monitoring = false
+		DeathEffect = "res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn"
+		
+func flip_h(val):
+	red_full_sprite.flip_h = val
+	red_half_sprite.flip_h = val
+	green_full_sprite.flip_h = val
+	green_half_sprite.flip_h = val

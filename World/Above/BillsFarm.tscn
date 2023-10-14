@@ -1,4 +1,4 @@
-[gd_scene load_steps=181 format=2]
+[gd_scene load_steps=182 format=2]
 
 [ext_resource path="res://CutScenes/Controllers/Portal1Controller.gd" type="Script" id=1]
 [ext_resource path="res://World/Objects/Signs/QuestBulletinBoard.tscn" type="PackedScene" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://Assets/Sprites/sheet.png" type="Texture" id=39]
 [ext_resource path="res://Enemies/Bosses/VoidLord.tscn" type="PackedScene" id=40]
 [ext_resource path="res://World/Above/BillsFarm.gd" type="Script" id=41]
+[ext_resource path="res://Enemies/Ghost.tscn" type="PackedScene" id=42]
 
 [sub_resource type="ConvexPolygonShape2D" id=169]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -2012,11 +2013,14 @@ forage_items = [ ExtResource( 29 ) ]
 
 [node name="PushObjects" type="YSort" parent="YSort"]
 
+[node name="VoidGhost" parent="YSort" instance=ExtResource( 42 )]
+position = Vector2( 78, 722 )
+
 [node name="SceneLinks" type="Node2D" parent="."]
 
 [node name="BillsHouse" parent="SceneLinks" groups=["World"] instance=ExtResource( 13 )]
 position = Vector2( -749, 381 )
-destination_reference = "res://World/Houses/BillsHouse.tscn"
+destination_reference = "res://World/Above/Houses/BillsFarm/BillsHouse.tscn"
 exit_location = Vector2( 157, 142 )
 exit_direction = Vector2( 0, -1 )
 paired_object = NodePath("../../YSort/Buildings/Starting Area/Hut")

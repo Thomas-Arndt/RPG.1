@@ -55,11 +55,13 @@ _experience_reward = 10
 visible = true
 material = SubResource( 3 )
 texture = ExtResource( 1 )
+frame = 5
 
 [node name="HalfSprite" parent="." index="2"]
 visible = true
 material = SubResource( 5 )
 texture = ExtResource( 2 )
+frame = 5
 
 [node name="FullAttackSprite" parent="." index="3"]
 texture = ExtResource( 6 )
