@@ -2014,7 +2014,7 @@ forage_items = [ ExtResource( 29 ) ]
 [node name="PushObjects" type="YSort" parent="YSort"]
 
 [node name="VoidGhost" parent="YSort" instance=ExtResource( 42 )]
-position = Vector2( 78, 722 )
+position = Vector2( 0, 722 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
