@@ -1,7 +1,7 @@
 extends Node2D
 
 export var average_distance = 32
-export var multiplier = 2
+export var multiplier : float = 2.0
 
 onready var target_position = global_position
 

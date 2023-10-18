@@ -1,4 +1,5 @@
 extends Area2D
+class_name HitBox
 
 export var damage = 1
 var knockback_vector = Vector2.ZERO

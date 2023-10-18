@@ -49,6 +49,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Utils/Actions/GiveQuestAction.gd"
 }, {
+"base": "Area2D",
+"class": "HitBox",
+"language": "GDScript",
+"path": "res://Utils/Hit and Hurt Boxes/HitBox.gd"
+}, {
+"base": "Area2D",
+"class": "HurtBox",
+"language": "GDScript",
+"path": "res://Utils/Hit and Hurt Boxes/HurtBox.gd"
+}, {
 "base": "Node",
 "class": "InProgressQuestAction",
 "language": "GDScript",
@@ -83,6 +93,11 @@ _global_script_classes=[ {
 "class": "PortalNode",
 "language": "GDScript",
 "path": "res://World/Portals/Portal.gd"
+}, {
+"base": "Node2D",
+"class": "ProximitySpawnController",
+"language": "GDScript",
+"path": "res://Utils/Controllers/ProximitySpawnController.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Push_Object",
@@ -173,6 +188,8 @@ _global_script_class_icons={
 "ForageAction": "",
 "ForageNode": "",
 "GiveQuestAction": "",
+"HitBox": "",
+"HurtBox": "",
 "InProgressQuestAction": "",
 "InformationAction": "",
 "InteractionZone": "",
@@ -180,6 +197,7 @@ _global_script_class_icons={
 "ModifyPropertyReceiver": "",
 "Player": "",
 "PortalNode": "",
+"ProximitySpawnController": "",
 "Push_Object": "",
 "Quest": "",
 "QuestInteractObjective": "",

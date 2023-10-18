@@ -1,4 +1,5 @@
 extends Area2D
+class_name HurtBox
 
 var invincible = false setget set_invincible
 

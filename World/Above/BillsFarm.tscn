@@ -1,4 +1,4 @@
-[gd_scene load_steps=182 format=2]
+[gd_scene load_steps=181 format=2]
 
 [ext_resource path="res://CutScenes/Controllers/Portal1Controller.gd" type="Script" id=1]
 [ext_resource path="res://World/Objects/Signs/QuestBulletinBoard.tscn" type="PackedScene" id=2]
@@ -41,7 +41,6 @@
 [ext_resource path="res://Assets/Sprites/sheet.png" type="Texture" id=39]
 [ext_resource path="res://Enemies/Bosses/VoidLord.tscn" type="PackedScene" id=40]
 [ext_resource path="res://World/Above/BillsFarm.gd" type="Script" id=41]
-[ext_resource path="res://Enemies/Ghost.tscn" type="PackedScene" id=42]
 
 [sub_resource type="ConvexPolygonShape2D" id=169]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -2012,9 +2011,6 @@ forage_item = ExtResource( 29 )
 forage_items = [ ExtResource( 29 ) ]
 
 [node name="PushObjects" type="YSort" parent="YSort"]
-
-[node name="VoidGhost" parent="YSort" instance=ExtResource( 42 )]
-position = Vector2( 0, 722 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
