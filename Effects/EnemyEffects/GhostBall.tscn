@@ -59,7 +59,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -11 )
 frames = SubResource( 9 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="ShdowSprite" type="Sprite" parent="."]

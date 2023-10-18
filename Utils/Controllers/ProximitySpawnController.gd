@@ -46,7 +46,6 @@ func _on_Timer_timeout():
 		check_spawn()
 
 func player_detected():
-	print(timer.time_left)
 	if timer.time_left == 0:
 		timer.start(spawn_interval)
 		check_spawn()
