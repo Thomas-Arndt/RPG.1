@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Utils/Overlap/PlayerDetectionZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Utils/Hit and Hurt Boxes/HitBox.tscn" type="PackedScene" id=2]
@@ -9,6 +9,14 @@
 [ext_resource path="res://Utils/Overlap/SoftCollision.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Utils/Controllers/WanderController.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Utils/Overlap/AttackRadius.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/GreenVoidBlob-idle-move.png" type="Texture" id=10]
+[ext_resource path="res://Enemies/RedVoidBlob-idle-move.png" type="Texture" id=11]
+[ext_resource path="res://Enemies/RedVoidBlob-Faded-idle-move.png" type="Texture" id=12]
+[ext_resource path="res://Enemies/BlobAttackRedFull.png" type="Texture" id=13]
+[ext_resource path="res://Enemies/BlobAttackRedHalf.png" type="Texture" id=14]
+[ext_resource path="res://Enemies/GreenVoidBlob-Faded-idle-move.png" type="Texture" id=15]
+[ext_resource path="res://Enemies/BlobAttackGreenHalf.png" type="Texture" id=16]
+[ext_resource path="res://Enemies/BlobAttackGreenFull.png" type="Texture" id=17]
 
 [sub_resource type="Shader" id=17]
 code = "shader_type canvas_item;
@@ -28,7 +36,7 @@ uniform bool active = false;
 [sub_resource type="ShaderMaterial" id=18]
 resource_local_to_scene = true
 shader = SubResource( 17 )
-shader_param/active = true
+shader_param/active = false
 
 [sub_resource type="Shader" id=31]
 code = "shader_type canvas_item;
@@ -48,7 +56,7 @@ uniform bool active = false;
 [sub_resource type="ShaderMaterial" id=20]
 resource_local_to_scene = true
 shader = SubResource( 31 )
-shader_param/active = true
+shader_param/active = false
 
 [sub_resource type="Shader" id=32]
 code = "shader_type canvas_item;
@@ -66,6 +74,7 @@ uniform bool active = false;
 	}"
 
 [sub_resource type="ShaderMaterial" id=33]
+resource_local_to_scene = true
 shader = SubResource( 32 )
 shader_param/active = false
 
@@ -85,8 +94,9 @@ uniform bool active = false;
 	}"
 
 [sub_resource type="ShaderMaterial" id=35]
+resource_local_to_scene = true
 shader = SubResource( 34 )
-shader_param/active = true
+shader_param/active = false
 
 [sub_resource type="Animation" id=30]
 length = 0.001
@@ -115,7 +125,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("FullAttackSprite:visible")
+tracks/2/path = NodePath("GreenFullAttackSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -127,7 +137,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("FullSprite:position")
+tracks/3/path = NodePath("GreenFullSprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -139,7 +149,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("FullSprite:frame")
+tracks/4/path = NodePath("GreenFullSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -148,10 +158,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 14 ]
+"values": [ 0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("HalfSprite:frame")
+tracks/5/path = NodePath("GreenHalfSprite:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -160,10 +170,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 14 ]
+"values": [ 0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("FullSprite:modulate")
+tracks/6/path = NodePath("GreenFullSprite:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -175,7 +185,7 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("HalfSprite:modulate")
+tracks/7/path = NodePath("GreenHalfSprite:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -186,13 +196,85 @@ tracks/7/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("RedFullSprite:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("RedHalfSprite:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("RedFullSprite:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("RedHalfSprite:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("RedFullSprite:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RedHalfSprite:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "SETUP"
 length = 0.05
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("FullSprite:frame")
+tracks/0/path = NodePath("GreenFullSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -204,7 +286,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HalfSprite:frame")
+tracks/1/path = NodePath("GreenHalfSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -216,7 +298,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HalfSprite:position")
+tracks/2/path = NodePath("GreenHalfSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -228,7 +310,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("FullSprite:position")
+tracks/3/path = NodePath("GreenFullSprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -240,7 +322,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("FullAttackSprite:position")
+tracks/4/path = NodePath("GreenFullAttackSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -276,7 +358,7 @@ tracks/6/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("FullSprite:visible")
+tracks/7/path = NodePath("GreenFullSprite:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -288,7 +370,7 @@ tracks/7/keys = {
 "values": [ true ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("HalfSprite:visible")
+tracks/8/path = NodePath("GreenHalfSprite:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -297,10 +379,10 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("FullAttackSprite:visible")
+tracks/9/path = NodePath("GreenFullAttackSprite:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -312,7 +394,7 @@ tracks/9/keys = {
 "values": [ false ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("HalfAttackSprite:visible")
+tracks/10/path = NodePath("GreenHalfAttackSprite:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -324,7 +406,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("HalfAttackSprite:position")
+tracks/11/path = NodePath("GreenHalfAttackSprite:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -335,13 +417,85 @@ tracks/11/keys = {
 "update": 0,
 "values": [ Vector2( 0, -24 ) ]
 }
+tracks/12/type = "value"
+tracks/12/path = NodePath("RedFullSprite:frame")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("RedHalfSprite:frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("RedFullSprite:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("RedHalfSprite:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("RedFullSprite:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("RedHalfSprite:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "idle"
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FullSprite:frame")
+tracks/0/path = NodePath("GreenFullSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -353,12 +507,36 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HalfSprite:frame")
+tracks/1/path = NodePath("GreenHalfSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RedFullSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RedHalfSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
@@ -370,7 +548,7 @@ resource_name = "move"
 length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FullSprite:frame")
+tracks/0/path = NodePath("GreenFullSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -382,7 +560,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HalfSprite:frame")
+tracks/1/path = NodePath("GreenHalfSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -394,7 +572,7 @@ tracks/1/keys = {
 "values": [ 8, 9, 10, 11 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HalfSprite:flip_h")
+tracks/2/path = NodePath("GreenHalfSprite:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -406,7 +584,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("FullSprite:flip_h")
+tracks/3/path = NodePath("GreenFullSprite:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -429,11 +607,35 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 0, 5 ), Vector2( -4, 5 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("RedFullSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("RedHalfSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11 ]
+}
 
 [sub_resource type="Animation" id=25]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("FullAttackSprite:frame")
+tracks/0/path = NodePath("GreenFullAttackSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -445,7 +647,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("FullAttackSprite:visible")
+tracks/1/path = NodePath("GreenFullAttackSprite:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -493,7 +695,7 @@ tracks/4/keys = {
 "values": [ 90.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("HalfAttackSprite:frame")
+tracks/5/path = NodePath("GreenHalfAttackSprite:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -504,22 +706,46 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 1 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("RedFullAttackSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("RedHalfAttackSprite:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=26]
 resource_name = "explosion"
-length = 1.65
+length = 1.75
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("FullAttackSprite:frame")
+tracks/0/path = NodePath("GreenFullAttackSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 3 ]
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 4, 3 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -528,27 +754,48 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.65 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "change_home_dimension"
+}, {
+"args": [  ],
+"method": "change_home_dimension"
+}, {
+"args": [  ],
+"method": "change_home_dimension"
+}, {
+"args": [  ],
+"method": "change_home_dimension"
+}, {
+"args": [  ],
+"method": "change_home_dimension"
+}, {
+"args": [  ],
+"method": "change_home_dimension"
+}, {
+"args": [  ],
+"method": "change_home_dimension"
+}, {
 "args": [  ],
 "method": "on_attack_animation_complete"
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HalfSprite:visible")
+tracks/2/path = NodePath("HitBox/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.65 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
+"times": PoolRealArray( 0, 0.55, 0.8, 1, 1.3, 1.5, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( 0, 4 ), Vector2( 1, 0 ), Vector2( 0, -7 ), Vector2( 0, -7 ), Vector2( 0, 3 ), Vector2( 0, 4 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitBox/CollisionShape2D:position")
+tracks/3/path = NodePath("HitBox/CollisionShape2D:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -557,37 +804,49 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.55, 0.8, 1, 1.3, 1.5, 1.65 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 4 ), Vector2( 0, 4 ), Vector2( 1, 0 ), Vector2( 0, -7 ), Vector2( 0, -7 ), Vector2( 0, 3 ), Vector2( 0, 4 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 2, 1.5 ), Vector2( 5.25, 2.85 ), Vector2( 5.25, 2.85 ), Vector2( 1.25, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("HitBox/CollisionShape2D:scale")
+tracks/4/path = NodePath("GreenHalfAttackSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.55, 0.8, 1, 1.3, 1.5, 1.65 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 2, 1.5 ), Vector2( 5.25, 2.85 ), Vector2( 5.25, 2.85 ), Vector2( 1.25, 1 ), Vector2( 1, 1 ) ]
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 4, 3 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("HalfAttackSprite:frame")
+tracks/5/path = NodePath("RedFullAttackSprite:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 4 ]
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 4, 3 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("RedHalfAttackSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 4, 3 ]
 }
 
 [sub_resource type="Animation" id=36]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("FullAttackSprite:material:shader_param/active")
+tracks/0/path = NodePath("GreenFullAttackSprite:material:shader_param/active")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -599,7 +858,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HalfAttackSprite:material:shader_param/active")
+tracks/1/path = NodePath("GreenHalfAttackSprite:material:shader_param/active")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -616,7 +875,7 @@ resource_name = "start"
 length = 0.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FullSprite:material:shader_param/active")
+tracks/0/path = NodePath("GreenFullSprite:material:shader_param/active")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -628,7 +887,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HalfSprite:material:shader_param/active")
+tracks/1/path = NodePath("GreenHalfSprite:material:shader_param/active")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -640,7 +899,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("FullAttackSprite:material:shader_param/active")
+tracks/2/path = NodePath("GreenFullAttackSprite:material:shader_param/active")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -652,7 +911,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HalfAttackSprite:material:shader_param/active")
+tracks/3/path = NodePath("GreenHalfAttackSprite:material:shader_param/active")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -668,7 +927,7 @@ tracks/3/keys = {
 resource_name = "stop"
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("FullSprite:material:shader_param/active")
+tracks/0/path = NodePath("GreenFullSprite:material:shader_param/active")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -680,7 +939,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HalfSprite:material:shader_param/active")
+tracks/1/path = NodePath("GreenHalfSprite:material:shader_param/active")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -692,7 +951,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HalfAttackSprite:material:shader_param/active")
+tracks/2/path = NodePath("GreenHalfAttackSprite:material:shader_param/active")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -704,7 +963,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("FullAttackSprite:material:shader_param/active")
+tracks/3/path = NodePath("GreenFullAttackSprite:material:shader_param/active")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -749,29 +1008,58 @@ position = Vector2( 1.19209e-07, 6 )
 scale = Vector2( 1.3125, 0.9 )
 texture = ExtResource( 3 )
 
-[node name="FullSprite" type="Sprite" parent="."]
-visible = false
+[node name="GreenFullSprite" type="Sprite" parent="."]
 material = SubResource( 18 )
+texture = ExtResource( 10 )
 hframes = 13
 
-[node name="HalfSprite" type="Sprite" parent="."]
+[node name="RedFullSprite" type="Sprite" parent="."]
 visible = false
 material = SubResource( 20 )
+texture = ExtResource( 11 )
 hframes = 13
 
-[node name="FullAttackSprite" type="Sprite" parent="."]
+[node name="GreenHalfSprite" type="Sprite" parent="."]
+visible = false
+material = SubResource( 20 )
+texture = ExtResource( 15 )
+hframes = 13
+
+[node name="RedHalfSprite" type="Sprite" parent="."]
+visible = false
+material = SubResource( 20 )
+texture = ExtResource( 12 )
+hframes = 13
+
+[node name="GreenFullAttackSprite" type="Sprite" parent="."]
 visible = false
 material = SubResource( 33 )
 position = Vector2( 0, -24 )
+texture = ExtResource( 17 )
 hframes = 11
 frame = 1
 
-[node name="HalfAttackSprite" type="Sprite" parent="."]
+[node name="RedFullAttackSprite" type="Sprite" parent="."]
+visible = false
+material = SubResource( 33 )
+position = Vector2( 0, -24 )
+texture = ExtResource( 13 )
+hframes = 11
+
+[node name="GreenHalfAttackSprite" type="Sprite" parent="."]
 visible = false
 material = SubResource( 35 )
 position = Vector2( 0, -24 )
+texture = ExtResource( 16 )
 hframes = 11
 frame = 1
+
+[node name="RedHalfAttackSprite" type="Sprite" parent="."]
+visible = false
+material = SubResource( 35 )
+position = Vector2( 0, -24 )
+texture = ExtResource( 14 )
+hframes = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 30 )
@@ -790,7 +1078,7 @@ anims/start = SubResource( 22 )
 anims/stop = SubResource( 23 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 5 )
+position = Vector2( 0, 5 )
 rotation = 1.5708
 shape = SubResource( 1 )
 

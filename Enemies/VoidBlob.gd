@@ -4,6 +4,7 @@ class_name VoidBlob
 
 signal died(enemy)
 
+export var is_red : bool = false
 export var ACCELERATION = 200
 export var MAX_SPEED = 35
 export var FRICTION = 200
@@ -24,12 +25,17 @@ var velocity = Vector2.ZERO
 var knockback = Vector2.ZERO
 
 var state = IDLE
+var DeathEffect : String = "res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn"
 
 onready var stats = $Stats
-onready var full_sprite = $FullSprite
-onready var half_sprite = $HalfSprite
-onready var full_attack_sprite = $FullAttackSprite
-onready var half_attack_sprite = $HalfAttackSprite
+onready var green_full_sprite = $GreenFullSprite
+onready var green_half_sprite = $RedFullSprite
+onready var red_full_sprite = $GreenHalfSprite
+onready var red_half_sprite = $RedHalfSprite
+onready var green_full_attack_sprite = $GreenFullAttackSprite
+onready var green_half_attack_sprite = $GreenHalfAttackSprite
+onready var red_full_attack_sprite = $RedFullAttackSprite
+onready var red_half_attack_sprite = $RedHalfAttackSprite
 onready var anim_player = $AnimationPlayer
 onready var blink_anim_player = $BlinkAnimationPlayer
 onready var attack_anim_player = $AttackAnimationPlayer
@@ -85,12 +91,9 @@ func _physics_process(delta):
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 			if velocity == Vector2.ZERO:
 				hit_box.damage = 3
-				if WorldStats.DIMENSION == get_dimension():
-					full_attack_sprite.visible = true
-					half_attack_sprite.visible = false
-				else:
-					full_attack_sprite.visible = false
-					half_attack_sprite.visible = true
+				hurt_box.monitorable = false
+				hurt_box.monitoring = false
+				apply_attack_sprite(WorldStats.DIMENSION)
 				attack_anim_player.play("explosion")
 		
 	if soft_collision.is_colliding():
@@ -113,8 +116,7 @@ func accelerate_towards_point(point, delta):
 	var direction = global_position.direction_to(point)
 	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 	hit_box.knockback_vector = velocity.normalized()
-	full_sprite.flip_h = velocity.x > 0
-	half_sprite.flip_h = velocity.x > 0
+	flip_sprites(velocity)
 
 func apply_knockback():
 	knockback = move_and_slide(knockback)
@@ -130,29 +132,88 @@ func _on_Stats_no_health():
 	PlayerStats.change_experience(_experience_reward)
 	queue_free()
 	death_animation()
-
-func match_dimension(state):
-	pass
-
-func get_dimension():
-	pass
 	
 func death_animation():
-	pass
+	var death_fx = ResourceLoader.load(DeathEffect)
+	var death_effect = death_fx.instance()
+	get_parent().add_child(death_effect)
+	death_effect.global_position = global_position
 
 func _on_HurtBox_invincible_start():
 	blink_anim_player.play("start")
 
-
 func _on_HurtBox_invincible_end():
 	blink_anim_player.play("stop")
-
 
 func _on_AttackRadius_explosion_attack():
 	state = ATTACK
 
 func on_attack_animation_complete():
 	hit_box.damage = 1
-	full_attack_sprite.visible = false
-	half_attack_sprite.visible = false
+	hide_attack_sprites()
+	match_dimension(WorldStats.DIMENSION)
+	hurt_box.monitorable = true
+	hurt_box.monitoring = true
 	state = IDLE
+
+func change_home_dimension():
+	is_red = !is_red
+	apply_attack_sprite(WorldStats.DIMENSION)
+
+func match_dimension(state):
+	hide_sprites()
+	if is_red and state == WorldStats.Dimensions.Red:
+		red_full_sprite.visible = true
+		hurt_box.monitorable = true
+		hurt_box.monitoring = true
+		DeathEffect = "res://Effects/EnemyEffects/VoidBlob/RedVoidBlobDeathEffect.tscn"
+	elif is_red and not state == WorldStats.Dimensions.Red:
+		red_half_sprite.visible = true
+		hurt_box.monitorable = false
+		hurt_box.monitoring = false
+		DeathEffect = "res://Effects/EnemyEffects/VoidBlob/RedVoidBlobDeathEffect.tscn"
+	elif not is_red and state == WorldStats.Dimensions.Green:
+		green_full_sprite.visible = true
+		hurt_box.monitorable = true
+		hurt_box.monitoring = true
+		DeathEffect = "res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn"
+	elif not is_red and not state == WorldStats.Dimensions.Green:
+		green_half_sprite.visible = true
+		hurt_box.monitorable = false
+		hurt_box.monitoring = false
+		DeathEffect = "res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn"
+
+func apply_attack_sprite(state):
+	hide_sprites()
+	hide_attack_sprites()
+	if is_red and state == WorldStats.Dimensions.Red:
+		red_full_attack_sprite.visible = true
+	elif is_red and not state == WorldStats.Dimensions.Red:
+		red_half_attack_sprite.visible = true
+	elif not is_red and state == WorldStats.Dimensions.Green:
+		green_full_attack_sprite.visible = true
+	elif not is_red and not state == WorldStats.Dimensions.Green:
+		green_half_attack_sprite.visible = true
+	
+func hide_sprites():
+	red_full_sprite.visible = false
+	red_half_sprite.visible = false
+	green_full_sprite.visible = false
+	green_half_sprite.visible = false
+
+func hide_attack_sprites():
+	red_full_attack_sprite.visible = false
+	red_half_attack_sprite.visible = false
+	green_full_attack_sprite.visible = false
+	green_half_attack_sprite.visible = false
+
+func flip_sprites(velocity):
+	green_full_sprite.flip_h = velocity.x > 0
+	green_half_sprite.flip_h = velocity.x > 0
+	red_full_sprite.flip_h = velocity.x > 0
+	red_half_sprite.flip_h = velocity.x > 0
+	green_full_attack_sprite.flip_h = velocity.x > 0
+	green_half_attack_sprite.flip_h = velocity.x > 0
+	red_full_attack_sprite.flip_h = velocity.x > 0
+	red_half_attack_sprite.flip_h = velocity.x > 0
+	

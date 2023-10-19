@@ -1,4 +1,4 @@
-[gd_scene load_steps=181 format=2]
+[gd_scene load_steps=180 format=2]
 
 [ext_resource path="res://CutScenes/Controllers/Portal1Controller.gd" type="Script" id=1]
 [ext_resource path="res://World/Objects/Signs/QuestBulletinBoard.tscn" type="PackedScene" id=2]
@@ -10,10 +10,9 @@
 [ext_resource path="res://Inventory/Forage/ForageWorldComponent.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Utils/Actions/InProgressQuestAction.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Objects/Chests/LargeChest.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Enemies/RedVoidBlob.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Enemies/VoidBlob.tscn" type="PackedScene" id=11]
 [ext_resource path="res://CutScenes/Controllers/VoidLord1Controller.gd" type="Script" id=12]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Enemies/GreenVoidBlob.tscn" type="PackedScene" id=14]
 [ext_resource path="res://QuestSystem/Quests/bills-flyer.tscn" type="PackedScene" id=15]
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=16]
 [ext_resource path="res://QuestSystem/Quests/protect-bills-house.tscn" type="PackedScene" id=17]
@@ -1887,33 +1886,36 @@ spawn_unit = ExtResource( 37 )
 
 [node name="SpawnController5" parent="YSort/MobileEnemies" instance=ExtResource( 28 )]
 position = Vector2( -642, 327 )
-spawn_unit = ExtResource( 14 )
+spawn_unit = ExtResource( 11 )
 quest_reference = ExtResource( 17 )
 
 [node name="SpawnController6" parent="YSort/MobileEnemies" instance=ExtResource( 28 )]
 position = Vector2( -416, 718 )
 spawn_unit = ExtResource( 11 )
 quest_reference = ExtResource( 17 )
+is_red = true
 
 [node name="SpawnController7" parent="YSort/MobileEnemies" instance=ExtResource( 28 )]
 position = Vector2( -939, 658 )
-spawn_unit = ExtResource( 14 )
+spawn_unit = ExtResource( 11 )
 quest_reference = ExtResource( 17 )
 
 [node name="SpawnController8" parent="YSort/MobileEnemies" instance=ExtResource( 28 )]
 position = Vector2( -887, 705 )
-spawn_unit = ExtResource( 14 )
+spawn_unit = ExtResource( 11 )
 quest_reference = ExtResource( 17 )
 
 [node name="SpawnController9" parent="YSort/MobileEnemies" instance=ExtResource( 28 )]
 position = Vector2( -903, 206 )
 spawn_unit = ExtResource( 11 )
 quest_reference = ExtResource( 17 )
+is_red = true
 
 [node name="SpawnController10" parent="YSort/MobileEnemies" instance=ExtResource( 28 )]
 position = Vector2( -949, 251 )
 spawn_unit = ExtResource( 11 )
 quest_reference = ExtResource( 17 )
+is_red = true
 
 [node name="Signs" type="YSort" parent="YSort"]
 
