@@ -15,11 +15,11 @@ func _ready():
 func get_save_block_data(save_block) -> Object:
 	var block_data = {"block_name": "(" + str(save_block+1) + ") ", "action": null}
 	var save_game = File.new()
-	if not save_game.file_exists("res://Saves/%s/%s.save" % [save_block, "WorldStats"]):
+	if not save_game.file_exists("user://Saves/%s/%s.save" % [save_block, "WorldStats"]):
 		block_data["block_name"] += "New Game"
 		block_data["action"] = "new_menu"
 		return block_data
-	save_game.open("res://Saves/%s/%s.save" % [save_block, "WorldStats"], File.READ)
+	save_game.open("user://Saves/%s/%s.save" % [save_block, "WorldStats"], File.READ)
 	var node_data = parse_json(save_game.get_line())
 	for i in node_data.keys():
 		if i == "player_name":

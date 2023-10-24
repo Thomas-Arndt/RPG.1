@@ -2,18 +2,18 @@ extends Node2D
 class_name WorldScene
 
 var save_file:String
+var save_game : File = File.new()
 
 func _ready():
 	set_save_file()
 	assert(save_file)
 
 func set_save_file():
-	save_file = "res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]
+	save_file = "user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]
 
 func save_scene():
-	var save_game = File.new()
-	save_game.open(save_file, File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
+	save_game.open(save_file, File.WRITE)
 	for node in save_nodes:
 		if node.filename.empty():
 			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
@@ -24,20 +24,16 @@ func save_scene():
 			continue
 
 		var node_data = node.call("save")
-
 		save_game.store_line(to_json(node_data))
 	save_game.close()
 
 func load_scene():
-	var save_game = File.new()
 	if not save_game.file_exists(save_file):
 		return
 		
-	save_game.open(save_file, File.READ)
-
+	var result = save_game.open(save_file, File.READ)
 	while save_game.get_position() < save_game.get_len():
 		var node_data = parse_json(save_game.get_line())
-		
 		var node:Node = get_node(node_data["path"])
 		if node != null:
 			if node_data.has("pos_x") and node_data.has("pos_y"):
@@ -71,10 +67,11 @@ func load_scene():
 	
 func update_scene(scene_name:String, node_path:String, property_name:String, value):
 	var write_stack : Array = []
-	var save_game = File.new()
-	var scene_save_location = "res://Saves/%s/%s.save" % [WorldStats.save_block, scene_name]
+	var scene_save_location = "user://Saves/%s/%s.save" % [WorldStats.save_block, scene_name]
 	if not save_game.file_exists(scene_save_location):
-		return
+		save_game.open(scene_save_location, File.WRITE_READ)
+	else:
+		save_game.open(scene_save_location, File.WRITE)
 		
 	save_game.open(scene_save_location, File.READ)
 	while save_game.get_position() < save_game.get_len():

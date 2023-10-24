@@ -2,7 +2,7 @@ extends Node
 class_name InProgressQuestAction
 
 signal finished
-signal has_follow_up_quest(quest)
+signal has_follow_up_quest(quest, speaker)
 
 export var quest_reference: PackedScene
 export var speaker_name: String

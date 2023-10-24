@@ -179,7 +179,8 @@ func push_zone_entered(target):
 func process_action(index):
 	if is_running:
 		if index == 3 and detection_zone.target is InteractionZone and detection_zone.can_interact() and UI.TextBox.complete:
-			detection_zone.target.connect("interaction_finished", self, "_on_interaction_finished")
+			if not detection_zone.target.is_connected("interaction_finished", self, "_on_interaction_finished"):
+				detection_zone.target.connect("interaction_finished", self, "_on_interaction_finished")
 			paused(true)
 			detection_zone.target.start_interaction(self)
 		elif Inventory.inventory[index] is Item and UI.TextBox.complete:

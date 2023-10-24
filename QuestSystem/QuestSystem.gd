@@ -70,7 +70,7 @@ func get_quest_log():
 
 func save_quest_progress():
 	var save_game = File.new()
-	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.WRITE)
+	save_game.open("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("QuestPersist")
 	for node in save_nodes:
 		if node.filename.empty():
@@ -86,10 +86,10 @@ func save_quest_progress():
 
 func load_quest_progress():
 	var save_game = File.new()
-	if not save_game.file_exists("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]):
+	if not save_game.file_exists("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]):
 		return
 	var save_nodes = get_tree().get_nodes_in_group("QuestPersist")
-	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
+	save_game.open("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
 	while save_game.get_position() < save_game.get_len():
 		var node_data = parse_json(save_game.get_line())
 		for quest in available_quests.get_children():

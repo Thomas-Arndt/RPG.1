@@ -3,6 +3,7 @@ class_name ChestAction
 
 signal started
 signal finished
+signal has_follow_up_quest(quest, speaker)
 
 export (Array, String) var information_array
 

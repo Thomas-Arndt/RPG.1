@@ -16,7 +16,8 @@ func start_interaction(node = null) -> void:
 		for action in actions:
 			if action.active:
 				active_actions += 1
-				action.connect("finished", self, "_on_Action_finished")
+				if not action.is_connected("finished", self, "_on_Action_finished"):
+					action.connect("finished", self, "_on_Action_finished")
 				action.interact()
 	if active_actions == 0:
 		emit_signal("interaction_finished", self)

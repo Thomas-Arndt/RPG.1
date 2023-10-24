@@ -23,24 +23,25 @@ func _ready():
 	hide_text_box()
 
 func _process(delta):
-	match state:
-		States.READY:
-			if !text_queue.empty():
-				end_symbol.text = ""
-				display_text()
-		States.READING:
-			if Input.is_action_just_pressed("quick_action_4") and label.percent_visible > 0.05:
-				label.percent_visible = 1.0
-				$Tween.remove_all()
-				end_symbol.text = "v"
-				change_state(States.FINISHED)
-		States.FINISHED:
-			if Input.is_action_just_pressed("quick_action_4"):
-				change_state(States.READY)
-				if len(text_queue) == 0:
-					complete = true
-					hide_text_box()
-					emit_signal("finished")
+	if not complete:
+		match state:
+			States.READY:
+				if !text_queue.empty():
+					end_symbol.text = ""
+					display_text()
+			States.READING:
+				if Input.is_action_just_pressed("quick_action_4") and label.percent_visible > 0.05:
+					label.percent_visible = 1.0
+					$Tween.remove_all()
+					end_symbol.text = "v"
+					change_state(States.FINISHED)
+			States.FINISHED:
+				if Input.is_action_just_pressed("quick_action_4"):
+					change_state(States.READY)
+					if len(text_queue) == 0:
+						complete = true
+						hide_text_box()
+						emit_signal("finished")
 
 func hide_text_box():
 	end_symbol.text = ""

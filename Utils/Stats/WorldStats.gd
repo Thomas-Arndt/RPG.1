@@ -26,7 +26,7 @@ func get_last_loaded_scene() -> String:
 	
 func save_stats():
 	var save_game = File.new()
-	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.WRITE)
+	save_game.open("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.WRITE)
 	var node_data = {
 		"DIMENSION" : DIMENSION,
 		"player_spawn_vector_x" : player_spawn_vector.x,
@@ -41,9 +41,9 @@ func save_stats():
 
 func load_stats():
 	var save_game = File.new()
-	if not save_game.file_exists("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]):
+	if not save_game.file_exists("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]):
 		return
-	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
+	save_game.open("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
 	var node_data = parse_json(save_game.get_line())
 	for i in node_data.keys():
 		match i:

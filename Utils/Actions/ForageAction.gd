@@ -2,6 +2,7 @@ extends Node
 class_name ForageAction
 
 signal finished
+signal has_follow_up_quest(quest, speaker)
 
 export (Array, Resource) var forage_items
 

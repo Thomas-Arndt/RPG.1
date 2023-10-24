@@ -2,7 +2,6 @@ extends CanvasLayer
 
 onready var new_or_load : Node = $NewOrLoad
 onready var nol_selector : Node = $NewOrLoad/CenterContainer/NoLSelector
-onready var lode : Node = $Load
 onready var new : Node = $New
 onready var new_keyboard : Node = $New/VBoxContainer/Keyboard
 onready var new_keyboard_keys : Node = $New/VBoxContainer/Keyboard/VBoxContainer/GridContainer
@@ -122,8 +121,6 @@ func apply_menu_change():
 			new_or_load.visible = true
 		states.NEW:
 			new.visible = true
-		states.LOAD:
-			lode.visible = true
 
 func move_cursor(direction):
 	match direction:

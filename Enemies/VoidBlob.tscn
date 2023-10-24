@@ -96,7 +96,7 @@ uniform bool active = false;
 [sub_resource type="ShaderMaterial" id=35]
 resource_local_to_scene = true
 shader = SubResource( 34 )
-shader_param/active = false
+shader_param/active = true
 
 [sub_resource type="Animation" id=30]
 length = 0.001
@@ -754,15 +754,9 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 1.05, 1.1, 1.15, 1.2, 1.25, 1.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "change_home_dimension"
-}, {
-"args": [  ],
-"method": "change_home_dimension"
-}, {
 "args": [  ],
 "method": "change_home_dimension"
 }, {

@@ -4,7 +4,7 @@ onready var green_dimension = $GreenDimension
 onready var red_dimension = $RedDimension
 
 func _ready():
-	WorldStats.connect("shift_dimension", self, "match_dimension")
+	WorldStats.connect("dimension_shift", self, "match_dimension")
 	match_dimension(WorldStats.DIMENSION)
 	
 func match_dimension(dimension):

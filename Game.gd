@@ -3,6 +3,7 @@ extends Node
 export var default_scene : String = "res://UI/Backgrounds/ScrollingStarfield.tscn"
 
 func _ready():
+	initialize_directories()
 	var destination = ResourceLoader.load(default_scene).instance()
 	add_child(destination)
 	set_UI_state("Main")
@@ -75,3 +76,14 @@ func spawn_player():
 	var player = get_player()
 	if player != null:
 		player.spawn_player()
+
+func initialize_directories():
+	var dir = Directory.new()
+	if not dir.dir_exists("user://Saves"):
+		dir.make_dir("user://Saves")
+	if not dir.dir_exists("user://Saves/0"):
+		dir.make_dir("user://Saves/0")
+	if not dir.dir_exists("user://Saves/1"):
+		dir.make_dir("user://Saves/1")
+	if not dir.dir_exists("user://Saves/2"):
+		dir.make_dir("user://Saves/2")

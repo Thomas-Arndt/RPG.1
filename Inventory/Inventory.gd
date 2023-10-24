@@ -115,7 +115,7 @@ func save_inventory():
 		else:
 			inventory_resources_array.append(null)
 	var save_game = File.new()
-	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.WRITE)
+	save_game.open("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.WRITE)
 	var node_data = {
 		"gold" : gold,
 		"max_gold" : max_gold,
@@ -126,9 +126,9 @@ func save_inventory():
 
 func load_inventory():
 	var save_game = File.new()
-	if not save_game.file_exists("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]):
+	if not save_game.file_exists("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]):
 		return
-	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
+	save_game.open("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
 	var node_data = parse_json(save_game.get_line())
 	for i in node_data.keys():
 		if i == "inventory":

@@ -4,6 +4,7 @@ class_name InformationAction
 signal started
 signal finished
 signal opened
+signal has_follow_up_quest(quest, speaker)
 
 export (Array, Resource) var items
 export (int) var gold
