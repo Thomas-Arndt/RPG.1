@@ -1,5 +1,7 @@
 extends Area2D
 
+signal player_detected(player)
+
 var player = null
 
 func can_see_player():
@@ -7,7 +9,7 @@ func can_see_player():
 
 func _on_PlayerDetectionZone_body_entered(body):
 	player = body
-	emit_signal("body_entered")
+	emit_signal("player_detected", body)
 
 func _on_PlayerDetectionZone_body_exited(body):
 	player = null

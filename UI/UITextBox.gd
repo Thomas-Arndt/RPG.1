@@ -39,9 +39,10 @@ func _process(delta):
 				if Input.is_action_just_pressed("quick_action_4"):
 					change_state(States.READY)
 					if len(text_queue) == 0:
-						complete = true
 						hide_text_box()
 						emit_signal("finished")
+						yield(get_tree().create_timer(0.2),"timeout")
+						complete = true
 
 func hide_text_box():
 	end_symbol.text = ""

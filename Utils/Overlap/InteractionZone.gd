@@ -7,6 +7,7 @@ signal interaction_finished(node)
 onready var collision_shape: Node = $CollisionShape2D
 onready var Actions: Node = $Actions
 
+
 func start_interaction(node = null) -> void:
 	var active_actions: int = 0
 	var has_follow_up: bool = false

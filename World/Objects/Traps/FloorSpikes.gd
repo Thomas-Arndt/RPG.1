@@ -16,9 +16,9 @@ func _ready():
 	elif frequency != 0 and trigger_delay != 0:
 		_on_Player_detected()
 	else:
-		detection_zone.connect("body_entered", self, "_on_Player_detected")
+		detection_zone.connect("player_detected", self, "_on_Player_detected")
 
-func _on_Player_detected():
+func _on_Player_detected(player = null):
 	if active == true:
 		active = false
 		timer.start(trigger_delay)

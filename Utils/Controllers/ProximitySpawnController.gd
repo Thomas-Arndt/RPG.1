@@ -14,7 +14,7 @@ var quest = null
 var spawn_count = 0
 
 func _ready():
-	player_detection_zone.connect("body_entered", self, "player_detected")
+	player_detection_zone.connect("player_detected", self, "player_detected")
 	if quest_reference != null:
 		quest = QuestSystem.find_available(quest_reference.instance())
 		if quest == null:
@@ -45,7 +45,7 @@ func _on_Timer_timeout():
 		timer.start(spawn_interval)
 		check_spawn()
 
-func player_detected():
+func player_detected(player = null):
 	if timer.time_left == 0:
 		timer.start(spawn_interval)
 		check_spawn()
