@@ -73,7 +73,7 @@ func load_stats():
 	if not save_game.file_exists("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]):
 		return
 	print(save_game.file_exists("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()]))
-	save_game.open("res://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
+	save_game.open("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.READ)
 	var node_data = parse_json(save_game.get_line())
 	for i in node_data.keys():
 		if i == "health":

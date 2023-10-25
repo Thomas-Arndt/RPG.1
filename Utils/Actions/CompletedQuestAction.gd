@@ -21,7 +21,6 @@ func _ready():
 	if quest == null:
 		quest = QuestSystem.completed_quests.find(quest_reference.instance())
 	if quest != null:
-
 		quest.connect("completed", self, "_on_Quest_completed")
 
 func _on_Quest_completed():
@@ -38,6 +37,7 @@ func interact() -> void:
 		UI.TextBox.queue_text(quest.deliverText, speaker_name)
 		yield(UI.TextBox, "finished")
 		if (follow_up_quest != null):
+			emit_signal("finished")
 			emit_signal("has_follow_up_quest", follow_up_quest, speaker_name)
 		else:
 			emit_signal("finished")

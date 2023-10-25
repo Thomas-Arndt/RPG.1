@@ -16,3 +16,6 @@ func _on_Interaction_started():
 
 func _on_Chest_opened():
 	anim_player.play("opened")
+
+func _on_Interaction_finished():
+	pass
