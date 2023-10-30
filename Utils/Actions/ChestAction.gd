@@ -1,5 +1,5 @@
 extends Node
-class_name InformationAction
+class_name ChestAction
 
 signal started
 signal finished
@@ -82,5 +82,6 @@ func save():
 		"gold" : gold,
 		"locked" : locked,
 		"active" : active,
+		"class" : "ChestAction"
 	}
 	return save_dict

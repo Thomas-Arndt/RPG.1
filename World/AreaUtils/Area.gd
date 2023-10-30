@@ -41,8 +41,9 @@ func load_scene():
 			for i in node_data.keys():
 				if i == "path" or i == "filename" or i == "pos_x" or i == "pos_y" or i == "spawn_count":
 					continue
-				if i == "active" and node is ChestAction:
+				if i == "active" and node_data.has("class") and node_data["class"] == "ChestAction":
 					if not node_data[i]:
+						node.active = node_data[i]
 						node.emit_signal("opened")
 						continue
 				if i == "time_remaining":

@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "ChestAction",
 "language": "GDScript",
-"path": "res://Utils/Actions/InformationAction.gd"
+"path": "res://Utils/Actions/ChestAction.gd"
 }, {
 "base": "Node",
 "class": "CompletedQuestAction",
@@ -67,7 +67,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "InformationAction",
 "language": "GDScript",
-"path": "res://Utils/Actions/ChestAction.gd"
+"path": "res://Utils/Actions/InformationAction.gd"
 }, {
 "base": "Area2D",
 "class": "InteractionZone",
