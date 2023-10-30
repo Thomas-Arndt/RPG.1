@@ -1953,6 +1953,16 @@ speaker_name = "Bill"
 quest_reference = ExtResource( 17 )
 speaker_name = "Bill"
 
+[node name="GiveQuestAction" parent="YSort/NPCs/Bill/InteractionZone/Actions" index="3" instance=ExtResource( 27 )]
+quest_reference = ExtResource( 17 )
+speaker_name = "Bill"
+active = false
+
+[node name="GiveQuestAction2" parent="YSort/NPCs/Bill/InteractionZone/Actions" index="4" instance=ExtResource( 27 )]
+quest_reference = ExtResource( 35 )
+speaker_name = "Bill"
+active = false
+
 [node name="CollisionShape2D" parent="YSort/NPCs/Bill/PlayerDetectionZone" index="0"]
 scale = Vector2( 2, 2 )
 

@@ -38,6 +38,7 @@ func deliver(quest: Quest):
 	for item in rewards.items:
 		Inventory.pick_up_item(item.item, item.quantity)
 	save_quest_progress()
+	get_tree().get_nodes_in_group("World")[0].save_scene()
 
 func get_quest_log():
 	var quest_log_dict : Dictionary = {
@@ -83,6 +84,7 @@ func save_quest_progress():
 		save_game.store_line(to_json(node_data))
 	save_game.close()
 	get_tree().get_nodes_in_group("World")[0].save_scene()
+	Inventory.save_inventory()
 
 func load_quest_progress():
 	var save_game = File.new()

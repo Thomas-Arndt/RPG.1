@@ -72,10 +72,10 @@ func _physics_process(delta):
 	
 	# Debug Input Key
 	if Input.is_action_just_pressed("debug"):
-		get_tree().get_nodes_in_group("test")[0].get_quest_log_array()
-		get_tree().get_nodes_in_group("test")[0].build_quest_log()
-		get_tree().get_nodes_in_group("test")[0].highlight_active_row()
-		pass
+		var test = get_tree().get_nodes_in_group("test")[0]
+		test.get_quest_log_array()
+		test.build_quest_log()
+		test.highlight_active_row()
 	
 func move_state(delta):
 	var input_vector = get_input_vector()

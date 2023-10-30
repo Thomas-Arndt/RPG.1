@@ -8,8 +8,13 @@ func _ready():
 		if not action.is_connected("has_follow_up_quest", self, "_on_has_follow_up_quest"):
 			action.connect("has_follow_up_quest", self, "_on_has_follow_up_quest")
 
-func _on_has_follow_up_quest(quest, speaker_name):
-	Action = giveQuestAction.instance()
-	Action.quest_reference = quest
-	Action.speaker_name = speaker_name
-	add_child(Action)
+func _on_has_follow_up_quest(quest_reference, speaker_name):
+	#Action = giveQuestAction.instance()
+	#Action.quest_reference = quest_reference
+	#Action.speaker_name = speaker_name
+	#add_child(Action)
+	for child in get_children():
+		if child is GiveQuestAction and child.quest_reference == quest_reference:
+			child.active = true
+	get_tree().get_nodes_in_group("World")[0].save_scene()
+	QuestSystem.save_quest_progress()

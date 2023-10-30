@@ -13,13 +13,16 @@ var quest: Quest = null
 
 
 func _ready():
+	set_quest()
+	
+func set_quest():
 	assert(quest_reference)
 	var reference_instance = quest_reference.instance()
 	quest = QuestSystem.find_available(reference_instance)
 	if quest == null:
-		quest = QuestSystem.active_quests.find(quest_reference.instance())
+		quest = QuestSystem.active_quests.find(reference_instance)
 	if quest == null:
-		quest = QuestSystem.completed_quests.find(quest_reference.instance())
+		quest = QuestSystem.completed_quests.find(reference_instance)
 	if quest != null:
 		quest.connect("completed", self, "_on_Quest_completed")
 
@@ -46,6 +49,7 @@ func save():
 	var save_dict = {
 		"filename" : get_filename(),
 		"path" : get_path(),
+		"class" : "CompletedQuestAction",
 		"active" : active,
 	}
 	return save_dict

@@ -6,10 +6,10 @@ signal has_follow_up_quest(quest, speaker)
 
 export var quest_reference: PackedScene
 export var speaker_name: String
+export var active: bool = true
 
 var quest: Quest = null
 
-var active: bool = true
 
 func _ready():
 	assert(quest_reference)
@@ -35,6 +35,7 @@ func save():
 	var save_dict = {
 		"filename" : get_filename(),
 		"path" : get_path(),
+		"class" : "GiveQuestAction",
 		"active" : active,
 	}
 	return save_dict
