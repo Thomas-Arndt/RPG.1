@@ -318,23 +318,24 @@ shape = SubResource( 1 )
 
 [node name="GeneralStore" parent="SceneLinks" instance=ExtResource( 10 )]
 position = Vector2( 82, 65 )
-destination_reference = "res://World/Houses/TinyTown/GeneralStore.tscn"
-exit_location = Vector2( 157, 142 )
+destination_reference = "res://World/Above/Houses/TinyTown/GeneralStore.tscn"
+exit_location = Vector2( 157, 170 )
 
 [node name="CollisionShape2D" parent="SceneLinks/GeneralStore" index="0"]
 shape = SubResource( 3 )
 
 [node name="Inn" parent="SceneLinks" instance=ExtResource( 10 )]
 position = Vector2( -238, 64 )
-destination_reference = "res://World/Houses/TinyTown/Inn.tscn"
-exit_location = Vector2( 157, 142 )
+destination_reference = "res://World/Above/Houses/TinyTown/Inn.tscn"
+exit_location = Vector2( 157, 170 )
+exit_direction = Vector2( 0, -1 )
 
 [node name="CollisionShape2D" parent="SceneLinks/Inn" index="0"]
 shape = SubResource( 4 )
 
 [node name="BobsHouse" parent="SceneLinks" instance=ExtResource( 10 )]
 position = Vector2( 238, 64 )
-destination_reference = "res://World/Houses/TinyTown/BobsHouse.tscn"
+destination_reference = "res://World/Above/Houses/TinyTown/BobsHouse.tscn"
 exit_location = Vector2( 157, 142 )
 
 [node name="CollisionShape2D" parent="SceneLinks/BobsHouse" index="0"]

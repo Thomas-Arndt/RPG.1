@@ -1,9 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Sprites/HutInterior.png" type="Texture" id=3]
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=4]
+[ext_resource path="res://World/Objects/Furniture/Counter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/Objects/Furniture/Bed-Single.tscn" type="PackedScene" id=6]
+[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Utils/Actions/SpeechAction.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Objects/Furniture/WoodStove.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Inventory/Items/Potions/Red/red_minor.tres" type="Resource" id=10]
+[ext_resource path="res://Utils/Actions/ChestAction.gd" type="Script" id=11]
+[ext_resource path="res://Utils/Actions/ChestAction.tscn" type="PackedScene" id=12]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18, 10 )
@@ -27,16 +37,65 @@ position = Vector2( 158, 90 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 158, 151 )
+position = Vector2( 157, 166 )
+
+[node name="NPCs" type="YSort" parent="YSort"]
+
+[node name="NPC" parent="YSort/NPCs" instance=ExtResource( 7 )]
+position = Vector2( 147, 124 )
+is_stationary = true
+
+[node name="AnimationTree" parent="YSort/NPCs/NPC" index="4"]
+parameters/playback = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="YSort/NPCs/NPC/InteractionZone" index="0"]
+position = Vector2( 0, 9 )
+rotation = 0.0
+scale = Vector2( 2, 3 )
+
+[node name="Actions" parent="YSort/NPCs/NPC/InteractionZone" index="1"]
+script = ExtResource( 11 )
+
+[node name="SpeechAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="0" instance=ExtResource( 8 )]
+text_array = [ "Welcome to the Tiny Town Inn!", "We are not open for business yet, but do come back again when you have an opportunity.", "Here is a small pick me up for the road as a gift." ]
+
+[node name="ChestAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="1" instance=ExtResource( 12 )]
+items = [ ExtResource( 10 ) ]
+
+[node name="Furniture" type="YSort" parent="YSort"]
+
+[node name="Bed-Single" parent="YSort/Furniture" instance=ExtResource( 6 )]
+position = Vector2( 201, 68 )
+
+[node name="Bed-Single2" parent="YSort/Furniture" instance=ExtResource( 6 )]
+position = Vector2( 157, 37 )
+
+[node name="Bed-Single3" parent="YSort/Furniture" instance=ExtResource( 6 )]
+position = Vector2( 113, 67 )
+
+[node name="Counter2" parent="YSort/Furniture" instance=ExtResource( 5 )]
+position = Vector2( 145, 133 )
+
+[node name="Counter3" parent="YSort/Furniture" instance=ExtResource( 5 )]
+position = Vector2( 195, 133 )
+
+[node name="Counter" parent="YSort/Furniture" instance=ExtResource( 5 )]
+position = Vector2( 170, 133 )
+
+[node name="WoodStove" parent="YSort/Furniture" instance=ExtResource( 9 )]
+position = Vector2( 158, 96 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
 [node name="TinyTown" parent="SceneLinks" instance=ExtResource( 2 )]
 position = Vector2( 157, 191 )
-destination_reference = "res://World/Areas/TinyTown.tscn"
-exit_location = Vector2( -238, 80 )
+destination_reference = "res://World/Above/TinyTown.tscn"
+exit_location = Vector2( -238, 110 )
 
 [node name="CollisionShape2D" parent="SceneLinks/TinyTown" index="0"]
 shape = SubResource( 1 )
 
+[editable path="YSort/NPCs/NPC"]
+[editable path="YSort/NPCs/NPC/InteractionZone"]
+[editable path="YSort/NPCs/NPC/PlayerDetectionZone"]
 [editable path="SceneLinks/TinyTown"]
