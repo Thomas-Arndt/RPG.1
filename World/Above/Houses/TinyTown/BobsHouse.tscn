@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=2]
@@ -14,6 +14,13 @@
 [ext_resource path="res://World/Objects/Furniture/Chairs/ChairLeft.tscn" type="PackedScene" id=12]
 [ext_resource path="res://World/Objects/Furniture/WoodStove.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/Objects/Furniture/Bed-Single.tscn" type="PackedScene" id=14]
+[ext_resource path="res://World/Objects/SimpleObjects/BookGreen.tscn" type="PackedScene" id=15]
+[ext_resource path="res://World/Objects/SimpleObjects/BookBlue.tscn" type="PackedScene" id=16]
+[ext_resource path="res://World/Objects/SimpleObjects/BottleRed.tscn" type="PackedScene" id=17]
+[ext_resource path="res://World/Objects/SimpleObjects/BottleGreen.tscn" type="PackedScene" id=18]
+[ext_resource path="res://World/Objects/SimpleObjects/BoxSmall.tscn" type="PackedScene" id=19]
+[ext_resource path="res://World/Objects/SimpleObjects/BoxLarge.tscn" type="PackedScene" id=20]
+[ext_resource path="res://World/Objects/SimpleObjects/BookRed.tscn" type="PackedScene" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18, 10 )
@@ -52,6 +59,39 @@ position = Vector2( 0, -5 )
 
 [node name="Shelves3" parent="YSort/Furniture" instance=ExtResource( 10 )]
 position = Vector2( 179, 48 )
+
+[node name="BoxLarge" parent="YSort/Furniture/Shelves3" instance=ExtResource( 20 )]
+position = Vector2( 2.5, -0.5 )
+
+[node name="BookGreen" parent="YSort/Furniture/Shelves3" instance=ExtResource( 15 )]
+position = Vector2( -5, 0 )
+
+[node name="BookGreen2" parent="YSort/Furniture/Shelves3" instance=ExtResource( 15 )]
+position = Vector2( -7, 0 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves3" instance=ExtResource( 21 )]
+position = Vector2( 7, -10 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves3" instance=ExtResource( 21 )]
+position = Vector2( 5, -10 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves3" instance=ExtResource( 16 )]
+position = Vector2( 3, -10 )
+
+[node name="BookBlue2" parent="YSort/Furniture/Shelves3" instance=ExtResource( 16 )]
+position = Vector2( 1, -10 )
+
+[node name="BookBlue3" parent="YSort/Furniture/Shelves3" instance=ExtResource( 16 )]
+position = Vector2( -1, -10 )
+
+[node name="BottleRed" parent="YSort/Furniture/Shelves3" instance=ExtResource( 17 )]
+position = Vector2( -5, -7.5 )
+
+[node name="BottleGreen" parent="YSort/Furniture/Shelves3" instance=ExtResource( 18 )]
+position = Vector2( 6, -17.5 )
+
+[node name="BoxSmall" parent="YSort/Furniture/Shelves3" instance=ExtResource( 19 )]
+position = Vector2( -2.5, -20.5 )
 
 [node name="TableLarge" parent="YSort/Furniture" instance=ExtResource( 5 )]
 position = Vector2( 130, 128 )
