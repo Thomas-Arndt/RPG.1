@@ -18,9 +18,10 @@ func _ready():
 	
 func get_quest_log_array():
 	quest_log_dict = QuestSystem.get_quest_log()
-	print(quest_log_dict)
 
 func build_quest_log():
+	for child in quest_list_container.get_children():
+		quest_list_container.remove_child(child)
 	for quest in quest_log_dict.active_quests:
 		var label = quest_log_title.instance()
 		label.text = quest.title
