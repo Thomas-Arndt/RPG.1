@@ -7,6 +7,7 @@ onready var gold_reward : Node = $GoldReward
 onready var item_rewards_container : Node = $ItemRewards
 
 var quest_log_title = preload("res://UI/QuestLog/QuestLogTitle.tscn")
+var item_container = preload("res://UI/InventorySlotDisplay.tscn")
 
 var quest_log_dict : Dictionary
 var quest_cursor : int = 0
@@ -38,5 +39,12 @@ func highlight_active_row():
 		var child = quest_list_container.get_child(index)
 		if index == quest_cursor:
 			child.set("custom_styles/normal", style)
+			description.text = quest_log_dict.active_quests[index].description
+			gold_reward.text = str(quest_log_dict.active_quests[index].rewards.gold)
+			for item_rewards_container_item in item_rewards_container.get_children():
+				item_rewards_container_item.queue_free()
+			var reward_item = item_container.instance()
+			item_rewards_container.add_child(reward_item)
+			reward_item.display_item(quest_log_dict.active_quests[index].rewards.items[0].item)
 		else:
 			child.set("custom_styles/normal", null)
