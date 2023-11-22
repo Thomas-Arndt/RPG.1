@@ -1,6 +1,8 @@
 extends StaticBody2D
 class_name CropNode
 
+const GROWTH_STAGE_TIME : float = 300.0
+
 onready var sprite = $Sprite
 onready var shadow_sprite = $ShadowSprite
 onready var interaction_zone = $InteractionZone
@@ -21,12 +23,12 @@ enum stages {
 var location = Vector2.ZERO
 
 func _ready():
-	location = global_position
 	#assert(crop_item)
+	randomize()
+	location = global_position
 	interaction_zone.connect("interaction_finished", self, "_on_interaction_finished")
-	#if !ResourceLoader.exists(get_tree().get_nodes_in_group("World")[0].save_file):
-	set_growth_stage(current_stage)
-	timer.start(7)
+	if !File.new().file_exists(get_tree().get_nodes_in_group("World")[0].save_file):
+		sow_seeds()
 	
 func progress_growth():
 	match current_stage:
@@ -42,9 +44,10 @@ func progress_growth():
 			pass
 	set_growth_stage(current_stage)
 	get_tree().get_nodes_in_group("World")[0].save_scene()
-	timer.start(7)
+	timer.start(GROWTH_STAGE_TIME)
 
 func set_growth_stage(stage):
+	#current_stage = stage
 	if stage == stages.SEED:
 		sprite.position = Vector2(0, 11)
 		global_position.y = location.y -16
@@ -81,6 +84,12 @@ func set_growth_stage(stage):
 			shadow_sprite.scale = Vector2(1, 1)
 			collision_shape.scale = Vector2(1, 1)
 
+func start_growing(time):
+	timer.start(time)
+	
+func sow_seeds():
+	set_growth_stage(current_stage)
+	timer.start(GROWTH_STAGE_TIME + randf() * (GROWTH_STAGE_TIME * 0.33))
 
 func _on_Timer_timeout():
 	progress_growth()

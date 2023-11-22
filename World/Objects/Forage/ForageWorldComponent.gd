@@ -12,7 +12,7 @@ onready var timer = $Timer
 
 func _ready():
 	assert(forage_item)
-	if !ResourceLoader.exists(get_tree().get_nodes_in_group("World")[0].save_file):
+	if !File.new().file_exists(get_tree().get_nodes_in_group("World")[0].save_file):
 		regrow()
 	interaction_zone.connect("interaction_finished", self, "_on_interaction_finished")
 
