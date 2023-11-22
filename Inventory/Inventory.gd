@@ -22,15 +22,18 @@ func _ready():
 
 func set_gold(value):
 	gold = value
+	save_inventory()
 	emit_signal("gold_changed", value)
 
 func change_gold(value):
 	gold += value
 	gold = clamp(gold, 0, max_gold)
+	save_inventory()
 	emit_signal("gold_changed", value)
 	
 func set_max_gold(value):
 	max_gold = value
+	save_inventory()
 	emit_signal("max_gold_changed", value)
 
 func pick_up_item(item, quantity=1, index = null):
@@ -42,11 +45,13 @@ func pick_up_item(item, quantity=1, index = null):
 	if inventory[item_index] == null:
 		var previousItem = inventory[item_index]
 		inventory[item_index] = item
-		inventory[item_index].quantity = quantity
+		inventory[item_index].quantity = item.quantity
+		save_inventory()
 		emit_signal("item_changed", [item_index])
 		return previousItem
 	else:
 		inventory[item_index].quantity += item.quantity
+		save_inventory()
 		emit_signal("item_changed", [item_index])
 		return inventory[item_index]
 
@@ -54,6 +59,7 @@ func set_item(item_index, item):
 	var previousItem = inventory[item_index]
 	inventory[item_index] = item
 	emit_signal("item_changed", [item_index])
+	save_inventory()
 	return previousItem
 	
 func swap_items(item_index, target_item_index):
@@ -62,11 +68,13 @@ func swap_items(item_index, target_item_index):
 	inventory[target_item_index] = item
 	inventory[item_index] = targetItem
 	emit_signal("item_changed", [item_index, target_item_index])
+	save_inventory()
 	
 func remove_item(item_index):
 	var previousItem = inventory[item_index]
 	inventory[item_index] = null
 	emit_signal("item_changed", [item_index])
+	save_inventory()
 	return previousItem
 
 func drop_item_container(pos: Vector2, parent_node: Node):
@@ -111,9 +119,9 @@ func save_inventory():
 	var inventory_resources_array : Array = []
 	for slot in inventory:
 		if slot != null:
-			inventory_resources_array.append(slot.get_path())
+			inventory_resources_array.append({"path": slot.get_path(), "quantity": slot.quantity})
 		else:
-			inventory_resources_array.append(null)
+			inventory_resources_array.append({"path": null, "quantity": null})
 	var save_game = File.new()
 	save_game.open("user://Saves/%s/%s.save" % [WorldStats.save_block, get_name()], File.WRITE)
 	var node_data = {
@@ -133,8 +141,9 @@ func load_inventory():
 	for i in node_data.keys():
 		if i == "inventory":
 			for index in len(node_data[i]):
-				if node_data[i][index] != null:
-					inventory[index] = ResourceLoader.load(node_data[i][index])
+				if node_data[i][index]["path"] != null:
+					inventory[index] = ResourceLoader.load(node_data[i][index]["path"])
+					inventory[index].quantity = node_data[i][index]["quantity"]
 				else: 
 					inventory[index] = null
 				emit_signal("item_changed", [index])

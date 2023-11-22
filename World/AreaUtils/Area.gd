@@ -60,6 +60,7 @@ func load_scene():
 						if node_data["time_remaining"] != null:
 							node.forage(node_data["time_remaining"])
 					if node is CropNode:
+						print(node_data)
 						if node_data["time_remaining"] != null and node_data["current_stage"] != null:
 							node.set_growth_stage(int(node_data["current_stage"]))
 							node.current_stage = int(node_data["current_stage"])
