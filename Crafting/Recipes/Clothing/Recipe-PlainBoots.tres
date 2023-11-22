@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Crafting/Recipes/Recipe.gd" type="Script" id=1]
 [ext_resource path="res://Inventory/Items/Clothing/Boots.tres" type="Resource" id=2]
-[ext_resource path="res://Inventory/Forage/LeatherLeaf.tres" type="Resource" id=3]
-[ext_resource path="res://Inventory/Forage/WhiteCap.tres" type="Resource" id=4]
+[ext_resource path="res://World/Objects/Forage/LeatherLeaf.tres" type="Resource" id=3]
+[ext_resource path="res://World/Objects/Forage/WhiteCap.tres" type="Resource" id=4]
 
 [resource]
 script = ExtResource( 1 )

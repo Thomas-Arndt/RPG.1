@@ -144,17 +144,7 @@ func load_inventory():
 	save_game.close()
 
 var ItemResources = {
-	"MINOR_RED": preload("res://Inventory/Items/Potions/Red/red_minor.tres"),
-	"RED": preload("res://Inventory/Items/Potions/Red/red_normal.tres"),
-	"MAJOR_RED": preload("res://Inventory/Items/Potions/Red/red_major.tres"),
-	"SWORD": preload("res://Inventory/Items/Weapons/Swords/Sword.tres"),
-	"BOOTS": preload("res://Inventory/Items/Clothing/Boots.tres"),
 	"KEY": preload("res://Inventory/Items/Keys/Key.tres"),
-	"REDBERRY": preload("res://Inventory/Forage/RedBerry.tres"),
-	"BLUEBELL": preload("res://Inventory/Forage/BlueBell.tres"),
-	"LEATHERLEAF": preload("res://Inventory/Forage/LeatherLeaf.tres"),
-	"SILVERTHORN": preload("res://Inventory/Forage/Silverthorn.tres"),
-	"WHITECAP": preload("res://Inventory/Forage/WhiteCap.tres"),
 }
 
 var ItemScenes = {

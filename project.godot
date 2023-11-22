@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Utils/Actions/CompletedQuestAction.gd"
 }, {
+"base": "StaticBody2D",
+"class": "CropNode",
+"language": "GDScript",
+"path": "res://World/Objects/Crops/CropWorldComponent.gd"
+}, {
 "base": "Node2D",
 "class": "CutScene",
 "language": "GDScript",
@@ -42,7 +47,7 @@ _global_script_classes=[ {
 "base": "StaticBody2D",
 "class": "ForageNode",
 "language": "GDScript",
-"path": "res://Inventory/Forage/ForageWorldComponent.gd"
+"path": "res://World/Objects/Forage/ForageWorldComponent.gd"
 }, {
 "base": "Node",
 "class": "GiveQuestAction",
@@ -184,6 +189,7 @@ _global_script_class_icons={
 "Chest": "",
 "ChestAction": "",
 "CompletedQuestAction": "",
+"CropNode": "",
 "CutScene": "",
 "ForageAction": "",
 "ForageNode": "",

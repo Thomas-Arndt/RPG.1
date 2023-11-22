@@ -54,8 +54,11 @@ func load_scene():
 							node.spawn_new_unit()
 						node.timer.start(node_data["time_remaining"])
 						continue
-					if node is ForageNode:
-						node.forage(node_data["time_remaining"])
+					#if node is ForageNode:
+					#	node.forage(node_data["time_remaining"])
+					if node is CropNode:
+						node.set_growth_stage(node_data["current_stage"])
+						node.timer.start(node_data["time_remaining"])
 				if i == "triggered":
 					if node_data[i] and node is RemoveNodeReceiver:
 						node.remove_node(node.signal_code)
