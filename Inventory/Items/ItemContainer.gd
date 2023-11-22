@@ -9,17 +9,7 @@ func _ready():
 		if randf() <= drop_rate:
 			drop_item(drop_item)
 	else:
-		var drop_result = randf()
-		if drop_result <= 0.25: # drop red potion
-			drop_result = randf()
-			if drop_result <= 0.75:
-				drop_item(Inventory.ItemResources.MINOR_RED)
-			elif drop_result > 0.75 and drop_result <= 0.9:
-				drop_item(Inventory.ItemResources.RED)
-			elif drop_result > 0.9:
-				drop_item(Inventory.ItemResources.MAJOR_RED)
-		else:
-			queue_free()
+		queue_free()
 
 func drop_item(resource: Resource):
 	var item_type = resource.type

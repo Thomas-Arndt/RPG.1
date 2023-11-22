@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Inventory/Items/Item.gd" type="Script" id=1]
+[ext_resource path="res://World/Objects/Forage/LeatherLeaf.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Leather Leaf"
+texture = ExtResource( 2 )
+type = "Forage"
+can_stack = true
+consumable = false
+heal = 0
+damage = 0

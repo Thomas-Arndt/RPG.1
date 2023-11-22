@@ -994,7 +994,7 @@ radius = 31.0
 [node name="VoidBlob" type="KinematicBody2D" groups=["enemies"]]
 position = Vector2( 0, -6 )
 collision_layer = 16
-collision_mask = 32
+collision_mask = 33
 script = ExtResource( 5 )
 
 [node name="ShadowSprite" type="Sprite" parent="."]

@@ -4,8 +4,10 @@ class_name WorldScene
 var save_file:String
 var save_game : File = File.new()
 
-func _ready():
+func _enter_tree():
 	set_save_file()
+	
+func _ready():
 	assert(save_file)
 
 func set_save_file():
@@ -55,7 +57,14 @@ func load_scene():
 						node.timer.start(node_data["time_remaining"])
 						continue
 					if node is ForageNode:
-						node.forage(node_data["time_remaining"])
+						if node_data["time_remaining"] != null:
+							node.forage(node_data["time_remaining"])
+					if node is CropNode:
+						print(node_data)
+						if node_data["time_remaining"] != null and node_data["current_stage"] != null:
+							node.set_growth_stage(int(node_data["current_stage"]))
+							node.current_stage = int(node_data["current_stage"])
+							node.start_growing(float(node_data["time_remaining"]))
 				if i == "triggered":
 					if node_data[i] and node is RemoveNodeReceiver:
 						node.remove_node(node.signal_code)
