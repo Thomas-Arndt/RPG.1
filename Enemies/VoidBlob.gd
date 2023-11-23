@@ -24,6 +24,8 @@ var Name = "Void Blob"
 var velocity = Vector2.ZERO
 var knockback = Vector2.ZERO
 
+var default_damage = 1
+var explosion_damage = 3
 var state = IDLE
 var DeathEffect : String = "res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn"
 
@@ -90,9 +92,7 @@ func _physics_process(delta):
 		ATTACK:
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 			if velocity == Vector2.ZERO:
-				hit_box.damage = 3
-				hurt_box.monitorable = false
-				hurt_box.monitoring = false
+				hit_box.damage = explosion_damage
 				apply_attack_sprite(WorldStats.DIMENSION)
 				attack_anim_player.play("explosion")
 		
@@ -140,20 +140,21 @@ func death_animation():
 	death_effect.global_position = global_position
 
 func _on_HurtBox_invincible_start():
+	set_or_toggle_hurtbox_state(false)
 	blink_anim_player.play("start")
 
 func _on_HurtBox_invincible_end():
+	set_or_toggle_hurtbox_state(true)
 	blink_anim_player.play("stop")
 
 func _on_AttackRadius_explosion_attack():
 	state = ATTACK
 
 func on_attack_animation_complete():
-	hit_box.damage = 1
+	hit_box.damage = default_damage
 	hide_attack_sprites()
 	match_dimension(WorldStats.DIMENSION)
-	hurt_box.monitorable = true
-	hurt_box.monitoring = true
+	set_or_toggle_hurtbox_state(true)
 	state = IDLE
 
 func change_home_dimension():
@@ -164,23 +165,19 @@ func match_dimension(state):
 	hide_sprites()
 	if is_red and state == WorldStats.Dimensions.Red:
 		red_full_sprite.visible = true
-		hurt_box.monitorable = true
-		hurt_box.monitoring = true
+		set_or_toggle_hurtbox_state(true)
 		DeathEffect = "res://Effects/EnemyEffects/VoidBlob/RedVoidBlobDeathEffect.tscn"
 	elif is_red and not state == WorldStats.Dimensions.Red:
 		red_half_sprite.visible = true
-		hurt_box.monitorable = false
-		hurt_box.monitoring = false
+		set_or_toggle_hurtbox_state(false)
 		DeathEffect = "res://Effects/EnemyEffects/VoidBlob/RedVoidBlobDeathEffect.tscn"
 	elif not is_red and state == WorldStats.Dimensions.Green:
 		green_full_sprite.visible = true
-		hurt_box.monitorable = true
-		hurt_box.monitoring = true
+		set_or_toggle_hurtbox_state(true)
 		DeathEffect = "res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn"
 	elif not is_red and not state == WorldStats.Dimensions.Green:
 		green_half_sprite.visible = true
-		hurt_box.monitorable = false
-		hurt_box.monitoring = false
+		set_or_toggle_hurtbox_state(false)
 		DeathEffect = "res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn"
 
 func apply_attack_sprite(state):
@@ -217,3 +214,10 @@ func flip_sprites(velocity):
 	red_full_attack_sprite.flip_h = velocity.x > 0
 	red_half_attack_sprite.flip_h = velocity.x > 0
 	
+func set_or_toggle_hurtbox_state(state = null):
+	if state == null:
+		hurt_box.monitorable = not hurt_box.monitorable
+		hurt_box.monitoring = not hurt_box.monitoring
+	else:
+		hurt_box.monitorable = state
+		hurt_box.monitoring = state
