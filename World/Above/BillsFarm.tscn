@@ -1,4 +1,4 @@
-[gd_scene load_steps=186 format=2]
+[gd_scene load_steps=187 format=2]
 
 [ext_resource path="res://CutScenes/Controllers/Portal1Controller.gd" type="Script" id=1]
 [ext_resource path="res://World/Objects/Signs/QuestBulletinBoard.tscn" type="PackedScene" id=2]
@@ -29,7 +29,7 @@
 [ext_resource path="res://Utils/Actions/GiveQuestAction.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Utils/Controllers/SpawnController.tscn" type="PackedScene" id=28]
 [ext_resource path="res://World/Objects/Forage/LeatherLeaf.tres" type="Resource" id=29]
-[ext_resource path="res://World/Objects/Forage/WhiteCap.tres" type="Resource" id=30]
+[ext_resource path="res://World/Objects/Forage/WoodWorld.tres" type="Resource" id=30]
 [ext_resource path="res://World/Objects/Forage/RedBerry.tres" type="Resource" id=31]
 [ext_resource path="res://World/Objects/Doors/LadderUpper.tscn" type="PackedScene" id=32]
 [ext_resource path="res://World/Portals/Portal1.tscn" type="PackedScene" id=33]
@@ -44,6 +44,7 @@
 [ext_resource path="res://World/Objects/Crops/CropWorldComponent.tscn" type="PackedScene" id=42]
 [ext_resource path="res://World/Objects/Crops/TomatoGrowthSheet.png" type="Texture" id=43]
 [ext_resource path="res://World/Objects/Crops/Tomato.tres" type="Resource" id=44]
+[ext_resource path="res://World/Objects/Forage/Wood.tres" type="Resource" id=45]
 
 [sub_resource type="ConvexPolygonShape2D" id=169]
 points = PoolVector2Array( 16, 16, 8, 16, 8, 12, 12, 8, 16, 8 )
@@ -2011,7 +2012,7 @@ position = Vector2( 174, 308 )
 forage_item = ExtResource( 30 )
 
 [node name="ForageAction" parent="YSort/Forage/ForageWorldComponent2/InteractionZone/Actions" index="0"]
-forage_items = [ ExtResource( 30 ) ]
+forage_items = [ ExtResource( 45 ) ]
 
 [node name="ForageWorldComponent5" parent="YSort/Forage" instance=ExtResource( 8 )]
 position = Vector2( -23, 378 )
