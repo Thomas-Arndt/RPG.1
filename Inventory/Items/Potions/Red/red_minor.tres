@@ -10,5 +10,5 @@ texture = ExtResource( 2 )
 type = "potion"
 can_stack = true
 consumable = true
-heal = 2
-damage = 0
+heal = 0
+damage = 0.0
