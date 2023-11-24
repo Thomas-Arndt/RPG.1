@@ -10,7 +10,7 @@
 [node name="protect-bills-house" instance=ExtResource( 3 )]
 title = "Protect Bill's House"
 description = "Banish one void blob in Bill's Farm."
-startText = [ "As you can see, there are void blobs everywhere!", "Could you do me a solid and banish the 'Void Blob' roaming my yard? Just go and hit it with your sword a few times...", "Once you have banished it, return to me." ]
+startText = [ "Well hello there! Not sure that I've seen you around before. My name is Bill.", "There's been lots of strange things happening. You appearing in my orchard, for one.", "Even stranger, there are these odd creatures appearing everywhere, but I can't do anything about them.", "The closer I get, the weaker I feel, and when I prodded one with my pitchfork, I nearly passed out.", "Since you survived the swarms of those creatures I saw in the orchard, I am hoping that maybe you are capable of helping me.", "Would you please help me clear some of those creatures from my farm? I would appreciate it very much!", "Come talk to me when you are done." ]
 progressText = [ "Remember, you can only attack a void blob that has fully phased into our dimension." ]
 deliverText = [ "Well done! While you were doing that, I had a chance to remove the boulders blocking the road to the 'Old Quarry'.", "It was odd. Right as I was leaving, the air suddenly felt 'charged'. Like lightning was about to strike...", "...anyways, thank you for you help. Here's the key to my treasure for your troubles. Have a nice day!" ]
 reward_on_delivery = true
