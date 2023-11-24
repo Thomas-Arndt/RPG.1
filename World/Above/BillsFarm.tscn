@@ -1,4 +1,4 @@
-[gd_scene load_steps=187 format=2]
+[gd_scene load_steps=189 format=2]
 
 [ext_resource path="res://CutScenes/Controllers/Portal1Controller.gd" type="Script" id=1]
 [ext_resource path="res://World/Objects/Signs/QuestBulletinBoard.tscn" type="PackedScene" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://Enemies/VoidBlob.tscn" type="PackedScene" id=11]
 [ext_resource path="res://CutScenes/Controllers/VoidLord1Controller.gd" type="Script" id=12]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Utils/Camera/ScreenShakeRandom.gd" type="Script" id=14]
+[ext_resource path="res://CutScenes/Controllers/IntroductionPortalController.gd" type="Script" id=14]
 [ext_resource path="res://QuestSystem/Quests/bills-flyer.tscn" type="PackedScene" id=15]
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=16]
 [ext_resource path="res://QuestSystem/Quests/protect-bills-house.tscn" type="PackedScene" id=17]
@@ -45,6 +45,7 @@
 [ext_resource path="res://World/Objects/Crops/TomatoGrowthSheet.png" type="Texture" id=43]
 [ext_resource path="res://World/Objects/Crops/Tomato.tres" type="Resource" id=44]
 [ext_resource path="res://World/Objects/Forage/Wood.tres" type="Resource" id=45]
+[ext_resource path="res://CutScenes/Controllers/IntroductionPlayerController.gd" type="Script" id=46]
 
 [sub_resource type="ConvexPolygonShape2D" id=169]
 points = PoolVector2Array( 16, 16, 8, 16, 8, 12, 12, 8, 16, 8 )
@@ -1464,6 +1465,9 @@ extents = Vector2( 10, 68.5 )
 [sub_resource type="CircleShape2D" id=168]
 radius = 126.254
 
+[sub_resource type="CircleShape2D" id=207]
+radius = 66.0076
+
 [node name="BillsFarm" type="Node2D" groups=["World"]]
 script = ExtResource( 41 )
 
@@ -1503,7 +1507,10 @@ tile_data = PoolIntArray( 131037, 1, 0, 131038, 1, 1, 131039, 1, 1, 131040, 1, 1
 tile_data = PoolIntArray( 393186, 0, 0, 393187, 0, 1, 393188, 0, 1, 393189, 0, 1, 393190, 0, 1, 393191, 0, 1, 393192, 0, 1, 393193, 0, 1, 393194, 0, 1, 393195, 0, 2, 458721, 0, 0, 458722, 0, 196611, 458723, 0, 65537, 458724, 0, 65537, 458725, 0, 65537, 458726, 0, 65537, 458727, 0, 65537, 458728, 0, 65537, 458729, 0, 65537, 458730, 0, 65537, 458731, 0, 65538, 524257, 0, 65536, 524258, 0, 65537, 524259, 0, 65537, 524260, 0, 65537, 524261, 0, 65537, 524262, 0, 65537, 524263, 0, 65537, 524264, 0, 65537, 524265, 0, 65537, 524266, 0, 65537, 524267, 0, 65538, 589793, 0, 65536, 589794, 0, 65537, 589795, 0, 65537, 589796, 0, 65537, 589797, 0, 65537, 589798, 0, 65537, 589799, 0, 65537, 589800, 0, 65537, 589801, 0, 65537, 589802, 0, 196608, 589803, 0, 131074, 655329, 0, 65536, 655330, 0, 65537, 655331, 0, 65537, 655332, 0, 65537, 655333, 0, 65537, 655334, 0, 196608, 655335, 0, 131073, 655336, 0, 131073, 655337, 0, 131073, 655338, 0, 131074, 720865, 0, 65536, 720866, 0, 65537, 720867, 0, 65537, 720868, 0, 65537, 720869, 0, 196608, 720870, 0, 131074, 786401, 0, 65536, 786402, 0, 65537, 786403, 0, 65537, 786404, 0, 65537, 786405, 0, 65538, 851937, 0, 65536, 851938, 0, 65537, 851939, 0, 65537, 851940, 0, 65537, 851941, 0, 65538, 917473, 0, 65536, 917474, 0, 65537, 917475, 0, 65537, 917476, 0, 65537, 917477, 0, 65538, 983009, 0, 65536, 983010, 0, 65537, 983011, 0, 65537, 983012, 0, 65537, 983013, 0, 65538, 1048545, 0, 65536, 1048546, 0, 65537, 1048547, 0, 196608, 1048548, 0, 131073, 1048549, 0, 131074, 1114081, 0, 65536, 1114082, 0, 196608, 1114083, 0, 131074, 1179617, 0, 131072, 1179618, 0, 131074 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 21 )]
-script = ExtResource( 14 )
+smoothing_enabled = false
+
+[node name="TopLeft" parent="Camera2D/Limits" index="0"]
+position = Vector2( -1112, 56 )
 
 [node name="YSort" type="YSort" parent="." groups=["PlayerLocation"]]
 
@@ -1896,15 +1903,15 @@ position = Vector2( 49, 822 )
 [node name="MobileEnemies" type="YSort" parent="YSort" groups=["Mobs"]]
 
 [node name="SpawnController" parent="YSort/MobileEnemies" instance=ExtResource( 28 )]
-position = Vector2( 218, 337 )
+position = Vector2( 11, 244 )
 spawn_unit = ExtResource( 37 )
 
 [node name="SpawnController2" parent="YSort/MobileEnemies" instance=ExtResource( 28 )]
-position = Vector2( -6, 293 )
+position = Vector2( -24, 323 )
 spawn_unit = ExtResource( 37 )
 
 [node name="SpawnController3" parent="YSort/MobileEnemies" instance=ExtResource( 28 )]
-position = Vector2( 122, 213 )
+position = Vector2( 100, 213 )
 spawn_unit = ExtResource( 37 )
 
 [node name="SpawnController4" parent="YSort/MobileEnemies" instance=ExtResource( 28 )]
@@ -2091,6 +2098,21 @@ actor_reference = ExtResource( 34 )
 script = ExtResource( 12 )
 actor_reference = ExtResource( 40 )
 
+[node name="CutSceneTrigger2" parent="CutSceneTriggers" instance=ExtResource( 5 )]
+position = Vector2( 267, 126 )
+active = true
+
+[node name="CollisionShape2D" parent="CutSceneTriggers/CutSceneTrigger2/TriggerArea" index="0"]
+shape = SubResource( 207 )
+
+[node name="IntroductionPlayerController" parent="CutSceneTriggers/CutSceneTrigger2/ActorControllers" index="0" instance=ExtResource( 4 )]
+script = ExtResource( 46 )
+actor_path = NodePath("../../../../YSort/Player")
+
+[node name="IntroductionPortalController" parent="CutSceneTriggers/CutSceneTrigger2/ActorControllers" index="1" instance=ExtResource( 4 )]
+script = ExtResource( 14 )
+actor_reference = ExtResource( 34 )
+
 [editable path="Camera2D"]
 [editable path="YSort/Signs/BulletinBoard"]
 [editable path="YSort/Signs/BulletinBoard/InteractionZone"]
@@ -2112,3 +2134,4 @@ actor_reference = ExtResource( 40 )
 [editable path="SceneLinks/BillsHouse"]
 [editable path="SceneLinks/FirstForest"]
 [editable path="CutSceneTriggers/CutSceneTrigger"]
+[editable path="CutSceneTriggers/CutSceneTrigger2"]

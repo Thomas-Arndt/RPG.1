@@ -123,9 +123,11 @@ func start_dialogue(text_array, speaker):
 
 func toggle_visible_on():
 	actor.visible = true
+	run_cut_scene()
 
 func toggle_visible_off():
 	actor.visible = false
+	run_cut_scene()
 	
 func cut_scene_finished():
 	emit_signal("finished")
