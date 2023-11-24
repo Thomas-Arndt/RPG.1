@@ -42,12 +42,13 @@ func match_dimension(dimension):
 		
 
 func open_and_hold():
+	anim_player.stop()
 	anim_player.queue("open")
 	anim_player.queue("holding")
 
 func close():
 	anim_player.stop()
-	anim_player.play("close")
+	anim_player.queue("close")
 
 func _on_Portal_body_entered(body):
 	if active:

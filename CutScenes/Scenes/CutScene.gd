@@ -6,6 +6,9 @@ onready var controller : Node = $CutSceneController
 func _ready():
 	controller.run_cut_scene()
 
+func save_scene():
+	pass
+
 func load_scene():
 	pass
 
