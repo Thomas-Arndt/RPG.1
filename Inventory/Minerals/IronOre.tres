@@ -11,4 +11,4 @@ type = "Ore"
 can_stack = true
 consumable = false
 heal = 0
-damage = 0
+damage = 0.0
