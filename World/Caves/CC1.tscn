@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/AreaUtils/AreaYSort.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Caves/Terrain.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Objects/Doors/CaveEntrance.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=6]
+[ext_resource path="res://World/Objects/Forage/WhiteCap.tres" type="Resource" id=7]
+[ext_resource path="res://World/Objects/Forage/ForageWorldComponent.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 10 )
@@ -32,6 +34,13 @@ position = Vector2( 321, 182 )
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player" index="10"]
 remote_path = NodePath("../../../Camera2D")
 
+[node name="ForageWorldComponent" parent="YSort/Forage" index="0" instance=ExtResource( 8 )]
+position = Vector2( 137, -27 )
+forage_item = ExtResource( 7 )
+
+[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent/InteractionZone/Actions" index="0"]
+forage_item = ExtResource( 7 )
+
 [node name="CaveEntrance" parent="YSort/Portals" index="0" instance=ExtResource( 5 )]
 position = Vector2( 2, -18 )
 
@@ -49,4 +58,6 @@ shape = SubResource( 1 )
 [editable path="Terrain"]
 [editable path="Camera2D"]
 [editable path="YSort"]
+[editable path="YSort/Forage/ForageWorldComponent"]
+[editable path="YSort/Forage/ForageWorldComponent/InteractionZone"]
 [editable path="SceneLinks/BillsFarm"]

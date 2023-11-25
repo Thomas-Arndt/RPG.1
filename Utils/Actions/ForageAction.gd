@@ -4,12 +4,11 @@ class_name ForageAction
 signal finished
 signal has_follow_up_quest(quest, speaker)
 
-export (Array, Resource) var forage_items
+export (Resource) var forage_item
 
 var active: bool = true
 
 func interact() -> void:
-	if active and len(forage_items) > 0:
-		for item in forage_items:
-			Inventory.pick_up_item(item)
+	if active and forage_item != null:
+		Inventory.pick_up_item(forage_item)
 	emit_signal("finished")

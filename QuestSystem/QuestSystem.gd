@@ -36,7 +36,7 @@ func deliver(quest: Quest):
 	PlayerStats.change_experience(rewards.experience)
 	Inventory.change_gold(rewards.gold)
 	for item in rewards.items:
-		Inventory.pick_up_item(item.item, item.quantity)
+		Inventory.pick_up_item(item.item)
 	save_quest_progress()
 	get_tree().get_nodes_in_group("World")[0].save_scene()
 

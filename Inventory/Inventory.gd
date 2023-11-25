@@ -36,7 +36,7 @@ func set_max_gold(value):
 	save_inventory()
 	emit_signal("max_gold_changed", value)
 
-func pick_up_item(item, quantity=1, index = null):
+func pick_up_item(item, quantity = 1, index = null):
 	var item_index = 0
 	if index != null:
 		item_index = index
@@ -45,12 +45,12 @@ func pick_up_item(item, quantity=1, index = null):
 	if inventory[item_index] == null:
 		var previousItem = inventory[item_index]
 		inventory[item_index] = item
-		inventory[item_index].quantity = item.quantity
+		inventory[item_index].quantity = quantity
 		save_inventory()
 		emit_signal("item_changed", [item_index])
 		return previousItem
 	else:
-		inventory[item_index].quantity += item.quantity
+		inventory[item_index].quantity += quantity
 		save_inventory()
 		emit_signal("item_changed", [item_index])
 		return inventory[item_index]

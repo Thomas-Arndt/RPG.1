@@ -16,6 +16,6 @@ func set_active(state):
 
 func interact() -> void:
 	if active and harvest_item != null:
-		Inventory.pick_up_item(harvest_item, harvest_item.quantity)
+		Inventory.pick_up_item(harvest_item)
 		active = false
 	emit_signal("finished")

@@ -23,5 +23,5 @@ item = ExtResource( 6 )
 signal_code = "bill_moves_rocks"
 
 [node name="QuestSlayObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
-amount = 1
+amount = 3
 target_to_slay = ExtResource( 1 )

@@ -53,7 +53,7 @@ func craft_item():
 			var item_index = Inventory.get_item_index(item.item)
 			if item_index >= 0:
 				Inventory.consume_item(item_index, item.quantity)
-		Inventory.pick_up_item(recipe.product)
+		Inventory.pick_up_item(recipe.product, recipe.product_quantity)
 
 func has_all_ingredients(recipe):
 	for item in recipe.recipe:

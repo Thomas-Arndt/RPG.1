@@ -6,7 +6,7 @@
 [ext_resource path="res://UI/CraftingMenu.gd" type="Script" id=4]
 [ext_resource path="res://Crafting/Recipes/Potions/Recipe-MinorRedPotion.tres" type="Resource" id=5]
 [ext_resource path="res://Crafting/Recipes/Clothing/Recipe-PlainBoots.tres" type="Resource" id=6]
-[ext_resource path="res://Crafting/Recipes/Weapons/Recipe-WoodenSurvivalKnife.tres" type="Resource" id=7]
+[ext_resource path="res://Crafting/Recipes/Weapons/Recipe-SurvivalKnife.tres" type="Resource" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 6
