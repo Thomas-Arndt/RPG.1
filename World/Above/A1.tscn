@@ -1053,7 +1053,7 @@ destination_reference = "res://World/Caves/CA1.tscn"
 exit_location = Vector2( 9, -27 )
 
 [node name="CollisionShape2D" parent="SceneLinks/CA1" index="0"]
-position = Vector2( 0, -5 )
+position = Vector2( 0, -3 )
 shape = SubResource( 150 )
 
 [editable path="Terrain"]

@@ -67,13 +67,15 @@ func display_text():
 func change_state(next_state):
 	state = next_state
 			
-func queue_text(text_array, source: String = ""):
+func queue_text(text_array, source: String = source_label.text):
 	complete = false
 	source_label.text = source
 	for text in text_array:
-
 		text_queue.push_back(text)
 	display_text()
+
+func set_speaker_name(speaker):
+	source_label.text = speaker
 
 func _on_Tween_tween_completed(object, key):
 	end_symbol.text = "v"
