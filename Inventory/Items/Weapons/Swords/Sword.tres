@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Sword"
+name = "Simple Sword"
 texture = ExtResource( 1 )
 type = "weapon"
 can_stack = false
 consumable = false
 heal = 0
-damage = 0.0
+damage = 1.0

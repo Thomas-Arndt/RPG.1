@@ -18,6 +18,7 @@ func action(player = null):
 			PlayerStats.change_health(heal)
 		"weapon":
 			player.sword_hit_box.damage = damage
+			player.set_weapon_sprite(name)
 			player.state = player.ATTACK
 		"boots":
 			player.state = player.ROLL

@@ -28,6 +28,7 @@ onready var hurt_box = $HurtBox
 onready var blink_anim_player = $BlinkAnimationPlayer
 onready var detection_zone = $DetectionZone/DetectionZone
 onready var push_detection_zone = $PushDetectionZone/PushDetectionZone
+onready var weapon_sprite = $WeaponSprite
 
 func _ready():
 	anim_tree.active = true
@@ -78,6 +79,7 @@ func _physics_process(delta):
 		test.highlight_active_row()
 	
 func move_state(delta):
+	hide_weapon()
 	var input_vector = get_input_vector()
 	
 	if input_vector != Vector2.ZERO and is_running:
@@ -90,6 +92,7 @@ func move_state(delta):
 	move()
 
 func push_state(delta):
+	hide_weapon()
 	var input_vector = get_input_vector()
 	
 	if input_vector != Vector2.ZERO and is_running:
@@ -109,6 +112,7 @@ func push_state(delta):
 	
 func roll_state():
 	if is_running:
+		hide_weapon()
 		velocity = roll_vector * ROLL_SPEED
 		anim_state.travel("roll")
 		move()
@@ -141,7 +145,15 @@ func roll_animation_finished():
 	state = MOVE
 
 func attack_animation_finished():
+	hide_weapon()
 	state = MOVE
+
+func hide_weapon():
+	if weapon_sprite.visible:
+		weapon_sprite.visible = false
+
+func set_weapon_sprite(weapon):
+	weapon_sprite.set_sprite(weapon)
 
 func _on_HurtBox_area_entered(area):
 	PlayerStats.change_health(-area.damage)
