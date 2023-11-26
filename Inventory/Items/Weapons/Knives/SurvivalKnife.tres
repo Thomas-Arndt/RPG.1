@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Inventory/Items/Item.gd" type="Script" id=1]
-[ext_resource path="res://Inventory/Items/Weapons/Swords/KingsSword.png" type="Texture" id=2]
+[ext_resource path="res://Inventory/Items/Weapons/Knives/SurvivalKnife.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-name = "Wooden Survival Knife"
+name = "Survival Knife"
 texture = ExtResource( 2 )
 type = "weapon"
 can_stack = false
