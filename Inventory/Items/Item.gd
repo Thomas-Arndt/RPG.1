@@ -22,3 +22,6 @@ func action(player = null):
 			player.state = player.ATTACK
 		"boots":
 			player.state = player.ROLL
+		"tool":
+			if name == "Pick Axe":
+				player.state = player.MINE

@@ -89,6 +89,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Inventory/Items/Item.gd"
 }, {
+"base": "Node",
+"class": "MineAction",
+"language": "GDScript",
+"path": "res://Utils/Actions/MineAction.gd"
+}, {
+"base": "StaticBody2D",
+"class": "MineralNode",
+"language": "GDScript",
+"path": "res://World/Objects/Minerals/MineralDepositWorldComponent.gd"
+}, {
 "base": "YSort",
 "class": "ModifyPropertyReceiver",
 "language": "GDScript",
@@ -206,6 +216,8 @@ _global_script_class_icons={
 "InformationAction": "",
 "InteractionZone": "",
 "Item": "",
+"MineAction": "",
+"MineralNode": "",
 "ModifyPropertyReceiver": "",
 "Player": "",
 "PortalNode": "",
