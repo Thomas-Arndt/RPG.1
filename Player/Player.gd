@@ -10,7 +10,8 @@ enum {
 	MOVE,
 	ROLL,
 	ATTACK,
-	PUSH
+	PUSH,
+	MINE
 }
 
 var state = MOVE
@@ -19,6 +20,7 @@ var roll_vector = Vector2.DOWN
 var knockback = Vector2()
 var is_running = true
 var active : bool = true
+var last_action = null
 
 onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
@@ -57,6 +59,8 @@ func _physics_process(delta):
 			attack_state()
 		PUSH:
 			push_state(delta)
+		MINE:
+			mine_state()
 	
 	if Input.is_action_just_pressed("quick_action_1"):
 		process_action(0)
@@ -73,10 +77,9 @@ func _physics_process(delta):
 	
 	# Debug Input Key
 	if Input.is_action_just_pressed("debug"):
-		var test = get_tree().get_nodes_in_group("test")[0]
-		test.get_quest_log_array()
-		test.build_quest_log()
-		test.highlight_active_row()
+		state = MINE
+	if Input.is_action_just_released("debug"):
+		state = MOVE
 	
 func move_state(delta):
 	hide_weapon()
@@ -121,6 +124,14 @@ func attack_state():
 	velocity = Vector2.ZERO
 	anim_state.travel("attack")
 
+func mine_state():
+	if Input.is_action_just_released(get_last_input()):
+		state = MOVE
+	else:
+		hide_weapon()
+		velocity = Vector2.ZERO
+		anim_state.travel("mine")
+	
 func get_input_vector() -> Vector2:
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -136,6 +147,7 @@ func apply_input_vector(input_vector):
 	anim_tree.set("parameters/roll/blend_position", input_vector)
 	anim_tree.set("parameters/attack/blend_position", input_vector)
 	anim_tree.set("parameters/push/blend_position", input_vector)
+	anim_tree.set("parameters/mine/blend_position", input_vector)
 
 func move():
 	velocity = move_and_slide(velocity)
@@ -154,7 +166,7 @@ func hide_weapon():
 
 func set_weapon_sprite(weapon):
 	weapon_sprite.set_sprite(weapon)
-
+	
 func _on_HurtBox_area_entered(area):
 	PlayerStats.change_health(-area.damage)
 	area.set_knockback_vector(self) 
@@ -191,15 +203,17 @@ func push_zone_entered(target):
 func process_action(index):
 	if is_running:
 		if index == 3 and detection_zone.target is InteractionZone and detection_zone.can_interact() and UI.TextBox.complete:
-			if not detection_zone.target.is_connected("interaction_finished", self, "_on_interaction_finished"):
-				detection_zone.target.connect("interaction_finished", self, "_on_interaction_finished")
-			paused(true)
-			detection_zone.target.start_interaction(self)
+			if not can_mine_target(detection_zone.target):
+				if not detection_zone.target.is_connected("interaction_finished", self, "_on_interaction_finished"):
+					detection_zone.target.connect("interaction_finished", self, "_on_interaction_finished")
+				paused(true)
+				detection_zone.target.start_interaction(self)
 		elif Inventory.inventory[index] is Item and UI.TextBox.complete:
 			Inventory.inventory[index].action(self)
+			last_action = index
 			if Inventory.inventory[index].consumable:
 				Inventory.consume_item(index)
-			Inventory.emit_signal("item_changed", [index])
+				Inventory.emit_signal("item_changed", [index])
 
 func state_machine_pause():
 	active = false
@@ -208,3 +222,25 @@ func state_machine_run():
 	active = true
 	state = MOVE
 	
+func get_last_input():
+	match last_action:
+		0:
+			return "quick_action_1"
+		1:
+			return "quick_action_2"
+		2:
+			return "quick_action_3"
+		3:
+			return "quick_action_4"
+
+func mine_item():
+	if detection_zone.target is InteractionZone and detection_zone.can_interact() and can_mine_target(detection_zone.target):
+		detection_zone.target.start_interaction(self)
+
+func can_mine_target(target):
+	if target != null:
+		var actions = target.Actions.get_children()
+		for action in actions:
+			if action is MineAction:
+				return true
+		return false
