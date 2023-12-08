@@ -12,7 +12,7 @@
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Objects/Signs/InformationBoard.tscn" type="PackedScene" id=12]
-[ext_resource path="res://QuestSystem/Quests/message-from-bill.tscn" type="PackedScene" id=13]
+[ext_resource path="res://QuestSystem/Quests/message-for-bob.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=14]
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=15]
 
@@ -278,14 +278,14 @@ position = Vector2( 134, 285 )
 
 [node name="NPCs" type="YSort" parent="YSort"]
 
-[node name="Bill" parent="YSort/NPCs" instance=ExtResource( 9 )]
+[node name="Bob" parent="YSort/NPCs" instance=ExtResource( 9 )]
 position = Vector2( 199, 124 )
 show_red = false
 
-[node name="AnimationTree" parent="YSort/NPCs/Bill" index="4"]
+[node name="AnimationTree" parent="YSort/NPCs/Bob" index="4"]
 parameters/playback = SubResource( 2 )
 
-[node name="CompletedQuestAction" parent="YSort/NPCs/Bill/InteractionZone/Actions" index="0" instance=ExtResource( 15 )]
+[node name="CompletedQuestAction" parent="YSort/NPCs/Bob/InteractionZone/Actions" index="0" instance=ExtResource( 15 )]
 quest_reference = ExtResource( 13 )
 speaker_name = "Bob"
 active = true
@@ -343,9 +343,9 @@ shape = SubResource( 5 )
 
 [editable path="Terrain"]
 [editable path="Camera2D"]
-[editable path="YSort/NPCs/Bill"]
-[editable path="YSort/NPCs/Bill/InteractionZone"]
-[editable path="YSort/NPCs/Bill/PlayerDetectionZone"]
+[editable path="YSort/NPCs/Bob"]
+[editable path="YSort/NPCs/Bob/InteractionZone"]
+[editable path="YSort/NPCs/Bob/PlayerDetectionZone"]
 [editable path="YSort/Signs/InformationBoard"]
 [editable path="YSort/Signs/InformationBoard/InteractionZone"]
 [editable path="YSort/Signs/InformationBoard2"]

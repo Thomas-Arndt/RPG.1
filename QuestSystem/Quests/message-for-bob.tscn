@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://QuestSystem/Objectives/QuestDeliverItemObjective.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Inventory/Items/QuestItems/Message.tres" type="Resource" id=3]
+
+[node name="message-for-bob" instance=ExtResource( 1 )]
+title = "Message for Bob"
+description = "Bill has asked that you deliver a message to his friend Bob in Tiny Town to the North."
+startText = [ "This is a test" ]
+deliverText = [ "This is the end of the test." ]
+
+[node name="QuestDeliverItemObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
+item = ExtResource( 3 )

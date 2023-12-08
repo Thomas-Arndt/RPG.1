@@ -77,7 +77,8 @@ func _physics_process(delta):
 	
 	# Debug Input Key
 	if Input.is_action_just_pressed("debug"):
-		state = MINE
+		for x in get_tree().get_nodes_in_group("QuestDeliverItemObjective"):
+			x.test_run()
 	if Input.is_action_just_released("debug"):
 		state = MOVE
 	
