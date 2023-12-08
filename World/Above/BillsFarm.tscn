@@ -1,7 +1,7 @@
-[gd_scene load_steps=189 format=2]
+[gd_scene load_steps=186 format=2]
 
 [ext_resource path="res://CutScenes/Controllers/Portal1Controller.gd" type="Script" id=1]
-[ext_resource path="res://World/Objects/Minerals/AdamantiumVein.tres" type="Resource" id=2]
+[ext_resource path="res://QuestSystem/Quests/message-for-bob.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=3]
 [ext_resource path="res://CutScenes/Controllers/CutSceneController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Utils/Overlap/CutSceneTrigger.tscn" type="PackedScene" id=5]
@@ -14,7 +14,6 @@
 [ext_resource path="res://CutScenes/Controllers/VoidLord1Controller.gd" type="Script" id=12]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=13]
 [ext_resource path="res://CutScenes/Controllers/IntroductionPortalController.gd" type="Script" id=14]
-[ext_resource path="res://World/Objects/Minerals/MineralDepositWorldComponent.tscn" type="PackedScene" id=15]
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=16]
 [ext_resource path="res://QuestSystem/Quests/protect-bills-house.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Objects/Rocks/RockLarge.tscn" type="PackedScene" id=18]
@@ -34,7 +33,6 @@
 [ext_resource path="res://World/Objects/Doors/LadderUpper.tscn" type="PackedScene" id=32]
 [ext_resource path="res://World/Portals/Portal1.tscn" type="PackedScene" id=33]
 [ext_resource path="res://World/Portals/Portal.tscn" type="PackedScene" id=34]
-[ext_resource path="res://QuestSystem/Quests/message-from-bill.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Utils/Receivers/RemoveNodeReceiver.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=37]
 [ext_resource path="res://Assets/Sprites/CliffTileset.png" type="Texture" id=38]
@@ -42,7 +40,6 @@
 [ext_resource path="res://Enemies/Bosses/VoidLord.tscn" type="PackedScene" id=40]
 [ext_resource path="res://World/Above/BillsFarm.gd" type="Script" id=41]
 [ext_resource path="res://World/Objects/Doors/CaveEntrance.tscn" type="PackedScene" id=42]
-[ext_resource path="res://Inventory/Minerals/AdamantiumOre.tres" type="Resource" id=43]
 [ext_resource path="res://World/Objects/Forage/Wood.tres" type="Resource" id=45]
 [ext_resource path="res://CutScenes/Controllers/IntroductionPlayerController.gd" type="Script" id=46]
 
@@ -1980,7 +1977,7 @@ parameters/playback = SubResource( 150 )
 
 [node name="CompletedQuestAction2" parent="YSort/NPCs/Bill/InteractionZone/Actions" index="0" instance=ExtResource( 3 )]
 quest_reference = ExtResource( 17 )
-follow_up_quest = ExtResource( 35 )
+follow_up_quest = ExtResource( 2 )
 speaker_name = "Bill"
 
 [node name="InProgressQuestAction" parent="YSort/NPCs/Bill/InteractionZone/Actions" index="1" instance=ExtResource( 9 )]
@@ -1992,7 +1989,7 @@ quest_reference = ExtResource( 17 )
 speaker_name = "Bill"
 
 [node name="GiveQuestAction2" parent="YSort/NPCs/Bill/InteractionZone/Actions" index="3" instance=ExtResource( 27 )]
-quest_reference = ExtResource( 35 )
+quest_reference = ExtResource( 2 )
 speaker_name = "Bill"
 active = false
 
@@ -2056,14 +2053,6 @@ forage_item = ExtResource( 29 )
 [node name="Crops" type="YSort" parent="YSort"]
 
 [node name="PushObjects" type="YSort" parent="YSort"]
-
-[node name="MineralDepositWorldComponent" parent="YSort" instance=ExtResource( 15 )]
-position = Vector2( -744, 472 )
-mine_item = ExtResource( 2 )
-mine_quantity = 5
-
-[node name="MineAction" parent="YSort/MineralDepositWorldComponent/InteractionZone/Actions" index="0"]
-mine_item = ExtResource( 43 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
@@ -2141,8 +2130,6 @@ actor_reference = ExtResource( 34 )
 [editable path="YSort/Forage/ForageWorldComponent/InteractionZone"]
 [editable path="YSort/Forage/ForageWorldComponent3"]
 [editable path="YSort/Forage/ForageWorldComponent3/InteractionZone"]
-[editable path="YSort/MineralDepositWorldComponent"]
-[editable path="YSort/MineralDepositWorldComponent/InteractionZone"]
 [editable path="SceneLinks/BillsHouse"]
 [editable path="SceneLinks/FirstForest"]
 [editable path="SceneLinks/CC1"]
