@@ -1,17 +1,14 @@
-[gd_scene load_steps=186 format=2]
+[gd_scene load_steps=180 format=2]
 
-[ext_resource path="res://CutScenes/Controllers/Portal1Controller.gd" type="Script" id=1]
 [ext_resource path="res://QuestSystem/Quests/message-for-bob.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=3]
 [ext_resource path="res://CutScenes/Controllers/CutSceneController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Utils/Overlap/CutSceneTrigger.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Utils/Receivers/AddNodeReceiver.tscn" type="PackedScene" id=6]
 [ext_resource path="res://NPC/NPCs/Bill.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Objects/Forage/ForageWorldComponent.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Utils/Actions/InProgressQuestAction.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Above/Farmland.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Enemies/VoidBlob.tscn" type="PackedScene" id=11]
-[ext_resource path="res://CutScenes/Controllers/VoidLord1Controller.gd" type="Script" id=12]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=13]
 [ext_resource path="res://CutScenes/Controllers/IntroductionPortalController.gd" type="Script" id=14]
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=16]
@@ -31,13 +28,11 @@
 [ext_resource path="res://World/Objects/Forage/WoodWorld.tres" type="Resource" id=30]
 [ext_resource path="res://World/Objects/Forage/RedBerry.tres" type="Resource" id=31]
 [ext_resource path="res://World/Objects/Doors/LadderUpper.tscn" type="PackedScene" id=32]
-[ext_resource path="res://World/Portals/Portal1.tscn" type="PackedScene" id=33]
 [ext_resource path="res://World/Portals/Portal.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Utils/Receivers/RemoveNodeReceiver.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=37]
 [ext_resource path="res://Assets/Sprites/CliffTileset.png" type="Texture" id=38]
 [ext_resource path="res://Assets/Sprites/sheet.png" type="Texture" id=39]
-[ext_resource path="res://Enemies/Bosses/VoidLord.tscn" type="PackedScene" id=40]
 [ext_resource path="res://World/Above/BillsFarm.gd" type="Script" id=41]
 [ext_resource path="res://World/Objects/Doors/CaveEntrance.tscn" type="PackedScene" id=42]
 [ext_resource path="res://World/Objects/Forage/Wood.tres" type="Resource" id=45]
@@ -1461,9 +1456,6 @@ extents = Vector2( 10, 68.5 )
 [sub_resource type="RectangleShape2D" id=208]
 extents = Vector2( 19, 7.5 )
 
-[sub_resource type="CircleShape2D" id=168]
-radius = 126.254
-
 [sub_resource type="CircleShape2D" id=207]
 radius = 66.0076
 
@@ -1514,6 +1506,7 @@ tile_data = PoolIntArray( 851955, 1, 0, 851956, 1, 1, 851957, 1, 1, 851958, 1, 2
 tile_data = PoolIntArray( 393186, 0, 0, 393187, 0, 1, 393188, 0, 1, 393189, 0, 1, 393190, 0, 1, 393191, 0, 1, 393192, 0, 1, 393193, 0, 1, 393194, 0, 1, 393195, 0, 2, 458721, 0, 0, 458722, 0, 196611, 458723, 0, 65537, 458724, 0, 65537, 458725, 0, 65537, 458726, 0, 65537, 458727, 0, 65537, 458728, 0, 65537, 458729, 0, 65537, 458730, 0, 65537, 458731, 0, 65538, 524257, 0, 65536, 524258, 0, 65537, 524259, 0, 65537, 524260, 0, 65537, 524261, 0, 65537, 524262, 0, 65537, 524263, 0, 65537, 524264, 0, 65537, 524265, 0, 65537, 524266, 0, 65537, 524267, 0, 65538, 589793, 0, 65536, 589794, 0, 65537, 589795, 0, 65537, 589796, 0, 65537, 589797, 0, 65537, 589798, 0, 65537, 589799, 0, 65537, 589800, 0, 65537, 589801, 0, 65537, 589802, 0, 196608, 589803, 0, 131074, 655329, 0, 65536, 655330, 0, 65537, 655331, 0, 65537, 655332, 0, 65537, 655333, 0, 65537, 655334, 0, 196608, 655335, 0, 131073, 655336, 0, 131073, 655337, 0, 131073, 655338, 0, 131074, 720865, 0, 65536, 720866, 0, 65537, 720867, 0, 65537, 720868, 0, 65537, 720869, 0, 196608, 720870, 0, 131074, 786401, 0, 65536, 786402, 0, 65537, 786403, 0, 65537, 786404, 0, 65537, 786405, 0, 65538, 851937, 0, 65536, 851938, 0, 65537, 851939, 0, 65537, 851940, 0, 65537, 851941, 0, 65538, 917473, 0, 65536, 917474, 0, 65537, 917475, 0, 65537, 917476, 0, 65537, 917477, 0, 65538, 983009, 0, 65536, 983010, 0, 65537, 983011, 0, 65537, 983012, 0, 65537, 983013, 0, 65538, 1048545, 0, 65536, 1048546, 0, 65537, 1048547, 0, 196608, 1048548, 0, 131073, 1048549, 0, 131074, 1114081, 0, 65536, 1114082, 0, 196608, 1114083, 0, 131074, 1179617, 0, 131072, 1179618, 0, 131074 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 21 )]
+current = false
 smoothing_enabled = false
 
 [node name="TopLeft" parent="Camera2D/Limits" index="0"]
@@ -2005,11 +1998,6 @@ position = Vector2( 465, 766 )
 destination_reference = "res://World/Below/BC1.tscn"
 exit_location = Vector2( 64, 30 )
 
-[node name="BlibPortal" parent="YSort/Portals" instance=ExtResource( 6 )]
-position = Vector2( 80, 670 )
-signal_code = "blib_portal"
-new_node_reference = ExtResource( 33 )
-
 [node name="CaveEntrance" parent="YSort/Portals" instance=ExtResource( 42 )]
 position = Vector2( -337, 468 )
 
@@ -2086,21 +2074,6 @@ shape = SubResource( 208 )
 
 [node name="CutSceneTriggers" type="Node2D" parent="."]
 
-[node name="CutSceneTrigger" parent="CutSceneTriggers" instance=ExtResource( 5 )]
-position = Vector2( 80, 670 )
-
-[node name="CollisionShape2D" parent="CutSceneTriggers/CutSceneTrigger/TriggerArea" index="0"]
-visible = false
-shape = SubResource( 168 )
-
-[node name="Portal1Controller" parent="CutSceneTriggers/CutSceneTrigger/ActorControllers" index="0" instance=ExtResource( 4 )]
-script = ExtResource( 1 )
-actor_reference = ExtResource( 34 )
-
-[node name="VoidLord1Controller" parent="CutSceneTriggers/CutSceneTrigger/ActorControllers" index="1" instance=ExtResource( 4 )]
-script = ExtResource( 12 )
-actor_reference = ExtResource( 40 )
-
 [node name="CutSceneTrigger2" parent="CutSceneTriggers" instance=ExtResource( 5 )]
 position = Vector2( 267, 126 )
 active = true
@@ -2133,5 +2106,4 @@ actor_reference = ExtResource( 34 )
 [editable path="SceneLinks/BillsHouse"]
 [editable path="SceneLinks/FirstForest"]
 [editable path="SceneLinks/CC1"]
-[editable path="CutSceneTriggers/CutSceneTrigger"]
 [editable path="CutSceneTriggers/CutSceneTrigger2"]
