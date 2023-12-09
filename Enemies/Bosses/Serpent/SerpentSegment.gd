@@ -13,7 +13,7 @@ onready var blink_anim_player : Node = $BlinkAnimationPlayer
 onready var stats : Node = $Stats
 onready var hurt_box : Node = $HurtBox
 
-var red_blob = preload("res://Enemies/RedVoidBlob.tscn")
+var red_blob = preload("res://Enemies/VoidBlob.tscn")
 
 var previous_segment : Node = null
 var next_segment : Node = null

@@ -18,7 +18,6 @@ func _ready():
 	
 func get_quest_log_array():
 	quest_log_dict = QuestSystem.get_quest_log()
-	print(quest_log_dict)
 
 func build_quest_log():
 	for quest in quest_log_dict.active_quests:
