@@ -2,5 +2,5 @@
 
 [ext_resource path="res://Utils/Receivers/ModifyPropertyReceiver.gd" type="Script" id=1]
 
-[node name="ModifyPropertyReceiver" type="YSort"]
+[node name="ModifyPropertyReceiver" type="Node"]
 script = ExtResource( 1 )
