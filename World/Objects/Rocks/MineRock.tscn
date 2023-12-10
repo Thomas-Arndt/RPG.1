@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://World/Objects/Rocks/MineRock.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Shadows/LargeShadow.png" type="Texture" id=2]
+[ext_resource path="res://Utils/Overlap/InteractionZone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Objects/Rocks/MineRock.gd" type="Script" id=4]
+[ext_resource path="res://Utils/Actions/MineRockAction.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.0
+height = 12.0
+
+[node name="MineRock" type="StaticBody2D" groups=["Persist"]]
+script = ExtResource( 4 )
+
+[node name="ShadowSprite" type="Sprite" parent="."]
+position = Vector2( 0.5, -1.5 )
+scale = Vector2( 0.96875, 0.95 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -7 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="InteractionZone" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="InteractionZone" index="0"]
+position = Vector2( 0, -1 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="MineRockAction" parent="InteractionZone/Actions" index="0" instance=ExtResource( 5 )]
+
+[editable path="InteractionZone"]

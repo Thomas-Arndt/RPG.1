@@ -50,6 +50,8 @@ func load_scene():
 						continue
 					if node_data["class"] == "CompletedQuestAction":
 						node.set_quest()
+					if node_data["class"] == "MineRockNode" and not node_data[i]:
+						node.remove_rock()
 				if i == "time_remaining":
 					if node is SpawnController:
 						for unit in node_data["spawn_count"]:

@@ -860,6 +860,7 @@ shape = SubResource( 1 )
 position = Vector2( 689, -1276 )
 destination_reference = "res://World/Above/TinyTown.tscn"
 exit_location = Vector2( -80, 250 )
+exit_direction = Vector2( 0, -1 )
 
 [node name="CollisionShape2D" parent="SceneLinks/TinyTown" index="0"]
 shape = SubResource( 2 )

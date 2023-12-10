@@ -13,7 +13,7 @@ height = 14.0001
 radius = 5.0
 height = 14.0
 
-[node name="MineralDepositWorldComponent" type="StaticBody2D"]
+[node name="MineralDepositWorldComponent" type="StaticBody2D" groups=["Persist"]]
 script = ExtResource( 4 )
 
 [node name="ShadowSprite" type="Sprite" parent="."]

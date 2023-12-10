@@ -92,7 +92,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "MineAction",
 "language": "GDScript",
-"path": "res://Utils/Actions/MineAction.gd"
+"path": "res://Utils/Actions/MineRockAction.gd"
+}, {
+"base": "StaticBody2D",
+"class": "MineRockNode",
+"language": "GDScript",
+"path": "res://World/Objects/Rocks/MineRock.gd"
 }, {
 "base": "StaticBody2D",
 "class": "MineralNode",
@@ -222,6 +227,7 @@ _global_script_class_icons={
 "InteractionZone": "",
 "Item": "",
 "MineAction": "",
+"MineRockNode": "",
 "MineralNode": "",
 "ModifyPropertyReceiver": "",
 "Player": "",
