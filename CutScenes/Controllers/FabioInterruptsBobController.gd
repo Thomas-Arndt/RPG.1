@@ -16,10 +16,12 @@ func package_choreography():
 		"If you can locate two iron bars and some wood, I can fabricate you one in a jiffy.",
 	]
 	choreography.append([DIALOGUE, monologue, "Fabio"])
+	choreography.append([CUSTOM, "continue_quest_line", []])
 	choreography.append([RELEASE_PLAYER])
 	choreography.append([RELEASE_ACTOR])
 	
 func custom_actions(action_name, args):
 	match action_name:
-		"test":
-			pass
+		"continue_quest_line":
+			SignalBus.emit_signal("modify_node_property", "after-fabio-interrupts-bob")
+			run_cut_scene()

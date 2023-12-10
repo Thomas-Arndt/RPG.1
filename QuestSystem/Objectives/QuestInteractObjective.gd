@@ -6,5 +6,3 @@ func _ready() -> void:
 
 func _on_Quest_started():
 	finish()
-
-	

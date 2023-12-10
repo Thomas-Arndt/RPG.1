@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://World/Objects/Buildings/Hut.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Objects/Buildings/HutDoor.tscn" type="PackedScene" id=2]
@@ -19,8 +19,15 @@
 [ext_resource path="res://CutScenes/Controllers/CutSceneController.tscn" type="PackedScene" id=17]
 [ext_resource path="res://CutScenes/Controllers/FabioInterruptsBobController.gd" type="Script" id=18]
 [ext_resource path="res://Utils/Receivers/RunFunctionReceiver.tscn" type="PackedScene" id=19]
+[ext_resource path="res://QuestSystem/Quests/get-iron-for-pickaxe.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Utils/Actions/GiveQuestAction.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Utils/Receivers/ModifyPropertyReceiver.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Utils/Overlap/InteractionZone.tscn" type="PackedScene" id=23]
+[ext_resource path="res://QuestSystem/Quests/wilburs-iron-bars.tscn" type="PackedScene" id=24]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[sub_resource type="CircleShape2D" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 69.5, 10 )
@@ -294,6 +301,37 @@ quest_reference = ExtResource( 13 )
 speaker_name = "Bob"
 active = true
 
+[node name="GiveQuestAction" parent="YSort/NPCs/Bob/InteractionZone/Actions" index="1" instance=ExtResource( 21 )]
+quest_reference = ExtResource( 20 )
+speaker_name = "Bob"
+active = false
+
+[node name="ModifyPropertyReceiver" parent="YSort/NPCs/Bob/InteractionZone/Actions/GiveQuestAction" instance=ExtResource( 22 )]
+signal_code = "after-fabio-interrupts-bob"
+property = "active"
+value_array = [ true ]
+
+[node name="InteractionZone" parent="YSort/NPCs" instance=ExtResource( 23 )]
+position = Vector2( 220, -104 )
+
+[node name="CollisionShape2D" parent="YSort/NPCs/InteractionZone" index="0"]
+position = Vector2( -1, 17 )
+shape = SubResource( 6 )
+
+[node name="CompletedQuestAction" parent="YSort/NPCs/InteractionZone/Actions" index="0" instance=ExtResource( 15 )]
+quest_reference = ExtResource( 20 )
+follow_up_quest = ExtResource( 24 )
+speaker_name = "Wilbur"
+
+[node name="GiveQuestAction" parent="YSort/NPCs/InteractionZone/Actions" index="1" instance=ExtResource( 21 )]
+quest_reference = ExtResource( 24 )
+speaker_name = "Wilbur"
+active = false
+
+[node name="CompletedQuestAction2" parent="YSort/NPCs/InteractionZone/Actions" index="2" instance=ExtResource( 15 )]
+quest_reference = ExtResource( 24 )
+speaker_name = "Wilbur"
+
 [node name="Signs" type="YSort" parent="YSort"]
 
 [node name="InformationBoard" parent="YSort/Signs" instance=ExtResource( 12 )]
@@ -361,6 +399,7 @@ function = "start_cutscene"
 [editable path="YSort/NPCs/Bob"]
 [editable path="YSort/NPCs/Bob/InteractionZone"]
 [editable path="YSort/NPCs/Bob/PlayerDetectionZone"]
+[editable path="YSort/NPCs/InteractionZone"]
 [editable path="YSort/Signs/InformationBoard"]
 [editable path="YSort/Signs/InformationBoard/InteractionZone"]
 [editable path="YSort/Signs/InformationBoard2"]

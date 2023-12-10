@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://QuestSystem/QuestSystem.gd" type="Script" id=1]
 [ext_resource path="res://QuestSystem/QuestContainer.gd" type="Script" id=2]
 [ext_resource path="res://QuestSystem/Quests/protect-bills-house.tscn" type="PackedScene" id=3]
 [ext_resource path="res://QuestSystem/Quests/message-for-bob.tscn" type="PackedScene" id=4]
+[ext_resource path="res://QuestSystem/Quests/get-iron-for-pickaxe.tscn" type="PackedScene" id=5]
+[ext_resource path="res://QuestSystem/Quests/wilburs-iron-bars.tscn" type="PackedScene" id=6]
 
 [node name="QuestSystem" type="Node"]
 script = ExtResource( 1 )
@@ -14,6 +16,10 @@ script = ExtResource( 2 )
 [node name="protect-bills-house" parent="Available" instance=ExtResource( 3 )]
 
 [node name="message-for-bob" parent="Available" instance=ExtResource( 4 )]
+
+[node name="get-iron-for-pickaxe" parent="Available" instance=ExtResource( 5 )]
+
+[node name="wilburs-iron-bars" parent="Available" instance=ExtResource( 6 )]
 
 [node name="Active" type="Node" parent="."]
 script = ExtResource( 2 )
