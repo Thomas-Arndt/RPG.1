@@ -1,14 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://QuestSystem/Objectives/QuestDeliverItemObjective.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Inventory/Items/QuestItems/Message.tres" type="Resource" id=3]
+[ext_resource path="res://QuestSystem/EnvironmentRewards/RunNodeFunction.tscn" type="PackedScene" id=4]
 
 [node name="message-for-bob" instance=ExtResource( 1 )]
 title = "Message for Bob"
 description = "Bill has asked that you deliver a message to his friend Bob in Tiny Town to the North."
-startText = [ "This is a test" ]
-deliverText = [ "This is the end of the test." ]
+startText = [ "I have a favor to ask of you, if you are willing.", "It's about my cousin Bob. He was supposed to visit me today, but he is late, and I am worried something might have happened to him.", "I would go check on him myself, but with all of these monsters around, I don't think it would be wise for me to be travelling through the forest.", "He lives up north in Tiny Town. Would you please go check on him for me?", "He is a suspicious person, and doesn't usually take on to strangers, so take this letter with you. That should help ease his suspicions." ]
+deliverText = [ "Hmpf! Another stranger to add to the heap of strange things going on.", "I don't know who you are, and I don't want anything to do with whatever it is you are about. It's enough that all of these strange monsters appeared out of nowhere.", "I had been planning on visiting my cousin today, but I barely made it into the forest when I was attacked by those monsters and had to turn back.", "What's that? You were sent by Bill? I find that hard to believe. You have a letter from him? Let me see it!", "That certainly is his handwriting, I guess you speak the truth. Not only that, but he says that you are able to fight the monsters?", "Maybe you can help us. Right before the monsters appeared, the ground shook so violently that it caused the entrance to the entrance to the Northwest Cave to collapse.", "Perhaps you might be able to make your way to the Northwest Cave and clear away any monsters you might find along the way?", "In order to do so, you will probably need a good, sturdy pickaxe to clear away any obstructions caused by the cave-in." ]
+
+[node name="RunNodeFunction" parent="EnvironmentRewards" index="0" instance=ExtResource( 4 )]
+signal_code = "fabio-interrupts-bob"
 
 [node name="QuestDeliverItemObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
 item = ExtResource( 3 )

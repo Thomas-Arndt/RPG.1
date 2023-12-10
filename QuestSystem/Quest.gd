@@ -15,7 +15,6 @@ export var startText: Array
 export var progressText: Array
 export var deliverText: Array
 
-export var reward_on_delivery: bool = false
 export var _reward_experience: int
 export var _reward_gold: int
 

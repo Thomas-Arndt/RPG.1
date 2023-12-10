@@ -17,4 +17,5 @@ func _on_Quest_completed():
 
 func _on_Quest_delivered():
 	var item_index = Inventory.get_item_index(item)
-	Inventory.remove_item(item_index)
+	if item_index >= 0:
+		Inventory.remove_item(item_index)

@@ -7,6 +7,7 @@ signal scene_link_entered(destination_reference)
 signal remove_node(signal_code)
 signal add_node(signal_code)
 signal modify_node_property(signal_code)
+signal run_node_function(signal_code)
 
 #Switches
 signal red_blue_switch_state_changed(signal_code, state, states)

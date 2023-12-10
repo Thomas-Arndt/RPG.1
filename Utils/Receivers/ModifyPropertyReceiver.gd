@@ -1,4 +1,4 @@
-extends YSort
+extends Node
 class_name ModifyPropertyReceiver
 
 export var signal_code : String = "" 
@@ -13,5 +13,5 @@ func _ready():
 func modify_property(transmitted_code):
 	if (transmitted_code == signal_code):
 		triggered = true
-		var child = get_child(0)
-		child[property] = value_array[0]
+		var parent = get_parent()
+		parent[property] = value_array[0]

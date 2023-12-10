@@ -15,7 +15,11 @@ func _ready():
 
 func _on_Area2D_area_entered(area):
 	if active and not triggered:
-		player = area.get_parent().get_parent()
+		start_cutscene(area.get_parent().get_parent())
+
+func start_cutscene(node):
+	if node != null:
+		player = node
 		player.paused(true)
 		action += 1
 		triggered = true

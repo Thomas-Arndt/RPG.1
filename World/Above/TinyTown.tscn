@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://World/Objects/Buildings/Hut.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Objects/Buildings/HutDoor.tscn" type="PackedScene" id=2]
@@ -15,6 +15,10 @@
 [ext_resource path="res://QuestSystem/Quests/message-for-bob.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=14]
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Utils/Overlap/CutSceneTrigger.tscn" type="PackedScene" id=16]
+[ext_resource path="res://CutScenes/Controllers/CutSceneController.tscn" type="PackedScene" id=17]
+[ext_resource path="res://CutScenes/Controllers/FabioInterruptsBobController.gd" type="Script" id=18]
+[ext_resource path="res://Utils/Receivers/RunFunctionReceiver.tscn" type="PackedScene" id=19]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -340,6 +344,18 @@ exit_location = Vector2( 157, 142 )
 [node name="CollisionShape2D" parent="SceneLinks/BobsHouse" index="0"]
 shape = SubResource( 5 )
 
+[node name="CutSceneTriggers" type="Node2D" parent="."]
+
+[node name="FabioInterruptsBob" parent="CutSceneTriggers" instance=ExtResource( 16 )]
+
+[node name="FabioInterruptsBobController" parent="CutSceneTriggers/FabioInterruptsBob/ActorControllers" index="0" instance=ExtResource( 17 )]
+script = ExtResource( 18 )
+actor_path = NodePath("../../../../YSort/Player")
+
+[node name="RunFunctionReceiver" parent="CutSceneTriggers/FabioInterruptsBob" instance=ExtResource( 19 )]
+signal_code = "fabio-interrupts-bob"
+function = "start_cutscene"
+
 [editable path="Terrain"]
 [editable path="Camera2D"]
 [editable path="YSort/NPCs/Bob"]
@@ -353,3 +369,4 @@ shape = SubResource( 5 )
 [editable path="SceneLinks/GeneralStore"]
 [editable path="SceneLinks/Inn"]
 [editable path="SceneLinks/BobsHouse"]
+[editable path="CutSceneTriggers/FabioInterruptsBob"]

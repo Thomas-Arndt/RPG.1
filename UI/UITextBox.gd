@@ -40,8 +40,8 @@ func _process(delta):
 					change_state(States.READY)
 					if len(text_queue) == 0:
 						hide_text_box()
-						emit_signal("finished")
 						yield(get_tree().create_timer(0.2),"timeout")
+						emit_signal("finished")
 						complete = true
 
 func hide_text_box():
