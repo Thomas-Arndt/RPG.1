@@ -63,3 +63,7 @@ func has_all_ingredients(recipe):
 		elif Inventory.inventory[index].quantity < item.quantity:
 			return false
 	return true
+	
+func add_recipe_to_list(recipe):
+	recipe_list.append(recipe)
+	update_recipe_display()

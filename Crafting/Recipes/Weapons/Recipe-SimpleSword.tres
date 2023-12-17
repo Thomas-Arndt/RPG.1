@@ -14,3 +14,4 @@ recipe = [ {
 "item": ExtResource( 3 ),
 "quantity": 1
 } ]
+product_quantity = 1

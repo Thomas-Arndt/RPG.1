@@ -4,7 +4,7 @@ class_name MineAction
 signal finished
 signal has_follow_up_quest(quest, speaker)
 
-export (Resource) var mine_item
+var mine_item : Resource
 
 var mine_quantity : int = 1
 

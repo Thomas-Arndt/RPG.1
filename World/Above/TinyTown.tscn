@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://World/Objects/Buildings/Hut.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Objects/Buildings/HutDoor.tscn" type="PackedScene" id=2]
@@ -24,6 +24,9 @@
 [ext_resource path="res://Utils/Receivers/ModifyPropertyReceiver.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Utils/Overlap/InteractionZone.tscn" type="PackedScene" id=23]
 [ext_resource path="res://QuestSystem/Quests/wilburs-iron-bars.tscn" type="PackedScene" id=24]
+[ext_resource path="res://World/Objects/Forage/ForageWorldComponent.tscn" type="PackedScene" id=25]
+[ext_resource path="res://World/Objects/Forage/WoodWorld.tres" type="Resource" id=26]
+[ext_resource path="res://World/Objects/Forage/Wood.tres" type="Resource" id=27]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -345,6 +348,13 @@ position = Vector2( -192, 128 )
 
 [node name="InformationAction" parent="YSort/Signs/InformationBoard2/InteractionZone/Actions" index="0"]
 information_array = [ "Inn" ]
+
+[node name="Forage" type="YSort" parent="YSort"]
+
+[node name="ForageWorldComponent" parent="YSort/Forage" instance=ExtResource( 25 )]
+position = Vector2( -365, -182 )
+world_item = ExtResource( 26 )
+forage_item = ExtResource( 27 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 

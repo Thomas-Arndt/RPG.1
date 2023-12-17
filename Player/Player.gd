@@ -241,6 +241,6 @@ func can_mine_target(target):
 	if target != null:
 		var actions = target.Actions.get_children()
 		for action in actions:
-			if action is MineAction:
+			if action is MineAction or action is MineRockAction:
 				return true
 		return false

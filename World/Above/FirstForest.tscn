@@ -835,14 +835,17 @@ information_array = [ "^^^ Tiny Town", ">>> East Lake Road", "vvv West Lake Road
 
 [node name="ForageWorldComponent" parent="YSort/Forage" instance=ExtResource( 9 )]
 position = Vector2( 789, -300 )
+world_item = ExtResource( 11 )
 forage_item = ExtResource( 11 )
 
 [node name="ForageWorldComponent2" parent="YSort/Forage" instance=ExtResource( 9 )]
 position = Vector2( 420, -632 )
+world_item = ExtResource( 10 )
 forage_item = ExtResource( 10 )
 
 [node name="ForageWorldComponent3" parent="YSort/Forage" instance=ExtResource( 9 )]
 position = Vector2( -213, -733 )
+world_item = ExtResource( 11 )
 forage_item = ExtResource( 11 )
 
 [node name="SceneLinks" type="Node2D" parent="."]

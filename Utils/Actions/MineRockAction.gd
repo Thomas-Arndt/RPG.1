@@ -1,5 +1,5 @@
 extends Node
-class_name MineAction
+class_name MineRockAction
 
 signal finished
 signal has_follow_up_quest(quest, speaker)

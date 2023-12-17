@@ -92,6 +92,11 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "MineAction",
 "language": "GDScript",
+"path": "res://Utils/Actions/MineAction.gd"
+}, {
+"base": "Node",
+"class": "MineRockAction",
+"language": "GDScript",
 "path": "res://Utils/Actions/MineRockAction.gd"
 }, {
 "base": "StaticBody2D",
@@ -232,6 +237,7 @@ _global_script_class_icons={
 "InteractionZone": "",
 "Item": "",
 "MineAction": "",
+"MineRockAction": "",
 "MineRockNode": "",
 "MineralNode": "",
 "ModifyPropertyReceiver": "",

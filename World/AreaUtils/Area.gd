@@ -58,11 +58,13 @@ func load_scene():
 							node.spawn_new_unit()
 						node.timer.start(node_data["time_remaining"])
 						continue
-					if node is ForageNode:
+					if node_data["class"] == "ForageNode":
 						if node_data["time_remaining"] != null:
 							node.forage(node_data["time_remaining"])
-					if node is CropNode:
-						print(node_data)
+					if node_data["class"] == "MineralNode":
+						if node_data["time_remaining"] != null:
+							node.depleted(node_data["time_remaining"])
+					if node_data["class"] == "CropNode":
 						if node_data["time_remaining"] != null and node_data["current_stage"] != null:
 							node.set_growth_stage(int(node_data["current_stage"]))
 							node.current_stage = int(node_data["current_stage"])

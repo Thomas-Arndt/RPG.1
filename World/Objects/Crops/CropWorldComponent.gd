@@ -114,5 +114,6 @@ func save():
 		"path" : get_path(),
 		"time_remaining" : timer.time_left,
 		"current_stage": current_stage,
+		"class" : "CropNode"
 	}
 	return save_dict

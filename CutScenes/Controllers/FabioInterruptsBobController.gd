@@ -1,5 +1,6 @@
 extends "res://CutScenes/Controllers/CutSceneController.gd"
 
+var pickaxe_recipe = preload("res://Crafting/Recipes/Tools/IronPickaxe.tres")
 
 func package_choreography():
 	choreography.append([ENTER, get_tree().get_nodes_in_group("Player")[0].global_position])
@@ -17,6 +18,7 @@ func package_choreography():
 	]
 	choreography.append([DIALOGUE, monologue, "Fabio"])
 	choreography.append([CUSTOM, "continue_quest_line", []])
+	choreography.append([CUSTOM, "add_pickaxe_recipe", []])
 	choreography.append([RELEASE_PLAYER])
 	choreography.append([RELEASE_ACTOR])
 	
@@ -24,4 +26,7 @@ func custom_actions(action_name, args):
 	match action_name:
 		"continue_quest_line":
 			SignalBus.emit_signal("modify_node_property", "after-fabio-interrupts-bob")
+			run_cut_scene()
+		"add_pickaxe_recipe":
+			UI.Backpack.recipe_list.add_recipe_to_list(pickaxe_recipe)
 			run_cut_scene()

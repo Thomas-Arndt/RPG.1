@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://QuestSystem/Objectives/QuestInteractObjective.tscn" type="PackedScene" id=1]
 [ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://QuestSystem/QuestItemReward.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Inventory/Items/MetalBars/IronBar.tres" type="Resource" id=4]
 
 [node name="wilburs-iron-bars" instance=ExtResource( 2 )]
 title = "Wilbur's Iron Bars"
 description = "Convince Wilbur to give you the iron bars."
-startText = [ "..." ]
-deliverText = [ "..." ]
+startText = [ "You again? What will it take to get you to leave me alone?", "You need some iron bars to make a pickaxe, you say? Bob told you I had some, huh?", "If that's what it takes, you can have them! They won't do you much good though.", "You'll still need to  go through the forest and face all of those monsters." ]
+deliverText = [ "Here, take them and leave me alone!" ]
+
+[node name="QuestItemReward" parent="ItemRewards" index="0" instance=ExtResource( 3 )]
+item = ExtResource( 4 )
+quantity = 2
 
 [node name="QuestInteractObjective" parent="Objectives" index="0" instance=ExtResource( 1 )]

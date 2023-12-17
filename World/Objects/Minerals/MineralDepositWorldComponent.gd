@@ -1,6 +1,7 @@
 extends StaticBody2D
 class_name MineralNode
 
+export (Resource) var world_item
 export (Resource) var mine_item
 export (int) var mine_quantity = 1
 export (float) var respawn_time = 300
@@ -20,6 +21,7 @@ func _ready():
 	if !File.new().file_exists(get_tree().get_nodes_in_group("World")[0].save_file):
 		replenish()
 	interaction_zone.connect("interaction_finished", self, "_on_interaction_finished")
+	action.mine_item = mine_item
 
 func _on_interaction_finished(node):
 	depleted(respawn_time)
@@ -34,13 +36,14 @@ func depleted(time):
 
 func replenish():
 	action.mine_quantity = mine_quantity
-	sprite.texture = mine_item.texture
+	sprite.texture = world_item.texture
 	interaction_zone.collision_shape.set_deferred("disabled", false)
 
 func save():
 	var save_dict = {
 		"filename" : get_filename(),
 		"path" : get_path(),
-		"time_remaining" : timer.time_left
+		"time_remaining" : timer.time_left,
+		"class" : "MineralNode"
 	}
 	return save_dict

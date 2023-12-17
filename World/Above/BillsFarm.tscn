@@ -1,4 +1,4 @@
-[gd_scene load_steps=180 format=2]
+[gd_scene load_steps=179 format=2]
 
 [ext_resource path="res://QuestSystem/Quests/message-for-bob.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=3]
@@ -24,7 +24,6 @@
 [ext_resource path="res://World/Objects/Rocks/RockSmall.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Utils/Actions/GiveQuestAction.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Utils/Controllers/SpawnController.tscn" type="PackedScene" id=28]
-[ext_resource path="res://World/Objects/Forage/LeatherLeaf.tres" type="Resource" id=29]
 [ext_resource path="res://World/Objects/Forage/WoodWorld.tres" type="Resource" id=30]
 [ext_resource path="res://World/Objects/Forage/RedBerry.tres" type="Resource" id=31]
 [ext_resource path="res://World/Objects/Doors/LadderUpper.tscn" type="PackedScene" id=32]
@@ -2004,38 +2003,28 @@ position = Vector2( -337, 468 )
 
 [node name="ForageWorldComponent2" parent="YSort/Forage" instance=ExtResource( 8 )]
 position = Vector2( 174, 308 )
-forage_item = ExtResource( 30 )
-
-[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent2/InteractionZone/Actions" index="0"]
+world_item = ExtResource( 30 )
 forage_item = ExtResource( 45 )
 
 [node name="ForageWorldComponent5" parent="YSort/Forage" instance=ExtResource( 8 )]
 position = Vector2( -23, 378 )
-forage_item = ExtResource( 31 )
-
-[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent5/InteractionZone/Actions" index="0"]
+world_item = ExtResource( 31 )
 forage_item = ExtResource( 31 )
 
 [node name="ForageWorldComponent10" parent="YSort/Forage" instance=ExtResource( 8 )]
 position = Vector2( -751, 137 )
-forage_item = ExtResource( 31 )
-
-[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent10/InteractionZone/Actions" index="0"]
+world_item = ExtResource( 31 )
 forage_item = ExtResource( 31 )
 
 [node name="ForageWorldComponent" parent="YSort/Forage" instance=ExtResource( 8 )]
 position = Vector2( -1008, 424 )
-forage_item = ExtResource( 31 )
-
-[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent/InteractionZone/Actions" index="0"]
+world_item = ExtResource( 31 )
 forage_item = ExtResource( 31 )
 
 [node name="ForageWorldComponent3" parent="YSort/Forage" instance=ExtResource( 8 )]
 position = Vector2( -798, 786 )
-forage_item = ExtResource( 29 )
-
-[node name="ForageAction" parent="YSort/Forage/ForageWorldComponent3/InteractionZone/Actions" index="0"]
-forage_item = ExtResource( 29 )
+world_item = ExtResource( 31 )
+forage_item = ExtResource( 31 )
 
 [node name="Crops" type="YSort" parent="YSort"]
 
