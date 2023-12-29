@@ -1,7 +1,6 @@
 extends Node
 
 var Action: Node
-var giveQuestAction: PackedScene = preload("res://Utils/Actions/GiveQuestAction.tscn")
 
 func _ready():
 	for action in get_children():
