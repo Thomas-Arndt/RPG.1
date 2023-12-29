@@ -35,15 +35,29 @@ func interact() -> void:
 		return
 	quest = QuestSystem.completed_quests.find(quest_reference.instance())
 	if quest != null and UI.TextBox.complete:
-		QuestSystem.deliver(quest)
-		active = false
-		UI.TextBox.queue_text(quest.deliverText, speaker_name)
-		yield(UI.TextBox, "finished")
-		if (follow_up_quest != null):
+		if not hasAllRequiredItems(quest):
+			UI.TextBox.queue_text(quest.progressText, speaker_name)
+			yield(UI.TextBox, "finished")
 			emit_signal("finished")
-			emit_signal("has_follow_up_quest", follow_up_quest, speaker_name)
 		else:
-			emit_signal("finished")
+			QuestSystem.deliver(quest)
+			active = false
+			UI.TextBox.queue_text(quest.deliverText, speaker_name)
+			yield(UI.TextBox, "finished")
+			if (follow_up_quest != null):
+				emit_signal("finished")
+				emit_signal("has_follow_up_quest", follow_up_quest, speaker_name)
+			else:
+				emit_signal("finished")
+
+func hasAllRequiredItems(quest):
+	var objectives = quest.get_objectives()
+	for objective in objectives:
+		if objective is QuestOwnItemObjective:
+			for requiredItem in objective.items:
+				if not Inventory.has_item(requiredItem):
+					return false
+	return true
 
 func save():
 	var save_dict = {
