@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://QuestSystem/QuestSystem.gd" type="Script" id=1]
 [ext_resource path="res://QuestSystem/QuestContainer.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://QuestSystem/Quests/message-for-bob.tscn" type="PackedScene" id=4]
 [ext_resource path="res://QuestSystem/Quests/get-iron-for-pickaxe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://QuestSystem/Quests/wilburs-iron-bars.tscn" type="PackedScene" id=6]
+[ext_resource path="res://QuestSystem/Quests/bob-asks-for-help-at-cave-ca.tscn" type="PackedScene" id=7]
 
 [node name="QuestSystem" type="Node"]
 script = ExtResource( 1 )
@@ -26,6 +27,8 @@ script = ExtResource( 2 )
 
 [node name="Completed" type="Node" parent="."]
 script = ExtResource( 2 )
+
+[node name="bob-asks-for-help-at-cave-ca" parent="Completed" instance=ExtResource( 7 )]
 
 [node name="Delivered" type="Node" parent="."]
 script = ExtResource( 2 )

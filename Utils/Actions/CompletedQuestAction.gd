@@ -30,10 +30,10 @@ func _on_Quest_completed():
 	active = true
 
 func interact() -> void:
-	if not active:
+	quest = QuestSystem.completed_quests.find(quest_reference.instance())
+	if not active or quest == null:
 		emit_signal("finished")
 		return
-	quest = QuestSystem.completed_quests.find(quest_reference.instance())
 	if quest != null and UI.TextBox.complete:
 		if not hasAllRequiredItems(quest):
 			UI.TextBox.queue_text(quest.progressText, speaker_name)
