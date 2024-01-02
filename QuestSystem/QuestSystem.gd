@@ -5,7 +5,7 @@ onready var active_quests = $Active
 onready var completed_quests = $Completed
 onready var delivered_quests = $Delivered
 
-func find_available(reference: Quest) -> Quest:
+func find_available(reference: Quest):
 	return available_quests.find(reference)
 
 func get_available_quests() -> Array:

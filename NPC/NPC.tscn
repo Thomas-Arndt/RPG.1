@@ -281,7 +281,7 @@ tree_root = SubResource( 16 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 17 )
-parameters/idle/blend_position = Vector2( 0.0267112, 0.575966 )
+parameters/idle/blend_position = Vector2( -0.00522721, 1.09056 )
 parameters/walk/blend_position = Vector2( -0.479132, -0.434335 )
 
 [node name="XYWanderController" parent="." instance=ExtResource( 3 )]

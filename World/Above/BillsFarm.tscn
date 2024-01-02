@@ -1,5 +1,6 @@
-[gd_scene load_steps=179 format=2]
+[gd_scene load_steps=180 format=2]
 
+[ext_resource path="res://NPC/NPC.gd" type="Script" id=1]
 [ext_resource path="res://QuestSystem/Quests/message-for-bob.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=3]
 [ext_resource path="res://CutScenes/Controllers/CutSceneController.tscn" type="PackedScene" id=4]
@@ -1961,10 +1962,12 @@ is_red = true
 
 [node name="Bill" parent="YSort/NPCs" instance=ExtResource( 7 )]
 position = Vector2( -783, 447 )
+script = ExtResource( 1 )
 show_red = false
 
 [node name="AnimationTree" parent="YSort/NPCs/Bill" index="4"]
 parameters/playback = SubResource( 150 )
+parameters/idle/blend_position = Vector2( 0.0267112, 0.575966 )
 
 [node name="CompletedQuestAction2" parent="YSort/NPCs/Bill/InteractionZone/Actions" index="0" instance=ExtResource( 3 )]
 quest_reference = ExtResource( 17 )

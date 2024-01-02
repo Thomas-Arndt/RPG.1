@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://World/Objects/Buildings/Hut.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Objects/Buildings/HutDoor.tscn" type="PackedScene" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://World/Objects/Forage/Wood.tres" type="Resource" id=27]
 [ext_resource path="res://QuestSystem/Quests/bob-asks-for-help-at-cave-ca.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Utils/Actions/Actions.gd" type="Script" id=29]
+[ext_resource path="res://NPC/NPC.gd" type="Script" id=30]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -296,10 +297,12 @@ position = Vector2( 134, 285 )
 
 [node name="Bob" parent="YSort/NPCs" instance=ExtResource( 9 )]
 position = Vector2( 199, 124 )
+script = ExtResource( 30 )
 show_red = false
 
 [node name="AnimationTree" parent="YSort/NPCs/Bob" index="4"]
 parameters/playback = SubResource( 2 )
+parameters/idle/blend_position = Vector2( 0.0267112, 0.575966 )
 
 [node name="CompletedQuestAction" parent="YSort/NPCs/Bob/InteractionZone/Actions" index="0" instance=ExtResource( 15 )]
 quest_reference = ExtResource( 13 )

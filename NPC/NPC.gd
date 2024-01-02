@@ -8,6 +8,7 @@ export (int) var FRICTION = 200
 export (int) var WANDER_BUFFER = 4
 export (int) var WANDER_RANGE = 32
 export (String) var AXIS = "X"
+export (bool) var is_stationary = false
 
 enum {
 	IDLE,
@@ -50,23 +51,25 @@ func _physics_process(delta):
 		quest_status()
 		match state:
 			IDLE:
-				anim_state.travel("idle")
-				velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-				
-				if wander_controller.get_time_left() == 0:
-					update_wander()
+				if !is_stationary:
+					anim_state.travel("idle")
+					velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+					
+					if wander_controller.get_time_left() == 0:
+						update_wander()
 			WANDER:
-				if wander_controller.get_time_left() == 0:
-					update_wander()
-				anim_state.travel("walk")
-				accelerate_towards_point(wander_controller.target_position, delta)
-				
-				if global_position.distance_to(wander_controller.target_position) <= WANDER_BUFFER:
-					update_wander()
+				if !is_stationary:
+					if wander_controller.get_time_left() == 0:
+						update_wander()
+					anim_state.travel("walk")
+					accelerate_towards_point(wander_controller.target_position, delta)
+					
+					if global_position.distance_to(wander_controller.target_position) <= WANDER_BUFFER:
+						update_wander()
 			INTERACT:
 				velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 				anim_state.travel("idle")
-				var direction = global_position.direction_to(interaction_target.global_position)
+				var direction = global_position.direction_to(get_tree().get_nodes_in_group("Player")[0].global_position)
 				anim_tree.set("parameters/idle/blend_position", direction)
 				anim_tree.set("parameters/walk/blend_position", direction)
 					
