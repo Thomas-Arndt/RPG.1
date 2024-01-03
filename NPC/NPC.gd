@@ -1,5 +1,29 @@
 extends KinematicBody2D
 
+enum Colors {
+	None,
+	Red,
+	Orange,
+	Yellow,
+	Green,
+	Blue,
+	Indigo,
+	Violet,
+	White,
+	LightGrey,
+	DarkGrey,
+	Black,
+	Brown,
+	Tan,
+	Pink,
+}
+
+enum {
+	IDLE,
+	WANDER,
+	INTERACT,
+}
+
 export var show_green: bool = true
 export var show_red: bool = true
 export (int) var ACCELERATION = 200
@@ -9,15 +33,13 @@ export (int) var WANDER_BUFFER = 4
 export (int) var WANDER_RANGE = 32
 export (String) var AXIS = "X"
 export (bool) var is_stationary = false
-
-enum {
-	IDLE,
-	WANDER,
-	INTERACT,
-}
+export (Colors) var chest_color = Colors.None
+export (Colors) var legs_color = Colors.None
 
 onready var sprite = $Sprite
 onready var shadow = $ShadowSprite
+onready var chest_sprite = $Chest
+onready var leg_sprite = $Legs
 onready var collision_shape = $CollisionShape2D
 onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
@@ -40,6 +62,7 @@ func _ready():
 	wander_controller.wander_range = WANDER_RANGE
 	wander_controller.axis = AXIS
 	anim_tree.active = true
+	apply_clothing()
 	anim_player.play("SETUP")
 	state = pick_random_state([IDLE, WANDER])
 	match_dimension(WorldStats.DIMENSION)
@@ -117,6 +140,53 @@ func quest_status():
 				return
 		else:
 			quest_bubble.region_rect.position = Vector2(128, 128)
+
+func apply_clothing():
+	render_chest()
+	render_legs()
+
+func render_chest():
+	if chest_color != Colors.None:
+		var sprite_file_path = "res://NPC/Clothes/Shirts/npc-shirts-"+ get_color_name(chest_color) +".png"
+		var sprite = ResourceLoader.load(sprite_file_path)
+		chest_sprite.texture = sprite
+	
+func render_legs():
+	if legs_color != Colors.None:
+		var sprite_file_path = "res://NPC/Clothes/Pants/npc-pants-"+ get_color_name(legs_color) +".png"
+		var sprite = ResourceLoader.load(sprite_file_path)
+		leg_sprite.texture = sprite
+
+func get_color_name(color_code):
+	match color_code:
+		Colors.Red:
+			return "red"
+		Colors.Orange:
+			return "orange"
+		Colors.Yellow:
+			return "yellow"
+		Colors.Green:
+			return "green"
+		Colors.Blue:
+			return "blue"
+		Colors.Indigo:
+			return "indigo"
+		Colors.Violet:
+			return "violet"
+		Colors.White:
+			return "white"
+		Colors.LightGrey:
+			return "light-grey"
+		Colors.DarkGrey:
+			return "dark-grey"
+		Colors.Black:
+			return "black"
+		Colors.Brown:
+			return "brown"
+		Colors.Tan:
+			return "tan"
+		Colors.Pink:
+			return "pink"
 
 func match_dimension(state):
 	if state == WorldStats.Dimensions.Red and show_red == true:

@@ -28,8 +28,8 @@
 [ext_resource path="res://World/Objects/Forage/WoodWorld.tres" type="Resource" id=26]
 [ext_resource path="res://World/Objects/Forage/Wood.tres" type="Resource" id=27]
 [ext_resource path="res://QuestSystem/Quests/bob-asks-for-help-at-cave-ca.tscn" type="PackedScene" id=28]
-[ext_resource path="res://Utils/Actions/Actions.gd" type="Script" id=29]
-[ext_resource path="res://NPC/NPC.gd" type="Script" id=30]
+[ext_resource path="res://NPC/Clothes/Shirts/npc-shirts-blue.png" type="Texture" id=29]
+[ext_resource path="res://NPC/Clothes/Pants/npc-pants-brown.png" type="Texture" id=30]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -297,10 +297,15 @@ position = Vector2( 134, 285 )
 
 [node name="Bob" parent="YSort/NPCs" instance=ExtResource( 9 )]
 position = Vector2( 199, 124 )
-script = ExtResource( 30 )
 show_red = false
 
-[node name="AnimationTree" parent="YSort/NPCs/Bob" index="4"]
+[node name="Chest" parent="YSort/NPCs/Bob" index="2"]
+texture = ExtResource( 29 )
+
+[node name="Legs" parent="YSort/NPCs/Bob" index="3"]
+texture = ExtResource( 30 )
+
+[node name="AnimationTree" parent="YSort/NPCs/Bob" index="6"]
 parameters/playback = SubResource( 2 )
 parameters/idle/blend_position = Vector2( 0.0267112, 0.575966 )
 
@@ -334,9 +339,6 @@ position = Vector2( 220, -104 )
 [node name="CollisionShape2D" parent="YSort/NPCs/InteractionZone" index="0"]
 position = Vector2( -1, 17 )
 shape = SubResource( 6 )
-
-[node name="Actions" parent="YSort/NPCs/InteractionZone" index="1"]
-script = ExtResource( 29 )
 
 [node name="CompletedQuestAction" parent="YSort/NPCs/InteractionZone/Actions" index="0" instance=ExtResource( 15 )]
 quest_reference = ExtResource( 20 )
