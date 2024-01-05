@@ -35,11 +35,14 @@ export (String) var AXIS = "X"
 export (bool) var is_stationary = false
 export (Colors) var chest_color = Colors.None
 export (Colors) var legs_color = Colors.None
+export (Colors) var foot_color = Colors.None
+
 
 onready var sprite = $Sprite
 onready var shadow = $ShadowSprite
 onready var chest_sprite = $Chest
 onready var leg_sprite = $Legs
+onready var foot_sprite = $Feet
 onready var collision_shape = $CollisionShape2D
 onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
@@ -156,6 +159,12 @@ func render_legs():
 		var sprite_file_path = "res://NPC/Clothes/Pants/npc-pants-"+ get_color_name(legs_color) +".png"
 		var sprite = ResourceLoader.load(sprite_file_path)
 		leg_sprite.texture = sprite
+
+func render_feet():
+	if foot_color != Colors.None:
+		var sprite_file_path = "res://NPC/Clothes/Shoes/npc-shoes-"+ get_color_name(foot_color) +".png"
+		var sprite = ResourceLoader.load(sprite_file_path)
+		foot_sprite.texture = sprite
 
 func get_color_name(color_code):
 	match color_code:

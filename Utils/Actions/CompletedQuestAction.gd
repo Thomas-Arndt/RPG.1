@@ -24,7 +24,8 @@ func set_quest():
 	if quest == null:
 		quest = QuestSystem.completed_quests.find(reference_instance)
 	if quest != null:
-		quest.connect("completed", self, "_on_Quest_completed")
+		if not quest.is_connected("completed", self, "_on_Quest_completed"):
+			quest.connect("completed", self, "_on_Quest_completed")
 
 func _on_Quest_completed():
 	active = true

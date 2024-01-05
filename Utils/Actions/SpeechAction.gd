@@ -2,6 +2,7 @@ extends Node
 class_name SpeechAction
 
 signal finished
+signal has_follow_up_quest(quest, speaker)
 
 export (Array, String) var text_array
 

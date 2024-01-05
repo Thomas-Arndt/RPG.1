@@ -298,6 +298,9 @@ position = Vector2( 134, 285 )
 [node name="Bob" parent="YSort/NPCs" instance=ExtResource( 9 )]
 position = Vector2( 199, 124 )
 show_red = false
+chest_color = 1
+legs_color = 5
+foot_color = 12
 
 [node name="Chest" parent="YSort/NPCs/Bob" index="2"]
 texture = ExtResource( 29 )

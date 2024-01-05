@@ -42,8 +42,11 @@ position = Vector2( 157, 166 )
 [node name="NPC" parent="YSort/NPCs" instance=ExtResource( 7 )]
 position = Vector2( 147, 124 )
 is_stationary = true
+chest_color = 9
+legs_color = 14
+foot_color = 1
 
-[node name="AnimationTree" parent="YSort/NPCs/NPC" index="4"]
+[node name="AnimationTree" parent="YSort/NPCs/NPC" index="7"]
 parameters/playback = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="YSort/NPCs/NPC/InteractionZone" index="0"]

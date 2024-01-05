@@ -1962,8 +1962,11 @@ is_red = true
 [node name="Bill" parent="YSort/NPCs" instance=ExtResource( 7 )]
 position = Vector2( -783, 447 )
 show_red = false
+chest_color = 5
+legs_color = 12
+foot_color = 13
 
-[node name="AnimationTree" parent="YSort/NPCs/Bill" index="4"]
+[node name="AnimationTree" parent="YSort/NPCs/Bill" index="6"]
 parameters/playback = SubResource( 150 )
 parameters/idle/blend_position = Vector2( 0.0267112, 0.575966 )
 
