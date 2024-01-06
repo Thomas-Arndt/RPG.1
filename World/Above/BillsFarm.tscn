@@ -1966,7 +1966,7 @@ chest_color = 5
 legs_color = 12
 foot_color = 13
 
-[node name="AnimationTree" parent="YSort/NPCs/Bill" index="6"]
+[node name="AnimationTree" parent="YSort/NPCs/Bill" index="7"]
 parameters/playback = SubResource( 150 )
 parameters/idle/blend_position = Vector2( 0.0267112, 0.575966 )
 

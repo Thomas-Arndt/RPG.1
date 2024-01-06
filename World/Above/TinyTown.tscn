@@ -300,7 +300,7 @@ position = Vector2( 199, 124 )
 show_red = false
 chest_color = 1
 legs_color = 5
-foot_color = 12
+foot_color = 4
 
 [node name="Chest" parent="YSort/NPCs/Bob" index="2"]
 texture = ExtResource( 29 )
@@ -308,7 +308,7 @@ texture = ExtResource( 29 )
 [node name="Legs" parent="YSort/NPCs/Bob" index="3"]
 texture = ExtResource( 30 )
 
-[node name="AnimationTree" parent="YSort/NPCs/Bob" index="6"]
+[node name="AnimationTree" parent="YSort/NPCs/Bob" index="7"]
 parameters/playback = SubResource( 2 )
 parameters/idle/blend_position = Vector2( 0.0267112, 0.575966 )
 

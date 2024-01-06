@@ -18,6 +18,13 @@ enum Colors {
 	Pink,
 }
 
+enum Skin_Tones {
+	Light,
+	MediumLight,
+	MediumDark,
+	Dark
+}
+
 enum {
 	IDLE,
 	WANDER,
@@ -33,6 +40,7 @@ export (int) var WANDER_BUFFER = 4
 export (int) var WANDER_RANGE = 32
 export (String) var AXIS = "X"
 export (bool) var is_stationary = false
+export (Skin_Tones) var skin_tone = Skin_Tones.MediumLight
 export (Colors) var chest_color = Colors.None
 export (Colors) var legs_color = Colors.None
 export (Colors) var foot_color = Colors.None
@@ -65,6 +73,7 @@ func _ready():
 	wander_controller.wander_range = WANDER_RANGE
 	wander_controller.axis = AXIS
 	anim_tree.active = true
+	apply_base_sprite()
 	apply_clothing()
 	anim_player.play("SETUP")
 	state = pick_random_state([IDLE, WANDER])
@@ -144,9 +153,21 @@ func quest_status():
 		else:
 			quest_bubble.region_rect.position = Vector2(128, 128)
 
+func apply_base_sprite():
+	match skin_tone:
+		Skin_Tones.Light:
+			sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-1.png")
+		Skin_Tones.MediumLight:
+			sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-2.png")
+		Skin_Tones.MediumDark:
+			sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-3.png")
+		Skin_Tones.Dark:
+			sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-4.png")
+
 func apply_clothing():
 	render_chest()
 	render_legs()
+	render_feet()
 
 func render_chest():
 	if chest_color != Colors.None:
