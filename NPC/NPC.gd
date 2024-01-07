@@ -22,7 +22,24 @@ enum Skin_Tones {
 	Light,
 	MediumLight,
 	MediumDark,
-	Dark
+	Dark,
+}
+
+enum Hair_Colors {
+	None,
+	Blonde,
+	Red,
+	Brown,
+	Black,
+	Grey,
+	White,
+}
+
+enum Hair_Styles {
+	Bald,
+	Short,
+	Long,
+	Dr
 }
 
 enum {
@@ -41,16 +58,19 @@ export (int) var WANDER_RANGE = 32
 export (String) var AXIS = "X"
 export (bool) var is_stationary = false
 export (Skin_Tones) var skin_tone = Skin_Tones.MediumLight
+export (Hair_Styles) var hair_style = Hair_Styles.Bald
+export (Hair_Colors) var hair_color = Hair_Colors.None
 export (Colors) var chest_color = Colors.None
 export (Colors) var legs_color = Colors.None
 export (Colors) var foot_color = Colors.None
 
 
-onready var sprite = $Sprite
+onready var body_sprite = $Sprite
 onready var shadow = $ShadowSprite
 onready var chest_sprite = $Chest
 onready var leg_sprite = $Legs
 onready var foot_sprite = $Feet
+onready var hair_sprite = $Hair
 onready var collision_shape = $CollisionShape2D
 onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
@@ -74,6 +94,7 @@ func _ready():
 	wander_controller.axis = AXIS
 	anim_tree.active = true
 	apply_base_sprite()
+	apply_hair()
 	apply_clothing()
 	anim_player.play("SETUP")
 	state = pick_random_state([IDLE, WANDER])
@@ -156,13 +177,21 @@ func quest_status():
 func apply_base_sprite():
 	match skin_tone:
 		Skin_Tones.Light:
-			sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-1.png")
+			body_sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-1.png")
 		Skin_Tones.MediumLight:
-			sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-2.png")
+			body_sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-2.png")
 		Skin_Tones.MediumDark:
-			sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-3.png")
+			body_sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-3.png")
 		Skin_Tones.Dark:
-			sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-4.png")
+			body_sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-4.png")
+
+func apply_hair():
+	if hair_style == Hair_Styles.Dr:
+		hair_sprite.texture = ResourceLoader.load("res://NPC/Specials/Dr Dochteur/dr-hair.png")
+	elif hair_style != Hair_Styles.Bald and hair_color != Hair_Colors.None:
+		var sprite_file_path = "res://NPC/Hair/npc-hair-"+ get_hair_style_name(hair_style) +"-"+ get_hair_color_name(hair_color) +".png"
+		var sprite = ResourceLoader.load(sprite_file_path)
+		hair_sprite.texture = sprite
 
 func apply_clothing():
 	render_chest()
@@ -217,32 +246,54 @@ func get_color_name(color_code):
 			return "tan"
 		Colors.Pink:
 			return "pink"
+			
+func get_hair_color_name(color_code):
+	match color_code:
+		Hair_Colors.Blonde:
+			return "blonde"
+		Hair_Colors.Red:
+			return "red"
+		Hair_Colors.Brown:
+			return "brown"
+		Hair_Colors.Black:
+			return "black"
+		Hair_Colors.Grey:
+			return "grey"
+		Hair_Colors.White:
+			return "white"
+
+func get_hair_style_name(style_code):
+	match style_code:
+		Hair_Styles.Short:
+			return "short"
+		Hair_Styles.Long:
+			return "long"
 
 func match_dimension(state):
 	if state == WorldStats.Dimensions.Red and show_red == true:
 		active = true
-		sprite.visible = true
+		body_sprite.visible = true
 		shadow.visible = true
 		player_detection_zone.set_deferred("monitoring", true)
 		interaction_zone.set_deferred("monitorable", true)
 		collision_shape.set_deferred("disabled", false)
 	elif state == WorldStats.Dimensions.Red and show_red == false:
 		active = false
-		sprite.visible = false
+		body_sprite.visible = false
 		shadow.visible = false
 		player_detection_zone.set_deferred("monitoring", false)
 		interaction_zone.set_deferred("monitorable", false)
 		collision_shape.set_deferred("disabled", true)
 	elif state == WorldStats.Dimensions.Green and show_green == true:
 		active = true
-		sprite.visible = true
+		body_sprite.visible = true
 		shadow.visible = true
 		player_detection_zone.set_deferred("monitoring", true)
 		interaction_zone.set_deferred("monitorable", true)
 		collision_shape.set_deferred("disabled", false)
 	elif state == WorldStats.Dimensions.Green and show_green == false:
 		active = false
-		sprite.visible = false
+		body_sprite.visible = false
 		shadow.visible = false
 		player_detection_zone.set_deferred("monitoring", false)
 		interaction_zone.set_deferred("monitorable", false)
