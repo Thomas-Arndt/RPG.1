@@ -46,7 +46,7 @@ chest_color = 9
 legs_color = 14
 foot_color = 1
 
-[node name="AnimationTree" parent="YSort/NPCs/NPC" index="7"]
+[node name="AnimationTree" parent="YSort/NPCs/NPC" index="8"]
 parameters/playback = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="YSort/NPCs/NPC/InteractionZone" index="0"]

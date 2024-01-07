@@ -378,11 +378,8 @@ texture = ExtResource( 30 )
 
 [node name="AnimationTree" parent="YSort/NPCs/Bob" index="8"]
 tree_root = SubResource( 221 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 2 )
 parameters/idle/blend_position = Vector2( 0.0267112, 0.575966 )
-parameters/walk/blend_position = Vector2( -0.479132, -0.434335 )
 
 [node name="CompletedQuestAction" parent="YSort/NPCs/Bob/InteractionZone/Actions" index="0" instance=ExtResource( 15 )]
 quest_reference = ExtResource( 13 )
