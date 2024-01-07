@@ -1,5 +1,53 @@
 extends KinematicBody2D
 
+enum Colors {
+	None,
+	Red,
+	Orange,
+	Yellow,
+	Green,
+	Blue,
+	Indigo,
+	Violet,
+	White,
+	LightGrey,
+	DarkGrey,
+	Black,
+	Brown,
+	Tan,
+	Pink,
+}
+
+enum Skin_Tones {
+	Light,
+	MediumLight,
+	MediumDark,
+	Dark,
+}
+
+enum Hair_Colors {
+	None,
+	Blonde,
+	Red,
+	Brown,
+	Black,
+	Grey,
+	White,
+}
+
+enum Hair_Styles {
+	Bald,
+	Short,
+	Long,
+	Dr
+}
+
+enum {
+	IDLE,
+	WANDER,
+	INTERACT,
+}
+
 export var show_green: bool = true
 export var show_red: bool = true
 export (int) var ACCELERATION = 200
@@ -8,15 +56,21 @@ export (int) var FRICTION = 200
 export (int) var WANDER_BUFFER = 4
 export (int) var WANDER_RANGE = 32
 export (String) var AXIS = "X"
+export (bool) var is_stationary = false
+export (Skin_Tones) var skin_tone = Skin_Tones.MediumLight
+export (Hair_Styles) var hair_style = Hair_Styles.Bald
+export (Hair_Colors) var hair_color = Hair_Colors.None
+export (Colors) var chest_color = Colors.None
+export (Colors) var legs_color = Colors.None
+export (Colors) var foot_color = Colors.None
 
-enum {
-	IDLE,
-	WANDER,
-	INTERACT,
-}
 
-onready var sprite = $Sprite
+onready var body_sprite = $Sprite
 onready var shadow = $ShadowSprite
+onready var chest_sprite = $Chest
+onready var leg_sprite = $Legs
+onready var foot_sprite = $Feet
+onready var hair_sprite = $Hair
 onready var collision_shape = $CollisionShape2D
 onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
@@ -39,6 +93,9 @@ func _ready():
 	wander_controller.wander_range = WANDER_RANGE
 	wander_controller.axis = AXIS
 	anim_tree.active = true
+	apply_base_sprite()
+	apply_hair()
+	apply_clothing()
 	anim_player.play("SETUP")
 	state = pick_random_state([IDLE, WANDER])
 	match_dimension(WorldStats.DIMENSION)
@@ -50,23 +107,25 @@ func _physics_process(delta):
 		quest_status()
 		match state:
 			IDLE:
-				anim_state.travel("idle")
-				velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-				
-				if wander_controller.get_time_left() == 0:
-					update_wander()
+				if !is_stationary:
+					anim_state.travel("idle")
+					velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+					
+					if wander_controller.get_time_left() == 0:
+						update_wander()
 			WANDER:
-				if wander_controller.get_time_left() == 0:
-					update_wander()
-				anim_state.travel("walk")
-				accelerate_towards_point(wander_controller.target_position, delta)
-				
-				if global_position.distance_to(wander_controller.target_position) <= WANDER_BUFFER:
-					update_wander()
+				if !is_stationary:
+					if wander_controller.get_time_left() == 0:
+						update_wander()
+					anim_state.travel("walk")
+					accelerate_towards_point(wander_controller.target_position, delta)
+					
+					if global_position.distance_to(wander_controller.target_position) <= WANDER_BUFFER:
+						update_wander()
 			INTERACT:
 				velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 				anim_state.travel("idle")
-				var direction = global_position.direction_to(interaction_target.global_position)
+				var direction = global_position.direction_to(get_tree().get_nodes_in_group("Player")[0].global_position)
 				anim_tree.set("parameters/idle/blend_position", direction)
 				anim_tree.set("parameters/walk/blend_position", direction)
 					
@@ -115,31 +174,126 @@ func quest_status():
 		else:
 			quest_bubble.region_rect.position = Vector2(128, 128)
 
+func apply_base_sprite():
+	match skin_tone:
+		Skin_Tones.Light:
+			body_sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-1.png")
+		Skin_Tones.MediumLight:
+			body_sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-2.png")
+		Skin_Tones.MediumDark:
+			body_sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-3.png")
+		Skin_Tones.Dark:
+			body_sprite.texture = ResourceLoader.load("res://NPC/SkinTones/npc-skin-4.png")
+
+func apply_hair():
+	if hair_style == Hair_Styles.Dr:
+		hair_sprite.texture = ResourceLoader.load("res://NPC/Specials/Dr Dochteur/dr-hair.png")
+	elif hair_style != Hair_Styles.Bald and hair_color != Hair_Colors.None:
+		var sprite_file_path = "res://NPC/Hair/npc-hair-"+ get_hair_style_name(hair_style) +"-"+ get_hair_color_name(hair_color) +".png"
+		var sprite = ResourceLoader.load(sprite_file_path)
+		hair_sprite.texture = sprite
+
+func apply_clothing():
+	render_chest()
+	render_legs()
+	render_feet()
+
+func render_chest():
+	if chest_color != Colors.None:
+		var sprite_file_path = "res://NPC/Clothes/Shirts/npc-shirts-"+ get_color_name(chest_color) +".png"
+		var sprite = ResourceLoader.load(sprite_file_path)
+		chest_sprite.texture = sprite
+	
+func render_legs():
+	if legs_color != Colors.None:
+		var sprite_file_path = "res://NPC/Clothes/Pants/npc-pants-"+ get_color_name(legs_color) +".png"
+		var sprite = ResourceLoader.load(sprite_file_path)
+		leg_sprite.texture = sprite
+
+func render_feet():
+	if foot_color != Colors.None:
+		var sprite_file_path = "res://NPC/Clothes/Shoes/npc-shoes-"+ get_color_name(foot_color) +".png"
+		var sprite = ResourceLoader.load(sprite_file_path)
+		foot_sprite.texture = sprite
+
+func get_color_name(color_code):
+	match color_code:
+		Colors.Red:
+			return "red"
+		Colors.Orange:
+			return "orange"
+		Colors.Yellow:
+			return "yellow"
+		Colors.Green:
+			return "green"
+		Colors.Blue:
+			return "blue"
+		Colors.Indigo:
+			return "indigo"
+		Colors.Violet:
+			return "violet"
+		Colors.White:
+			return "white"
+		Colors.LightGrey:
+			return "light-grey"
+		Colors.DarkGrey:
+			return "dark-grey"
+		Colors.Black:
+			return "black"
+		Colors.Brown:
+			return "brown"
+		Colors.Tan:
+			return "tan"
+		Colors.Pink:
+			return "pink"
+			
+func get_hair_color_name(color_code):
+	match color_code:
+		Hair_Colors.Blonde:
+			return "blonde"
+		Hair_Colors.Red:
+			return "red"
+		Hair_Colors.Brown:
+			return "brown"
+		Hair_Colors.Black:
+			return "black"
+		Hair_Colors.Grey:
+			return "grey"
+		Hair_Colors.White:
+			return "white"
+
+func get_hair_style_name(style_code):
+	match style_code:
+		Hair_Styles.Short:
+			return "short"
+		Hair_Styles.Long:
+			return "long"
+
 func match_dimension(state):
 	if state == WorldStats.Dimensions.Red and show_red == true:
 		active = true
-		sprite.visible = true
+		body_sprite.visible = true
 		shadow.visible = true
 		player_detection_zone.set_deferred("monitoring", true)
 		interaction_zone.set_deferred("monitorable", true)
 		collision_shape.set_deferred("disabled", false)
 	elif state == WorldStats.Dimensions.Red and show_red == false:
 		active = false
-		sprite.visible = false
+		body_sprite.visible = false
 		shadow.visible = false
 		player_detection_zone.set_deferred("monitoring", false)
 		interaction_zone.set_deferred("monitorable", false)
 		collision_shape.set_deferred("disabled", true)
 	elif state == WorldStats.Dimensions.Green and show_green == true:
 		active = true
-		sprite.visible = true
+		body_sprite.visible = true
 		shadow.visible = true
 		player_detection_zone.set_deferred("monitoring", true)
 		interaction_zone.set_deferred("monitorable", true)
 		collision_shape.set_deferred("disabled", false)
 	elif state == WorldStats.Dimensions.Green and show_green == false:
 		active = false
-		sprite.visible = false
+		body_sprite.visible = false
 		shadow.visible = false
 		player_detection_zone.set_deferred("monitoring", false)
 		interaction_zone.set_deferred("monitorable", false)

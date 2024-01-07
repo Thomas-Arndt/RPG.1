@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=2]
@@ -9,9 +9,7 @@
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Utils/Actions/SpeechAction.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Objects/Furniture/WoodStove.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Inventory/Items/Potions/Red/red_minor.tres" type="Resource" id=10]
 [ext_resource path="res://Utils/Actions/ChestAction.gd" type="Script" id=11]
-[ext_resource path="res://Utils/Actions/ChestAction.tscn" type="PackedScene" id=12]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -44,8 +42,11 @@ position = Vector2( 157, 166 )
 [node name="NPC" parent="YSort/NPCs" instance=ExtResource( 7 )]
 position = Vector2( 147, 124 )
 is_stationary = true
+chest_color = 9
+legs_color = 14
+foot_color = 1
 
-[node name="AnimationTree" parent="YSort/NPCs/NPC" index="4"]
+[node name="AnimationTree" parent="YSort/NPCs/NPC" index="8"]
 parameters/playback = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="YSort/NPCs/NPC/InteractionZone" index="0"]
@@ -57,10 +58,7 @@ scale = Vector2( 2, 3 )
 script = ExtResource( 11 )
 
 [node name="SpeechAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="0" instance=ExtResource( 8 )]
-text_array = [ "Welcome to the Tiny Town Inn!", "We are not open for business yet, but do come back again when you have an opportunity.", "Here is a small pick me up for the road as a gift." ]
-
-[node name="ChestAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="1" instance=ExtResource( 12 )]
-items = [ ExtResource( 10 ) ]
+text_array = [ "Welcome to the Tiny Town Inn!", "We are not open for business yet, but do come back again when you have an opportunity." ]
 
 [node name="Furniture" type="YSort" parent="YSort"]
 
