@@ -216,8 +216,8 @@ func flip_sprites(velocity):
 	
 func set_or_toggle_hurtbox_state(state = null):
 	if state == null:
-		hurt_box.monitorable = not hurt_box.monitorable
-		hurt_box.monitoring = not hurt_box.monitoring
+		hurt_box.set_deferred("monitorable", not hurt_box.monitorable)
+		hurt_box.set_deferred("monitoring", not hurt_box.monitoring)
 	else:
-		hurt_box.monitorable = state
-		hurt_box.monitoring = state
+		hurt_box.set_deferred("monitorable", state)
+		hurt_box.set_deferred("monitoring", state)

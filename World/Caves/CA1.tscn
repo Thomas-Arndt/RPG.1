@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://World/Caves/Terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=2]
@@ -21,9 +21,14 @@
 [ext_resource path="res://World/Objects/Minerals/IronVein.tres" type="Resource" id=19]
 [ext_resource path="res://World/Objects/Forage/WhiteCap.tres" type="Resource" id=20]
 [ext_resource path="res://World/Objects/Forage/ForageWorldComponent.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Utils/Actions/SpeechAction.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Utils/Actions/CompleteMultipleQuestAction.tscn" type="PackedScene" id=22]
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=23]
 [ext_resource path="res://World/Objects/Chests/LargeChest.tscn" type="PackedScene" id=24]
+[ext_resource path="res://QuestSystem/Quests/rescue-person-1.tscn" type="PackedScene" id=25]
+[ext_resource path="res://QuestSystem/Quests/rescue-person-3.tscn" type="PackedScene" id=26]
+[ext_resource path="res://QuestSystem/Quests/rescue-person-2.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Utils/Actions/GiveMultipleQuestAction.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=29]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 94.1913
@@ -187,8 +192,15 @@ foot_color = 11
 [node name="AnimationTree" parent="YSort/NPCs/NPC" index="8"]
 parameters/playback = SubResource( 4 )
 
-[node name="SpeechAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="0" instance=ExtResource( 22 )]
-text_array = [ "Thank you for clearing the way out of here.", "I was worried that the quake caused too much damage and no one was going to be able to help us.", "I am going to head home immediately. There might be more people trapped." ]
+[node name="GiveMultipleQuestAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="0" instance=ExtResource( 28 )]
+quest_references = [ ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ) ]
+speaker_name = "Jimbo"
+
+[node name="CompleteMultipleQuestAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="1" instance=ExtResource( 22 )]
+quest_references = [ ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ) ]
+speaker_name = "Jimbo"
+deliver_text = [ "You found everyone! Thank you so much for helping us!", "Come find me at the village before you head out on your travels.", "What do you mean, \"What do you mean by travels\"? You're able to defend yourself against these monsters.", "Of course you gotta go out and do what you can to help fix things! ", "I might be able to get some information that will help you out on your journey. See you at the village! Bye!" ]
+active = true
 
 [node name="NPC2" parent="YSort/NPCs" index="1" instance=ExtResource( 23 )]
 position = Vector2( -191, 705 )
@@ -203,8 +215,10 @@ foot_color = 11
 [node name="AnimationTree" parent="YSort/NPCs/NPC2" index="8"]
 parameters/playback = SubResource( 5 )
 
-[node name="SpeechAction" parent="YSort/NPCs/NPC2/InteractionZone/Actions" index="0" instance=ExtResource( 22 )]
-text_array = [ "Thank you for rescuing me! I'll head straight home!" ]
+[node name="CompletedQuestAction" parent="YSort/NPCs/NPC2/InteractionZone/Actions" index="0" instance=ExtResource( 29 )]
+quest_reference = ExtResource( 25 )
+speaker_name = "Sally"
+active = true
 
 [node name="NPC3" parent="YSort/NPCs" index="2" instance=ExtResource( 23 )]
 position = Vector2( 582, 953 )
@@ -217,8 +231,10 @@ foot_color = 11
 [node name="AnimationTree" parent="YSort/NPCs/NPC3" index="8"]
 parameters/playback = SubResource( 6 )
 
-[node name="SpeechAction" parent="YSort/NPCs/NPC3/InteractionZone/Actions" index="0" instance=ExtResource( 22 )]
-text_array = [ "I was so afraid no one was going to find me down here.", "Thank you so much. I'll head back to Tiny Town immediately." ]
+[node name="CompletedQuestAction" parent="YSort/NPCs/NPC3/InteractionZone/Actions" index="0" instance=ExtResource( 29 )]
+quest_reference = ExtResource( 27 )
+speaker_name = "Harold"
+active = true
 
 [node name="NPC4" parent="YSort/NPCs" index="3" instance=ExtResource( 23 )]
 position = Vector2( 1030, -336 )
@@ -232,8 +248,10 @@ foot_color = 11
 [node name="AnimationTree" parent="YSort/NPCs/NPC4" index="8"]
 parameters/playback = SubResource( 7 )
 
-[node name="SpeechAction" parent="YSort/NPCs/NPC4/InteractionZone/Actions" index="0" instance=ExtResource( 22 )]
-text_array = [ "Yup, I'm not coming back here. Thanks, and see you later!" ]
+[node name="CompletedQuestAction" parent="YSort/NPCs/NPC4/InteractionZone/Actions" index="0" instance=ExtResource( 29 )]
+quest_reference = ExtResource( 26 )
+speaker_name = "Saunder"
+active = true
 
 [node name="MineRock" parent="YSort/Rocks" index="0" instance=ExtResource( 12 )]
 position = Vector2( -195, 623 )

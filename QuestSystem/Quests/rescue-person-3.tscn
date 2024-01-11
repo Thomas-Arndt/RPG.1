@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://QuestSystem/Objectives/QuestInteractObjective.tscn" type="PackedScene" id=2]
+
+[node name="rescue-person-3" instance=ExtResource( 1 )]
+title = "Rescue Person 3"
+description = "Rescue the third person."
+deliverText = [ "I thought I was a goner! Thank you!" ]
+
+[node name="QuestInteractObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
