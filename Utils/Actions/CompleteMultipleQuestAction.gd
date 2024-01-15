@@ -16,6 +16,9 @@ var quests : Array = []
 var completed_quests : int = 0
 
 func _ready():
+	set_quest()
+
+func set_quest():
 	assert(main_quest_reference)
 	var main_reference_instance = main_quest_reference.instance()
 	main_quest = QuestSystem.find_available(main_reference_instance)

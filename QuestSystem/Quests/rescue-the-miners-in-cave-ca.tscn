@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://QuestSystem/Objectives/QuestInteractObjective.tscn" type="PackedScene" id=2]
+
+[node name="rescue-the-miners-in-cave-ca" instance=ExtResource( 1 )]
+title = "Help the Miners"
+description = "Bob send you to help the miners in the cave to the east and north."
+startText = [ "Now that you have that, you should be able to clear the netrance to the cave where the people are trapped.", "Just head out of town and then travel West and North until you reach the cave.", "There was some weird stuff going on in that cave when the collapse occurred. Be careful..." ]
+progressText = [ "Remember, the cave is to the east and north." ]
+deliverText = [ "You were able to clear the debris blocking the cage!?!" ]
+
+[node name="QuestInteractObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]

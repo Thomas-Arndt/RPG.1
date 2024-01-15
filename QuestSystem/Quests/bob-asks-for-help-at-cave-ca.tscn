@@ -8,7 +8,7 @@
 title = "With the Right Tools"
 description = "Now that you have a pickaxe, you should return to Bob for further directions."
 progressText = [ "Let me know if you are able to put together a pickaxe, and I can tall you how to get to the cave." ]
-deliverText = [ "You found a pickaxe already?!? I suppose with all the odd things going on, I shouldn't be surprised.", "Now that you have that, you should be able to clear the netrance to the cave where the people are trapped.", "Just head out of town and then travel West and North until you reach the cave.", "There was some weird stuff going on in that cave when the collapse occurred. Be careful..." ]
+deliverText = [ "You found a pickaxe already?!? I suppose with all the odd things going on, I shouldn't be surprised." ]
 
 [node name="QuestOwnItemObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
 items = [ ExtResource( 3 ) ]
