@@ -5,13 +5,17 @@ class_name GiveMultipleQuestAction
 signal finished
 signal has_follow_up_quest(quest, speaker)
 
+export var main_quest_reference: PackedScene
 export (Array, PackedScene) var quest_references
 export var speaker_name: String
 export var active: bool = true
 
+var main_quest: Quest = null
 var quests : Array = []
 
 func _ready():
+	assert(main_quest_reference)
+	main_quest = main_quest_reference.instance()
 	for reference in quest_references:
 		var quest = QuestSystem.find_available(reference.instance())
 		if quest != null:
@@ -30,7 +34,7 @@ func interact() -> void:
 		return
 	else:
 		start_quests()
-		UI.TextBox.queue_text(quests[0].startText, speaker_name)
+		UI.TextBox.queue_text(main_quest.startText, speaker_name)
 		yield(UI.TextBox, "finished")
 		emit_signal("finished")	
 		
@@ -45,6 +49,7 @@ func verify_quests() -> bool:
 	return valid
 
 func start_quests():
+	QuestSystem.start(main_quest)
 	for quest in quests:
 		QuestSystem.start(quest)
 

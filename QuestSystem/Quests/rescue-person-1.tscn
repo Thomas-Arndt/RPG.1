@@ -6,7 +6,6 @@
 [node name="rescue-person-1" instance=ExtResource( 1 )]
 title = "Rescue Person 1"
 description = "Rescue the first person"
-startText = [ "Three of my friends are trapped, can you help them please?" ]
 deliverText = [ "Oh, thank goodness you found me. I'll head straight home!" ]
 
 [node name="QuestInteractObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]

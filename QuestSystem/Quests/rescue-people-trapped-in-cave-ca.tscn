@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
+
+[node name="rescue-people-trapped-in-cave-ca" instance=ExtResource( 1 )]
+title = "Rescue the Miners"
+description = "Rescue the people trapped in the cave."
+startText = [ "Three of my friends are trapped, can you help them please?" ]
+progressText = [ "Please help my friends. They are somewhere in the cave." ]
+deliverText = [ "Thank you so much for saving my friends! Come see me bck at the village. " ]

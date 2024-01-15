@@ -168,7 +168,13 @@ func quest_status():
 			if action is CompletedQuestAction and QuestSystem.completed_quests.find(action.quest_reference.instance()) != null:
 				quest_bubble.region_rect.position = Vector2(48, 128)
 				return
+			elif action is CompleteMultipleQuestAction and QuestSystem.completed_quests.find(action.main_quest_reference.instance()) != null:
+				quest_bubble.region_rect.position = Vector2(48, 128)
+				return
 			elif action is GiveQuestAction and QuestSystem.available_quests.find(action.quest_reference.instance()) != null:
+				quest_bubble.region_rect.position = Vector2(32, 128)
+				return
+			elif action is GiveMultipleQuestAction and QuestSystem.available_quests.find(action.main_quest_reference.instance()) != null:
 				quest_bubble.region_rect.position = Vector2(32, 128)
 				return
 		else:

@@ -399,6 +399,7 @@ value_array = [ true ]
 [node name="CompletedQuestAction3" parent="YSort/NPCs/Bob/InteractionZone/Actions" index="2" instance=ExtResource( 15 )]
 quest_reference = ExtResource( 28 )
 speaker_name = "Bob"
+active = true
 
 [node name="ModifyPropertyReceiver" parent="YSort/NPCs/Bob/InteractionZone/Actions/CompletedQuestAction3" instance=ExtResource( 22 )]
 signal_code = "activate-bob-asks-for-help-at-cave-ca"
