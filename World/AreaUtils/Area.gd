@@ -48,7 +48,8 @@ func load_scene():
 						node.active = node_data[i]
 						node.emit_signal("opened")
 						continue
-					if node_data["class"] == "CompletedQuestAction":
+					if node_data["class"] == "CompletedQuestAction" or node_data["class"] == "CompleteMultipleQuestAction":
+						node.active = node_data[i]
 						node.set_quest()
 					if node_data["class"] == "MineRockNode" and not node_data[i]:
 						node.remove_rock()

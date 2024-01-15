@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://Utils/Actions/ChestAction.gd"
 }, {
 "base": "Node",
+"class": "CompleteMultipleQuestAction",
+"language": "GDScript",
+"path": "res://Utils/Actions/CompleteMultipleQuestAction.gd"
+}, {
+"base": "Node",
 "class": "CompletedQuestAction",
 "language": "GDScript",
 "path": "res://Utils/Actions/CompletedQuestAction.gd"
@@ -48,6 +53,11 @@ _global_script_classes=[ {
 "class": "ForageNode",
 "language": "GDScript",
 "path": "res://World/Objects/Forage/ForageWorldComponent.gd"
+}, {
+"base": "Node",
+"class": "GiveMultipleQuestAction",
+"language": "GDScript",
+"path": "res://Utils/Actions/GiveMultipleQuestAction.gd"
 }, {
 "base": "Node",
 "class": "GiveQuestAction",
@@ -228,11 +238,13 @@ _global_script_class_icons={
 "AddNodeReceiver": "",
 "Chest": "",
 "ChestAction": "",
+"CompleteMultipleQuestAction": "",
 "CompletedQuestAction": "",
 "CropNode": "",
 "CutScene": "",
 "ForageAction": "",
 "ForageNode": "",
+"GiveMultipleQuestAction": "",
 "GiveQuestAction": "",
 "HarvestAction": "",
 "HitBox": "",

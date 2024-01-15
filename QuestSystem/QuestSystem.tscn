@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://QuestSystem/QuestSystem.gd" type="Script" id=1]
 [ext_resource path="res://QuestSystem/QuestContainer.gd" type="Script" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://QuestSystem/Quests/get-iron-for-pickaxe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://QuestSystem/Quests/wilburs-iron-bars.tscn" type="PackedScene" id=6]
 [ext_resource path="res://QuestSystem/Quests/bob-asks-for-help-at-cave-ca.tscn" type="PackedScene" id=7]
+[ext_resource path="res://QuestSystem/Quests/rescue-person-1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://QuestSystem/Quests/rescue-person-3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://QuestSystem/Quests/rescue-person-2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://QuestSystem/Quests/rescue-people-trapped-in-cave-ca.tscn" type="PackedScene" id=11]
+[ext_resource path="res://QuestSystem/Quests/rescue-the-miners-in-cave-ca.tscn" type="PackedScene" id=12]
 
 [node name="QuestSystem" type="Node"]
 script = ExtResource( 1 )
@@ -21,6 +26,16 @@ script = ExtResource( 2 )
 [node name="get-iron-for-pickaxe" parent="Available" instance=ExtResource( 5 )]
 
 [node name="wilburs-iron-bars" parent="Available" instance=ExtResource( 6 )]
+
+[node name="rescue-person-1" parent="Available" instance=ExtResource( 8 )]
+
+[node name="rescue-person-2" parent="Available" instance=ExtResource( 10 )]
+
+[node name="rescue-person-3" parent="Available" instance=ExtResource( 9 )]
+
+[node name="rescue-people-trapped-in-cave-ca" parent="Available" instance=ExtResource( 11 )]
+
+[node name="rescue-the-miners-in-cave-ca" parent="Available" instance=ExtResource( 12 )]
 
 [node name="Active" type="Node" parent="."]
 script = ExtResource( 2 )

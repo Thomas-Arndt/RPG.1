@@ -11,5 +11,7 @@ func _on_has_follow_up_quest(quest_reference, speaker_name):
 	for child in get_children():
 		if child is GiveQuestAction and child.quest_reference == quest_reference:
 			child.active = true
+		elif child is GiveMultipleQuestAction and child.main_quest_reference == quest_reference:
+			child.active = true
 	get_tree().get_nodes_in_group("World")[0].save_scene()
 	QuestSystem.save_quest_progress()
