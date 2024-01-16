@@ -153,7 +153,7 @@ position = Vector2( 219, -78 )
 [node name="HutFloor" parent="YSort/Buildings" instance=ExtResource( 6 )]
 position = Vector2( 219, -127 )
 
-[node name="HutDoor" parent="YSort/Buildings" instance=ExtResource( 2 )]
+[node name="HutDoor" parent="YSort/Buildings" groups=["Persist"] instance=ExtResource( 2 )]
 position = Vector2( -158, -87 )
 show_red = false
 
@@ -363,8 +363,9 @@ position = Vector2( 134, 285 )
 position = Vector2( 199, 124 )
 show_red = false
 skin_tone = 0
-hair_style = 3
-chest_color = 8
+hair_style = 1
+hair_color = 2
+chest_color = 6
 legs_color = 10
 foot_color = 11
 
