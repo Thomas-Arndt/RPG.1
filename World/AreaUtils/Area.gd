@@ -79,32 +79,30 @@ func load_scene():
 							new_node.anim_player.stop()
 							new_node.anim_player.play("holding")
 				node.set(i, node_data[i])
+				if node.has_method("match_dimension"):
+					node.match_dimension(WorldStats.DIMENSION)
 			
 	save_game.close()
 	
 func update_scene(scene_name:String, node_path:String, property_name:String, value):
 	var write_stack : Array = []
 	var scene_save_location = "user://Saves/%s/%s.save" % [WorldStats.save_block, scene_name]
-	if not save_game.file_exists(scene_save_location):
-		save_game.open(scene_save_location, File.WRITE_READ)
-	else:
-		save_game.open(scene_save_location, File.WRITE)
+	if save_game.file_exists(scene_save_location):
+		save_game.open(scene_save_location, File.READ)
 		
-	save_game.open(scene_save_location, File.READ)
-	while save_game.get_position() < save_game.get_len():
-		var sava_data = save_game.get_line()
-		var node_data = parse_json(sava_data)
+		while save_game.get_position() < save_game.get_len():
+			var sava_data = save_game.get_line()
+			var node_data = parse_json(sava_data)
 
-		if node_data["path"] == node_path:
-			node_data[property_name] = value
-		
-		write_stack.push_back(node_data)
-	save_game.close()
-	save_game.open(scene_save_location, File.WRITE)
-	while len(write_stack) > 0:
-		save_game.store_line(to_json(write_stack.pop_back()))
-	
-	save_game.close()
+			if node_data["path"] == node_path:
+				node_data[property_name] = value
+			
+			write_stack.push_back(node_data)
+		save_game.close()
+		save_game.open(scene_save_location, File.WRITE)
+		while len(write_stack) > 0:
+			save_game.store_line(to_json(write_stack.pop_back()))
+		save_game.close()
 		
 func get_class():
 	return "WorldScene"

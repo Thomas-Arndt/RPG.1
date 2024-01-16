@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://QuestSystem/EnvironmentRewards/UpdateSaveProperty.tscn" type="PackedScene" id=2]
 
 [node name="rescue-people-trapped-in-cave-ca" instance=ExtResource( 1 )]
 title = "Rescue the Miners"
@@ -8,3 +9,9 @@ description = "Rescue the people trapped in the cave."
 startText = [ "When the cave collapsed, I thought I was done for...", "Three of my friends are trapped, can you help them please?" ]
 progressText = [ "Please help my friends. They are somewhere in the cave." ]
 deliverText = [ "Thank you so much for saving my friends! Come see me bck at the village. " ]
+
+[node name="UpdateSaveProperty" parent="EnvironmentRewards" index="0" instance=ExtResource( 2 )]
+scene_name = "TinyTown"
+node_path = "/root/Game/TinyTown/YSort/Buildings/HutDoor"
+property_name = "is_open"
+value = [ true ]

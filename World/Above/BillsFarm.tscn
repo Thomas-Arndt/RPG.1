@@ -2025,9 +2025,11 @@ is_red = true
 [node name="Bill" parent="YSort/NPCs" instance=ExtResource( 7 )]
 position = Vector2( -783, 447 )
 show_red = false
+hair_style = 1
+hair_color = 3
 chest_color = 5
 legs_color = 12
-foot_color = 13
+foot_color = 12
 
 [node name="Sprite" parent="YSort/NPCs/Bill" index="1"]
 texture = ExtResource( 1 )

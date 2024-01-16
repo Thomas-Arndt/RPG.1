@@ -232,6 +232,7 @@ active = true
 
 [node name="NPC3" parent="YSort/NPCs" index="2" instance=ExtResource( 23 )]
 position = Vector2( 582, 953 )
+is_stationary = true
 hair_style = 1
 hair_color = 1
 chest_color = 10
@@ -248,6 +249,7 @@ active = true
 
 [node name="NPC4" parent="YSort/NPCs" index="3" instance=ExtResource( 23 )]
 position = Vector2( 1030, -336 )
+is_stationary = true
 skin_tone = 2
 hair_style = 1
 hair_color = 2
