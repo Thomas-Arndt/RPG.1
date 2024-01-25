@@ -1,21 +1,25 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Utils/Controllers/SpawnController.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Utils/Overlap/CutSceneTrigger.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Objects/Plants/Bush.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Objects/Plants/Tree.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Objects/Signs/InformationBoard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Objects/Forage/ForageWorldComponent.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Objects/Forage/WhiteCap.tres" type="Resource" id=10]
 [ext_resource path="res://World/Objects/Forage/RedBerry.tres" type="Resource" id=11]
+[ext_resource path="res://CutScenes/Controllers/CutSceneController.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=14]
 [ext_resource path="res://World/Above/Terrain.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Enemies/Ghost.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Utils/Controllers/ProximitySpawnController.tscn" type="PackedScene" id=18]
+[ext_resource path="res://CutScenes/Controllers/GuardController.gd" type="Script" id=19]
+[ext_resource path="res://NPC/NPCs/Guard.tscn" type="PackedScene" id=20]
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 113.0
@@ -34,6 +38,9 @@ extents = Vector2( 75, 10 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 10, 52.5 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 59.0085
 
 [node name="FirstForest" type="Node2D" groups=["World"]]
 script = ExtResource( 14 )
@@ -823,6 +830,18 @@ spawn_unit = ExtResource( 17 )
 [node name="CollisionShape2D" parent="YSort/MobileEnemies/ProximitySpawnController/PlayerDetectionZone" index="0"]
 shape = SubResource( 6 )
 
+[node name="NPCs" type="YSort" parent="YSort"]
+
+[node name="Guard" parent="YSort/NPCs" instance=ExtResource( 20 )]
+position = Vector2( 1228, 331 )
+is_stationary = true
+skin_tone = 3
+hair_style = 1
+hair_color = 5
+chest_color = 1
+legs_color = 11
+foot_color = 11
+
 [node name="Signs" type="YSort" parent="YSort"]
 
 [node name="InformationBoard" parent="YSort/Signs" instance=ExtResource( 8 )]
@@ -897,6 +916,22 @@ exit_direction = Vector2( 1, 0 )
 position = Vector2( 0, -0.5 )
 shape = SubResource( 5 )
 
+[node name="CutScenes" type="Node2D" parent="."]
+
+[node name="CutSceneTrigger" parent="CutScenes" instance=ExtResource( 5 )]
+position = Vector2( 1260, 334 )
+active = true
+
+[node name="CollisionShape2D" parent="CutScenes/CutSceneTrigger/TriggerArea" index="0"]
+position = Vector2( 4, 1 )
+shape = SubResource( 7 )
+
+[node name="CutSceneController" parent="CutScenes/CutSceneTrigger/ActorControllers" index="0" instance=ExtResource( 12 )]
+script = ExtResource( 19 )
+actor_path = NodePath("../../../../YSort/Player")
+monologue = [ "I wouldn't go this way if I were you. It's dangerous..." ]
+speaker = "East Guard"
+
 [editable path="Terrain"]
 [editable path="Camera2D"]
 [editable path="YSort/MobileEnemies/ProximitySpawnController"]
@@ -914,3 +949,4 @@ shape = SubResource( 5 )
 [editable path="SceneLinks/A2"]
 [editable path="SceneLinks/A6"]
 [editable path="SceneLinks/A11"]
+[editable path="CutScenes/CutSceneTrigger"]

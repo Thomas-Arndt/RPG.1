@@ -7,6 +7,7 @@ var triggered = false
 var player = null
 
 onready var actor_controllers = $ActorControllers
+onready var trigger_area = $TriggerArea
 
 func _ready():
 	for actor in actor_controllers.get_children():
@@ -15,7 +16,7 @@ func _ready():
 
 func _on_Area2D_area_entered(area):
 	if active and not triggered:
-		start_cutscene(area.get_parent().get_parent())
+		start_cutscene(get_tree().get_nodes_in_group("Player")[0])
 
 func start_cutscene(node):
 	if node != null:
@@ -32,6 +33,11 @@ func _on_Actor_finished():
 	
 func release_player():
 	player.paused(false)
+	
+func reset():
+	action = 0
+	active = true
+	triggered = false
 
 func save():
 	var save_dict = {
