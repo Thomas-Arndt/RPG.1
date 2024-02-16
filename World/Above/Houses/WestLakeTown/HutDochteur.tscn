@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://World/Above/Houses/HutInterior.tscn" type="PackedScene" id=1]
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Objects/SimpleObjects/BoxSmall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/Objects/Furniture/TableLarge.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/Objects/Furniture/Bed-Single.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/Objects/Furniture/Chairs/ChairDown.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Objects/SimpleObjects/BottleBlue.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Objects/SimpleObjects/BoxLarge.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Objects/SimpleObjects/BookGreen.tscn" type="PackedScene" id=8]
@@ -13,8 +13,251 @@
 [ext_resource path="res://World/Objects/SimpleObjects/BottleRed.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Objects/Furniture/Shelves3.tscn" type="PackedScene" id=12]
 [ext_resource path="res://World/Objects/SimpleObjects/BookBlue.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/Sprites/Aparatus/horizontal-gear.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Aparatus/vertical-gear.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/Aparatus/engine-right.png" type="Texture" id=16]
+[ext_resource path="res://World/Objects/Furniture/DochteurScienceTable.gd" type="Script" id=17]
+[ext_resource path="res://Assets/Sprites/Aparatus/centrifuge.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/Shadows/RectangleShadow.png" type="Texture" id=19]
+[ext_resource path="res://World/Objects/Furniture/WoodStove.tscn" type="PackedScene" id=20]
+[ext_resource path="res://World/Objects/Furniture/TableSmall.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Inventory/Items/QuestItems/Message.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/Aparatus/gear-center.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Sprites/Aparatus/pulley-horizontal-right.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Sprites/Aparatus/pulley-horizontal-left.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Sprites/Aparatus/pulley-horizontal-middle.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Sprites/Aparatus/test-tube-blue.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Sprites/Aparatus/test-tube-green.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Sprites/Aparatus/test-tube-rack.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Sprites/Aparatus/test-tube-red.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Sprites/Aparatus/Pipes/pipe-vertical.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Sprites/Aparatus/Pipes/pipe-bend-t-l.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Sprites/Aparatus/Pipes/pipe-horizontal.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Sprites/Aparatus/Pipes/pipe-bend-b-l.png" type="Texture" id=34]
+[ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=35]
+[ext_resource path="res://QuestSystem/Quests/0060-go-meet-dr.tscn" type="PackedScene" id=36]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 24 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 24 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=44]
+animations = [ {
+"frames": [ SubResource( 43 ), SubResource( 42 ), SubResource( 41 ) ],
+"loop": true,
+"name": "default",
+"speed": 13.0
+} ]
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 25 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 25 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 25 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=48]
+animations = [ {
+"frames": [ SubResource( 47 ), SubResource( 46 ), SubResource( 45 ) ],
+"loop": true,
+"name": "default",
+"speed": 13.0
+} ]
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 26 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 26 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 26 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=52]
+animations = [ {
+"frames": [ SubResource( 51 ), SubResource( 50 ), SubResource( 49 ) ],
+"loop": true,
+"name": "default",
+"speed": 13.0
+} ]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 15 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 15 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 15 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 2, 2 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 23 )
+region = Rect2( 2, 0, 2, 2 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 23 )
+region = Rect2( 4, 0, 2, 2 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 23 )
+region = Rect2( 6, 0, 2, 2 )
+
+[sub_resource type="SpriteFrames" id=35]
+animations = [ {
+"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 16 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 16 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 16 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 16 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 16 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 16 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 16 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 14 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 14 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 14 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 23 )
+region = Rect2( 6, 0, 2, 2 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 23 )
+region = Rect2( 4, 0, 2, 2 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 23 )
+region = Rect2( 2, 0, 2, 2 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 2, 2 )
+
+[sub_resource type="SpriteFrames" id=40]
+animations = [ {
+"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 18 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 18 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 18 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=30]
+animations = [ {
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
 
 [node name="HutDochteur" instance=ExtResource( 1 )]
 
@@ -30,6 +273,11 @@ foot_color = 11
 
 [node name="AnimationTree" parent="YSort/NPCs/DrDochteur" index="8"]
 parameters/playback = SubResource( 1 )
+
+[node name="CompletedQuestAction" parent="YSort/NPCs/DrDochteur/InteractionZone/Actions" index="0" instance=ExtResource( 35 )]
+quest_reference = ExtResource( 36 )
+speaker_name = "Dr. Dochteur"
+active = true
 
 [node name="Shelves3" parent="YSort/Furniture" index="0" instance=ExtResource( 12 )]
 position = Vector2( 106, 81 )
@@ -194,7 +442,7 @@ position = Vector2( -6, -20 )
 position = Vector2( -8, -20 )
 
 [node name="Shelves5" parent="YSort/Furniture" index="2" instance=ExtResource( 12 )]
-position = Vector2( 184, 65 )
+position = Vector2( 180, 49 )
 
 [node name="BottleGreen" parent="YSort/Furniture/Shelves5" index="3" instance=ExtResource( 10 )]
 position = Vector2( -6, -18 )
@@ -242,7 +490,7 @@ position = Vector2( 6, 0 )
 position = Vector2( 8, 0 )
 
 [node name="Shelves7" parent="YSort/Furniture" index="3" instance=ExtResource( 12 )]
-position = Vector2( 208, 82 )
+position = Vector2( 154, 49 )
 
 [node name="BoxSmall" parent="YSort/Furniture/Shelves7" index="3" instance=ExtResource( 3 )]
 position = Vector2( 3.5, -0.5 )
@@ -312,9 +560,116 @@ position = Vector2( 8, -20 )
 
 [node name="TableLarge" parent="YSort/Furniture" index="4" instance=ExtResource( 4 )]
 position = Vector2( 182, 134 )
+script = ExtResource( 17 )
 
-[node name="Bed-Single" parent="YSort/Furniture" index="5" instance=ExtResource( 5 )]
-position = Vector2( 120, 118 )
+[node name="Sprite2" type="Sprite" parent="YSort/Furniture/TableLarge" index="3"]
+position = Vector2( -3, -25 )
+scale = Vector2( 0.4375, 0.15625 )
+texture = ExtResource( 19 )
+
+[node name="Sprite3" type="Sprite" parent="YSort/Furniture/TableLarge" index="4"]
+position = Vector2( 3.9, -27 )
+scale = Vector2( 0.66, 0.075 )
+texture = ExtResource( 19 )
+
+[node name="RectangleShadow" type="Sprite" parent="YSort/Furniture/TableLarge" index="5"]
+position = Vector2( 14, -18 )
+scale = Vector2( 0.5, 0.125 )
+texture = ExtResource( 19 )
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="YSort/Furniture/TableLarge" index="6"]
+position = Vector2( -4, -24 )
+frames = SubResource( 44 )
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="YSort/Furniture/TableLarge" index="7"]
+position = Vector2( -3, -24 )
+frames = SubResource( 48 )
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="YSort/Furniture/TableLarge" index="8"]
+position = Vector2( -3, -24 )
+frames = SubResource( 52 )
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="YSort/Furniture/TableLarge" index="9"]
+position = Vector2( 1, -29 )
+frames = SubResource( 6 )
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="YSort/Furniture/TableLarge" index="10"]
+position = Vector2( 1, -29 )
+frames = SubResource( 35 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Furniture/TableLarge" index="11"]
+position = Vector2( 6, -29 )
+frames = SubResource( 15 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="YSort/Furniture/TableLarge" index="12"]
+position = Vector2( 1, -25 )
+frames = SubResource( 20 )
+frame = 1
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="YSort/Furniture/TableLarge" index="13"]
+position = Vector2( 1, -25 )
+frames = SubResource( 40 )
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="YSort/Furniture/TableLarge" index="14"]
+position = Vector2( -8, -29 )
+frames = SubResource( 30 )
+
+[node name="Test-tube-green" type="Sprite" parent="YSort/Furniture/TableLarge" index="15"]
+position = Vector2( 9, -23 )
+texture = ExtResource( 28 )
+
+[node name="Test-tube-blue" type="Sprite" parent="YSort/Furniture/TableLarge" index="16"]
+position = Vector2( 13, -23 )
+texture = ExtResource( 27 )
+
+[node name="Test-tube-red" type="Sprite" parent="YSort/Furniture/TableLarge" index="17"]
+position = Vector2( 17, -23 )
+texture = ExtResource( 30 )
+
+[node name="Test-tube-rack" type="Sprite" parent="YSort/Furniture/TableLarge" index="18"]
+position = Vector2( 13, -23 )
+texture = ExtResource( 29 )
+
+[node name="ChairDown" parent="YSort/Furniture" index="5" instance=ExtResource( 5 )]
+position = Vector2( 110, 120 )
+
+[node name="WoodStove" parent="YSort/Furniture" index="6" instance=ExtResource( 20 )]
+position = Vector2( 210, 88 )
+
+[node name="TableSmall" parent="YSort/Furniture" index="7" instance=ExtResource( 21 )]
+position = Vector2( 110, 136 )
+
+[node name="Message" type="Sprite" parent="YSort/Furniture/TableSmall" index="3"]
+position = Vector2( 0, -10 )
+texture = ExtResource( 22 )
+
+[node name="Pipe-horizontal" type="Sprite" parent="." index="4"]
+position = Vector2( 221, 67 )
+texture = ExtResource( 33 )
+
+[node name="Pipe-bend-b-l" type="Sprite" parent="Pipe-horizontal" index="0"]
+position = Vector2( 11, 0 )
+texture = ExtResource( 34 )
+
+[node name="Pipe-vertical" type="Sprite" parent="Pipe-horizontal" index="1"]
+position = Vector2( 11, 16 )
+texture = ExtResource( 31 )
+
+[node name="Pipe-horizontal2" type="Sprite" parent="Pipe-horizontal" index="2"]
+position = Vector2( -17, 39 )
+texture = ExtResource( 33 )
+
+[node name="Pipe-horizontal" type="Sprite" parent="Pipe-horizontal" index="3"]
+position = Vector2( -4, 39 )
+texture = ExtResource( 33 )
+
+[node name="Pipe-bend-t-l" type="Sprite" parent="Pipe-horizontal" index="4"]
+position = Vector2( 11, 39 )
+texture = ExtResource( 32 )
+
+[node name="Pipe-vertical2" type="Sprite" parent="Pipe-horizontal" index="5"]
+position = Vector2( 11, 23 )
+texture = ExtResource( 31 )
 
 [node name="SceneLink" parent="SceneLinks" index="0"]
 destination_reference = "res://World/Above/A7.tscn"
