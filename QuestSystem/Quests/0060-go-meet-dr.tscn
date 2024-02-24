@@ -1,12 +1,25 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://QuestSystem/Objectives/QuestInteractObjective.tscn" type="PackedScene" id=2]
+[ext_resource path="res://QuestSystem/EnvironmentRewards/UpdateSaveProperty.tscn" type="PackedScene" id=3]
 
 [node name="0060-go-meet-dr" instance=ExtResource( 1 )]
 title = "Seek The Doctor"
 description = "Jimbo says there is a man who might have some idea of what is going on. Go find him."
 startText = [ "Thank you again for helping us all in the caves. I'm not sure what we would have done without you.", "You should probably go see the Doc in West Lake town. He knows a lot about odd things. Maybe he knows what is going on.", "You seem capable. You should probably go see if they could use any help figuring this all out.", "Head South through the forest, and then west from there to find West Lake Town." ]
 deliverText = [ "Well hello there!  Not sure I've seen your face before. You're not from around here, I take it?", "Well, whatever you want, it's going to have to wait. Not sure if you've noticed, but there's some very strange stuff going on.", "Strange, yes, and probably very bad for all of us!", "What do I mean by bad? Why, CATACLYSMIC!!! At any point we all could cease to exist!!", "I can't say for certain when. I can only extrapolate the trend, and let me tell you, it doesn't look good.", "What's that? You want to help, do you? Well, I could certainly use an extra hand since I had to send my assistant off on a very ", " important errand. Let me see if I can fill you in on the details...", "What we have experienced is a cavitation of the local zone of the multiversal stratum.", "Picture a book. Each page of the book is a single versal plane. ", "Normally, all of the pages of the book are pressed up against one another, and the story on", "each adjacent page is vastly more similar in content than, say, those ", "found at the beginning of the book are to those found at the end.", "Additionally, when all is stable, and the book is sitting glosed on the shelf, there ", "is very little void space in between the pages. Most of it surrounds the book itself.", "Now we take the book, and rip a chunk of the pages out. This leaves a large gap between pages that are telling very different parts of", "the story. Not only that, but now there is a bunch of void space between those pages.", "And that void space is not as empty as one might be led to believe. No sir.", "There is all sorts of \"stuff\" in the void, and some of that stuff could even be considered sentient.", "Well, that \"stuff\" works it's way into this cavitation and starts to ", "interract with the exposed versal planes. This is bad for us for two reasons:", "First, and most importantly, the void \"stuff\" drains the energy from our verse and", "siphons it out into the void between verses. If we lose enough energy,", "our verse could evaporate into nothingness, leaving the next", "versal plane exposed, repeating until the entire", "multiversal stratum has evaporated into nothing.", "Second, and this is the tricky part, we cannot close the gap between the exposed", "versal planes without clearing the gap of the \"stuff\".", "Fortunately, there is something we can actively do to fix this! We can banish the void entities ", "back to the \"space between\" , and then, with a very scientific and complex process that ", "you would not understand, we can bind the two exposed planes together to shut the book permanently. ", "The smaller intrusions will be easily squeezed out of the closing gap without an issue.", "However, there are some large voidal entities that were drawn to the energy in the", "exposed verses, and are preventing the book from closing. Since you asked if", "you could help, I have a job for you. Continue south to the capital", "on the coast. There is a large voidal entity there. If you can somehow send it back to the void, ", "we will be that much closer to preventing the end of existence." ]
+
+[node name="UpdateSaveProperty" parent="EnvironmentRewards" index="0" instance=ExtResource( 3 )]
+scene_name = "A7"
+node_path = "/root/Game/A7/CutScenes/CutSceneTrigger2"
+property_name = "active"
+value = [ true ]
+
+[node name="UpdateSaveProperty2" parent="EnvironmentRewards" index="1" instance=ExtResource( 3 )]
+scene_name = "A7"
+node_path = "/root/Game/A7/CutScenes/CutSceneTrigger"
+property_name = "active"
+value = [ false ]
 
 [node name="QuestInteractObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
