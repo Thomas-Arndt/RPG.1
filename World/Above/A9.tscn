@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://World/AreaUtils/AreaYSort.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Above/Terrain.tscn" type="PackedScene" id=2]
@@ -9,10 +9,15 @@
 [ext_resource path="res://World/Objects/Plants/Bush.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Objects/Rocks/RockSmall.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=9]
-[ext_resource path="res://World/Objects/Doors/LadderUpper.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/Objects/Rocks/RockLarge.tscn" type="PackedScene" id=11]
+[ext_resource path="res://World/Objects/Buildings/HutFloor.tscn" type="PackedScene" id=12]
+[ext_resource path="res://World/Objects/Buildings/Hut.tscn" type="PackedScene" id=13]
+[ext_resource path="res://World/Objects/Buildings/HutDoor.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80.5, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
 
 [node name="A9" type="Node2D" groups=["World"]]
 script = ExtResource( 5 )
@@ -41,6 +46,182 @@ position = Vector2( 816, 825 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player" index="10"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="Hut" parent="YSort/Buildings" index="0" instance=ExtResource( 13 )]
+position = Vector2( 478, -273 )
+
+[node name="HutFloor" parent="YSort/Buildings" index="1" instance=ExtResource( 12 )]
+position = Vector2( 478, -322 )
+
+[node name="HutDoor" parent="YSort/Buildings" index="2" instance=ExtResource( 14 )]
+position = Vector2( 478, -282 )
+
+[node name="Hut2" parent="YSort/Buildings" index="3" instance=ExtResource( 13 )]
+position = Vector2( 314, -308 )
+
+[node name="HutFloor2" parent="YSort/Buildings" index="4" instance=ExtResource( 12 )]
+position = Vector2( 314, -357 )
+
+[node name="HutDoor2" parent="YSort/Buildings" index="5" instance=ExtResource( 14 )]
+position = Vector2( 314, -317 )
+
+[node name="Hut3" parent="YSort/Buildings" index="6" instance=ExtResource( 13 )]
+position = Vector2( 154, -273 )
+
+[node name="HutFloor3" parent="YSort/Buildings" index="7" instance=ExtResource( 12 )]
+position = Vector2( 154, -322 )
+
+[node name="HutDoor3" parent="YSort/Buildings" index="8" instance=ExtResource( 14 )]
+position = Vector2( 154, -282 )
+
+[node name="Hut4" parent="YSort/Buildings" index="9" instance=ExtResource( 13 )]
+position = Vector2( 1, -316 )
+
+[node name="HutFloor4" parent="YSort/Buildings" index="10" instance=ExtResource( 12 )]
+position = Vector2( 1, -365 )
+
+[node name="HutDoor4" parent="YSort/Buildings" index="11" instance=ExtResource( 14 )]
+position = Vector2( 1, -325 )
+
+[node name="Hut5" parent="YSort/Buildings" index="12" instance=ExtResource( 13 )]
+position = Vector2( -1, -121 )
+
+[node name="HutFloor5" parent="YSort/Buildings" index="13" instance=ExtResource( 12 )]
+position = Vector2( -1, -170 )
+
+[node name="HutDoor5" parent="YSort/Buildings" index="14" instance=ExtResource( 14 )]
+position = Vector2( -1, -130 )
+
+[node name="Hut6" parent="YSort/Buildings" index="15" instance=ExtResource( 13 )]
+position = Vector2( 155, -70 )
+
+[node name="HutFloor6" parent="YSort/Buildings" index="16" instance=ExtResource( 12 )]
+position = Vector2( 155, -119 )
+
+[node name="HutDoor6" parent="YSort/Buildings" index="17" instance=ExtResource( 14 )]
+position = Vector2( 155, -79 )
+
+[node name="Hut7" parent="YSort/Buildings" index="18" instance=ExtResource( 13 )]
+position = Vector2( 321, -120 )
+
+[node name="HutFloor7" parent="YSort/Buildings" index="19" instance=ExtResource( 12 )]
+position = Vector2( 321, -169 )
+
+[node name="HutDoor7" parent="YSort/Buildings" index="20" instance=ExtResource( 14 )]
+position = Vector2( 321, -129 )
+
+[node name="Hut8" parent="YSort/Buildings" index="21" instance=ExtResource( 13 )]
+position = Vector2( 481, -81 )
+
+[node name="HutFloor8" parent="YSort/Buildings" index="22" instance=ExtResource( 12 )]
+position = Vector2( 481, -130 )
+
+[node name="HutDoor8" parent="YSort/Buildings" index="23" instance=ExtResource( 14 )]
+position = Vector2( 481, -90 )
+
+[node name="Hut9" parent="YSort/Buildings" index="24" instance=ExtResource( 13 )]
+position = Vector2( 294, 99 )
+
+[node name="HutFloor9" parent="YSort/Buildings" index="25" instance=ExtResource( 12 )]
+position = Vector2( 294, 50 )
+
+[node name="HutDoor9" parent="YSort/Buildings" index="26" instance=ExtResource( 14 )]
+position = Vector2( -3, 87 )
+
+[node name="Hut10" parent="YSort/Buildings" index="27" instance=ExtResource( 13 )]
+position = Vector2( 155, 158 )
+
+[node name="HutFloor10" parent="YSort/Buildings" index="28" instance=ExtResource( 12 )]
+position = Vector2( 155, 109 )
+
+[node name="HutDoor10" parent="YSort/Buildings" index="29" instance=ExtResource( 14 )]
+position = Vector2( 155, 149 )
+
+[node name="Hut11" parent="YSort/Buildings" index="30" instance=ExtResource( 13 )]
+position = Vector2( -3, 96 )
+
+[node name="HutFloor11" parent="YSort/Buildings" index="31" instance=ExtResource( 12 )]
+position = Vector2( -3, 47 )
+
+[node name="HutDoor11" parent="YSort/Buildings" index="32" instance=ExtResource( 14 )]
+position = Vector2( 294, 90 )
+
+[node name="Hut12" parent="YSort/Buildings" index="33" instance=ExtResource( 13 )]
+position = Vector2( 223, 320 )
+
+[node name="HutFloor12" parent="YSort/Buildings" index="34" instance=ExtResource( 12 )]
+position = Vector2( 223, 271 )
+
+[node name="HutDoor12" parent="YSort/Buildings" index="35" instance=ExtResource( 14 )]
+position = Vector2( 37, 311 )
+
+[node name="Hut13" parent="YSort/Buildings" index="36" instance=ExtResource( 13 )]
+position = Vector2( 37, 320 )
+
+[node name="HutFloor13" parent="YSort/Buildings" index="37" instance=ExtResource( 12 )]
+position = Vector2( 37, 271 )
+
+[node name="HutDoor13" parent="YSort/Buildings" index="38" instance=ExtResource( 14 )]
+position = Vector2( 223, 311 )
+
+[node name="Hut14" parent="YSort/Buildings" index="39" instance=ExtResource( 13 )]
+position = Vector2( -580, 322 )
+
+[node name="HutFloor14" parent="YSort/Buildings" index="40" instance=ExtResource( 12 )]
+position = Vector2( -580, 273 )
+
+[node name="Hut15" parent="YSort/Buildings" index="41" instance=ExtResource( 13 )]
+position = Vector2( -389, 320 )
+
+[node name="HutFloor15" parent="YSort/Buildings" index="42" instance=ExtResource( 12 )]
+position = Vector2( -389, 271 )
+
+[node name="HutDoor15" parent="YSort/Buildings" index="43" instance=ExtResource( 14 )]
+position = Vector2( -389, 311 )
+
+[node name="Hut16" parent="YSort/Buildings" index="44" instance=ExtResource( 13 )]
+position = Vector2( -198, 317 )
+
+[node name="HutFloor16" parent="YSort/Buildings" index="45" instance=ExtResource( 12 )]
+position = Vector2( -198, 268 )
+
+[node name="HutDoor16" parent="YSort/Buildings" index="46" instance=ExtResource( 14 )]
+position = Vector2( -198, 308 )
+
+[node name="Hut17" parent="YSort/Buildings" index="47" instance=ExtResource( 13 )]
+position = Vector2( -196, 127 )
+
+[node name="HutFloor17" parent="YSort/Buildings" index="48" instance=ExtResource( 12 )]
+position = Vector2( -196, 78 )
+
+[node name="HutDoor17" parent="YSort/Buildings" index="49" instance=ExtResource( 14 )]
+position = Vector2( -196, 118 )
+
+[node name="Hut18" parent="YSort/Buildings" index="50" instance=ExtResource( 13 )]
+position = Vector2( -354, 130 )
+
+[node name="HutFloor18" parent="YSort/Buildings" index="51" instance=ExtResource( 12 )]
+position = Vector2( -354, 81 )
+
+[node name="HutDoor18" parent="YSort/Buildings" index="52" instance=ExtResource( 14 )]
+position = Vector2( -354, 121 )
+
+[node name="Hut19" parent="YSort/Buildings" index="53" instance=ExtResource( 13 )]
+position = Vector2( -569, 134 )
+
+[node name="HutDoor19" parent="YSort/Buildings" index="54" instance=ExtResource( 14 )]
+position = Vector2( -569, 125 )
+
+[node name="HutFloor19" parent="YSort/Buildings" index="55" instance=ExtResource( 12 )]
+position = Vector2( -569, 85 )
+
+[node name="Hut20" parent="YSort/Buildings" index="56" instance=ExtResource( 13 )]
+position = Vector2( -445, -134 )
+scale = Vector2( 3, 3 )
+
+[node name="HutFloor20" parent="YSort/Buildings" index="57" instance=ExtResource( 12 )]
+position = Vector2( -445, -281 )
+scale = Vector2( 3, 3 )
 
 [node name="Tree" parent="YSort/Trees" index="0" instance=ExtResource( 6 )]
 position = Vector2( 668, -776 )
@@ -174,16 +355,242 @@ position = Vector2( 814, -603 )
 [node name="Shrub6" parent="YSort/Shrubs" index="5" instance=ExtResource( 9 )]
 position = Vector2( 829, -582 )
 
+[node name="Shrub7" parent="YSort/Shrubs" index="6" instance=ExtResource( 9 )]
+position = Vector2( -767, -658 )
+
 [node name="RockSmall" parent="YSort/Rocks" index="0" instance=ExtResource( 8 )]
 position = Vector2( 824, -693 )
 
 [node name="RockSmall2" parent="YSort/Rocks" index="1" instance=ExtResource( 8 )]
 position = Vector2( 799, -681 )
 
-[node name="LadderUpper" parent="YSort/Portals" index="0" instance=ExtResource( 10 )]
-position = Vector2( -620, 265 )
-destination_reference = "res://World/Below/BA1.tscn"
-exit_location = Vector2( 64, 30 )
+[node name="RockLarge" parent="YSort/Rocks" index="2" instance=ExtResource( 11 )]
+position = Vector2( -748, -637 )
+
+[node name="RockLarge2" parent="YSort/Rocks" index="3" instance=ExtResource( 11 )]
+position = Vector2( -749, -613 )
+
+[node name="RockLarge3" parent="YSort/Rocks" index="4" instance=ExtResource( 11 )]
+position = Vector2( -750, -589 )
+
+[node name="RockLarge4" parent="YSort/Rocks" index="5" instance=ExtResource( 11 )]
+position = Vector2( -750, -567 )
+
+[node name="RockLarge5" parent="YSort/Rocks" index="6" instance=ExtResource( 11 )]
+position = Vector2( -750, -543 )
+
+[node name="RockLarge6" parent="YSort/Rocks" index="7" instance=ExtResource( 11 )]
+position = Vector2( -750, -519 )
+
+[node name="RockLarge7" parent="YSort/Rocks" index="8" instance=ExtResource( 11 )]
+position = Vector2( -750, -495 )
+
+[node name="RockLarge8" parent="YSort/Rocks" index="9" instance=ExtResource( 11 )]
+position = Vector2( -750, -471 )
+
+[node name="RockLarge9" parent="YSort/Rocks" index="10" instance=ExtResource( 11 )]
+position = Vector2( -750, -447 )
+
+[node name="RockLarge10" parent="YSort/Rocks" index="11" instance=ExtResource( 11 )]
+position = Vector2( -750, -423 )
+
+[node name="RockLarge11" parent="YSort/Rocks" index="12" instance=ExtResource( 11 )]
+position = Vector2( -750, -399 )
+
+[node name="RockLarge12" parent="YSort/Rocks" index="13" instance=ExtResource( 11 )]
+position = Vector2( -750, -375 )
+
+[node name="RockLarge13" parent="YSort/Rocks" index="14" instance=ExtResource( 11 )]
+position = Vector2( -750, -351 )
+
+[node name="RockLarge14" parent="YSort/Rocks" index="15" instance=ExtResource( 11 )]
+position = Vector2( -750, -327 )
+
+[node name="RockLarge15" parent="YSort/Rocks" index="16" instance=ExtResource( 11 )]
+position = Vector2( -750, -303 )
+
+[node name="RockLarge16" parent="YSort/Rocks" index="17" instance=ExtResource( 11 )]
+position = Vector2( -750, -279 )
+
+[node name="RockLarge17" parent="YSort/Rocks" index="18" instance=ExtResource( 11 )]
+position = Vector2( -750, -255 )
+
+[node name="RockLarge18" parent="YSort/Rocks" index="19" instance=ExtResource( 11 )]
+position = Vector2( -750, -231 )
+
+[node name="RockLarge19" parent="YSort/Rocks" index="20" instance=ExtResource( 11 )]
+position = Vector2( -750, -207 )
+
+[node name="RockLarge20" parent="YSort/Rocks" index="21" instance=ExtResource( 11 )]
+position = Vector2( -750, -183 )
+
+[node name="RockLarge21" parent="YSort/Rocks" index="22" instance=ExtResource( 11 )]
+position = Vector2( -750, -159 )
+
+[node name="RockLarge22" parent="YSort/Rocks" index="23" instance=ExtResource( 11 )]
+position = Vector2( -750, -135 )
+
+[node name="RockLarge23" parent="YSort/Rocks" index="24" instance=ExtResource( 11 )]
+position = Vector2( -750, -111 )
+
+[node name="RockLarge24" parent="YSort/Rocks" index="25" instance=ExtResource( 11 )]
+position = Vector2( -750, -87 )
+
+[node name="RockLarge25" parent="YSort/Rocks" index="26" instance=ExtResource( 11 )]
+position = Vector2( -750, -63 )
+
+[node name="RockLarge26" parent="YSort/Rocks" index="27" instance=ExtResource( 11 )]
+position = Vector2( -750, -39 )
+
+[node name="RockLarge27" parent="YSort/Rocks" index="28" instance=ExtResource( 11 )]
+position = Vector2( -750, -15 )
+
+[node name="RockLarge28" parent="YSort/Rocks" index="29" instance=ExtResource( 11 )]
+position = Vector2( -750, 9 )
+
+[node name="RockLarge29" parent="YSort/Rocks" index="30" instance=ExtResource( 11 )]
+position = Vector2( -750, 33 )
+
+[node name="RockLarge30" parent="YSort/Rocks" index="31" instance=ExtResource( 11 )]
+position = Vector2( -750, 57 )
+
+[node name="RockLarge31" parent="YSort/Rocks" index="32" instance=ExtResource( 11 )]
+position = Vector2( -750, 81 )
+
+[node name="RockLarge32" parent="YSort/Rocks" index="33" instance=ExtResource( 11 )]
+position = Vector2( -750, 105 )
+
+[node name="RockLarge33" parent="YSort/Rocks" index="34" instance=ExtResource( 11 )]
+position = Vector2( -750, 129 )
+
+[node name="RockLarge34" parent="YSort/Rocks" index="35" instance=ExtResource( 11 )]
+position = Vector2( -750, 153 )
+
+[node name="RockLarge35" parent="YSort/Rocks" index="36" instance=ExtResource( 11 )]
+position = Vector2( -750, 177 )
+
+[node name="RockLarge36" parent="YSort/Rocks" index="37" instance=ExtResource( 11 )]
+position = Vector2( -750, 201 )
+
+[node name="RockLarge37" parent="YSort/Rocks" index="38" instance=ExtResource( 11 )]
+position = Vector2( -750, 225 )
+
+[node name="RockLarge38" parent="YSort/Rocks" index="39" instance=ExtResource( 11 )]
+position = Vector2( -750, 249 )
+
+[node name="RockLarge39" parent="YSort/Rocks" index="40" instance=ExtResource( 11 )]
+position = Vector2( -750, 273 )
+
+[node name="RockLarge40" parent="YSort/Rocks" index="41" instance=ExtResource( 11 )]
+position = Vector2( -750, 297 )
+
+[node name="RockLarge41" parent="YSort/Rocks" index="42" instance=ExtResource( 11 )]
+position = Vector2( -750, 321 )
+
+[node name="RockLarge42" parent="YSort/Rocks" index="43" instance=ExtResource( 11 )]
+position = Vector2( -750, 345 )
+
+[node name="RockLarge43" parent="YSort/Rocks" index="44" instance=ExtResource( 11 )]
+position = Vector2( -750, 369 )
+
+[node name="RockLarge44" parent="YSort/Rocks" index="45" instance=ExtResource( 11 )]
+position = Vector2( -750, 393 )
+
+[node name="RockLarge45" parent="YSort/Rocks" index="46" instance=ExtResource( 11 )]
+position = Vector2( -750, 417 )
+
+[node name="RockLarge46" parent="YSort/Rocks" index="47" instance=ExtResource( 11 )]
+position = Vector2( -750, 441 )
+
+[node name="RockLarge47" parent="YSort/Rocks" index="48" instance=ExtResource( 11 )]
+position = Vector2( -750, 465 )
+
+[node name="RockLarge48" parent="YSort/Rocks" index="49" instance=ExtResource( 11 )]
+position = Vector2( -750, 489 )
+
+[node name="RockLarge49" parent="YSort/Rocks" index="50" instance=ExtResource( 11 )]
+position = Vector2( -750, 513 )
+
+[node name="RockLarge50" parent="YSort/Rocks" index="51" instance=ExtResource( 11 )]
+position = Vector2( -750, 537 )
+
+[node name="RockLarge51" parent="YSort/Rocks" index="52" instance=ExtResource( 11 )]
+position = Vector2( -750, 561 )
+
+[node name="RockLarge52" parent="YSort/Rocks" index="53" instance=ExtResource( 11 )]
+position = Vector2( -750, 585 )
+
+[node name="RockLarge53" parent="YSort/Rocks" index="54" instance=ExtResource( 11 )]
+position = Vector2( -750, 609 )
+
+[node name="RockLarge54" parent="YSort/Rocks" index="55" instance=ExtResource( 11 )]
+position = Vector2( 815, -523 )
+
+[node name="RockLarge55" parent="YSort/Rocks" index="56" instance=ExtResource( 11 )]
+position = Vector2( 815, -499 )
+
+[node name="RockLarge56" parent="YSort/Rocks" index="57" instance=ExtResource( 11 )]
+position = Vector2( 815, -475 )
+
+[node name="RockLarge57" parent="YSort/Rocks" index="58" instance=ExtResource( 11 )]
+position = Vector2( 815, -451 )
+
+[node name="RockLarge58" parent="YSort/Rocks" index="59" instance=ExtResource( 11 )]
+position = Vector2( 815, -427 )
+
+[node name="RockLarge59" parent="YSort/Rocks" index="60" instance=ExtResource( 11 )]
+position = Vector2( 815, -403 )
+
+[node name="RockLarge60" parent="YSort/Rocks" index="61" instance=ExtResource( 11 )]
+position = Vector2( 815, -379 )
+
+[node name="RockLarge61" parent="YSort/Rocks" index="62" instance=ExtResource( 11 )]
+position = Vector2( 815, -355 )
+
+[node name="RockLarge62" parent="YSort/Rocks" index="63" instance=ExtResource( 11 )]
+position = Vector2( 815, -331 )
+
+[node name="RockLarge63" parent="YSort/Rocks" index="64" instance=ExtResource( 11 )]
+position = Vector2( 815, -307 )
+
+[node name="RockLarge64" parent="YSort/Rocks" index="65" instance=ExtResource( 11 )]
+position = Vector2( 815, -283 )
+
+[node name="RockLarge65" parent="YSort/Rocks" index="66" instance=ExtResource( 11 )]
+position = Vector2( 815, -259 )
+
+[node name="RockLarge66" parent="YSort/Rocks" index="67" instance=ExtResource( 11 )]
+position = Vector2( 815, -235 )
+
+[node name="RockLarge67" parent="YSort/Rocks" index="68" instance=ExtResource( 11 )]
+position = Vector2( 815, -211 )
+
+[node name="RockLarge68" parent="YSort/Rocks" index="69" instance=ExtResource( 11 )]
+position = Vector2( 815, -187 )
+
+[node name="RockLarge69" parent="YSort/Rocks" index="70" instance=ExtResource( 11 )]
+position = Vector2( 815, -163 )
+
+[node name="RockLarge70" parent="YSort/Rocks" index="71" instance=ExtResource( 11 )]
+position = Vector2( 815, -139 )
+
+[node name="RockLarge71" parent="YSort/Rocks" index="72" instance=ExtResource( 11 )]
+position = Vector2( 815, -115 )
+
+[node name="RockLarge72" parent="YSort/Rocks" index="73" instance=ExtResource( 11 )]
+position = Vector2( 815, -91 )
+
+[node name="RockLarge73" parent="YSort/Rocks" index="74" instance=ExtResource( 11 )]
+position = Vector2( 815, -67 )
+
+[node name="RockLarge74" parent="YSort/Rocks" index="75" instance=ExtResource( 11 )]
+position = Vector2( 815, -43 )
+
+[node name="RockLarge75" parent="YSort/Rocks" index="76" instance=ExtResource( 11 )]
+position = Vector2( 815, -19 )
+
+[node name="RockLarge76" parent="YSort/Rocks" index="77" instance=ExtResource( 11 )]
+position = Vector2( 815, 5 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
@@ -197,7 +604,17 @@ exit_direction = Vector2( 0, -1 )
 position = Vector2( -31.5, -1 )
 shape = SubResource( 1 )
 
+[node name="Hut14" parent="SceneLinks" instance=ExtResource( 4 )]
+position = Vector2( -580, 285 )
+destination_reference = "res://World/Above/Houses/A9/Hut14.tscn"
+exit_location = Vector2( 157, 166 )
+exit_direction = Vector2( 0, -1 )
+
+[node name="CollisionShape2D" parent="SceneLinks/Hut14" index="0"]
+shape = SubResource( 2 )
+
 [editable path="Terrain"]
 [editable path="Camera2D"]
 [editable path="YSort"]
 [editable path="SceneLinks/A8"]
+[editable path="SceneLinks/Hut14"]
