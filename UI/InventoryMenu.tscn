@@ -9,20 +9,20 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="BackpackBackground" type="TextureRect" parent="."]
-margin_left = 48.0
+margin_left = 8.0
 margin_top = 158.0
-margin_right = 132.0
+margin_right = 92.0
 margin_bottom = 262.0
 texture = ExtResource( 1 )
 
 [node name="InventoryDisplay" parent="." instance=ExtResource( 5 )]
-margin_left = 52.0
+margin_left = 12.0
 margin_top = 162.0
-margin_right = 88.0
+margin_right = 48.0
 margin_bottom = 218.0
 
 [node name="InventoryCursor" parent="." instance=ExtResource( 4 )]
-margin_left = 52.0
+margin_left = 12.0
 margin_top = 162.0
-margin_right = 88.0
+margin_right = 48.0
 margin_bottom = 218.0

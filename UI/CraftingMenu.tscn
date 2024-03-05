@@ -18,18 +18,20 @@ margin_bottom = 40.0
 script = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 48.0
+margin_left = 8.0
 margin_top = 158.0
-margin_right = 132.0
+margin_right = 92.0
 margin_bottom = 262.0
 texture = ExtResource( 1 )
 
 [node name="RecipeList" parent="." instance=ExtResource( 2 )]
+margin_left = 14.0
+margin_right = 86.0
 recipe_list = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
 
 [node name="RecipeDisplay" type="Label" parent="."]
-margin_left = 54.0
+margin_left = 14.0
 margin_top = 224.0
-margin_right = 126.0
+margin_right = 86.0
 margin_bottom = 256.0
 custom_fonts/font = SubResource( 1 )

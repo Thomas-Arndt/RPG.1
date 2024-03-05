@@ -1733,11 +1733,9 @@ position = Vector2( -274, 651 )
 
 [node name="RockLarge5" parent="YSort/Rocks" instance=ExtResource( 18 )]
 position = Vector2( 369, 719 )
-show_red = false
 
 [node name="RockLarge6" parent="YSort/Rocks" instance=ExtResource( 18 )]
 position = Vector2( 370, 787 )
-show_red = false
 
 [node name="RockSmall4" parent="YSort/Rocks" instance=ExtResource( 26 )]
 position = Vector2( 387, 769 )
@@ -1753,7 +1751,6 @@ show_red = false
 
 [node name="RockLarge7" parent="YSort/Rocks" instance=ExtResource( 18 )]
 position = Vector2( 374, 749 )
-show_red = false
 
 [node name="RockMedium4" parent="YSort/Rocks" instance=ExtResource( 25 )]
 position = Vector2( 356, 731 )
@@ -1795,11 +1792,9 @@ show_red = false
 
 [node name="RockLarge9" parent="YSort/Rocks" instance=ExtResource( 18 )]
 position = Vector2( 387, 527 )
-show_green = false
 
 [node name="RockLarge10" parent="YSort/Rocks" instance=ExtResource( 18 )]
 position = Vector2( 388, 595 )
-show_green = false
 
 [node name="RockSmall12" parent="YSort/Rocks" instance=ExtResource( 26 )]
 position = Vector2( 405, 577 )
@@ -1815,7 +1810,6 @@ show_green = false
 
 [node name="RockLarge11" parent="YSort/Rocks" instance=ExtResource( 18 )]
 position = Vector2( 392, 557 )
-show_green = false
 
 [node name="RockMedium8" parent="YSort/Rocks" instance=ExtResource( 25 )]
 position = Vector2( 374, 539 )

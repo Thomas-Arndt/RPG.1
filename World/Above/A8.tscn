@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=1]
 [ext_resource path="res://World/AreaUtils/AreaYSort.tscn" type="PackedScene" id=2]
@@ -9,6 +9,17 @@
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Objects/Plants/Bush.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Objects/Signs/InformationBoard.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Utils/Controllers/SpawnController.tscn" type="PackedScene" id=10]
+[ext_resource path="res://CutScenes/Controllers/A7DangerAheadController.gd" type="Script" id=11]
+[ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Enemies/VoidBlob.tscn" type="PackedScene" id=13]
+[ext_resource path="res://CutScenes/Controllers/CutSceneController.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Utils/Overlap/CutSceneTrigger.tscn" type="PackedScene" id=15]
+[ext_resource path="res://World/Objects/Forage/ForageWorldComponent.tscn" type="PackedScene" id=16]
+[ext_resource path="res://World/Objects/Forage/LeatherLeaf.tres" type="Resource" id=17]
+[ext_resource path="res://World/Objects/Forage/Wood.tres" type="Resource" id=18]
+[ext_resource path="res://World/Objects/Forage/WoodWorld.tres" type="Resource" id=19]
+[ext_resource path="res://World/Objects/Forage/RedBerry.tres" type="Resource" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 62, 10 )
@@ -18,6 +29,9 @@ extents = Vector2( 78, 10 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 10, 96 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 131, 10 )
 
 [node name="A8" type="Node2D" groups=["World"]]
 script = ExtResource( 1 )
@@ -49,6 +63,76 @@ position = Vector2( 927, 546 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player" index="10"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="SpawnController" parent="YSort/MobileEnemies" index="0" instance=ExtResource( 10 )]
+position = Vector2( -810, -361 )
+spawn_unit = ExtResource( 12 )
+
+[node name="SpawnController2" parent="YSort/MobileEnemies" index="1" instance=ExtResource( 10 )]
+position = Vector2( -697, -238 )
+spawn_unit = ExtResource( 12 )
+
+[node name="SpawnController3" parent="YSort/MobileEnemies" index="2" instance=ExtResource( 10 )]
+position = Vector2( -823, -190 )
+spawn_unit = ExtResource( 12 )
+
+[node name="SpawnController4" parent="YSort/MobileEnemies" index="3" instance=ExtResource( 10 )]
+position = Vector2( -818, -21 )
+spawn_unit = ExtResource( 12 )
+spawn_quantity = 2
+
+[node name="SpawnController5" parent="YSort/MobileEnemies" index="4" instance=ExtResource( 10 )]
+position = Vector2( -784, 404 )
+spawn_unit = ExtResource( 12 )
+spawn_quantity = 2
+
+[node name="SpawnController6" parent="YSort/MobileEnemies" index="5" instance=ExtResource( 10 )]
+position = Vector2( -636, 303 )
+spawn_unit = ExtResource( 12 )
+spawn_quantity = 2
+
+[node name="SpawnController7" parent="YSort/MobileEnemies" index="6" instance=ExtResource( 10 )]
+position = Vector2( -330, -21 )
+spawn_unit = ExtResource( 12 )
+
+[node name="SpawnController8" parent="YSort/MobileEnemies" index="7" instance=ExtResource( 10 )]
+position = Vector2( -24, 137 )
+spawn_unit = ExtResource( 12 )
+
+[node name="SpawnController9" parent="YSort/MobileEnemies" index="8" instance=ExtResource( 10 )]
+position = Vector2( -86, 411 )
+spawn_unit = ExtResource( 13 )
+spawn_quantity = 2
+
+[node name="SpawnController10" parent="YSort/MobileEnemies" index="9" instance=ExtResource( 10 )]
+position = Vector2( -587, 31 )
+spawn_unit = ExtResource( 13 )
+
+[node name="SpawnController11" parent="YSort/MobileEnemies" index="10" instance=ExtResource( 10 )]
+position = Vector2( -750, -355 )
+spawn_unit = ExtResource( 13 )
+
+[node name="SpawnController12" parent="YSort/MobileEnemies" index="11" instance=ExtResource( 10 )]
+position = Vector2( -751, -195 )
+spawn_unit = ExtResource( 13 )
+
+[node name="SpawnController13" parent="YSort/MobileEnemies" index="12" instance=ExtResource( 10 )]
+position = Vector2( -748, 23 )
+spawn_unit = ExtResource( 13 )
+
+[node name="SpawnController14" parent="YSort/MobileEnemies" index="13" instance=ExtResource( 10 )]
+position = Vector2( -685, 400 )
+spawn_unit = ExtResource( 13 )
+
+[node name="SpawnController15" parent="YSort/MobileEnemies" index="14" instance=ExtResource( 10 )]
+position = Vector2( -317, 446 )
+spawn_unit = ExtResource( 12 )
+spawn_quantity = 2
+
+[node name="SpawnController16" parent="YSort/MobileEnemies" index="15" instance=ExtResource( 10 )]
+position = Vector2( -812, 203 )
+spawn_unit = ExtResource( 12 )
+spawn_quantity = 2
 
 [node name="InformationBoard" parent="YSort/Signs" index="0" instance=ExtResource( 9 )]
 position = Vector2( 123, 339 )
@@ -353,10 +437,13 @@ position = Vector2( -262, 555 )
 [node name="Bush14" parent="YSort/Bushes" index="14" instance=ExtResource( 8 )]
 position = Vector2( -343, 542 )
 
-[node name="Bush15" parent="YSort/Bushes" index="15" instance=ExtResource( 8 )]
+[node name="Bush18" parent="YSort/Bushes" index="15" instance=ExtResource( 8 )]
+position = Vector2( -61, 78 )
+
+[node name="Bush15" parent="YSort/Bushes" index="16" instance=ExtResource( 8 )]
 position = Vector2( -473, 495 )
 
-[node name="Bush16" parent="YSort/Bushes" index="16" instance=ExtResource( 8 )]
+[node name="Bush16" parent="YSort/Bushes" index="17" instance=ExtResource( 8 )]
 position = Vector2( -561, 533 )
 
 [node name="Shrub" parent="YSort/Shrubs" index="0" instance=ExtResource( 7 )]
@@ -371,74 +458,129 @@ position = Vector2( -520, 498 )
 [node name="Shrub4" parent="YSort/Shrubs" index="3" instance=ExtResource( 7 )]
 position = Vector2( -385, 537 )
 
-[node name="Shrub5" parent="YSort/Shrubs" index="4" instance=ExtResource( 7 )]
+[node name="Shrub28" parent="YSort/Shrubs" index="4" instance=ExtResource( 7 )]
+position = Vector2( -77, 105 )
+
+[node name="Shrub29" parent="YSort/Shrubs" index="5" instance=ExtResource( 7 )]
+position = Vector2( -275, -13 )
+
+[node name="Shrub30" parent="YSort/Shrubs" index="6" instance=ExtResource( 7 )]
+position = Vector2( -369, -48 )
+
+[node name="Shrub36" parent="YSort/Shrubs" index="7" instance=ExtResource( 7 )]
+position = Vector2( -548, -265 )
+
+[node name="Shrub37" parent="YSort/Shrubs" index="8" instance=ExtResource( 7 )]
+position = Vector2( -454, -289 )
+
+[node name="Shrub31" parent="YSort/Shrubs" index="9" instance=ExtResource( 7 )]
+position = Vector2( -355, 29 )
+
+[node name="Shrub32" parent="YSort/Shrubs" index="10" instance=ExtResource( 7 )]
+position = Vector2( -208, 167 )
+
+[node name="Shrub33" parent="YSort/Shrubs" index="11" instance=ExtResource( 7 )]
+position = Vector2( 39, 175 )
+
+[node name="Shrub34" parent="YSort/Shrubs" index="12" instance=ExtResource( 7 )]
+position = Vector2( -87, 483 )
+
+[node name="Shrub35" parent="YSort/Shrubs" index="13" instance=ExtResource( 7 )]
+position = Vector2( -349, 449 )
+
+[node name="Shrub5" parent="YSort/Shrubs" index="14" instance=ExtResource( 7 )]
 position = Vector2( -317, 533 )
 
-[node name="Shrub6" parent="YSort/Shrubs" index="5" instance=ExtResource( 7 )]
+[node name="Shrub6" parent="YSort/Shrubs" index="15" instance=ExtResource( 7 )]
 position = Vector2( -302, 552 )
 
-[node name="Shrub7" parent="YSort/Shrubs" index="6" instance=ExtResource( 7 )]
+[node name="Shrub7" parent="YSort/Shrubs" index="16" instance=ExtResource( 7 )]
 position = Vector2( -111, 561 )
 
-[node name="Shrub8" parent="YSort/Shrubs" index="7" instance=ExtResource( 7 )]
+[node name="Shrub8" parent="YSort/Shrubs" index="17" instance=ExtResource( 7 )]
 position = Vector2( -80, 549 )
 
-[node name="Shrub9" parent="YSort/Shrubs" index="8" instance=ExtResource( 7 )]
+[node name="Shrub9" parent="YSort/Shrubs" index="18" instance=ExtResource( 7 )]
 position = Vector2( 46, 536 )
 
-[node name="Shrub10" parent="YSort/Shrubs" index="9" instance=ExtResource( 7 )]
+[node name="Shrub10" parent="YSort/Shrubs" index="19" instance=ExtResource( 7 )]
 position = Vector2( 337, 564 )
 
-[node name="Shrub11" parent="YSort/Shrubs" index="10" instance=ExtResource( 7 )]
+[node name="Shrub11" parent="YSort/Shrubs" index="20" instance=ExtResource( 7 )]
 position = Vector2( 431, 560 )
 
-[node name="Shrub12" parent="YSort/Shrubs" index="11" instance=ExtResource( 7 )]
+[node name="Shrub12" parent="YSort/Shrubs" index="21" instance=ExtResource( 7 )]
 position = Vector2( 594, 561 )
 
-[node name="Shrub13" parent="YSort/Shrubs" index="12" instance=ExtResource( 7 )]
+[node name="Shrub13" parent="YSort/Shrubs" index="22" instance=ExtResource( 7 )]
 position = Vector2( 728, 552 )
 
-[node name="Shrub14" parent="YSort/Shrubs" index="13" instance=ExtResource( 7 )]
+[node name="Shrub14" parent="YSort/Shrubs" index="23" instance=ExtResource( 7 )]
 position = Vector2( 721, 564 )
 
-[node name="Shrub15" parent="YSort/Shrubs" index="14" instance=ExtResource( 7 )]
+[node name="Shrub15" parent="YSort/Shrubs" index="24" instance=ExtResource( 7 )]
 position = Vector2( 832, 544 )
 
-[node name="Shrub16" parent="YSort/Shrubs" index="15" instance=ExtResource( 7 )]
+[node name="Shrub16" parent="YSort/Shrubs" index="25" instance=ExtResource( 7 )]
 position = Vector2( 891, 536 )
 
-[node name="Shrub17" parent="YSort/Shrubs" index="16" instance=ExtResource( 7 )]
+[node name="Shrub17" parent="YSort/Shrubs" index="26" instance=ExtResource( 7 )]
 position = Vector2( 924, 527 )
 
-[node name="Shrub18" parent="YSort/Shrubs" index="17" instance=ExtResource( 7 )]
+[node name="Shrub18" parent="YSort/Shrubs" index="27" instance=ExtResource( 7 )]
 position = Vector2( 922, 461 )
 
-[node name="Shrub19" parent="YSort/Shrubs" index="18" instance=ExtResource( 7 )]
+[node name="Shrub19" parent="YSort/Shrubs" index="28" instance=ExtResource( 7 )]
 position = Vector2( 952, 413 )
 
-[node name="Shrub20" parent="YSort/Shrubs" index="19" instance=ExtResource( 7 )]
+[node name="Shrub20" parent="YSort/Shrubs" index="29" instance=ExtResource( 7 )]
 position = Vector2( 932, 392 )
 
-[node name="Shrub21" parent="YSort/Shrubs" index="20" instance=ExtResource( 7 )]
+[node name="Shrub21" parent="YSort/Shrubs" index="30" instance=ExtResource( 7 )]
 position = Vector2( 918, 343 )
 
-[node name="Shrub22" parent="YSort/Shrubs" index="21" instance=ExtResource( 7 )]
+[node name="Shrub22" parent="YSort/Shrubs" index="31" instance=ExtResource( 7 )]
 position = Vector2( 933, 327 )
 
-[node name="Shrub23" parent="YSort/Shrubs" index="22" instance=ExtResource( 7 )]
+[node name="Shrub23" parent="YSort/Shrubs" index="32" instance=ExtResource( 7 )]
 position = Vector2( 952, 205 )
 
-[node name="Shrub24" parent="YSort/Shrubs" index="23" instance=ExtResource( 7 )]
+[node name="Shrub24" parent="YSort/Shrubs" index="33" instance=ExtResource( 7 )]
 position = Vector2( 940, 188 )
 
-[node name="Shrub27" parent="YSort/Shrubs" index="24" instance=ExtResource( 7 )]
+[node name="Shrub27" parent="YSort/Shrubs" index="34" instance=ExtResource( 7 )]
 position = Vector2( 938, -38 )
 
-[node name="Shrub25" parent="YSort/Shrubs" index="25" instance=ExtResource( 7 )]
+[node name="Shrub25" parent="YSort/Shrubs" index="35" instance=ExtResource( 7 )]
 position = Vector2( 964, 186 )
 
-[node name="Shrub26" parent="YSort/Shrubs" index="26" instance=ExtResource( 7 )]
+[node name="Shrub26" parent="YSort/Shrubs" index="36" instance=ExtResource( 7 )]
 position = Vector2( 951, 161 )
+
+[node name="ForageWorldComponent" parent="YSort/Forage" index="0" instance=ExtResource( 16 )]
+position = Vector2( -323, -160 )
+world_item = ExtResource( 17 )
+forage_item = ExtResource( 17 )
+
+[node name="ForageWorldComponent2" parent="YSort/Forage" index="1" instance=ExtResource( 16 )]
+position = Vector2( -340, 178 )
+world_item = ExtResource( 19 )
+forage_item = ExtResource( 18 )
+
+[node name="ForageWorldComponent3" parent="YSort/Forage" index="2" instance=ExtResource( 16 )]
+position = Vector2( -54, 102 )
+world_item = ExtResource( 20 )
+forage_item = ExtResource( 20 )
+
+[node name="ForageWorldComponent4" parent="YSort/Forage" index="3" instance=ExtResource( 16 )]
+position = Vector2( -114, 536 )
+world_item = ExtResource( 20 )
+forage_item = ExtResource( 20 )
+
+[node name="ForageWorldComponent5" parent="YSort/Forage" index="4" instance=ExtResource( 16 )]
+position = Vector2( -904, 155 )
+world_item = ExtResource( 19 )
+forage_item = ExtResource( 18 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
@@ -471,6 +613,21 @@ exit_direction = Vector2( 1, 0 )
 position = Vector2( 0, -3 )
 shape = SubResource( 3 )
 
+[node name="CutSceneTriggers" type="Node2D" parent="."]
+
+[node name="A7DangerAhead" parent="CutSceneTriggers" instance=ExtResource( 15 )]
+position = Vector2( -752, -449 )
+active = true
+
+[node name="CollisionShape2D" parent="CutSceneTriggers/A7DangerAhead/TriggerArea" index="0"]
+position = Vector2( 23, 0 )
+shape = SubResource( 4 )
+
+[node name="A7DangerAheadController" parent="CutSceneTriggers/A7DangerAhead/ActorControllers" index="0" instance=ExtResource( 14 )]
+position = Vector2( 10.3156, 9.36829 )
+script = ExtResource( 11 )
+actor_path = NodePath("../../../../YSort/Player")
+
 [editable path="Terrain"]
 [editable path="Camera2D"]
 [editable path="YSort"]
@@ -479,3 +636,4 @@ shape = SubResource( 3 )
 [editable path="SceneLinks/A7"]
 [editable path="SceneLinks/A9"]
 [editable path="SceneLinks/A10"]
+[editable path="CutSceneTriggers/A7DangerAhead"]

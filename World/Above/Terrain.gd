@@ -12,6 +12,10 @@ func match_dimension(dimension):
 		WorldStats.Dimensions.Green:
 			green_dimension.visible = true
 			red_dimension.visible = false
+			green_dimension.set_collision_layer_bit(0,true)
+			red_dimension.set_collision_layer_bit(0,false)
 		WorldStats.Dimensions.Red:
 			green_dimension.visible = false
 			red_dimension.visible = true
+			green_dimension.set_collision_layer_bit(0,false)
+			red_dimension.set_collision_layer_bit(0,true)
