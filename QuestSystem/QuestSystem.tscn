@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://QuestSystem/QuestSystem.gd" type="Script" id=1]
 [ext_resource path="res://QuestSystem/QuestContainer.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://QuestSystem/Quests/rescue-people-trapped-in-cave-ca.tscn" type="PackedScene" id=11]
 [ext_resource path="res://QuestSystem/Quests/rescue-the-miners-in-cave-ca.tscn" type="PackedScene" id=12]
 [ext_resource path="res://QuestSystem/Quests/0060-go-meet-dr.tscn" type="PackedScene" id=13]
+[ext_resource path="res://QuestSystem/Quests/0070-check-out-the-cellars.tscn" type="PackedScene" id=14]
 
 [node name="QuestSystem" type="Node"]
 script = ExtResource( 1 )
@@ -39,6 +40,8 @@ script = ExtResource( 2 )
 [node name="rescue-the-miners-in-cave-ca" parent="Available" instance=ExtResource( 12 )]
 
 [node name="0060-go-meet-dr" parent="Available" instance=ExtResource( 13 )]
+
+[node name="0070-check-out-the-cellars" parent="Available" instance=ExtResource( 14 )]
 
 [node name="Active" type="Node" parent="."]
 script = ExtResource( 2 )

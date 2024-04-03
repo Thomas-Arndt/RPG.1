@@ -14,11 +14,11 @@ script = ExtResource( 6 )
 
 [node name="GoldDisplay" parent="." instance=ExtResource( 5 )]
 
+[node name="Backpack" parent="." instance=ExtResource( 7 )]
+
 [node name="UITextBox" parent="." instance=ExtResource( 1 )]
 
 [node name="HealthBar" parent="." instance=ExtResource( 2 )]
-
-[node name="Backpack" parent="." instance=ExtResource( 7 )]
 
 [node name="MainMenu" parent="." instance=ExtResource( 8 )]
 

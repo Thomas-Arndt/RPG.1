@@ -12,6 +12,17 @@ func _ready():
 
 func modify_property(transmitted_code):
 	if (transmitted_code == signal_code):
+		apply_modification()
+		
+func apply_modification():
 		triggered = true
 		var parent = get_parent()
 		parent[property] = value_array[0]
+
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"path" : get_path(),
+		"triggered" : triggered,
+	}
+	return save_dict

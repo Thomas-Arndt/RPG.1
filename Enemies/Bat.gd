@@ -8,6 +8,7 @@ export var MAX_SPEED = 50
 export var FRICTION = 200
 export var WANDER_BUFFER = 4
 export (bool) var is_red = false
+export (bool) var state_machine_paused = false
 
 enum {
 	IDLE,
@@ -40,38 +41,39 @@ func _ready():
 	state = pick_random_state([IDLE, WANDER])
 	
 func _physics_process(delta):
-	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
-	knockback = move_and_slide(knockback)
-	
-	match state:
-		IDLE:
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			seek_player()
-			
-			if wander_controller.get_time_left() == 0:
-				update_wander()
+	if !state_machine_paused:
+		knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
+		knockback = move_and_slide(knockback)
 		
-		WANDER:
-			seek_player()
-			
-			if wander_controller.get_time_left() == 0:
-				update_wander()
+		match state:
+			IDLE:
+				velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+				seek_player()
 				
-			accelerate_towards_point(wander_controller.target_position, delta)
+				if wander_controller.get_time_left() == 0:
+					update_wander()
 			
-			if global_position.distance_to(wander_controller.target_position) <= WANDER_BUFFER:
-				update_wander()
-		
-		CHASE:
-			var player = player_detection_zone.player
-			if player != null:
-				accelerate_towards_point(player.global_position, delta)
-			else:
-				state = IDLE
-		
-	if soft_collisions.is_colliding():
-		velocity += soft_collisions.get_push_vector() * delta * 400
-	velocity = move_and_slide(velocity)
+			WANDER:
+				seek_player()
+				
+				if wander_controller.get_time_left() == 0:
+					update_wander()
+					
+				accelerate_towards_point(wander_controller.target_position, delta)
+				
+				if global_position.distance_to(wander_controller.target_position) <= WANDER_BUFFER:
+					update_wander()
+			
+			CHASE:
+				var player = player_detection_zone.player
+				if player != null:
+					accelerate_towards_point(player.global_position, delta)
+				else:
+					state = IDLE
+			
+		if soft_collisions.is_colliding():
+			velocity += soft_collisions.get_push_vector() * delta * 400
+		velocity = move_and_slide(velocity)
 			
 func pick_random_state(state_list):
 	state_list.shuffle()

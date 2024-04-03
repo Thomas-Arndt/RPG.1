@@ -6,9 +6,10 @@ export var MAX_SPEED = 100
 export var FRICTION = 200
 export var ATK_RADIUS = 40
 export var spawn_with_cutscene = false
+export var state_machine_paused = false
 export (PackedScene) var VoidMote = null
 
-export (bool) var is_red = true
+export (bool) var is_red = false
 
 enum {
 	IDLE,
@@ -21,7 +22,6 @@ var death_animation_red = preload("res://Effects/EnemyEffects/VoidBlob/RedVoidBl
 var death_animation_green = preload("res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn")
 var velocity: Vector2 = Vector2.ZERO
 var state = IDLE
-var state_machine_paused = false
 
 onready var anim_player = $AnimationPlayer
 onready var blink_anim_player = $BlinkAnimationPlayer
@@ -116,10 +116,11 @@ func _on_HurtBox_area_entered(area):
 	hurt_box.start_invincible(0.6)
 
 func void_circle():
-	var circle = void_mote_barrage.instance()
-	circle.global_position = global_position
-	get_parent().add_child(circle)
-	circle.circle(7)
+	if !state_machine_paused:
+		var circle = void_mote_barrage.instance()
+		circle.global_position = global_position
+		get_parent().add_child(circle)
+		circle.circle(7)
 	
 func _on_explosion_animation_finished():
 	wander_controller.start_timer(3)

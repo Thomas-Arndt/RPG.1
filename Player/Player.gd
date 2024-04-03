@@ -31,6 +31,7 @@ onready var blink_anim_player = $BlinkAnimationPlayer
 onready var detection_zone = $DetectionZone/DetectionZone
 onready var push_detection_zone = $PushDetectionZone/PushDetectionZone
 onready var weapon_sprite = $WeaponSprite
+onready var sprite = $Sprite
 
 func _ready():
 	anim_tree.active = true

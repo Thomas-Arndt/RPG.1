@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://Player/Capey Mac Manbun.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/Shadows/MediumShadow.png" type="Texture" id=2]
@@ -94,6 +94,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -18 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -494,6 +506,23 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+
+[sub_resource type="Animation" id=96]
+resource_name = "hop"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -9 ), Vector2( 0, -18 ), Vector2( 0, -9 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -1355,7 +1384,7 @@ offset = Vector2( 0, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 53 )
-position = Vector2( 0, -9 )
+position = Vector2( 0, -18 )
 texture = ExtResource( 1 )
 hframes = 96
 frame = 18
@@ -1380,6 +1409,7 @@ anims/attack_down = SubResource( 39 )
 anims/attack_left = SubResource( 40 )
 anims/attack_right = SubResource( 41 )
 anims/attack_up = SubResource( 42 )
+anims/hop = SubResource( 96 )
 anims/idle_down = SubResource( 5 )
 anims/idle_left = SubResource( 6 )
 anims/idle_right = SubResource( 7 )

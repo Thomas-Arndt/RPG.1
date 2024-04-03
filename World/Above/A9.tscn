@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://World/AreaUtils/AreaYSort.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Above/Terrain.tscn" type="PackedScene" id=2]
@@ -9,15 +9,130 @@
 [ext_resource path="res://World/Objects/Plants/Bush.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Objects/Rocks/RockSmall.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/VoidBlob.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Objects/Rocks/RockLarge.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Objects/Buildings/HutFloor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://World/Objects/Buildings/Hut.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/Objects/Buildings/HutDoor.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Utils/Controllers/SpawnController.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Utils/Overlap/CutSceneTrigger.tscn" type="PackedScene" id=17]
+[ext_resource path="res://CutScenes/Controllers/CutSceneController.tscn" type="PackedScene" id=18]
+[ext_resource path="res://CutScenes/Controllers/A9PlayerCutScene1Controller.gd" type="Script" id=19]
+[ext_resource path="res://Enemies/Bosses/VoidLord.tscn" type="PackedScene" id=20]
+[ext_resource path="res://CutScenes/Controllers/A9VoidLordCutScene1Controller.gd" type="Script" id=21]
+[ext_resource path="res://CutScenes/Controllers/A9PortalCutScene1Controller.gd" type="Script" id=22]
+[ext_resource path="res://World/Portals/Portal.tscn" type="PackedScene" id=23]
+[ext_resource path="res://CutScenes/Controllers/A9BatsCutScene1Controller.gd" type="Script" id=24]
+
+[sub_resource type="Shader" id=25]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+
+	void fragment() {
+		vec4 previous_color = texture(TEXTURE, UV);
+		vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
+		vec4 new_color = previous_color;
+		if (active){
+			new_color = white_color;
+		}
+		COLOR = new_color;
+	}"
+
+[sub_resource type="ShaderMaterial" id=32]
+resource_local_to_scene = true
+shader = SubResource( 25 )
+shader_param/active = true
+
+[sub_resource type="Shader" id=27]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+
+	void fragment() {
+		vec4 previous_color = texture(TEXTURE, UV);
+		vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
+		vec4 new_color = previous_color;
+		if (active){
+			new_color = white_color;
+		}
+		COLOR = new_color;
+	}"
+
+[sub_resource type="ShaderMaterial" id=33]
+resource_local_to_scene = true
+shader = SubResource( 27 )
+shader_param/active = true
+
+[sub_resource type="Shader" id=29]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+
+	void fragment() {
+		vec4 previous_color = texture(TEXTURE, UV);
+		vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
+		vec4 new_color = previous_color;
+		if (active){
+			new_color = white_color;
+		}
+		COLOR = new_color;
+	}"
+
+[sub_resource type="ShaderMaterial" id=34]
+resource_local_to_scene = true
+shader = SubResource( 29 )
+shader_param/active = true
+
+[sub_resource type="Shader" id=31]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+
+	void fragment() {
+		vec4 previous_color = texture(TEXTURE, UV);
+		vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
+		vec4 new_color = previous_color;
+		if (active){
+			new_color = white_color;
+		}
+		COLOR = new_color;
+	}"
+
+[sub_resource type="ShaderMaterial" id=35]
+resource_local_to_scene = true
+shader = SubResource( 31 )
+shader_param/active = true
+
+[sub_resource type="ShaderMaterial" id=36]
+resource_local_to_scene = true
+shader = SubResource( 25 )
+shader_param/active = true
+
+[sub_resource type="ShaderMaterial" id=37]
+resource_local_to_scene = true
+shader = SubResource( 27 )
+shader_param/active = true
+
+[sub_resource type="ShaderMaterial" id=38]
+resource_local_to_scene = true
+shader = SubResource( 29 )
+shader_param/active = true
+
+[sub_resource type="ShaderMaterial" id=39]
+resource_local_to_scene = true
+shader = SubResource( 31 )
+shader_param/active = true
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80.5, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 39, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 104, 10 )
 
 [node name="A9" type="Node2D" groups=["World"]]
 script = ExtResource( 5 )
@@ -46,6 +161,212 @@ position = Vector2( 816, 825 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player" index="10"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="SpawnController" parent="YSort/MobileEnemies" index="0" instance=ExtResource( 16 )]
+position = Vector2( 481, -226 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController2" parent="YSort/MobileEnemies" index="1" instance=ExtResource( 16 )]
+position = Vector2( 317, -248 )
+spawn_unit = ExtResource( 15 )
+spawn_quantity = 2
+
+[node name="SpawnController3" parent="YSort/MobileEnemies" index="2" instance=ExtResource( 16 )]
+position = Vector2( 155, -226 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController4" parent="YSort/MobileEnemies" index="3" instance=ExtResource( 16 )]
+position = Vector2( 1, -254 )
+spawn_unit = ExtResource( 15 )
+spawn_quantity = 2
+
+[node name="SpawnController5" parent="YSort/MobileEnemies" index="4" instance=ExtResource( 16 )]
+position = Vector2( 1, -65 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController6" parent="YSort/MobileEnemies" index="5" instance=ExtResource( 16 )]
+position = Vector2( 155, -23 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController7" parent="YSort/MobileEnemies" index="6" instance=ExtResource( 16 )]
+position = Vector2( 320, -60 )
+spawn_unit = ExtResource( 15 )
+spawn_quantity = 2
+
+[node name="SpawnController8" parent="YSort/MobileEnemies" index="7" instance=ExtResource( 16 )]
+position = Vector2( 486, -22 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController9" parent="YSort/MobileEnemies" index="8" instance=ExtResource( 16 )]
+position = Vector2( -1, 154 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController10" parent="YSort/MobileEnemies" index="9" instance=ExtResource( 16 )]
+position = Vector2( 155, 209 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController11" parent="YSort/MobileEnemies" index="10" instance=ExtResource( 16 )]
+position = Vector2( 298, 159 )
+spawn_unit = ExtResource( 15 )
+spawn_quantity = 2
+
+[node name="SpawnController12" parent="YSort/MobileEnemies" index="11" instance=ExtResource( 16 )]
+position = Vector2( 39, 376 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController13" parent="YSort/MobileEnemies" index="12" instance=ExtResource( 16 )]
+position = Vector2( 218, 368 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController14" parent="YSort/MobileEnemies" index="13" instance=ExtResource( 16 )]
+position = Vector2( -587, 374 )
+spawn_unit = ExtResource( 15 )
+spawn_quantity = 2
+
+[node name="SpawnController15" parent="YSort/MobileEnemies" index="14" instance=ExtResource( 16 )]
+position = Vector2( -392, 374 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController16" parent="YSort/MobileEnemies" index="15" instance=ExtResource( 16 )]
+position = Vector2( -196, 375 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController17" parent="YSort/MobileEnemies" index="16" instance=ExtResource( 16 )]
+position = Vector2( -198, 178 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController18" parent="YSort/MobileEnemies" index="17" instance=ExtResource( 16 )]
+position = Vector2( -355, 182 )
+spawn_unit = ExtResource( 15 )
+spawn_quantity = 2
+
+[node name="SpawnController19" parent="YSort/MobileEnemies" index="18" instance=ExtResource( 16 )]
+position = Vector2( -574, 184 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController20" parent="YSort/MobileEnemies" index="19" instance=ExtResource( 16 )]
+position = Vector2( 244, 512 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController21" parent="YSort/MobileEnemies" index="20" instance=ExtResource( 16 )]
+position = Vector2( -11, 596 )
+spawn_unit = ExtResource( 15 )
+spawn_quantity = 2
+
+[node name="SpawnController22" parent="YSort/MobileEnemies" index="21" instance=ExtResource( 16 )]
+position = Vector2( -308, 470 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController23" parent="YSort/MobileEnemies" index="22" instance=ExtResource( 16 )]
+position = Vector2( -574, 557 )
+spawn_unit = ExtResource( 15 )
+spawn_quantity = 2
+
+[node name="SpawnController24" parent="YSort/MobileEnemies" index="23" instance=ExtResource( 16 )]
+position = Vector2( 152, -606 )
+spawn_unit = ExtResource( 15 )
+spawn_quantity = 2
+
+[node name="SpawnController25" parent="YSort/MobileEnemies" index="24" instance=ExtResource( 16 )]
+position = Vector2( 13, -707 )
+spawn_unit = ExtResource( 15 )
+
+[node name="SpawnController26" parent="YSort/MobileEnemies" index="25" instance=ExtResource( 16 )]
+position = Vector2( -374, -615 )
+spawn_unit = ExtResource( 15 )
+spawn_quantity = 2
+
+[node name="SpawnController27" parent="YSort/MobileEnemies" index="26" instance=ExtResource( 16 )]
+position = Vector2( -113, -515 )
+spawn_unit = ExtResource( 10 )
+
+[node name="SpawnController28" parent="YSort/MobileEnemies" index="27" instance=ExtResource( 16 )]
+position = Vector2( -566, -474 )
+spawn_unit = ExtResource( 10 )
+
+[node name="SpawnController29" parent="YSort/MobileEnemies" index="28" instance=ExtResource( 16 )]
+position = Vector2( -662, -629 )
+spawn_unit = ExtResource( 10 )
+
+[node name="SpawnController30" parent="YSort/MobileEnemies" index="29" instance=ExtResource( 16 )]
+position = Vector2( -459, -20 )
+spawn_unit = ExtResource( 10 )
+spawn_quantity = 2
+
+[node name="SpawnController31" parent="YSort/MobileEnemies" index="30" instance=ExtResource( 16 )]
+position = Vector2( -91, -230 )
+spawn_unit = ExtResource( 10 )
+
+[node name="SpawnController32" parent="YSort/MobileEnemies" index="31" instance=ExtResource( 16 )]
+position = Vector2( -110, -25 )
+spawn_unit = ExtResource( 10 )
+spawn_quantity = 2
+
+[node name="SpawnController33" parent="YSort/MobileEnemies" index="32" instance=ExtResource( 16 )]
+position = Vector2( -97, 189 )
+spawn_unit = ExtResource( 10 )
+
+[node name="SpawnController34" parent="YSort/MobileEnemies" index="33" instance=ExtResource( 16 )]
+position = Vector2( -95, 371 )
+spawn_unit = ExtResource( 10 )
+
+[node name="SpawnController35" parent="YSort/MobileEnemies" index="34" instance=ExtResource( 16 )]
+position = Vector2( 66, 479 )
+spawn_unit = ExtResource( 10 )
+
+[node name="SpawnController36" parent="YSort/MobileEnemies" index="35" instance=ExtResource( 16 )]
+position = Vector2( -165, 522 )
+spawn_unit = ExtResource( 10 )
+spawn_quantity = 2
+
+[node name="SpawnController37" parent="YSort/MobileEnemies" index="36" instance=ExtResource( 16 )]
+position = Vector2( -393, 615 )
+spawn_unit = ExtResource( 10 )
+
+[node name="SpawnController38" parent="YSort/MobileEnemies" index="37" instance=ExtResource( 16 )]
+position = Vector2( -496, 459 )
+spawn_unit = ExtResource( 10 )
+
+[node name="Bat" parent="YSort/NPCs" index="0" instance=ExtResource( 15 )]
+position = Vector2( 503, -598 )
+state_machine_paused = true
+
+[node name="RedFullSprite" parent="YSort/NPCs/Bat" index="0"]
+material = SubResource( 32 )
+
+[node name="RedHalfSprite" parent="YSort/NPCs/Bat" index="1"]
+material = SubResource( 33 )
+
+[node name="GreenFullSprite" parent="YSort/NPCs/Bat" index="2"]
+material = SubResource( 34 )
+
+[node name="GreenHalfSprite" parent="YSort/NPCs/Bat" index="3"]
+material = SubResource( 35 )
+
+[node name="WanderController" parent="YSort/NPCs/Bat" index="11"]
+wander_range = 10
+
+[node name="Bat2" parent="YSort/NPCs" index="1" instance=ExtResource( 15 )]
+position = Vector2( 619, -600 )
+state_machine_paused = true
+
+[node name="RedFullSprite" parent="YSort/NPCs/Bat2" index="0"]
+material = SubResource( 36 )
+
+[node name="RedHalfSprite" parent="YSort/NPCs/Bat2" index="1"]
+material = SubResource( 37 )
+
+[node name="GreenFullSprite" parent="YSort/NPCs/Bat2" index="2"]
+material = SubResource( 38 )
+
+[node name="GreenHalfSprite" parent="YSort/NPCs/Bat2" index="3"]
+material = SubResource( 39 )
+
+[node name="WanderController" parent="YSort/NPCs/Bat2" index="11"]
+wander_range = 10
+
+[node name="VoidLordPosition" type="Position2D" parent="YSort/NPCs" index="2"]
+position = Vector2( 561, -595 )
 
 [node name="Hut" parent="YSort/Buildings" index="0" instance=ExtResource( 13 )]
 position = Vector2( 478, -273 )
@@ -222,6 +543,9 @@ scale = Vector2( 3, 3 )
 [node name="HutFloor20" parent="YSort/Buildings" index="57" instance=ExtResource( 12 )]
 position = Vector2( -445, -281 )
 scale = Vector2( 3, 3 )
+
+[node name="HutDoor14" parent="YSort/Buildings" index="58" instance=ExtResource( 14 )]
+position = Vector2( -580, 313 )
 
 [node name="Tree" parent="YSort/Trees" index="0" instance=ExtResource( 6 )]
 position = Vector2( 668, -776 )
@@ -826,19 +1150,53 @@ exit_direction = Vector2( 0, -1 )
 position = Vector2( -31.5, -1 )
 shape = SubResource( 1 )
 
-[node name="Hut14" parent="SceneLinks" instance=ExtResource( 4 )]
-position = Vector2( -580, 285 )
-destination_reference = "res://World/Above/Houses/A9/Hut14.tscn"
+[node name="Palace" parent="SceneLinks" instance=ExtResource( 4 )]
+position = Vector2( -445, -240 )
+destination_reference = "res://World/Above/Houses/A9/Palace.tscn"
 exit_location = Vector2( 157, 166 )
 exit_direction = Vector2( 0, -1 )
 
-[node name="CollisionShape2D" parent="SceneLinks/Hut14" index="0"]
+[node name="CollisionShape2D" parent="SceneLinks/Palace" index="0"]
+position = Vector2( 0, 17 )
 shape = SubResource( 2 )
 
 [node name="CutSceneTriggers" type="Node2D" parent="."]
 
+[node name="CutSceneTrigger1" parent="CutSceneTriggers" instance=ExtResource( 17 )]
+position = Vector2( 565, -648 )
+active = true
+
+[node name="CollisionShape2D" parent="CutSceneTriggers/CutSceneTrigger1/TriggerArea" index="0"]
+shape = SubResource( 3 )
+
+[node name="A9PlayerCutScene1Controller" parent="CutSceneTriggers/CutSceneTrigger1/ActorControllers" index="0" instance=ExtResource( 18 )]
+script = ExtResource( 19 )
+actor_path = NodePath("../../../../YSort/Player")
+
+[node name="A9VoidLordCutScene1Controller" parent="CutSceneTriggers/CutSceneTrigger1/ActorControllers" index="1" instance=ExtResource( 18 )]
+script = ExtResource( 21 )
+actor_reference = ExtResource( 20 )
+
+[node name="A9PortalCutScene1Controller" parent="CutSceneTriggers/CutSceneTrigger1/ActorControllers" index="2" instance=ExtResource( 18 )]
+script = ExtResource( 22 )
+actor_reference = ExtResource( 23 )
+
+[node name="A9BatsCutScene1Controller" parent="CutSceneTriggers/CutSceneTrigger1/ActorControllers" index="3" instance=ExtResource( 18 )]
+script = ExtResource( 24 )
+
 [editable path="Terrain"]
 [editable path="Camera2D"]
 [editable path="YSort"]
+[editable path="YSort/NPCs/Bat"]
+[editable path="YSort/NPCs/Bat/HurtBox"]
+[editable path="YSort/NPCs/Bat/PlayerDetectionZone"]
+[editable path="YSort/NPCs/Bat/HitBox"]
+[editable path="YSort/NPCs/Bat/SoftCollision"]
+[editable path="YSort/NPCs/Bat2"]
+[editable path="YSort/NPCs/Bat2/HurtBox"]
+[editable path="YSort/NPCs/Bat2/PlayerDetectionZone"]
+[editable path="YSort/NPCs/Bat2/HitBox"]
+[editable path="YSort/NPCs/Bat2/SoftCollision"]
 [editable path="SceneLinks/A8"]
-[editable path="SceneLinks/Hut14"]
+[editable path="SceneLinks/Palace"]
+[editable path="CutSceneTriggers/CutSceneTrigger1"]

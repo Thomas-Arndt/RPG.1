@@ -78,6 +78,8 @@ func load_scene():
 						if new_node is PortalNode:
 							new_node.anim_player.stop()
 							new_node.anim_player.play("holding")
+					if node_data[i] and node is ModifyPropertyReceiver:
+						node.apply_modification()
 				node.set(i, node_data[i])
 				if node.has_method("match_dimension"):
 					node.match_dimension(WorldStats.DIMENSION)

@@ -6,13 +6,13 @@ signal release_player
 export (PackedScene) var actor_reference = null
 export (NodePath) var actor_path = null
 
-var actor : Node = null
+var actor : Node2D = null
 var choreography : Array = []
 var scene_started = false
 var is_acting = false
 var is_speaking = false
 
-onready var tween = $Tween
+onready var tween : Tween = $Tween
 onready var timer = $Timer
 
 enum {
@@ -28,6 +28,7 @@ enum {
 	VISIBLE_ON,
 	CUSTOM,
 	DELETE_ACTOR,
+	PAUSE_FOR_DIALOGUE,
 }
 
 func _ready():
@@ -62,6 +63,8 @@ func run_cut_scene():
 				custom_actions(action[1], action[2])
 			DELETE_ACTOR:
 				delete_actor()
+			PAUSE_FOR_DIALOGUE:
+				pause_for_dialogue()
 	else:
 		cut_scene_finished()
 
@@ -100,6 +103,7 @@ func seek_player(start_position: Vector2, distance: int, duration: float, move_a
 
 func exit_actor():
 	actor.get_parent().remove_child(actor)
+	actor.queue_free()
 	run_cut_scene()
 	
 func release_actor():
@@ -141,6 +145,10 @@ func dialogue_complete():
 		is_speaking = false
 		is_acting = false
 		run_cut_scene()
+
+func pause_for_dialogue():
+	is_acting = true
+	is_speaking = true
 
 func _on_Tween_tween_all_completed():
 	if is_acting:

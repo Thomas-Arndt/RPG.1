@@ -2,5 +2,5 @@
 
 [ext_resource path="res://Utils/Receivers/ModifyPropertyReceiver.gd" type="Script" id=1]
 
-[node name="ModifyPropertyReceiver" type="Node"]
+[node name="ModifyPropertyReceiver" type="Node" groups=["Persist"]]
 script = ExtResource( 1 )
