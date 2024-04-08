@@ -34,17 +34,17 @@ position = Vector2( 329, 245 )
 
 [node name="YSort" parent="." instance=ExtResource( 2 )]
 
-[node name="RemoteTransform2D" parent="YSort/Player" index="10"]
+[node name="RemoteTransform2D" parent="YSort/Player" index="11"]
 remote_path = NodePath("../../../Camera2D")
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
-[node name="BA1" parent="SceneLinks" instance=ExtResource( 4 )]
+[node name="Not USed" parent="SceneLinks" instance=ExtResource( 4 )]
 position = Vector2( -207, 31 )
 destination_reference = "res://World/Below/BA1.tscn"
 exit_location = Vector2( 14, -85 )
 
-[node name="CollisionShape2D" parent="SceneLinks/BA1" index="0"]
+[node name="CollisionShape2D" parent="SceneLinks/Not USed" index="0"]
 position = Vector2( 4, 19 )
 shape = SubResource( 1 )
 
@@ -70,6 +70,6 @@ shape = SubResource( 3 )
 [editable path="Terrain"]
 [editable path="Camera2D"]
 [editable path="YSort"]
-[editable path="SceneLinks/BA1"]
+[editable path="SceneLinks/Not USed"]
 [editable path="SceneLinks/BB3"]
 [editable path="SceneLinks/BB1"]

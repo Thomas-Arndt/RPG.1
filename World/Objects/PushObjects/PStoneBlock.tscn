@@ -7,6 +7,8 @@
 extents = Vector2( 11.5, 8.5 )
 
 [node name="PStoneBlock" type="KinematicBody2D"]
+collision_layer = 128
+collision_mask = 161
 script = ExtResource( 2 )
 movement_locked = true
 
