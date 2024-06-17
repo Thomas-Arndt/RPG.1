@@ -45,6 +45,11 @@ _global_script_classes=[ {
 "path": "res://CutScenes/Scenes/CutScene.gd"
 }, {
 "base": "Node",
+"class": "FloorSwitchReceiver",
+"language": "GDScript",
+"path": "res://Utils/Receivers/FloorSwitchReceiver.gd"
+}, {
+"base": "Node",
 "class": "ForageAction",
 "language": "GDScript",
 "path": "res://Utils/Actions/ForageAction.gd"
@@ -209,6 +214,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Utils/Overlap/SceneLink.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "SliderTrap",
+"language": "GDScript",
+"path": "res://Enemies/Slider.gd"
+}, {
 "base": "Node2D",
 "class": "SpawnController",
 "language": "GDScript",
@@ -247,6 +257,7 @@ _global_script_class_icons={
 "CompletedQuestAction": "",
 "CropNode": "",
 "CutScene": "",
+"FloorSwitchReceiver": "",
 "ForageAction": "",
 "ForageNode": "",
 "GiveMultipleQuestAction": "",
@@ -280,6 +291,7 @@ _global_script_class_icons={
 "RemoveNodeReceiver": "",
 "RunFunctionReceiver": "",
 "SceneLink": "",
+"SliderTrap": "",
 "SpawnController": "",
 "SpeechAction": "",
 "VoidBlob": "",

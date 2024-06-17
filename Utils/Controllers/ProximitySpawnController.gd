@@ -1,6 +1,8 @@
 extends Node2D
 class_name ProximitySpawnController
 
+signal spawn_died
+
 export var spawn_unit: PackedScene
 export var spawn_interval: float = 60
 export var spawn_quantity: int = 1
@@ -51,6 +53,7 @@ func player_detected(player = null):
 		check_spawn()
 
 func _on_Spawn_died(node):
+	emit_signal("spawn_died")
 	spawn_count -= 1
 
 func save():

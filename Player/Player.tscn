@@ -105,7 +105,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -18 ) ]
+"values": [ Vector2( 0, -9 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -1378,7 +1378,6 @@ collision_mask = 177
 script = ExtResource( 3 )
 
 [node name="ShadowSprite" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 2 )
 offset = Vector2( 0, 1 )
 
@@ -1450,7 +1449,6 @@ parameters/roll/blend_position = Vector2( 0.0212443, -0.138286 )
 parameters/run/blend_position = Vector2( 0.00111234, 0.840343 )
 
 [node name="HitBoxPivot" type="Position2D" parent="."]
-rotation = 3.14159
 
 [node name="SwordHitBox" parent="HitBoxPivot" instance=ExtResource( 4 )]
 collision_mask = 8
@@ -1469,7 +1467,6 @@ rotation = 1.5708
 shape = SubResource( 51 )
 
 [node name="DetectionZone" parent="." instance=ExtResource( 6 )]
-rotation = 1.5708
 
 [node name="CollisionShape2D" parent="DetectionZone/DetectionZone" index="0"]
 position = Vector2( 0, 13 )

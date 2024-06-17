@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://World/Below/Terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=2]
@@ -8,6 +8,25 @@
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=6]
 [ext_resource path="res://World/Objects/Switches/RedBlueSwitch.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/BarrierBlob.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Utils/Controllers/ProximitySpawnController.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Enemies/Ghost.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Utils/Receivers/RemoveNodeReceiver.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Utils/Emitters/RemoveNodeEmitter.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Utils/Emitters/ModifyPropertyEmitter.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Utils/Receivers/ModifyPropertyReceiver.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Utils/Overlap/DetectionZone.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Enemies/Slider.tscn" type="PackedScene" id=17]
+[ext_resource path="res://World/Objects/PushObjects/PStoneBlock.tscn" type="PackedScene" id=18]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 43.0116
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 71, 47 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 71, 40.5 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40.5, 10 )
@@ -38,6 +57,58 @@ position = Vector2( 354, 34 )
 [node name="RemoteTransform2D" parent="YSort/Player" index="11"]
 remote_path = NodePath("../../../Camera2D")
 
+[node name="ProximitySpawnController" parent="YSort/MobileEnemies" index="0" instance=ExtResource( 10 )]
+position = Vector2( 225, -75 )
+spawn_unit = ExtResource( 11 )
+
+[node name="CollisionShape2D" parent="YSort/MobileEnemies/ProximitySpawnController/PlayerDetectionZone" index="0"]
+shape = SubResource( 2 )
+
+[node name="RemoveNodeEmitter" parent="YSort/MobileEnemies/ProximitySpawnController" instance=ExtResource( 13 )]
+signal_name = "spawn_died"
+signal_code = "remove_barrier_blob"
+
+[node name="ModifyPropertyEmitter" parent="YSort/MobileEnemies/ProximitySpawnController" instance=ExtResource( 14 )]
+signal_name = "spawn_died"
+signal_code = "activate_switch"
+
+[node name="Slider" parent="YSort/MobileEnemies" index="1" instance=ExtResource( 17 )]
+position = Vector2( -225, -149 )
+
+[node name="DetectionZonePivot" parent="YSort/MobileEnemies/Slider/DetectionWanderController/DetectionZones" index="0" instance=ExtResource( 16 )]
+
+[node name="DetectionZonePivot2" parent="YSort/MobileEnemies/Slider/DetectionWanderController/DetectionZones" index="1" instance=ExtResource( 16 )]
+position = Vector2( 122, 2 )
+
+[node name="DetectionZonePivot3" parent="YSort/MobileEnemies/Slider/DetectionWanderController/DetectionZones" index="2" instance=ExtResource( 16 )]
+position = Vector2( 121, 65 )
+
+[node name="DetectionZonePivot4" parent="YSort/MobileEnemies/Slider/DetectionWanderController/DetectionZones" index="3" instance=ExtResource( 16 )]
+position = Vector2( 1, 65 )
+
+[node name="CollisionShape2D" parent="YSort/MobileEnemies/Slider/Node/PlayerDetectionZone" index="0"]
+position = Vector2( -162, -112 )
+shape = SubResource( 3 )
+
+[node name="Slider2" parent="YSort/MobileEnemies" index="2" instance=ExtResource( 17 )]
+position = Vector2( -103, -2 )
+
+[node name="DetectionZonePivot" parent="YSort/MobileEnemies/Slider2/DetectionWanderController/DetectionZones" index="0" instance=ExtResource( 16 )]
+position = Vector2( -120, 1 )
+
+[node name="DetectionZonePivot2" parent="YSort/MobileEnemies/Slider2/DetectionWanderController/DetectionZones" index="1" instance=ExtResource( 16 )]
+position = Vector2( -121, -59 )
+
+[node name="DetectionZonePivot3" parent="YSort/MobileEnemies/Slider2/DetectionWanderController/DetectionZones" index="2" instance=ExtResource( 16 )]
+position = Vector2( -1, -58 )
+
+[node name="DetectionZonePivot4" parent="YSort/MobileEnemies/Slider2/DetectionWanderController/DetectionZones" index="3" instance=ExtResource( 16 )]
+position = Vector2( -1, 1 )
+
+[node name="CollisionShape2D" parent="YSort/MobileEnemies/Slider2/Node/PlayerDetectionZone" index="0"]
+position = Vector2( -162, -24.5 )
+shape = SubResource( 4 )
+
 [node name="LadderLower" parent="YSort/Portals" index="0" instance=ExtResource( 4 )]
 position = Vector2( 32, -14 )
 destination_reference = "res://World/Below/BeachPalaceCellar/BPC2b.tscn"
@@ -49,8 +120,46 @@ position = Vector2( 224, -195 )
 signal_code = "BPC3b_door"
 
 [node name="RedBlueSwitch" parent="YSort/Portals" index="2" instance=ExtResource( 7 )]
-position = Vector2( 303, -146 )
+position = Vector2( 297, -143 )
 signal_code = "BPC3b_door"
+active = false
+
+[node name="ModifyPropertyReceiver" parent="YSort/Portals/RedBlueSwitch" instance=ExtResource( 15 )]
+signal_code = "activate_switch"
+property = "active"
+value_array = [ true ]
+
+[node name="RemoveNodeReceiver" parent="YSort/Portals" index="3" instance=ExtResource( 12 )]
+signal_code = "remove_barrier_blob"
+
+[node name="BarrierBlob" parent="YSort/Portals/RemoveNodeReceiver" instance=ExtResource( 9 )]
+position = Vector2( 296, -134 )
+
+[node name="StoneBlocks" type="YSort" parent="YSort"]
+
+[node name="PStoneBlock" parent="YSort/StoneBlocks" instance=ExtResource( 18 )]
+position = Vector2( -129, -29 )
+
+[node name="PStoneBlock2" parent="YSort/StoneBlocks" instance=ExtResource( 18 )]
+position = Vector2( -152, -29 )
+
+[node name="PStoneBlock3" parent="YSort/StoneBlocks" instance=ExtResource( 18 )]
+position = Vector2( -175, -29 )
+
+[node name="PStoneBlock4" parent="YSort/StoneBlocks" instance=ExtResource( 18 )]
+position = Vector2( -198, -108 )
+
+[node name="PStoneBlock6" parent="YSort/StoneBlocks" instance=ExtResource( 18 )]
+position = Vector2( -175, -108 )
+
+[node name="PStoneBlock7" parent="YSort/StoneBlocks" instance=ExtResource( 18 )]
+position = Vector2( -152, -108 )
+
+[node name="PStoneBlock8" parent="YSort/StoneBlocks" instance=ExtResource( 18 )]
+position = Vector2( -129, -108 )
+
+[node name="PStoneBlock5" parent="YSort/StoneBlocks" instance=ExtResource( 18 )]
+position = Vector2( -198, -29 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
@@ -67,4 +176,18 @@ shape = SubResource( 1 )
 [editable path="Terrain"]
 [editable path="Camera2D"]
 [editable path="YSort"]
+[editable path="YSort/MobileEnemies/ProximitySpawnController"]
+[editable path="YSort/MobileEnemies/ProximitySpawnController/PlayerDetectionZone"]
+[editable path="YSort/MobileEnemies/Slider"]
+[editable path="YSort/MobileEnemies/Slider/DetectionWanderController"]
+[editable path="YSort/MobileEnemies/Slider/Node/PlayerDetectionZone"]
+[editable path="YSort/MobileEnemies/Slider/CollisionDetector"]
+[editable path="YSort/MobileEnemies/Slider/HitBox"]
+[editable path="YSort/MobileEnemies/Slider/HitBox2"]
+[editable path="YSort/MobileEnemies/Slider2"]
+[editable path="YSort/MobileEnemies/Slider2/DetectionWanderController"]
+[editable path="YSort/MobileEnemies/Slider2/Node/PlayerDetectionZone"]
+[editable path="YSort/MobileEnemies/Slider2/CollisionDetector"]
+[editable path="YSort/MobileEnemies/Slider2/HitBox"]
+[editable path="YSort/MobileEnemies/Slider2/HitBox2"]
 [editable path="SceneLinks/SceneLink"]

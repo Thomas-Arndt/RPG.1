@@ -59,6 +59,9 @@ func load_scene():
 							node.spawn_new_unit()
 						node.timer.start(node_data["time_remaining"])
 						continue
+					if node is ProximitySpawnController:
+						node.timer.start(node_data["time_remaining"])
+						continue
 					if node_data["class"] == "ForageNode":
 						if node_data["time_remaining"] != null:
 							node.forage(node_data["time_remaining"])
@@ -73,6 +76,8 @@ func load_scene():
 				if i == "triggered":
 					if node_data[i] and node is RemoveNodeReceiver:
 						node.remove_node(node.signal_code)
+					if node_data[i] and node is FloorSwitchReceiver:
+						node._on_Floor_Switch_Signal(node.signal_code, node_data["last_triggered_state"])
 					if node_data[i] and node is AddNodeReceiver:
 						var new_node = node.add_node_to(node.signal_code)
 						if new_node is PortalNode:

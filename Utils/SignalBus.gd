@@ -11,6 +11,7 @@ signal run_node_function(signal_code)
 
 #Switches
 signal red_blue_switch_state_changed(signal_code, state, states)
+signal floor_switch(signal_code, state)
 
 #Camera Effects
 signal stop_camera_effect(signal_code)

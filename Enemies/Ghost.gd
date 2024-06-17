@@ -116,6 +116,8 @@ func _on_HurtBox_invincible_end():
 func _on_Stats_no_health():
 	emit_signal("died", self)
 	queue_free()
+	if is_instance_valid(new_ball):
+		new_ball.queue_free()
 	var death_fx = ResourceLoader.load(death_effect)
 	var effect = death_fx.instance()
 	get_parent().add_child(effect)

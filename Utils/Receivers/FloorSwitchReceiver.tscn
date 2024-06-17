@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Utils/Receivers/FloorSwitchReceiver.gd" type="Script" id=1]
+
+[node name="FloorSwitchReceiver" type="Node" groups=["Persist"]]
+script = ExtResource( 1 )
