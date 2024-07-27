@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Enemies/Bosses/Serpent/SerpentContainer.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Bosses/Serpent/SerpentHead.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Utils/Overlap/Arena.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/Attacks/MoteContainer.tscn" type="PackedScene" id=4]
 
-[node name="SerpentContainer" type="YSort"]
+[node name="SerpentContainer" type="YSort" groups=["SerpentContainer"]]
 script = ExtResource( 1 )
 
 [node name="SerpentHead" parent="." instance=ExtResource( 2 )]
+
+[node name="Arena" parent="." instance=ExtResource( 3 )]
+
+[node name="MoteContainer" parent="." instance=ExtResource( 4 )]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Arena"]

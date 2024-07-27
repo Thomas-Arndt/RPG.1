@@ -17,7 +17,7 @@ func modify_property(transmitted_code):
 func apply_modification():
 		triggered = true
 		var parent = get_parent()
-		parent[property] = value_array[0]
+		parent.set_deferred(property, value_array[0])
 
 func save():
 	var save_dict = {

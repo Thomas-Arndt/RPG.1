@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://World/Below/BelowWalls.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=2]
@@ -6,8 +6,6 @@
 [ext_resource path="res://World/Objects/Doors/LadderLower.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Objects/Doors/LadderUpper.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=6]
-[ext_resource path="res://Utils/Controllers/SpawnController.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Enemies/GreenVoidBlob.tscn" type="PackedScene" id=8]
 
 [node name="SerpentsLair_1_b" type="Node2D" groups=["World"]]
 script = ExtResource( 6 )
@@ -42,43 +40,6 @@ position = Vector2( 80, 125 )
 remote_path = NodePath("../../../Camera2D")
 
 [node name="MobileEnemies" type="YSort" parent="YSort" groups=["Mobs"]]
-
-[node name="SpawnController" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
-position = Vector2( -102, -48 )
-spawn_unit = ExtResource( 8 )
-
-[node name="SpawnController2" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
-position = Vector2( -197, -32 )
-spawn_unit = ExtResource( 8 )
-
-[node name="SpawnController3" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
-position = Vector2( -298, -41 )
-spawn_unit = ExtResource( 8 )
-
-[node name="SpawnController5" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
-position = Vector2( -442, 10 )
-spawn_unit = ExtResource( 8 )
-
-[node name="SpawnController6" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
-position = Vector2( -477, -34 )
-spawn_unit = ExtResource( 8 )
-
-[node name="SpawnController7" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
-position = Vector2( -448, 77 )
-spawn_unit = ExtResource( 8 )
-
-[node name="SpawnController9" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
-position = Vector2( -484, 114 )
-spawn_unit = ExtResource( 8 )
-
-[node name="SpawnController8" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
-position = Vector2( -261, 127 )
-spawn_unit = ExtResource( 8 )
-
-[node name="SpawnController10" parent="YSort/MobileEnemies" instance=ExtResource( 7 )]
-position = Vector2( -364, 110 )
-spawn_unit = ExtResource( 8 )
-spawn_quantity = 2
 
 [node name="Portals" type="YSort" parent="YSort"]
 

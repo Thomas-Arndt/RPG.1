@@ -171,7 +171,7 @@ func set_weapon_sprite(weapon):
 func _on_HurtBox_area_entered(area):
 	PlayerStats.change_health(-area.damage)
 	area.set_knockback_vector(self) 
-	knockback = area.knockback_vector * 130
+	knockback = area.knockback_vector * 150
 	move_and_slide(knockback)
 	hurt_box.start_invincible(0.6)
 

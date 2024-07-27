@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Enemies/Bosses/Serpent/serpent-head-green-half.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Bosses/Serpent/SerpentHead.gd" type="Script" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://Utils/Stats/Stats.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Utils/Hit and Hurt Boxes/HurtBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Utils/Hit and Hurt Boxes/HitBox.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Utils/Controllers/DetectionWanderController.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Utils/Controllers/SerpentStampedeController.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Utils/Overlap/DetectionWanderControllerLocatorArea.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Shader" id=59]
@@ -92,7 +92,7 @@ shader = SubResource( 65 )
 shader_param/active = false
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.0
+radius = 3.99997
 height = 16.0
 
 [sub_resource type="Animation" id=2]
@@ -356,35 +356,30 @@ tracks/3/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 5.0
+radius = 3.99997
 height = 16.0
 
 [sub_resource type="CapsuleShape2D" id=16]
-radius = 6.0
-height = 14.0
+radius = 5.99997
+height = 16.0
 
-[sub_resource type="CapsuleShape2D" id=66]
-radius = 8.0
-height = 14.0
-
-[node name="SerpentHead" type="KinematicBody2D"]
+[node name="SerpentHead" type="KinematicBody2D" groups=["SerpentHead"]]
 collision_layer = 16
-collision_mask = 51
+collision_mask = 547
 script = ExtResource( 2 )
 
 [node name="RedSpriteFull" type="Sprite" parent="."]
 visible = false
 material = SubResource( 6 )
 position = Vector2( 1, -14 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.7, 1.7 )
 texture = ExtResource( 3 )
 hframes = 5
 
 [node name="RedSpriteHalf" type="Sprite" parent="."]
-visible = false
 material = SubResource( 8 )
 position = Vector2( 1, -14 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.7, 1.7 )
 texture = ExtResource( 4 )
 hframes = 5
 
@@ -392,14 +387,15 @@ hframes = 5
 visible = false
 material = SubResource( 10 )
 position = Vector2( 1, -14 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.7, 1.7 )
 texture = ExtResource( 5 )
 hframes = 5
 
 [node name="GreenSpriteHalf" type="Sprite" parent="."]
+visible = false
 material = SubResource( 12 )
-position = Vector2( 1, -14 )
-scale = Vector2( 2, 2 )
+position = Vector2( 1, -12 )
+scale = Vector2( 1.7, 1.7 )
 texture = ExtResource( 1 )
 hframes = 5
 
@@ -432,28 +428,22 @@ shape = SubResource( 4 )
 [node name="HitBox" parent="." instance=ExtResource( 8 )]
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2( 0, 1 )
+position = Vector2( -1, 1 )
 rotation = 1.5708
 shape = SubResource( 16 )
 
-[node name="StampedeWanderController" parent="." instance=ExtResource( 9 )]
-
 [node name="DetectionWanderControllerLocatorArea" parent="." instance=ExtResource( 10 )]
 
-[node name="BlobGrabber" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 16
+[node name="SerpentStampedeController" parent="." instance=ExtResource( 9 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BlobGrabber"]
-position = Vector2( 0, 1 )
-rotation = 1.5708
-shape = SubResource( 66 )
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="invincible_end" from="HurtBox" to="." method="_on_HurtBox_invincible_end"]
 [connection signal="invincible_start" from="HurtBox" to="." method="_on_HurtBox_invincible_start"]
-[connection signal="body_entered" from="BlobGrabber" to="." method="_on_BlobGrabber_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

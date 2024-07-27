@@ -419,7 +419,6 @@ shape = SubResource( 8 )
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
-visible = false
 shape = SubResource( 9 )
 
 [node name="HitBox" parent="." instance=ExtResource( 7 )]
