@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Enemies/Attacks/MoteContainer.gd" type="Script" id=1]
+
+[node name="MoteContainer" type="YSort" groups=["MoteContainer"]]
+script = ExtResource( 1 )

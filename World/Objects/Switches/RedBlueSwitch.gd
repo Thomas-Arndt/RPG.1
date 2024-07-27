@@ -16,6 +16,7 @@ var state = states.RED
 
 func _ready():
 	interaction_zone.connect("interaction_finished", self, "toggle_switch")
+	SignalBus.connect("event_switch", self, "on_Switch_Event")
 
 func toggle_switch(node):
 	if active:
@@ -29,3 +30,12 @@ func toggle_switch(node):
 				anim_player.play("blue_to_red")
 				SignalBus.emit_signal("red_blue_switch_state_changed", signal_code, states.RED, states)
 				state = states.RED
+
+func on_Switch_Event(code, switch_event):
+	if signal_code == code:
+		if switch_event == "open":
+			anim_player.play("red_to_blue")
+			state = states.BLUE
+		elif switch_event == "close":
+			anim_player.play("blue_to_red")
+			state = states.RED

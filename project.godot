@@ -424,6 +424,8 @@ debug={
 2d_physics/layer_6="Boundaries"
 2d_physics/layer_7="Interactive"
 2d_physics/layer_8="Push Objects"
+2d_physics/layer_9="Player Barriers"
+2d_physics/layer_10="Enemy Barriers"
 
 [physics]
 

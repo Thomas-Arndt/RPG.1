@@ -14,7 +14,7 @@ func _ready():
 		actor.connect("finished", self, "_on_Actor_finished")
 		actor.connect("release_player", self, "release_player")
 
-func _on_Area2D_area_entered(area):
+func _on_TriggerArea_body_entered(body):
 	if active and not triggered:
 		start_cutscene(get_tree().get_nodes_in_group("Player")[0])
 
@@ -47,3 +47,4 @@ func save():
 		"triggered": triggered
 	}
 	return save_dict
+

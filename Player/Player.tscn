@@ -1374,7 +1374,7 @@ radius = 1.0
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
 collision_layer = 2
-collision_mask = 177
+collision_mask = 433
 script = ExtResource( 3 )
 
 [node name="ShadowSprite" type="Sprite" parent="."]
@@ -1383,7 +1383,7 @@ offset = Vector2( 0, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 53 )
-position = Vector2( 0, -18 )
+position = Vector2( 0, -9 )
 texture = ExtResource( 1 )
 hframes = 96
 frame = 18

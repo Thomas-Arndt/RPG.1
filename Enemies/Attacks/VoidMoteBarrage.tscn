@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Enemies/Bosses/VoidMoteBarrage.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Attacks/VoidMoteBarrage.gd" type="Script" id=1]
 
 [node name="VoidMoteBarrage" type="YSort"]
 script = ExtResource( 1 )
@@ -10,9 +10,9 @@ circle_radius = 55
 
 [node name="Radius" type="Position2D" parent="Pivot"]
 
-[node name="VoidMotes" type="YSort" parent="."]
-
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="VoidMotes" type="YSort" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Utils/Overlap/DetectionZoneGroup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Utils/Controllers/SerpentStampedeController.gd" type="Script" id=2]
+
+[node name="SerpentStampedeController" type="Node2D" groups=["SerpentStampedeController"]]
+script = ExtResource( 2 )
+
+[node name="DetectionZoneGroups" type="Node2D" parent="."]
+
+[node name="DetectionZoneGroup" parent="DetectionZoneGroups" instance=ExtResource( 1 )]
+position = Vector2( -12, 0 )
+
+[node name="DetectionZone1" parent="DetectionZoneGroups/DetectionZoneGroup" index="0"]
+position = Vector2( -75, 75 )
+
+[node name="DetectionZone2" parent="DetectionZoneGroups/DetectionZoneGroup" index="1"]
+position = Vector2( -75, -75 )
+
+[node name="DetectionZoneGroup2" parent="DetectionZoneGroups" instance=ExtResource( 1 )]
+position = Vector2( -4, 0 )
+
+[node name="DetectionZone1" parent="DetectionZoneGroups/DetectionZoneGroup2" index="0"]
+position = Vector2( -25, 75 )
+
+[node name="DetectionZone2" parent="DetectionZoneGroups/DetectionZoneGroup2" index="1"]
+position = Vector2( -25, -75 )
+
+[node name="DetectionZoneGroup3" parent="DetectionZoneGroups" instance=ExtResource( 1 )]
+position = Vector2( 4, 0 )
+
+[node name="DetectionZone1" parent="DetectionZoneGroups/DetectionZoneGroup3" index="0"]
+position = Vector2( 25, 75 )
+
+[node name="DetectionZone2" parent="DetectionZoneGroups/DetectionZoneGroup3" index="1"]
+position = Vector2( 25, -75 )
+
+[node name="DetectionZoneGroup4" parent="DetectionZoneGroups" instance=ExtResource( 1 )]
+position = Vector2( 12, 0 )
+
+[node name="DetectionZone1" parent="DetectionZoneGroups/DetectionZoneGroup4" index="0"]
+position = Vector2( 75, 75 )
+
+[node name="DetectionZone2" parent="DetectionZoneGroups/DetectionZoneGroup4" index="1"]
+position = Vector2( 75, -75 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[editable path="DetectionZoneGroups/DetectionZoneGroup"]
+[editable path="DetectionZoneGroups/DetectionZoneGroup2"]
+[editable path="DetectionZoneGroups/DetectionZoneGroup3"]
+[editable path="DetectionZoneGroups/DetectionZoneGroup4"]

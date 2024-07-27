@@ -13,5 +13,4 @@ collision_mask = 64
 
 [node name="ActorControllers" type="Node2D" parent="."]
 
-[connection signal="area_entered" from="TriggerArea" to="." method="_on_Area2D_area_entered"]
-[connection signal="area_exited" from="TriggerArea" to="." method="_on_TriggerArea_area_exited"]
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_TriggerArea_body_entered"]
