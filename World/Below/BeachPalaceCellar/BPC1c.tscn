@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/AreaUtils/BelowYSort.tscn" type="PackedScene" id=2]
@@ -15,6 +15,13 @@
 [ext_resource path="res://Utils/Overlap/CutSceneTrigger.tscn" type="PackedScene" id=13]
 [ext_resource path="res://CutScenes/Controllers/SerpentIntroController.gd" type="Script" id=14]
 [ext_resource path="res://Utils/Camera/ScreenShakeRandom.tscn" type="PackedScene" id=15]
+[ext_resource path="res://CutScenes/Controllers/BPC1cPlayerController.gd" type="Script" id=16]
+[ext_resource path="res://CutScenes/Controllers/BPC1cShadyBusinessController.gd" type="Script" id=17]
+[ext_resource path="res://NPC/Specials/Shae D Biznes/ShaeDBiznes.tscn" type="PackedScene" id=18]
+[ext_resource path="res://CutScenes/Controllers/BPC1cPortalController.gd" type="Script" id=19]
+[ext_resource path="res://World/Portals/Portal.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Utils/Receivers/AddNodeReceiver.tscn" type="PackedScene" id=21]
+[ext_resource path="res://World/Portals/Portal1.tscn" type="PackedScene" id=22]
 
 [sub_resource type="Shader" id=59]
 code = "shader_type canvas_item;
@@ -126,6 +133,9 @@ extents = Vector2( 10, 8 )
 [sub_resource type="RectangleShape2D" id=77]
 extents = Vector2( 214, 10 )
 
+[sub_resource type="RectangleShape2D" id=79]
+extents = Vector2( 147, 10 )
+
 [node name="BPC1c" type="Node2D" groups=["World"]]
 script = ExtResource( 5 )
 
@@ -233,6 +243,11 @@ signal_code = "2"
 position = Vector2( 144, -139 )
 signal_code = "3"
 
+[node name="IB1-AddNodeReceiver" parent="YSort/Portals" index="8" instance=ExtResource( 21 )]
+position = Vector2( 0, -85 )
+signal_code = "Boss_Defeated"
+new_node_reference = ExtResource( 22 )
+
 [node name="SceneLinks" type="Node2D" parent="."]
 
 [node name="BPC1a" parent="SceneLinks" instance=ExtResource( 4 )]
@@ -331,22 +346,38 @@ shape = SubResource( 76 )
 
 [node name="Triggers" type="Node2D" parent="."]
 
-[node name="CutSceneTrigger" parent="Triggers" instance=ExtResource( 13 )]
+[node name="SerpentIntroTrigger" parent="Triggers" instance=ExtResource( 13 )]
 position = Vector2( 0, -66 )
 active = true
 
-[node name="TriggerArea" parent="Triggers/CutSceneTrigger" index="0"]
-collision_mask = 2
-
-[node name="CollisionShape2D" parent="Triggers/CutSceneTrigger/TriggerArea" index="0"]
+[node name="CollisionShape2D" parent="Triggers/SerpentIntroTrigger/TriggerArea" index="0"]
 position = Vector2( 0, -19 )
 shape = SubResource( 77 )
 
-[node name="SerpentIntroController" parent="Triggers/CutSceneTrigger/ActorControllers" index="0" instance=ExtResource( 12 )]
+[node name="SerpentIntroController" parent="Triggers/SerpentIntroTrigger/ActorControllers" index="0" instance=ExtResource( 12 )]
 position = Vector2( -48, -70 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 14 )
 actor_path = NodePath("../../../../YSort/Player")
+
+[node name="ShadyBusinessTrigger" parent="Triggers" instance=ExtResource( 13 )]
+position = Vector2( 0, 110 )
+active = true
+
+[node name="CollisionShape2D" parent="Triggers/ShadyBusinessTrigger/TriggerArea" index="0"]
+shape = SubResource( 79 )
+
+[node name="PlayerController" parent="Triggers/ShadyBusinessTrigger/ActorControllers" index="0" instance=ExtResource( 12 )]
+script = ExtResource( 16 )
+actor_path = NodePath("../../../../YSort/Player")
+
+[node name="ShadyBusinessController" parent="Triggers/ShadyBusinessTrigger/ActorControllers" index="1" instance=ExtResource( 12 )]
+script = ExtResource( 17 )
+actor_reference = ExtResource( 18 )
+
+[node name="PortalController" parent="Triggers/ShadyBusinessTrigger/ActorControllers" index="2" instance=ExtResource( 12 )]
+script = ExtResource( 19 )
+actor_reference = ExtResource( 20 )
 
 [editable path="Terrain"]
 [editable path="Camera2D"]
@@ -375,4 +406,5 @@ actor_path = NodePath("../../../../YSort/Player")
 [editable path="Barriers/EnemyBarrier3/HitBox"]
 [editable path="Barriers/EnemyBarrier4"]
 [editable path="Barriers/EnemyBarrier4/HitBox"]
-[editable path="Triggers/CutSceneTrigger"]
+[editable path="Triggers/SerpentIntroTrigger"]
+[editable path="Triggers/ShadyBusinessTrigger"]

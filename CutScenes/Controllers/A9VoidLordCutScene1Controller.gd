@@ -1,7 +1,5 @@
 extends "res://CutScenes/Controllers/CutSceneController.gd"
 
-var displacement : Vector2
-
 func package_choreography():
 	choreography.append([WAIT, 4])
 	choreography.append([ENTER, Vector2(561, -595)])

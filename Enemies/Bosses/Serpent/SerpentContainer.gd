@@ -20,9 +20,11 @@ func _on_Head_Died():
 	motes = mote_container.get_children()
 	get_segments(head.next_segment)
 	var next_segment = remaining_segments.pop_front()
-	next_segment.die()
+	if next_segment != null:
+		next_segment.die()
 	var mote = motes.pop_back()	
-	mote.destroy()
+	if mote != null:
+		mote.destroy()
 	timer.start(0.2)
 
 func _on_Timer_timeout():
@@ -32,9 +34,11 @@ func _on_Timer_timeout():
 	if len(remaining_segments) > 0:
 		var next_segment = remaining_segments.pop_front()
 		next_segment.die()
-	
 	if len(motes) > 0 or len(remaining_segments) > 0:
 		timer.start(0.2)
+	else:
+		SignalBus.emit_signal("add_node", "Boss_Defeated")
+		
 
 func get_segments(segment):
 	if segment != null:

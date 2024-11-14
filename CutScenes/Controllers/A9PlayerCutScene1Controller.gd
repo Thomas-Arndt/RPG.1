@@ -1,7 +1,5 @@
 extends "res://CutScenes/Controllers/CutSceneController.gd"
 
-var displacement : Vector2
-
 func package_choreography():
 	choreography.append([ENTER, get_tree().get_nodes_in_group("Player")[0].global_position])
 	choreography.append([WAIT, 0.75])

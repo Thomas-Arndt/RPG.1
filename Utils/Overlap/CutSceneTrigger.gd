@@ -10,6 +10,7 @@ onready var actor_controllers = $ActorControllers
 onready var trigger_area = $TriggerArea
 
 func _ready():
+	trigger_area.connect("body_entered", self, "_on_TriggerArea_body_entered")
 	for actor in actor_controllers.get_children():
 		actor.connect("finished", self, "_on_Actor_finished")
 		actor.connect("release_player", self, "release_player")

@@ -105,6 +105,7 @@ func apparated():
 func _on_HurtBox_area_entered(area):
 	stats.change_health(-area.damage)
 	knockback = area.knockback_vector * 100
+	hurt_box.create_hit_effect()
 	hurt_box.start_invincible(0.4)
 
 func _on_HurtBox_invincible_start():
@@ -128,6 +129,7 @@ func match_dimension(state):
 	red_half_sprite.visible = false
 	green_full_sprite.visible = false
 	green_half_sprite.visible = false
+	hurt_box.is_red = is_red	
 	if is_red and state == WorldStats.Dimensions.Red:
 		red_full_sprite.visible = true
 		hurt_box.monitorable = true

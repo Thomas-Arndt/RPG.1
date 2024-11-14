@@ -78,6 +78,7 @@ func flip_sprites():
 
 func _on_HurtBox_area_entered(area):
 	stats.change_health(-area.damage)
+	hurt_box.create_hit_effect()
 	hurt_box.start_invincible(0.6)
 
 func _on_HurtBox_invincible_start():

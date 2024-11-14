@@ -19,7 +19,7 @@ onready var red_sprite = $RedSprite
 onready var collision_shape = $CollisionShape2D
 
 func _ready():
-	WorldStats.connect("dimension_shift", self, "match_dimension")
+
 	match_dimension(WorldStats.DIMENSION)
 	if show_both:
 		anim_player.play("holding")

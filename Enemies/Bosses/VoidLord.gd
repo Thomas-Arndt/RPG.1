@@ -17,7 +17,7 @@ enum {
 	EXPLODE,
 }
 
-var void_mote_barrage = preload("res://Enemies/Bosses/VoidMoteBarrage.tscn")
+var void_mote_barrage = preload("res://Enemies/Attacks/VoidMoteBarrage.tscn")
 var death_animation_red = preload("res://Effects/EnemyEffects/VoidBlob/RedVoidBlobDeathEffect.tscn")
 var death_animation_green = preload("res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn")
 var velocity: Vector2 = Vector2.ZERO

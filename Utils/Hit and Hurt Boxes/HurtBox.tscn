@@ -10,6 +10,7 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="invincible_end" from="." to="." method="_on_HurtBox_invincible_end"]
 [connection signal="invincible_start" from="." to="." method="_on_HurtBox_invincible_start"]

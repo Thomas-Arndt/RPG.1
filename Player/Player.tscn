@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://Player/Capey Mac Manbun.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/Shadows/MediumShadow.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Utils/Overlap/PushDetectionZone.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/WeaponSprite.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Sprites/WeaponAnimations/SimpleSword.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sound Effects/sword_swing.wav" type="AudioStream" id=10]
 
 [sub_resource type="Shader" id=52]
 code = "shader_type canvas_item;
@@ -273,6 +274,20 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/6/type = "audio"
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0.1 )
+}
 
 [sub_resource type="Animation" id=40]
 resource_name = "attack_left"
@@ -350,6 +365,20 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0.1 )
 }
 
 [sub_resource type="Animation" id=41]
@@ -429,6 +458,20 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/6/type = "audio"
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0.1 )
+}
 
 [sub_resource type="Animation" id=42]
 resource_name = "attack_up"
@@ -506,6 +549,20 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0.1 )
 }
 
 [sub_resource type="Animation" id=96]
@@ -1350,7 +1407,7 @@ states/run/node = SubResource( 22 )
 states/run/position = Vector2( 447, 110.25 )
 transitions = [ "idle", "run", SubResource( 23 ), "run", "idle", SubResource( 24 ), "idle", "roll", SubResource( 36 ), "roll", "idle", SubResource( 37 ), "idle", "attack", SubResource( 48 ), "attack", "idle", SubResource( 49 ), "push", "idle", SubResource( 68 ), "idle", "push", SubResource( 69 ), "idle", "mine", SubResource( 79 ), "mine", "idle", SubResource( 80 ) ]
 start_node = "idle"
-graph_offset = Vector2( -160.238, -15.595 )
+graph_offset = Vector2( -237.938, -24.7975 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=26]
 
@@ -1442,13 +1499,14 @@ tree_root = SubResource( 25 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 26 )
 parameters/attack/blend_position = Vector2( -0.0531108, -0.878112 )
-parameters/idle/blend_position = Vector2( 0, 0.722318 )
+parameters/idle/blend_position = Vector2( 0, -0.00628579 )
 parameters/mine/blend_position = Vector2( 0.00361884, 0.977143 )
 parameters/push/blend_position = Vector2( -0.00252146, 0.264378 )
 parameters/roll/blend_position = Vector2( 0.0212443, -0.138286 )
 parameters/run/blend_position = Vector2( 0.00111234, 0.840343 )
 
 [node name="HitBoxPivot" type="Position2D" parent="."]
+rotation = 3.14159
 
 [node name="SwordHitBox" parent="HitBoxPivot" instance=ExtResource( 4 )]
 collision_mask = 8
@@ -1481,6 +1539,10 @@ shape = SubResource( 70 )
 [node name="CollisionShape2D" parent="PushDetectionZone/PushDetectionZone/DetectorPivot/ForwardDetector" index="0"]
 position = Vector2( 0, 11 )
 shape = SubResource( 71 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -2.737
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="invincible_end" from="HurtBox" to="." method="_on_HurtBox_invincible_end"]

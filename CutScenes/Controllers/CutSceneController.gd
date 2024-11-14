@@ -11,6 +11,10 @@ var choreography : Array = []
 var scene_started = false
 var is_acting = false
 var is_speaking = false
+var emote = null
+var displacement : Vector2
+
+const exclamation = preload("res://Effects/Emotes/Exclamation.tscn")
 
 onready var tween : Tween = $Tween
 onready var timer = $Timer
@@ -29,6 +33,9 @@ enum {
 	CUSTOM,
 	DELETE_ACTOR,
 	PAUSE_FOR_DIALOGUE,
+	EMOTE,
+	MOVE_CAMERA,
+	RETURN_CAMERA,
 }
 
 func _ready():
@@ -65,6 +72,14 @@ func run_cut_scene():
 				delete_actor()
 			PAUSE_FOR_DIALOGUE:
 				pause_for_dialogue()
+			EMOTE:
+				emote(action[1], action[2])
+			MOVE_CAMERA:
+				set_displacement("set", action[1])
+				move_camera(action[2], action[3])
+			RETURN_CAMERA:
+				set_displacement("return")
+				move_camera(action[1], action[2])
 	else:
 		cut_scene_finished()
 
@@ -139,7 +154,34 @@ func cut_scene_finished():
 func release_player():
 	emit_signal("release_player")
 	run_cut_scene()
-	
+
+func emote(type, action):
+	match type:
+		"exclamation":
+			if action == "show":
+				emote = exclamation.instance()
+				actor.add_child(emote)
+				emote.position.y -= 32
+				run_cut_scene()
+			elif action == "hide":
+				if emote != null:
+					emote.queue_free()
+					run_cut_scene()
+		"question":
+			pass
+
+func set_displacement(mode, location = Vector2.ZERO):
+	if mode == "set":
+		displacement = (location - (actor.global_position)) * .75
+	elif mode == "return":
+		displacement = -displacement
+
+func move_camera(scene, duration):
+	var remote_transform : RemoteTransform2D = get_node("/root/Game/" + scene + "/YSort/Player/RemoteTransform2D")
+	tween.interpolate_property(remote_transform, "position", remote_transform.position, remote_transform.position + displacement, duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	is_acting = true
+	tween.start()
+
 func dialogue_complete():
 	if is_speaking:
 		is_speaking = false
@@ -154,6 +196,8 @@ func _on_Tween_tween_all_completed():
 	if is_acting:
 		if not actor == null and actor.anim_player.has_animation("idle"):
 			actor.anim_player.play("idle")
+		#elif not actor == null and actor.anim_player.has_animation("idle_down"):
+		#	actor.anim_player.play("idle_down")
 		is_acting = false
 		run_cut_scene()
 	

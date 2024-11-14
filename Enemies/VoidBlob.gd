@@ -28,11 +28,12 @@ var default_damage = 1
 var explosion_damage = 3
 var state = IDLE
 var DeathEffect : String = "res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn"
+var attacking = false
 
 onready var stats = $Stats
 onready var green_full_sprite = $GreenFullSprite
-onready var green_half_sprite = $RedFullSprite
-onready var red_full_sprite = $GreenHalfSprite
+onready var green_half_sprite = $GreenHalfSprite
+onready var red_full_sprite = $RedFullSprite
 onready var red_half_sprite = $RedHalfSprite
 onready var green_full_attack_sprite = $GreenFullAttackSprite
 onready var green_half_attack_sprite = $GreenHalfAttackSprite
@@ -59,7 +60,6 @@ func _ready():
 	anim_player.play("idle")
 	
 func _physics_process(delta):
-	match_dimension(WorldStats.DIMENSION)
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
 	apply_knockback()
 	
@@ -91,10 +91,10 @@ func _physics_process(delta):
 		
 		ATTACK:
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			if velocity == Vector2.ZERO:
+			if velocity == Vector2.ZERO and !attacking:
 				hit_box.damage = explosion_damage
-				apply_attack_sprite(WorldStats.DIMENSION)
 				attack_anim_player.play("explosion")
+				attacking = true
 		
 	if soft_collision.is_colliding():
 		velocity += soft_collision.get_push_vector() * delta * 400
@@ -125,6 +125,7 @@ func _on_HurtBox_area_entered(area):
 	stats.change_health(-area.damage)
 	if state != ATTACK:
 		knockback = area.knockback_vector * 130
+	hurt_box.create_hit_effect()
 	hurt_box.start_invincible(0.4)
 
 func _on_Stats_no_health():
@@ -148,17 +149,19 @@ func _on_HurtBox_invincible_end():
 	blink_anim_player.play("stop")
 
 func _on_AttackRadius_explosion_attack():
+	apply_attack_sprite(WorldStats.DIMENSION)
 	state = ATTACK
 
 func on_attack_animation_complete():
 	hit_box.damage = default_damage
 	hide_attack_sprites()
 	match_dimension(WorldStats.DIMENSION)
-	set_or_toggle_hurtbox_state(true)
+	attacking = false
 	state = IDLE
 
 func change_home_dimension():
 	is_red = !is_red
+	hurt_box.is_red = is_red	
 	apply_attack_sprite(WorldStats.DIMENSION)
 
 func match_dimension(state):
@@ -214,10 +217,11 @@ func flip_sprites(velocity):
 	red_full_attack_sprite.flip_h = velocity.x > 0
 	red_half_attack_sprite.flip_h = velocity.x > 0
 	
-func set_or_toggle_hurtbox_state(state = null):
-	if state == null:
+func set_or_toggle_hurtbox_state(value = null):
+	hurt_box.is_red = is_red
+	if value == null:
 		hurt_box.set_deferred("monitorable", not hurt_box.monitorable)
 		hurt_box.set_deferred("monitoring", not hurt_box.monitoring)
 	else:
-		hurt_box.set_deferred("monitorable", state)
-		hurt_box.set_deferred("monitoring", state)
+		hurt_box.set_deferred("monitorable", value)
+		hurt_box.set_deferred("monitoring", value)
