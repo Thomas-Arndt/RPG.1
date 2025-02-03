@@ -92,7 +92,7 @@ func enter_actor(position : Vector2) -> void:
 		get_tree().get_nodes_in_group("Mobs")[0].add_child(actor)
 	else:
 		actor = get_node(actor_path)
-		if actor.has_method("state_machine_pause") and not actor is Player:
+		if actor.has_method("state_machine_pause"):
 			actor.state_machine_pause()
 		toggle_visible_on()
 	run_cut_scene()

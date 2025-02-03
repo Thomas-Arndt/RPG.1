@@ -10,7 +10,6 @@ radius = 9.0
 height = 16.0
 
 [node name="RockLarge" instance=ExtResource( 3 )]
-script = null
 
 [node name="ShadowSprite" parent="." index="0"]
 position = Vector2( -4.47035e-07, 2 )
