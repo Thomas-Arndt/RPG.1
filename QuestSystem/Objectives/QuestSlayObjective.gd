@@ -13,8 +13,12 @@ func _on_enemy_died(enemy) -> void:
 			return
 		amount -= 1
 		emit_signal("updated", self)
+		QuestSystem.save_quest_progress()
 		if amount == 0 and not completed:
 			finish()
+
+func get_target_name() -> String:
+	return target_to_slay.instance().Name.to_lower()
 
 func as_text() -> String:
 	return(

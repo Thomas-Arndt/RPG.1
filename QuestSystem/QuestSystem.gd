@@ -41,33 +41,26 @@ func deliver(quest: Quest):
 	get_tree().get_nodes_in_group("World")[0].save_scene()
 
 func get_quest_log():
-	var quest_log_dict : Dictionary = {
-		"active_quests": [],
-		"completed_quests": [],
-	}
+	var quest_log : Array
 	for quest in active_quests.get_quests():
-		var objectives : Array = []
-		for objective in quest.objectives.get_children():
-			objectives.append(objective.as_text())
-		quest_log_dict.active_quests.append({
-			"title": quest.title,
-			"description": quest.description,
-			"objectives": objectives,
-			"rewards": quest.get_rewards(),
-			"state": "active",
-		})
+		if quest.active:
+			quest_log.append({
+				"title": quest.title,
+				"description": quest.description,
+				"objectives": quest.objectives.get_children(),
+				"rewards": quest.get_rewards(),
+				"state": "active",
+			})
 	for quest in completed_quests.get_quests():
-		var objectives : Array = []
-		for objective in quest.objectives.get_children():
-			objectives.append(objective.as_text())
-		quest_log_dict.completed_quests.append({
-			"title": quest.title,
-			"description": quest.description,
-			"objectives": objectives,
-			"rewards": quest.get_rewards(),
-			"state": "completed",
-		})
-	return quest_log_dict
+		if quest.active:
+			quest_log.append({
+				"title": quest.title,
+				"description": quest.description,
+				"objectives": quest.objectives.get_children(),
+				"rewards": quest.get_rewards(),
+				"state": "completed",
+			})
+	return quest_log
 
 func save_quest_progress():
 	var save_game = File.new()
@@ -100,6 +93,9 @@ func load_quest_progress():
 				get_node(node_data["parent"]).add_child(quest)
 				for objective in quest.get_objectives():
 					objective.connect("completed", quest, "_on_Objective_completed")
+					if objective is QuestSlayObjective:
+						objective.amount = node_data["slay_objective_amounts"][objective.get_target_name()]
 				quest.connect("completed", self, "_on_Quest_completed", [quest])
+				quest.active = node_data["active"]
 				break
 	save_game.close()

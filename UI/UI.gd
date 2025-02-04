@@ -5,6 +5,7 @@ onready var TextBox: Node = $UITextBox
 onready var HealthBar: Node = $HealthBar
 onready var Backpack: Node = $Backpack
 onready var MainMenu: Node = $MainMenu
+onready var QuestLog: Node = $QuestLog
 
 enum states {
 	TITLE,
@@ -31,12 +32,14 @@ func apply_state():
 			HealthBar.hide()
 			Backpack.hide()
 			MainMenu.hide()
+			QuestLog.hide()
 		states.MAIN:
 			GoldDisplay.hide()
 			TextBox.hide_text_box()
 			HealthBar.hide()
 			Backpack.hide()
 			MainMenu.show()
+			QuestLog.hide()
 		states.OVERWORLD:
 			GoldDisplay.show()
 			TextBox.hide_text_box()
@@ -49,3 +52,4 @@ func apply_state():
 			HealthBar.hide()
 			Backpack.hide()
 			MainMenu.hide()
+			QuestLog.hide()
