@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=2]
@@ -16,8 +16,16 @@
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=14]
 [ext_resource path="res://World/Above/Terrain.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=16]
+[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Utils/Actions/GiveQuestAction.tscn" type="PackedScene" id=18]
 [ext_resource path="res://CutScenes/Controllers/GuardController.gd" type="Script" id=19]
 [ext_resource path="res://NPC/NPCs/Guard.tscn" type="PackedScene" id=20]
+[ext_resource path="res://QuestSystem/Quests/find-materials-for-beckah.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Utils/Actions/InProgressQuestAction.tscn" type="PackedScene" id=22]
+[ext_resource path="res://World/Objects/Forage/LeatherLeaf.tres" type="Resource" id=23]
+[ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=24]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 73 )
@@ -830,6 +838,32 @@ chest_color = 1
 legs_color = 11
 foot_color = 11
 
+[node name="NPC" parent="YSort/NPCs" instance=ExtResource( 17 )]
+position = Vector2( -193, -13 )
+is_stationary = true
+skin_tone = 2
+hair_style = 2
+hair_color = 2
+chest_color = 4
+legs_color = 12
+foot_color = 10
+
+[node name="AnimationTree" parent="YSort/NPCs/NPC" index="8"]
+parameters/playback = SubResource( 8 )
+
+[node name="CompletedQuestAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="0" instance=ExtResource( 24 )]
+quest_reference = ExtResource( 21 )
+speaker_name = "Beckah"
+active = true
+
+[node name="InProgressQuestAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="1" instance=ExtResource( 22 )]
+quest_reference = ExtResource( 21 )
+speaker_name = "Beckah"
+
+[node name="GiveQuestAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="2" instance=ExtResource( 18 )]
+quest_reference = ExtResource( 21 )
+speaker_name = "Beckah"
+
 [node name="Signs" type="YSort" parent="YSort"]
 
 [node name="InformationBoard" parent="YSort/Signs" instance=ExtResource( 8 )]
@@ -854,6 +888,17 @@ forage_item = ExtResource( 10 )
 position = Vector2( -213, -733 )
 world_item = ExtResource( 11 )
 forage_item = ExtResource( 11 )
+
+[node name="ForageWorldComponent4" parent="YSort/Forage" instance=ExtResource( 9 )]
+position = Vector2( 702, 539 )
+world_item = ExtResource( 23 )
+forage_item = ExtResource( 23 )
+respawn_time = 3.0
+
+[node name="ForageWorldComponent5" parent="YSort/Forage" instance=ExtResource( 9 )]
+position = Vector2( 284, 702 )
+world_item = ExtResource( 23 )
+forage_item = ExtResource( 23 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
@@ -922,6 +967,9 @@ speaker = "East Guard"
 
 [editable path="Terrain"]
 [editable path="Camera2D"]
+[editable path="YSort/NPCs/NPC"]
+[editable path="YSort/NPCs/NPC/InteractionZone"]
+[editable path="YSort/NPCs/NPC/PlayerDetectionZone"]
 [editable path="YSort/Signs/InformationBoard"]
 [editable path="YSort/Signs/InformationBoard/InteractionZone"]
 [editable path="YSort/Forage/ForageWorldComponent"]
@@ -930,6 +978,10 @@ speaker = "East Guard"
 [editable path="YSort/Forage/ForageWorldComponent2/InteractionZone"]
 [editable path="YSort/Forage/ForageWorldComponent3"]
 [editable path="YSort/Forage/ForageWorldComponent3/InteractionZone"]
+[editable path="YSort/Forage/ForageWorldComponent4"]
+[editable path="YSort/Forage/ForageWorldComponent4/InteractionZone"]
+[editable path="YSort/Forage/ForageWorldComponent5"]
+[editable path="YSort/Forage/ForageWorldComponent5/InteractionZone"]
 [editable path="SceneLinks/BillsFarm"]
 [editable path="SceneLinks/TinyTown"]
 [editable path="SceneLinks/A2"]

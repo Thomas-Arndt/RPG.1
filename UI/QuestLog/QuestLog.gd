@@ -26,9 +26,10 @@ func get_quest_log():
 	quest_log = QuestSystem.get_quest_log()
 
 func build_quest_log():
+	for item in quest_list_container.get_children():
+		item.queue_free()
+	description.text = "You have no quests."
 	if len(quest_log) > 0:
-		for item in quest_list_container.get_children():
-			item.queue_free()
 		for quest in quest_log:
 			var quest_label = quest_log_label.instance()
 			quest_label.text = quest.title
@@ -37,6 +38,7 @@ func build_quest_log():
 func update_cursor_index(change):
 	quest_cursor = clamp(quest_cursor + change, 0, quest_list_container.get_child_count()-1)
 	highlight_active_row()
+	display_quest_details()
 
 func highlight_active_row():
 	var style = StyleBoxFlat.new()
@@ -61,6 +63,7 @@ func show_hide_quest_log():
 		get_quest_log()
 		build_quest_log()
 	quest_cursor = 0
+	print(quest_log)
 	if len(quest_log) > 0:
 		highlight_active_row()
 		display_quest_details()
