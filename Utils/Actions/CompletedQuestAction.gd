@@ -54,9 +54,17 @@ func interact() -> void:
 func hasAllRequiredItems(quest):
 	var objectives = quest.get_objectives()
 	for objective in objectives:
-		if objective is QuestOwnItemObjective:
+		if objective is QuestOwnItemObjective or objective is QuestCollectItemsObjective:
+			var required_items : Dictionary
+			for requiredItem in objective.items:
+				if required_items.has(requiredItem.name):
+					required_items[requiredItem.name] += 1
+				else:
+					required_items[requiredItem.name] = 1
 			for requiredItem in objective.items:
 				if not Inventory.has_item(requiredItem):
+					return false
+				if Inventory.item_quantity(requiredItem) < required_items[requiredItem.name]:
 					return false
 	return true
 

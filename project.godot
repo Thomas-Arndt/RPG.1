@@ -160,6 +160,11 @@ _global_script_classes=[ {
 "path": "res://QuestSystem/Quest.gd"
 }, {
 "base": "QuestObjective",
+"class": "QuestCollectItemsObjective",
+"language": "GDScript",
+"path": "res://QuestSystem/Objectives/QuestCollectItemsObjective.gd"
+}, {
+"base": "QuestObjective",
 "class": "QuestDeliverItemObjective",
 "language": "GDScript",
 "path": "res://QuestSystem/Objectives/QuestDeliverItemObjective.gd"
@@ -280,6 +285,7 @@ _global_script_class_icons={
 "ProximitySpawnController": "",
 "Push_Object": "",
 "Quest": "",
+"QuestCollectItemsObjective": "",
 "QuestDeliverItemObjective": "",
 "QuestInteractObjective": "",
 "QuestItemReward": "",

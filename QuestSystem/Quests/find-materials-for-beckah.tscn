@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://QuestSystem/Objectives/QuestCollectItemsObjective.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/Objects/Forage/LeatherLeaf.tres" type="Resource" id=3]
+
+[node name="find-materials-for-beckah" instance=ExtResource( 1 )]
+title = "Leaves for Beckah"
+description = "Beckah wouldlike you to help her find 4 leather leaf."
+startText = [ "Hey there! Would you be willing to help me out?", "I need to collect some Leather Leaf, but I am afraid of the strange mosnters that suddenly appeared.", "If you could help me collect 4 leather leaf, I would really appreciate it. It grows near water." ]
+progressText = [ "Remember, Leather Leaf grows near bodies of water.", "Come back to me when you have collected 4 of them and I'll pay you for your effort. Thanks!" ]
+deliverText = [ "Thank you so much! I really appreciate your help!", "Here's some gold for your troubles. Farewell!" ]
+_reward_gold = 15
+
+[node name="QuestCollectItemsObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
+items = [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ]

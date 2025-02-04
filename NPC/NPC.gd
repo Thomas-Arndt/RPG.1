@@ -165,7 +165,7 @@ func quest_status():
 	var current_actions = actions.get_children()
 	for action in current_actions:
 		if action.active:
-			if action is CompletedQuestAction and QuestSystem.completed_quests.find(action.quest_reference.instance()) != null:
+			if action is CompletedQuestAction and QuestSystem.completed_quests.find(action.quest_reference.instance()) != null and action.hasAllRequiredItems(QuestSystem.completed_quests.find(action.quest_reference.instance())):
 				quest_bubble.region_rect.position = Vector2(48, 128)
 				return
 			elif action is CompleteMultipleQuestAction and QuestSystem.completed_quests.find(action.main_quest_reference.instance()) != null:

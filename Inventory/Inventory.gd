@@ -102,6 +102,12 @@ func has_item(item) -> bool:
 		if inventory_item != null and inventory_item.type == item.type && inventory_item.name == item.name:
 			return true
 	return false
+	
+func item_quantity(item) -> int:
+	for inventory_item in inventory:
+		if inventory_item != null and inventory_item.type == item.type && inventory_item.name == item.name:
+			return inventory_item.quantity
+	return 0
 
 func consume_item(index, quantity = 1):
 	inventory[index].quantity -= quantity
