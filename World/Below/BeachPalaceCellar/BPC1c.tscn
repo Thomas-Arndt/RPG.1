@@ -164,7 +164,7 @@ signal_code = "screen_shake"
 
 [node name="YSort" parent="." instance=ExtResource( 2 )]
 
-[node name="RemoteTransform2D" parent="YSort/Player" index="11"]
+[node name="RemoteTransform2D" parent="YSort/Player" index="12"]
 remote_path = NodePath("../../../Camera2D")
 
 [node name="SerpentContainer" parent="YSort/MobileEnemies" index="0" instance=ExtResource( 7 )]

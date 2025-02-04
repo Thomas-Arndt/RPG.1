@@ -76,6 +76,10 @@ func _physics_process(delta):
 		is_running = !is_running
 		UI.Backpack.toggle_backpack()
 	
+	if Input.is_action_just_pressed("quest_log") and UI.TextBox.complete:
+		is_running = !is_running
+		UI.QuestLog.show_hide_quest_log()
+	
 	# Debug Input Key
 	if Input.is_action_just_pressed("debug"):
 		pass

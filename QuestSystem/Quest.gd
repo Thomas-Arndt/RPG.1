@@ -18,9 +18,12 @@ export var deliverText: Array
 export var _reward_experience: int
 export var _reward_gold: int
 
+var active: bool = false
+
 func _start():
 	for objective in get_objectives():
 		objective.connect("completed", self, "_on_Objective_completed")
+	active = true
 	emit_signal("started")
 	
 func get_objectives():
@@ -41,6 +44,7 @@ func _on_Objective_completed(objective) -> void:
 func _deliver():
 	if len(_environment_rewards.get_children()) > 0:
 		_apply_environmental_rewards()
+	active = false
 	emit_signal("delivered")
 
 func _apply_environmental_rewards():
@@ -56,9 +60,15 @@ func get_rewards_as_text() -> Array:
 	return text 
 
 func save() -> Dictionary:
+	var slay_objectives_amounts: Dictionary
+	for obj in objectives.get_children():
+		if obj is QuestSlayObjective:
+			slay_objectives_amounts[obj.get_target_name()] = obj.amount
 	var save_dict = {
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
 		"name" : get_name(),
+		"active": active,
+		"slay_objective_amounts": slay_objectives_amounts,
 	}
 	return save_dict
