@@ -43,7 +43,7 @@ func deliver(quest: Quest):
 func get_quest_log():
 	var quest_log : Array
 	for quest in active_quests.get_quests():
-		if quest.active:
+		if quest.active and not quest.is_multiple_quest_part:
 			quest_log.append({
 				"title": quest.title,
 				"description": quest.description,
@@ -52,7 +52,7 @@ func get_quest_log():
 				"state": "active",
 			})
 	for quest in completed_quests.get_quests():
-		if quest.active:
+		if quest.active and not quest.is_multiple_quest_part:
 			quest_log.append({
 				"title": quest.title,
 				"description": quest.description,

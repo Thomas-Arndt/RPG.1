@@ -12,12 +12,19 @@ var active : bool = true
 
 func _ready():
 	interaction_zone.connect("interaction_finished", self, "_on_interaction_finished")
+	action.connect("strike", self, "_on_Strike")
 
 func _on_interaction_finished(node):
+	strike()
+	remove_rock()
+
+func _on_Strike():
+	strike()
+	
+func strike():
 	var rock_effect = mine_rock_effect.instance()
 	rock_effect.global_position = global_position
 	get_parent().add_child(rock_effect)
-	remove_rock()
 	
 func remove_rock():
 	sprite.visible = false

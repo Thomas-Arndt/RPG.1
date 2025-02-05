@@ -14,6 +14,7 @@ export var description: String
 export var startText: Array
 export var progressText: Array
 export var deliverText: Array
+export var is_multiple_quest_part: bool = false
 
 export var _reward_experience: int
 export var _reward_gold: int

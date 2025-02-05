@@ -7,5 +7,6 @@
 title = "Rescue Person 3"
 description = "Rescue the third person."
 deliverText = [ "I thought I was a goner! Thank you!" ]
+is_multiple_quest_part = true
 
 [node name="QuestInteractObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
