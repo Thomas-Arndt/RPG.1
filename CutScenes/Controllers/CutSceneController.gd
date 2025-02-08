@@ -40,7 +40,7 @@ enum {
 
 func _ready():
 	UI.TextBox.connect("finished", self, "dialogue_complete")
-	package_choreography()
+	#package_choreography()
 
 func run_cut_scene():
 	if len(choreography) > 0 and not is_acting:
@@ -83,10 +83,11 @@ func run_cut_scene():
 	else:
 		cut_scene_finished()
 
-func enter_actor(position : Vector2) -> void:
+func enter_actor(pos : Vector2) -> void:
 	if actor_reference != null:
+		actor = null
 		actor = actor_reference.instance()
-		actor.global_position = position
+		actor.global_position = pos
 		if actor.has_method("state_machine_pause"):
 			actor.state_machine_pause()
 		get_tree().get_nodes_in_group("Mobs")[0].add_child(actor)
@@ -125,10 +126,12 @@ func release_actor():
 	actor.position = actor.global_position
 	if actor.has_method("state_machine_run"):
 		actor.state_machine_run()
+	actor = null
 	run_cut_scene()
 
 func delete_actor():
 	actor.queue_free()
+	actor = null
 	run_cut_scene()
 	
 func start_timer(duration : float):
@@ -194,8 +197,10 @@ func pause_for_dialogue():
 
 func _on_Tween_tween_all_completed():
 	if is_acting:
-		if not actor == null and actor.anim_player.has_animation("idle"):
-			actor.anim_player.play("idle")
+		for child in actor.get_children():
+			if child is AnimationPlayer:
+				if not actor == null and actor.anim_player.has_animation("idle"):
+					actor.anim_player.play("idle")
 		#elif not actor == null and actor.anim_player.has_animation("idle_down"):
 		#	actor.anim_player.play("idle_down")
 		is_acting = false
