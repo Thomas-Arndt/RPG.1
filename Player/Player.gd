@@ -75,6 +75,11 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("backpack") and UI.TextBox.complete:
 		is_running = !is_running
 		UI.Backpack.toggle_backpack()
+		
+	if Input.is_action_just_pressed("crafting") and UI.TextBox.complete:
+		if not UI.Backpack.state and not UI.Backpack.crafting:
+			is_running = !is_running
+		UI.Backpack.toggle_crafting_menu()
 	
 	if Input.is_action_just_pressed("quest_log") and UI.TextBox.complete:
 		is_running = !is_running
