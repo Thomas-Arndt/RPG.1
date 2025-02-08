@@ -19,6 +19,8 @@ func package_choreography():
 	]
 	choreography.append([DIALOGUE, monologue, WorldStats.player_name])
 	choreography.append([WAIT, 1])
+	choreography.append([CUSTOM, "HOP_UP", []])
+	choreography.append([CUSTOM, "HOP_DOWN", []])
 	monologue = [
 		"Bzzzt bzzzt bzzzt...",
 	]
@@ -42,7 +44,7 @@ func package_choreography():
 	monologue = [
 		"*** PROXIMITY ALERT ***",
 		"My emergency sensors detect potentially hostile entities in your vicinity.",
-		"I would recommend protecting yourself with a survival knife.",
+		"I would recommend protecting yourself with a Survival Knife.",
 		"If you would like, I can fabricate one designed by the exceptional engineers at Fabrio-Tech, Inc.",
 		"Look around and see if you can find some wood and then I'll take it from there."
 	]
@@ -63,5 +65,13 @@ func custom_actions(action_name, args):
 			run_cut_scene()
 		"MOVE_CAMERA":
 			tween.interpolate_property(get_node("/root/Game/BillsFarm/YSort/Player/RemoteTransform2D"), "position", args[0], args[1], args[2], Tween.TRANS_LINEAR, Tween.EASE_IN)
+			is_acting = true
+			tween.start()
+		"HOP_UP":
+			tween.interpolate_property(actor.sprite, "position", Vector2(0, -9), Vector2(0, -18), 0.2, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+			is_acting = true
+			tween.start()
+		"HOP_DOWN":
+			tween.interpolate_property(actor.sprite, "position", Vector2(0, -18), Vector2(0, -9), 0.2, Tween.TRANS_CUBIC, Tween.EASE_IN)
 			is_acting = true
 			tween.start()
