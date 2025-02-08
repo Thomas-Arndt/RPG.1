@@ -9,6 +9,7 @@ onready var tween = $Tween
 
 var state = false
 var crafting = false
+var crafting_init = false
 
 func _ready():
 	inventory_cursor.visible = false
@@ -49,18 +50,37 @@ func toggle_backpack():
 		if crafting:
 			tween.interpolate_property(crafting_menu, "rect_position:x", crafting_menu.rect_position.x, 0, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT)
 			crafting = !crafting
+	crafting_init = false
 	tween.start()
 		
 func toggle_crafting_menu():
+	print(state)
+	print(crafting)
+	print("***")
 	crafting = !crafting
-	if state:
+	if state and not crafting_init:
 		if crafting:
 			inventory_cursor.visible = false
 			tween.interpolate_property(crafting_menu, "rect_position:x", crafting_menu.rect_position.x, 83, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT)
 		else:
 			inventory_cursor.visible = true
+			tween.interpolate_property(crafting_menu, "rect_position:x", crafting_menu.rect_position.x, 0, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT)		
+	else:
+		state = !state
+		inventory_cursor.visible = false
+		if crafting:
+			crafting_init = true
+			tween.interpolate_property(self, "offset:y", offset.y, -82, 0.8, Tween.TRANS_CIRC ,Tween.EASE_OUT)		
+			tween.interpolate_property(crafting_menu, "rect_position:x", crafting_menu.rect_position.x, 83, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT)
+		else:
+			tween.interpolate_property(self, "offset:y", offset.y, 0, 0.8, Tween.TRANS_CIRC ,Tween.EASE_OUT)
 			tween.interpolate_property(crafting_menu, "rect_position:x", crafting_menu.rect_position.x, 0, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT)
-		tween.start()
+			crafting_init = false	
+			
+	print(state)
+	print(crafting)
+	print("***")
+	tween.start()
 
 func hide():
 	crafting_menu.visible = false
