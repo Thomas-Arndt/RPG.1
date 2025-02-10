@@ -40,7 +40,6 @@ enum {
 
 func _ready():
 	UI.TextBox.connect("finished", self, "dialogue_complete")
-	#package_choreography()
 
 func run_cut_scene():
 	if len(choreography) > 0 and not is_acting:
@@ -152,6 +151,8 @@ func toggle_visible_off():
 	run_cut_scene()
 	
 func cut_scene_finished():
+	get_tree().get_nodes_in_group("World")[0].save_scene()
+	QuestSystem.save_quest_progress()
 	emit_signal("finished")
 
 func release_player():
@@ -197,10 +198,11 @@ func pause_for_dialogue():
 
 func _on_Tween_tween_all_completed():
 	if is_acting:
-		for child in actor.get_children():
-			if child is AnimationPlayer:
-				if not actor == null and actor.anim_player.has_animation("idle"):
-					actor.anim_player.play("idle")
+		if actor != null:
+			for child in actor.get_children():
+				if child is AnimationPlayer:
+					if not actor == null and actor.anim_player.has_animation("idle"):
+						actor.anim_player.play("idle")
 		#elif not actor == null and actor.anim_player.has_animation("idle_down"):
 		#	actor.anim_player.play("idle_down")
 		is_acting = false

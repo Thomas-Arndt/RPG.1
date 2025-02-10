@@ -29,6 +29,9 @@ func start_cutscene(node):
 		for actor in actor_controllers.get_children():
 			actor.package_choreography()
 			actor.run_cut_scene()
+		
+func release_player():
+	player.paused(false)
 
 func save():
 	var save_dict = {

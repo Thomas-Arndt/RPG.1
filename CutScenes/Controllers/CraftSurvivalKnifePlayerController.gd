@@ -14,7 +14,6 @@ func package_choreography():
 		"Simply open up the crafting menu by pressing F, select the Survival Knife recipe, and I will take care of the rest.",
 	]
 	choreography.append([DIALOGUE, monologue, "Fabio"])
-	choreography.append([WAIT, 0.5])
 	choreography.append([RELEASE_PLAYER])
 	choreography.append([RELEASE_ACTOR])
 	
