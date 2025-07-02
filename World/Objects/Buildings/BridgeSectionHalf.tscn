@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Sprites/bridge-planks-half.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Shadows/RectangleShadow.png" type="Texture" id=2]
+
+[node name="BridgeSectionHalf" type="Node2D"]
+
+[node name="ShadowSprite" type="Sprite" parent="."]
+position = Vector2( -0.5, 50 )
+scale = Vector2( 0.96875, 1 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 31 )
+texture = ExtResource( 1 )

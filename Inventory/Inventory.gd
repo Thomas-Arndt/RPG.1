@@ -167,4 +167,5 @@ var ItemScenes = {
 	"POTION": preload("res://Inventory/Items/Potions/Potion.tscn"),
 	"WEAPON": preload("res://Inventory/Items/Weapons/Weapon.tscn"),
 	"KEY": preload("res://Inventory/Items/Keys/Key.tscn"),
+	"PEARL": preload("res://Inventory/Items/Currencies/Pearl.tscn")
 }

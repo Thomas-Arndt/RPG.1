@@ -5,11 +5,13 @@ export(float) var max_health setget set_max_health
 var health: float setget set_health
 var experience: int = 0 setget set_experience
 var playerLevel: int = 1 setget set_player_level
+var muonPearls: int = 0 setget set_muon_pearls
 
 signal no_health
 signal health_changed(value)
 signal max_health_changed(value)
 signal experience_changed(value)
+signal muon_pearls_changed(value)
 signal player_level_changed(value)
 
 func _ready():
@@ -37,6 +39,10 @@ func change_health(value):
 func set_experience(value):
 	experience = value
 	emit_signal("experience_changed", experience)
+	
+func set_muon_pearls(value):
+	muonPearls = value
+	emit_signal("muon_pearls_changed", muonPearls)
 
 func change_experience(value):
 	experience += value
@@ -63,7 +69,8 @@ func save_stats():
 		"max_health" : max_health,
 		"health" : health,
 		"experience" : experience,
-		"playerLevel" : playerLevel
+		"playerLevel" : playerLevel,
+		"muonPearls" : muonPearls,
 	}
 	save_game.store_line(to_json(node_data))
 	save_game.close()

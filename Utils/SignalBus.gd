@@ -21,3 +21,6 @@ signal screen_shake(duration, frequency, amplitude, priority)
 #Barriers
 signal activate_barrier(signal_code)
 signal deactivate_barrier(signal_code)
+
+#ItemContainer
+signal drop_item(loc, quantity, direction, distance, item)

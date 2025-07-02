@@ -3,30 +3,30 @@ extends Node2D
 export (Resource) var drop_item = null
 export (float) var drop_rate = 0
 
+var new_item = null
+
 func _ready():
+	assert(drop_item)
 	randomize()
-	if drop_item != null:
-		if randf() <= drop_rate:
-			drop_item(drop_item)
-	else:
-		queue_free()
+	drop_item(drop_item)
 
 func drop_item(resource: Resource):
 	var item_type = resource.type
 	match item_type:
 		"potion":
-			var new_potion = Inventory.ItemScenes.POTION.instance()
-			add_child(new_potion)
-			new_potion.global_position = global_position
-			new_potion.set_item_resource(resource)
+			new_item = Inventory.ItemScenes.POTION.instance()
+			insert_item(resource)
 		"weapon":
-			var new_weapon = Inventory.ItemScenes.WEAPON.instance()
-			add_child(new_weapon)
-			new_weapon.global_position = global_position
-			new_weapon.set_item_resource(resource)
+			new_item = Inventory.ItemScenes.WEAPON.instance()
+			insert_item(resource)
 		"key":
-			var new_key = Inventory.ItemScenes.KEY.instance()
-			add_child(new_key)
-			new_key.global_position = global_position
-			new_key.set_item_resource(resource)
+			new_item = Inventory.ItemScenes.KEY.instance()
+			insert_item(resource)
+		"pearl":
+			new_item = Inventory.ItemScenes.PEARL.instance()
+			insert_item(resource)
 
+func insert_item(resource):
+	add_child(new_item)
+	new_item.global_position = global_position
+	new_item.set_item_resource(resource)

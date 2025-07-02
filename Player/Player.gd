@@ -231,11 +231,14 @@ func process_action(index):
 				Inventory.emit_signal("item_changed", [index])
 
 func state_machine_pause():
+	state = MOVE
+	if anim_state != null:
+		anim_state.travel("idle")
 	active = false
 
 func state_machine_run():
-	active = true
 	state = MOVE
+	active = true
 	
 func get_last_input():
 	match last_action:
