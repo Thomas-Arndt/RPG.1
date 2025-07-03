@@ -11,5 +11,6 @@ recipe = [ {
 "item": ExtResource( 3 ),
 "quantity": 3
 } ]
+pearl_cost = 1
 product = ExtResource( 2 )
 product_quantity = 1

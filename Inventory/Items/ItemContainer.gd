@@ -1,9 +1,10 @@
-extends Node2D
+extends KinematicBody2D
 
 export (Resource) var drop_item = null
 export (float) var drop_rate = 0
 
 var new_item = null
+var active = false
 
 func _ready():
 	assert(drop_item)
@@ -30,3 +31,6 @@ func insert_item(resource):
 	add_child(new_item)
 	new_item.global_position = global_position
 	new_item.set_item_resource(resource)
+	
+func set_active(state):
+	active = state

@@ -54,13 +54,14 @@ func toggle_backpack():
 	tween.start()
 		
 func toggle_crafting_menu():
-	print(state)
-	print(crafting)
-	print("***")
+	#print(state)
+	#print(crafting)
+	#print("***")
 	crafting = !crafting
 	if state and not crafting_init:
 		if crafting:
 			inventory_cursor.visible = false
+			crafting_menu.recipe_list.update_recipe_display()
 			tween.interpolate_property(crafting_menu, "rect_position:x", crafting_menu.rect_position.x, 83, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT)
 		else:
 			inventory_cursor.visible = true
@@ -70,6 +71,7 @@ func toggle_crafting_menu():
 		inventory_cursor.visible = false
 		if crafting:
 			crafting_init = true
+			crafting_menu.recipe_list.update_recipe_display()
 			tween.interpolate_property(self, "offset:y", offset.y, -82, 0.8, Tween.TRANS_CIRC ,Tween.EASE_OUT)		
 			tween.interpolate_property(crafting_menu, "rect_position:x", crafting_menu.rect_position.x, 83, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT)
 		else:
@@ -77,9 +79,9 @@ func toggle_crafting_menu():
 			tween.interpolate_property(crafting_menu, "rect_position:x", crafting_menu.rect_position.x, 0, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT)
 			crafting_init = false	
 			
-	print(state)
-	print(crafting)
-	print("***")
+	#print(state)
+	#print(crafting)
+	#print("***")
 	tween.start()
 
 func hide():

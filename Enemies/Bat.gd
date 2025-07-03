@@ -2,8 +2,6 @@ extends KinematicBody2D
 
 signal died(node)
 
-const pearl = preload("res://Inventory/Items/Currencies/MuonPearl.tres")
-
 export var ACCELERATION = 200
 export var MAX_SPEED = 50
 export var FRICTION = 200
@@ -95,7 +93,7 @@ func seek_player():
 
 func _on_Stats_no_health():
 	emit_signal("died", self)
-	SignalBus.emit_signal("drop_item", global_position, weighted_random(), null, null, pearl)
+	SignalBus.emit_signal("drop_item", global_position, [[1, 0.8], [0, 0.1], [2, 0.1]], null, null, Inventory.ItemResources.MUON_PEARL)
 	queue_free()
 	var death_fx = ResourceLoader.load(DeathEffect)
 	var death_effect = death_fx.instance()
@@ -149,13 +147,3 @@ func flip_h(val):
 	red_half_sprite.flip_h = val
 	green_full_sprite.flip_h = val
 	green_half_sprite.flip_h = val
-
-func weighted_random():
-	var roll = randf()  # float from 0.0 to 1.0
-
-	if roll < 0.8:
-		return 1  # 60% chance
-	elif roll < 0.9:
-		return 0  # next 30%
-	else:
-		return 2  # remaining 10%

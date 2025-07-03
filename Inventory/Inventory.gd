@@ -2,12 +2,17 @@ extends Node
 
 signal gold_changed(value)
 signal max_gold_changed(value)
+signal muon_pearls_changed(value)
+signal max_muon_pearls_changed(value)
 signal item_changed(indices)
 
 var drag_data = null
 
 var gold: int = 0 setget set_gold
 var max_gold: int = 999 setget set_max_gold
+
+var muon_pearls: int = 0 setget set_muon_pearls
+var max_muon_pearls: int = 99 setget set_max_muon_pearls
 
 export (Array, Resource) var inventory = [
 	null, null, null, null, 
@@ -35,6 +40,20 @@ func set_max_gold(value):
 	max_gold = value
 	save_inventory()
 	emit_signal("max_gold_changed", value)
+	
+func set_muon_pearls(value):
+	muon_pearls = value
+	emit_signal("muon_pearls_changed", value)
+
+func change_muon_pearls(value):
+	muon_pearls += value
+	muon_pearls = clamp(muon_pearls, 0, max_muon_pearls)
+	save_inventory()
+	emit_signal("muon_pearls_changed", muon_pearls)
+
+func set_max_muon_pearls(value):
+	max_muon_pearls = value
+	emit_signal("max_muon_pearls_changed", value)
 
 func pick_up_item(item, quantity = 1, index = null):
 	var item_index = 0
@@ -133,7 +152,9 @@ func save_inventory():
 	var node_data = {
 		"gold" : gold,
 		"max_gold" : max_gold,
-		"inventory" : inventory_resources_array
+		"muon_pearls": muon_pearls,
+		"max_muon_pearls": max_muon_pearls,
+		"inventory" : inventory_resources_array,
 	}
 	save_game.store_line(to_json(node_data))
 	save_game.close()
@@ -160,6 +181,7 @@ func load_inventory():
 
 var ItemResources = {
 	"KEY": preload("res://Inventory/Items/Keys/Key.tres"),
+	"MUON_PEARL": preload("res://Inventory/Items/Currencies/MuonPearl.tres"),
 }
 
 var ItemScenes = {

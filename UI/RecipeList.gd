@@ -2,13 +2,15 @@ extends GridContainer
 
 signal recipe_changed(recipe)
 
+const recipe_label = preload("res://UI/RecipeLabel.tscn")
+
 export (Array, Resource) var recipe_list
 var start_index: int = 0
 var end_index: int = 4
 var cursor_index: int = 0
 
 func _ready():
-	update_recipe_display()
+	populate_display()
 
 func update_cursor_index(change):
 	if cursor_index + change < 0 and start_index > 0:
@@ -32,9 +34,12 @@ func update_recipe_display():
 		var child = get_child(index)
 		if len(recipe_list) - 1 >= index:
 			child.text = recipe_list[start_index + index].name
+			if not has_all_ingredients(recipe_list[start_index + index]):
+				child.set("custom_colors/font_color", Color(1.0, 1.0, 1.0, 0.4))
+			else:
+				child.set("custom_colors/font_color", null)
 	highlight_active_row()
 	emit_signal("recipe_changed", recipe_list[start_index + cursor_index])
-
 
 func highlight_active_row():
 	var style = StyleBoxFlat.new()
@@ -49,13 +54,17 @@ func highlight_active_row():
 func craft_item():
 	var recipe = recipe_list[start_index + cursor_index]
 	if has_all_ingredients(recipe):
+		Inventory.change_muon_pearls(-recipe.pearl_cost)
 		for item in recipe.recipe:
 			var item_index = Inventory.get_item_index(item.item)
 			if item_index >= 0:
 				Inventory.consume_item(item_index, item.quantity)
 		Inventory.pick_up_item(recipe.product, recipe.product_quantity)
+	update_recipe_display()
 
 func has_all_ingredients(recipe):
+	if Inventory.muon_pearls < recipe.pearl_cost:
+		return false
 	for item in recipe.recipe:
 		var index = Inventory.get_item_index(item.item)
 		if index < 0:
@@ -67,3 +76,13 @@ func has_all_ingredients(recipe):
 func add_recipe_to_list(recipe):
 	recipe_list.append(recipe)
 	update_recipe_display()
+
+func populate_display():
+	for recipe in recipe_list:
+		var new_label = recipe_label.instance()
+		new_label.text = recipe.name
+		if not has_all_ingredients(recipe):
+			new_label.set("custom_colors/font_color", Color(1.0, 1.0, 1.0, 0.4))
+		else:
+			new_label.set("custom_colors/font_color", null)
+		add_child(new_label)

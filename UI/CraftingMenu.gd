@@ -14,4 +14,5 @@ func get_display_text(recipe):
 	var text: String
 	for ingredient in recipe.recipe:
 		text += ingredient.item.name + " x " + str(ingredient.quantity) + " \n"
+	text += "Muon Pearl x " + str(recipe.pearl_cost) + "(" + str(Inventory.muon_pearls) + ") \n"
 	return text

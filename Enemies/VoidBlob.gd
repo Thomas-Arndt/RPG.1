@@ -130,6 +130,7 @@ func _on_HurtBox_area_entered(area):
 
 func _on_Stats_no_health():
 	emit_signal("died", self)
+	SignalBus.emit_signal("drop_item", global_position, [[2, 0.8], [1, 0.1], [3, 0.1]], null, null, Inventory.ItemResources.MUON_PEARL)
 	PlayerStats.change_experience(_experience_reward)
 	queue_free()
 	death_animation()
