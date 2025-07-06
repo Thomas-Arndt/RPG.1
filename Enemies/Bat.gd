@@ -35,8 +35,20 @@ onready var wander_controller = $WanderController
 onready var blink_animation_player = $BlinkAnimationPlayer
 
 func _ready():
+	set_visible(false)
+	state_machine_paused = true
 	match_dimension(WorldStats.DIMENSION)
 	WorldStats.connect("dimension_shift", self, "match_dimension")
+	var death_fx = ResourceLoader.load(DeathEffect)
+	var death_effect = death_fx.instance()
+	death_effect.death = false
+	death_effect.global_position = Vector2(global_position.x, global_position.y-12)
+	death_effect.connect("animation_finished", self, "_on_enter_animation_finished")
+	get_parent().add_child(death_effect)
+	
+func _on_enter_animation_finished():
+	set_visible(true)
+	state_machine_paused = false
 	state = pick_random_state([IDLE, WANDER])
 	
 func _physics_process(delta):
@@ -97,8 +109,8 @@ func _on_Stats_no_health():
 	queue_free()
 	var death_fx = ResourceLoader.load(DeathEffect)
 	var death_effect = death_fx.instance()
-	get_parent().add_child(death_effect)
 	death_effect.global_position = Vector2(global_position.x, global_position.y-12)
+	get_parent().add_child(death_effect)
 
 
 func _on_HurtBox_invincible_end():
@@ -147,3 +159,9 @@ func flip_h(val):
 	red_half_sprite.flip_h = val
 	green_full_sprite.flip_h = val
 	green_half_sprite.flip_h = val
+
+func set_visible(visible):
+	red_full_sprite.set_deferred("visible", visible)
+	red_half_sprite.set_deferred("visible", visible)
+	green_full_sprite.set_deferred("visible", visible)
+	green_half_sprite.set_deferred("visible", visible)

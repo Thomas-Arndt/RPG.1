@@ -11,6 +11,7 @@ export var FRICTION = 200
 export var WANDER_BUFFER = 4
 
 export(int) var _experience_reward
+export (bool) var state_machine_paused = false
 
 enum {
 	IDLE,
@@ -50,8 +51,19 @@ onready var wander_controller = $WanderController
 onready var attack_raduis = $AttackRadius
 
 func _ready():
-	match_dimension(WorldStats.DIMENSION)
+	set_visible(false)
+	state_machine_paused = true
 	WorldStats.connect("dimension_shift", self, "match_dimension")
+	var death_fx = ResourceLoader.load(DeathEffect)
+	var death_effect = death_fx.instance()
+	death_effect.death = false
+	death_effect.global_position = Vector2(global_position.x, global_position.y-12)
+	death_effect.connect("animation_finished", self, "_on_enter_animation_finished")
+	get_parent().add_child(death_effect)
+	
+func _on_enter_animation_finished():
+	match_dimension(WorldStats.DIMENSION)
+	state_machine_paused = false
 	stats.set_max_health(3)
 	stats.set_health(3)
 	state = pick_random_state([IDLE, WANDER])
@@ -60,45 +72,46 @@ func _ready():
 	anim_player.play("idle")
 	
 func _physics_process(delta):
-	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
-	apply_knockback()
-	
-	match state:
-		IDLE:
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			seek_player()
-			
-			if wander_controller.get_time_left() == 0:
-				update_wander()
+	if !state_machine_paused:
+		knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
+		apply_knockback()
 		
-		WANDER:
-			seek_player()
+		match state:
+			IDLE:
+				velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+				seek_player()
+				
+				if wander_controller.get_time_left() == 0:
+					update_wander()
 			
-			if wander_controller.get_time_left() == 0:
-				update_wander()
+			WANDER:
+				seek_player()
+				
+				if wander_controller.get_time_left() == 0:
+					update_wander()
+				
+				accelerate_towards_point(wander_controller.target_position, delta)
+				
+				if global_position.distance_to(wander_controller.target_position) <= WANDER_BUFFER:
+					update_wander()
 			
-			accelerate_towards_point(wander_controller.target_position, delta)
+			CHASE:
+				var player = player_detection_zone.detected_body
+				if player != null:
+					accelerate_towards_point(player.global_position, delta)
+				else:
+					state = IDLE
 			
-			if global_position.distance_to(wander_controller.target_position) <= WANDER_BUFFER:
-				update_wander()
-		
-		CHASE:
-			var player = player_detection_zone.detected_body
-			if player != null:
-				accelerate_towards_point(player.global_position, delta)
-			else:
-				state = IDLE
-		
-		ATTACK:
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			if velocity == Vector2.ZERO and !attacking:
-				hit_box.damage = explosion_damage
-				attack_anim_player.play("explosion")
-				attacking = true
-		
-	if soft_collision.is_colliding():
-		velocity += soft_collision.get_push_vector() * delta * 400
-	velocity = move_and_slide(velocity)
+			ATTACK:
+				velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+				if velocity == Vector2.ZERO and !attacking:
+					hit_box.damage = explosion_damage
+					attack_anim_player.play("explosion")
+					attacking = true
+			
+		if soft_collision.is_colliding():
+			velocity += soft_collision.get_push_vector() * delta * 400
+		velocity = move_and_slide(velocity)
 			
 func update_wander():
 	state = pick_random_state([IDLE, WANDER])
@@ -208,6 +221,16 @@ func hide_attack_sprites():
 	green_full_attack_sprite.visible = false
 	green_half_attack_sprite.visible = false
 
+func set_visible(visible):
+	red_full_sprite.set_deferred("visible", visible)
+	red_half_sprite.set_deferred("visible", visible)
+	green_full_sprite.set_deferred("visible", visible)
+	green_half_sprite.set_deferred("visible", visible)
+	red_full_attack_sprite.set_deferred("visible", visible)
+	red_half_attack_sprite.set_deferred("visible", visible)
+	green_full_attack_sprite.set_deferred("visible", visible)
+	green_half_attack_sprite.set_deferred("visible", visible)
+	
 func flip_sprites(velocity):
 	green_full_sprite.flip_h = velocity.x > 0
 	green_half_sprite.flip_h = velocity.x > 0

@@ -4,9 +4,11 @@ const thrower = preload("res://Effects/MapEffects/ItemThrower.tscn")
 
 func _ready():
 	randomize()
-	SignalBus.connect("drop_item", self, "_on_drop_item_signal")
+	SignalBus.connect("drop_item", self, "drop_item")
 	
-func _on_drop_item_signal(loc, weighted_values, direction, distance, item_resource):
+
+	
+func drop_item(loc, weighted_values, direction, distance, item_resource):
 	if item_resource.name == "Muon Pearl" and not PlayerStats.muon_attunement:
 		return
 	var quantity = weighted_random(weighted_values)

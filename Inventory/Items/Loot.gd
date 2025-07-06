@@ -1,4 +1,5 @@
 extends Area2D
+class_name Loot
 
 export (Resource) var item_resource
 

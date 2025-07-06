@@ -262,3 +262,6 @@ func can_mine_target(target):
 			if action is MineAction or action is MineRockAction:
 				return true
 		return false
+
+func is_running():
+	return velocity != Vector2.ZERO
