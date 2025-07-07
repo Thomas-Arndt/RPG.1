@@ -6,6 +6,7 @@ export var ACCELERATION = 200
 export var MAX_SPEED = 50
 export var FRICTION = 200
 export var WANDER_BUFFER = 4
+export (int) var _experience_reward = 10
 export (bool) var is_red = false
 export (bool) var state_machine_paused = false
 
@@ -105,6 +106,7 @@ func seek_player():
 
 func _on_Stats_no_health():
 	emit_signal("died", self)
+	PlayerStats.change_experience(_experience_reward)
 	SignalBus.emit_signal("drop_item", global_position, [[1, 0.8], [0, 0.1], [2, 0.1]], null, null, Inventory.ItemResources.MUON_PEARL)
 	queue_free()
 	var death_fx = ResourceLoader.load(DeathEffect)

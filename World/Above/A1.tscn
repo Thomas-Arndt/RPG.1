@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=2]
+[gd_scene load_steps=116 format=2]
 
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Above/Terrain.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Inventory/Minerals/CopperOre.tres" type="Resource" id=13]
 [ext_resource path="res://World/Objects/Minerals/CopperVein.tres" type="Resource" id=14]
 [ext_resource path="res://World/Objects/Minerals/MineralDepositWorldComponent.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Utils/Controllers/RandomEncounterController.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -973,6 +974,8 @@ position = Vector2( 450, 260 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player" index="10"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="RandomEncounterController" parent="YSort/MobileEnemies" index="0" instance=ExtResource( 16 )]
 
 [node name="Tree" parent="YSort/Trees" index="0" instance=ExtResource( 6 )]
 position = Vector2( 273, 235 )

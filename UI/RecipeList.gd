@@ -4,7 +4,7 @@ signal recipe_changed(recipe)
 
 const recipe_label = preload("res://UI/RecipeLabel.tscn")
 
-export (Array, Resource) var recipe_list
+export (Array, Resource) var recipe_list = []
 var start_index: int = 0
 var end_index: int = 4
 var cursor_index: int = 0

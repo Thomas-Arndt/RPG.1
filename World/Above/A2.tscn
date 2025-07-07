@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Utils/Camera/FollowPlayerCamera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Above/Terrain.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://World/Objects/Forage/ForageWorldComponent.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Objects/Forage/LeatherLeaf.tres" type="Resource" id=11]
 [ext_resource path="res://World/Objects/Forage/RedBerry.tres" type="Resource" id=12]
+[ext_resource path="res://Utils/Controllers/RandomEncounterController.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 35 )
@@ -52,6 +53,9 @@ position = Vector2( 788, 288 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player" index="10"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="MobileEnemies" parent="YSort" index="1"]
+script = ExtResource( 13 )
 
 [node name="SpawnController" parent="YSort/MobileEnemies" index="0" instance=ExtResource( 8 )]
 position = Vector2( 84, 183 )

@@ -49,5 +49,6 @@ func animate_throw(destination):
 
 
 func _on_Tween_tween_all_completed():
-	new_item.set_active(true)
+	if is_instance_valid(new_item):
+		new_item.set_active(true)
 	queue_free()

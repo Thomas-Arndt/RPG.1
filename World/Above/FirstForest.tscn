@@ -25,7 +25,7 @@
 [ext_resource path="res://World/Objects/Forage/LeatherLeaf.tres" type="Resource" id=23]
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=24]
 [ext_resource path="res://World/Above/NoCollisionTiles.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Utils/Controllers/FollowRandomSpawnController.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Utils/Controllers/RandomEncounterController.tscn" type="PackedScene" id=26]
 [ext_resource path="res://World/Objects/Buildings/BridgeSectionHalf.tscn" type="PackedScene" id=27]
 [ext_resource path="res://World/Objects/Buildings/BridgeSectionEndLeft.tscn" type="PackedScene" id=28]
 [ext_resource path="res://World/Objects/Buildings/BridgeSectionEndRight.tscn" type="PackedScene" id=29]
@@ -843,7 +843,7 @@ spawn_quantity = 2
 position = Vector2( 422, -916 )
 spawn_unit = ExtResource( 13 )
 
-[node name="FollowRandomSpawnController" parent="YSort/MobileEnemies" instance=ExtResource( 26 )]
+[node name="RandomEncounterController" parent="YSort/MobileEnemies" instance=ExtResource( 26 )]
 
 [node name="NPCs" type="YSort" parent="YSort"]
 

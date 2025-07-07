@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=1]
 [ext_resource path="res://World/AreaUtils/AreaYSort.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://World/Objects/Forage/Wood.tres" type="Resource" id=18]
 [ext_resource path="res://World/Objects/Forage/WoodWorld.tres" type="Resource" id=19]
 [ext_resource path="res://World/Objects/Forage/RedBerry.tres" type="Resource" id=20]
+[ext_resource path="res://Utils/Controllers/RandomEncounterController.tscn" type="PackedScene" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 62, 10 )
@@ -133,6 +134,8 @@ spawn_quantity = 2
 position = Vector2( -812, 203 )
 spawn_unit = ExtResource( 12 )
 spawn_quantity = 2
+
+[node name="RandomEncounterController" parent="YSort/MobileEnemies" index="16" instance=ExtResource( 21 )]
 
 [node name="InformationBoard" parent="YSort/Signs" index="0" instance=ExtResource( 9 )]
 position = Vector2( 123, 339 )

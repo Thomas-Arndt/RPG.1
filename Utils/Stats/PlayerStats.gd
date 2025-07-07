@@ -1,20 +1,19 @@
 extends Node
 
-export(float) var max_health setget set_max_health
-
-var health: float setget set_health
-var experience: int = 0 setget set_experience
-var playerLevel: int = 1 setget set_player_level
-
-var muon_attunement: bool = true setget set_muon_attunement
-
-
 signal no_health
 signal health_changed(value)
 signal max_health_changed(value)
 signal muon_attunement_changes(value)
 signal experience_changed(value)
 signal player_level_changed(value)
+
+export(float) var max_health setget set_max_health
+
+var health: float setget set_health
+var experience = 0 setget set_experience
+var playerLevel: int = 1 setget set_player_level
+
+var muon_attunement: bool = false setget set_muon_attunement
 
 func _ready():
 	set_max_health(10)
@@ -57,6 +56,9 @@ func set_player_level(value):
 
 func calculate_player_level():
 	playerLevel = floor(experience / 40) + 1
+	if experience >= 250 and !muon_attunement:
+		muon_attunement = true
+		#TODO: Fabio upgrade cutscene
 
 func has_weapon_equipped():
 	for i in range(4):

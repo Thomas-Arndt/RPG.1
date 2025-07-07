@@ -10,6 +10,8 @@ enum ghost_ball_stages {
 	ACTIVATE
 }
 
+
+export (int) var _experience_reward = 45
 export var is_red : bool = false
 
 onready var anim_player = $AnimationPlayer
@@ -116,6 +118,7 @@ func _on_HurtBox_invincible_end():
 
 func _on_Stats_no_health():
 	emit_signal("died", self)
+	PlayerStats.change_experience(_experience_reward)
 	SignalBus.emit_signal("drop_item", global_position, [[3, 0.8], [2, 0.1], [5, 0.1]], null, null, Inventory.ItemResources.MUON_PEARL)
 	queue_free()
 	if is_instance_valid(new_ball):

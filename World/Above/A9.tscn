@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://World/AreaUtils/AreaYSort.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Above/Terrain.tscn" type="PackedScene" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://CutScenes/Controllers/A9PortalCutScene1Controller.gd" type="Script" id=22]
 [ext_resource path="res://World/Portals/Portal.tscn" type="PackedScene" id=23]
 [ext_resource path="res://CutScenes/Controllers/A9BatsCutScene1Controller.gd" type="Script" id=24]
+[ext_resource path="res://Utils/Controllers/RandomEncounterController.tscn" type="PackedScene" id=25]
 
 [sub_resource type="Shader" id=25]
 code = "shader_type canvas_item;
@@ -326,6 +327,8 @@ spawn_unit = ExtResource( 10 )
 [node name="SpawnController38" parent="YSort/MobileEnemies" index="37" instance=ExtResource( 16 )]
 position = Vector2( -496, 459 )
 spawn_unit = ExtResource( 10 )
+
+[node name="RandomEncounterController" parent="YSort/MobileEnemies" index="38" instance=ExtResource( 25 )]
 
 [node name="Bat" parent="YSort/NPCs" index="0" instance=ExtResource( 15 )]
 position = Vector2( 503, -598 )
