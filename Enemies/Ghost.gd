@@ -122,8 +122,17 @@ func _on_Stats_no_health():
 		new_ball.queue_free()
 	var death_fx = ResourceLoader.load(death_effect)
 	var effect = death_fx.instance()
-	get_parent().add_child(effect)
 	effect.global_position = Vector2(global_position.x, global_position.y-12)
+	get_parent().add_child(effect)
+
+func leave_dimension():
+	queue_free()
+	if is_instance_valid(new_ball):
+		new_ball.queue_free()
+	var death_fx = ResourceLoader.load(death_effect)
+	var effect = death_fx.instance()
+	effect.global_position = Vector2(global_position.x, global_position.y-12)
+	get_parent().add_child(effect)
 
 func match_dimension(state):
 	red_full_sprite.visible = false

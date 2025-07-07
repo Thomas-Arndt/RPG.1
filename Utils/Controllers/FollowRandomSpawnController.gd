@@ -2,6 +2,7 @@ extends Node2D
 
 const bat = preload("res://Enemies/Bat.tscn")
 const enter_effect = preload("res://Effects/EnemyEffects/VoidBlob/GreenVoidBlobDeathEffect.tscn")
+const player_detection_zone = preload("res://Utils/Overlap/PlayerDetectionZone.tscn")
 
 onready var timer = $Timer
 onready var pivot = $Pivot
@@ -15,6 +16,8 @@ export var max_mobs : int = 3
 export var min_distance : int = 25
 
 var spawned_mobs = 0
+var active_mobs = []
+var pdz : Node = null
 
 func _ready():
 	randomize()
@@ -37,7 +40,6 @@ func _on_Timer_timeout():
 
 func spawn_mobs(player):
 	var mob_count = 0
-	var direction = randi() % 360
 	var bats = 0
 	var blobs = 0
 	var ghosts = 0
@@ -53,14 +55,24 @@ func spawn_mobs(player):
 	
 	pivot.global_position = player.global_position
 	reset_pivot_and_radius()
-		
+	
+	var direction = randi() % 360
 	for bat in bats:
 		direction = spawn_mob(mobs.bat, direction, bats)
-	
 	direction = randi() % 360
-	
 	for blob in blobs:
 		direction = spawn_mob(mobs.blob, direction, blobs)
+	direction = randi() % 360
+	for ghost in ghosts:
+		direction = spawn_mob(mobs.ghost, direction, ghosts)
+	
+	pdz = player_detection_zone.instance()
+	pdz.global_position = pivot.global_position
+	pdz.connect("player_exited", self, "_on_Player_exited_pdz")
+	add_child(pdz)
+	var circle_shape = CircleShape2D.new()
+	circle_shape.radius = 420
+	pdz.set_collision_shape(circle_shape)
 
 func spawn_mob(mob, direction, quantity):
 	pivot.rotation_degrees = 0
@@ -71,6 +83,7 @@ func spawn_mob(mob, direction, quantity):
 	new_mob.connect("died", self, "_on_spawn_died")
 	get_parent().add_child(new_mob)
 	spawned_mobs += 1
+	active_mobs.append(new_mob)
 	direction += 360 / quantity
 	if direction >= 360:
 		direction -= 360
@@ -82,8 +95,18 @@ func reset_pivot_and_radius():
 
 func _on_spawn_died(node):
 	spawned_mobs -= 1
+	active_mobs.erase(node)
+	if spawned_mobs == 0:
+		pdz.queue_free()
 
-var mobs = {
+func _on_Player_exited_pdz(player):
+	for mob in active_mobs:
+		mob.leave_dimension()
+	spawned_mobs = 0
+	active_mobs = []
+	pdz.queue_free()
+
+const mobs = {
 	"bat" : preload("res://Enemies/Bat.tscn"),
 	"blob" : preload("res://Enemies/VoidBlob.tscn"),
 	"ghost" : preload("res://Enemies/Ghost.tscn")

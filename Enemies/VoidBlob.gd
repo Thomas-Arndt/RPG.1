@@ -148,6 +148,13 @@ func _on_Stats_no_health():
 	queue_free()
 	death_animation()
 	
+func leave_dimension():
+	queue_free()
+	var death_fx = ResourceLoader.load(DeathEffect)
+	var death_effect = death_fx.instance()
+	death_effect.global_position = Vector2(global_position.x, global_position.y-12)
+	get_parent().add_child(death_effect)
+	
 func death_animation():
 	var death_fx = ResourceLoader.load(DeathEffect)
 	var death_effect = death_fx.instance()
