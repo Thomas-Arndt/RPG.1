@@ -21,7 +21,8 @@ var pdz : Node = null
 
 func _ready():
 	randomize()
-	timer.start(6)
+	print(self.name)
+	timer.start(rand_range(5, 15))
 
 func _on_Timer_timeout():
 	var interval = 5.0
@@ -39,19 +40,19 @@ func _on_Timer_timeout():
 	timer.start(interval)
 
 func spawn_mobs(player):
-	var mob_count = 0
+	var mob_count = (randi() % max_mobs) + 1
 	var bats = 0
 	var blobs = 0
 	var ghosts = 0
 	if bats_on:
-		bats = clamp(randi() % 2 + 1, 0, max_mobs - mob_count)
-		mob_count += bats
+		bats = clamp(randi() % 2 + 1, 0, mob_count)
+		mob_count -= bats
 	if blobs_on and mob_count < max_mobs:
-		blobs = clamp(randi() + 1, 0, max_mobs - mob_count)
-		mob_count += blobs
+		blobs = clamp(randi() + 1, 0, mob_count)
+		mob_count -= blobs
 	if ghosts_on and mob_count < max_mobs:
-		ghosts = clamp(randi() % 2 + 1, 0, max_mobs - mob_count)
-		mob_count += ghosts
+		ghosts = clamp(randi() % 2 + 1, 0, mob_count)
+		mob_count -= ghosts
 	
 	pivot.global_position = player.global_position
 	reset_pivot_and_radius()

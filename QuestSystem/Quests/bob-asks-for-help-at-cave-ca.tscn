@@ -7,7 +7,7 @@
 [node name="bob-asks-for-help-at-cave-ca" instance=ExtResource( 1 )]
 title = "With the Right Tools"
 description = "Now that you have a pickaxe, you should return to Bob for further directions."
-progressText = [ "Let me know if you are able to put together a pickaxe, and I can tall you how to get to the cave." ]
+progressText = [ "Let me know if you are able to put together a pickaxe, and I can tell you how to get to the cave." ]
 deliverText = [ "You found a pickaxe already?!? I suppose with all the odd things going on, I shouldn't be surprised." ]
 
 [node name="QuestOwnItemObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]

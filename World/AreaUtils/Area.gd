@@ -53,6 +53,11 @@ func load_scene():
 						node.set_quest()
 					if node_data["class"] == "MineRockNode" and not node_data[i]:
 						node.remove_rock()
+					if node_data["class"] == "ForageLayerNode":
+						if node_data[i]:
+							node.grow()
+						else:
+							node.disable_node()
 				if i == "time_remaining":
 					if node is SpawnController:
 						for unit in node_data["spawn_count"]:
@@ -65,6 +70,8 @@ func load_scene():
 					if node_data["class"] == "ForageNode":
 						if node_data["time_remaining"] != null:
 							node.forage(node_data["time_remaining"])
+					if node_data["class"] == "ForageLayerNode":
+						node.timer.start(node_data["time_remaining"])
 					if node_data["class"] == "MineralNode":
 						if node_data["time_remaining"] != null:
 							node.depleted(node_data["time_remaining"])

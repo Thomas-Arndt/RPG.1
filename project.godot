@@ -60,6 +60,11 @@ _global_script_classes=[ {
 "path": "res://Utils/Actions/ForageAction.gd"
 }, {
 "base": "StaticBody2D",
+"class": "ForageLayerNode",
+"language": "GDScript",
+"path": "res://World/Objects/Forage/ForageLayerComponent.gd"
+}, {
+"base": "StaticBody2D",
 "class": "ForageNode",
 "language": "GDScript",
 "path": "res://World/Objects/Forage/ForageWorldComponent.gd"
@@ -280,6 +285,7 @@ _global_script_class_icons={
 "CutSceneTriggerAction": "",
 "FloorSwitchReceiver": "",
 "ForageAction": "",
+"ForageLayerNode": "",
 "ForageNode": "",
 "GiveMultipleQuestAction": "",
 "GiveQuestAction": "",

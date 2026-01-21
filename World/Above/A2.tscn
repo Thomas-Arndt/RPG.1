@@ -9,10 +9,10 @@
 [ext_resource path="res://Enemies/VoidBlob.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Utils/Controllers/SpawnController.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=9]
-[ext_resource path="res://World/Objects/Forage/ForageWorldComponent.tscn" type="PackedScene" id=10]
-[ext_resource path="res://World/Objects/Forage/LeatherLeaf.tres" type="Resource" id=11]
-[ext_resource path="res://World/Objects/Forage/RedBerry.tres" type="Resource" id=12]
-[ext_resource path="res://Utils/Controllers/RandomEncounterController.gd" type="Script" id=13]
+[ext_resource path="res://World/Objects/Forage/LeatherLeaf.tres" type="Resource" id=10]
+[ext_resource path="res://World/Objects/Forage/RedBerry.tres" type="Resource" id=11]
+[ext_resource path="res://World/Objects/Forage/ForageLayerComponent.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Utils/Controllers/RandomEncounterController.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 35 )
@@ -54,9 +54,6 @@ position = Vector2( 788, 288 )
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player" index="10"]
 remote_path = NodePath("../../../Camera2D")
 
-[node name="MobileEnemies" parent="YSort" index="1"]
-script = ExtResource( 13 )
-
 [node name="SpawnController" parent="YSort/MobileEnemies" index="0" instance=ExtResource( 8 )]
 position = Vector2( 84, 183 )
 spawn_unit = ExtResource( 7 )
@@ -95,6 +92,8 @@ spawn_quantity = 2
 [node name="SpawnController9" parent="YSort/MobileEnemies" index="8" instance=ExtResource( 8 )]
 position = Vector2( -153, 270 )
 spawn_unit = ExtResource( 9 )
+
+[node name="RandomEncounterController" parent="YSort/MobileEnemies" index="9" instance=ExtResource( 14 )]
 
 [node name="Tree" parent="YSort/Trees" index="0" instance=ExtResource( 6 )]
 position = Vector2( 686, 204 )
@@ -255,15 +254,28 @@ position = Vector2( -603, -331 )
 [node name="Tree53" parent="YSort/Trees" index="52" instance=ExtResource( 6 )]
 position = Vector2( 114, -273 )
 
-[node name="ForageWorldComponent" parent="YSort/Forage" index="0" instance=ExtResource( 10 )]
-position = Vector2( 286, -286 )
+[node name="Forage" parent="YSort" index="8"]
+max_active_nodes = 2
+
+[node name="ForageLayerComponent" parent="YSort/Forage/ForageNodes" index="0" instance=ExtResource( 13 )]
+position = Vector2( -35, 24 )
 world_item = ExtResource( 11 )
 forage_item = ExtResource( 11 )
 
-[node name="ForageWorldComponent2" parent="YSort/Forage" index="1" instance=ExtResource( 10 )]
-position = Vector2( -624, 174 )
-world_item = ExtResource( 12 )
-forage_item = ExtResource( 12 )
+[node name="ForageLayerComponent2" parent="YSort/Forage/ForageNodes" index="1" instance=ExtResource( 13 )]
+position = Vector2( -611, 310 )
+world_item = ExtResource( 11 )
+forage_item = ExtResource( 11 )
+
+[node name="ForageLayerComponent3" parent="YSort/Forage/ForageNodes" index="2" instance=ExtResource( 13 )]
+position = Vector2( 537, -207 )
+world_item = ExtResource( 10 )
+forage_item = ExtResource( 10 )
+
+[node name="ForageLayerComponent4" parent="YSort/Forage/ForageNodes" index="3" instance=ExtResource( 13 )]
+position = Vector2( 241, -265 )
+world_item = ExtResource( 10 )
+forage_item = ExtResource( 10 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
@@ -289,5 +301,6 @@ shape = SubResource( 2 )
 [editable path="Terrain"]
 [editable path="Camera2D"]
 [editable path="YSort"]
+[editable path="YSort/Forage"]
 [editable path="SceneLinks/A5"]
 [editable path="SceneLinks/A1"]
