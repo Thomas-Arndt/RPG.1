@@ -6,12 +6,17 @@ export var show_red: bool = true
 
 onready var sprite = $Sprite
 onready var collision_shape = $CollisionShape2D
+onready var remove_emitter = $Lock/InteractionZone/Actions/LockAction/RemoveNodeEmitter
+onready var remove_receiver = $RemoveNodeReceiver
 
 var is_open : bool = false
 
 func _ready():
 	match_dimension(WorldStats.DIMENSION)
 	WorldStats.connect("dimension_shift", self, "match_dimension")
+	var signal_code = get_instance_id()
+	remove_emitter.signal_code = str(signal_code)
+	remove_receiver.signal_code = str(signal_code)
 	
 func open_door():
 	is_open = true

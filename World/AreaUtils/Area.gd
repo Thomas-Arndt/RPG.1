@@ -48,6 +48,10 @@ func load_scene():
 						node.active = node_data[i]
 						node.emit_signal("opened")
 						continue
+					if node_data["class"] == "LockAction" and not node_data[i] and node.accessible:
+						node.active = node_data[i]
+						node.emit_signal("unlocked")
+						continue
 					if node_data["class"] == "CompletedQuestAction" or node_data["class"] == "CompleteMultipleQuestAction":
 						node.active = node_data[i]
 						node.set_quest()

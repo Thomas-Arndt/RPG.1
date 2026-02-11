@@ -119,6 +119,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Inventory/Items/Item.gd"
 }, {
+"base": "Node",
+"class": "LockAction",
+"language": "GDScript",
+"path": "res://Utils/Actions/LockAction.gd"
+}, {
 "base": "Area2D",
 "class": "Loot",
 "language": "GDScript",
@@ -297,6 +302,7 @@ _global_script_class_icons={
 "InformationAction": "",
 "InteractionZone": "",
 "Item": "",
+"LockAction": "",
 "Loot": "",
 "MineAction": "",
 "MineRockAction": "",

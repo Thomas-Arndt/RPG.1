@@ -28,15 +28,12 @@ func _on_Timer_timeout():
 	var interval = 5.0
 	var player = get_tree().get_nodes_in_group("Player")[0]
 	if player.is_running() and spawned_mobs == 0:
-		print("Fight!")
+
 		hop_controller.package_choreography()
 		hop_controller.run_cut_scene()
 		yield(hop_controller, "finished")
 		spawn_mobs(player)
 		interval = rand_range(10, 35)
-	else:
-		print("Evade")
-	print("Next interval set to " + str(interval) + "s")
 	timer.start(interval)
 
 func spawn_mobs(player):
