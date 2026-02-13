@@ -1,9 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Sprites/HutInterior.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=3]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Objects/Furniture/Counter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Utils/Actions/InformationAction.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/Objects/Furniture/Chairs/ChairUp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Utils/Overlap/InteractionZone.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Objects/Interactables/InfoPaper.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18, 10 )
@@ -33,6 +40,34 @@ position = Vector2( 157, 166 )
 
 [node name="Furniture" type="YSort" parent="YSort"]
 
+[node name="Counter" parent="YSort/Furniture" instance=ExtResource( 5 )]
+position = Vector2( 169, 88 )
+
+[node name="InfoPaper" parent="YSort/Furniture/Counter" instance=ExtResource( 9 )]
+position = Vector2( 0, -4 )
+information_array = [ "Sorry we missed you, but we are out investigating.", "Please leave your name and a brief description of your needs, and leave the rest to us." ]
+collisions_on = false
+
+[node name="Counter2" parent="YSort/Furniture" instance=ExtResource( 5 )]
+position = Vector2( 143, 88 )
+
+[node name="InfoPaper" parent="YSort/Furniture/Counter2" instance=ExtResource( 9 )]
+position = Vector2( 0, -4 )
+information_array = [ "Case List:", "Add your case to the list and we will get to it.", "Stuart Lou       Seagull Perpetrated Theft (Recurring offender, possibly organized)", "George Wayward      Unlicensed Hammock Installation" ]
+collisions_on = false
+
+[node name="ChairUp" parent="YSort/Furniture" instance=ExtResource( 7 )]
+position = Vector2( 156, 125 )
+
+[node name="InteractionZone" parent="YSort/Furniture/ChairUp" instance=ExtResource( 8 )]
+position = Vector2( 0, 4 )
+
+[node name="CollisionShape2D" parent="YSort/Furniture/ChairUp/InteractionZone" index="0"]
+shape = SubResource( 2 )
+
+[node name="InformationAction" parent="YSort/Furniture/ChairUp/InteractionZone/Actions" index="0" instance=ExtResource( 6 )]
+information_array = [ "Official Seating" ]
+
 [node name="SceneLinks" type="Node2D" parent="."]
 
 [node name="SceneLink" parent="SceneLinks" instance=ExtResource( 4 )]
@@ -43,4 +78,5 @@ exit_location = Vector2( -630, -235 )
 [node name="CollisionShape2D" parent="SceneLinks/SceneLink" index="0"]
 shape = SubResource( 1 )
 
+[editable path="YSort/Furniture/ChairUp/InteractionZone"]
 [editable path="SceneLinks/SceneLink"]

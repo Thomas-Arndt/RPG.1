@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/Sprites/HutInterior.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://World/Objects/Plants/Grass.tscn" type="PackedScene" id=14]
 [ext_resource path="res://World/Objects/SimpleObjects/BoxLarge.tscn" type="PackedScene" id=15]
 [ext_resource path="res://World/Objects/SimpleObjects/BoxSmall.tscn" type="PackedScene" id=16]
+[ext_resource path="res://QuestSystem/Quests/0070-check-out-the-cellars.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Utils/Actions/GiveQuestAction.tscn" type="PackedScene" id=19]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -55,6 +58,17 @@ legs_color = 8
 
 [node name="AnimationTree" parent="YSort/NPCs/WelcomeGuy" index="8"]
 parameters/playback = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="YSort/NPCs/WelcomeGuy/InteractionZone" index="0"]
+scale = Vector2( 3, 3 )
+
+[node name="CompletedQuestAction" parent="YSort/NPCs/WelcomeGuy/InteractionZone/Actions" index="0" instance=ExtResource( 18 )]
+quest_reference = ExtResource( 17 )
+speaker_name = "Mayor for the Day Jim"
+
+[node name="GiveQuestAction" parent="YSort/NPCs/WelcomeGuy/InteractionZone/Actions" index="1" instance=ExtResource( 19 )]
+quest_reference = ExtResource( 17 )
+speaker_name = "Mayor for the Day Jim"
 
 [node name="Grass" type="YSort" parent="YSort"]
 

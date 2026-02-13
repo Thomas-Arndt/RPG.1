@@ -1,16 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
-[ext_resource path="res://QuestSystem/EnvironmentRewards/ChangeNodeProperty.tscn" type="PackedScene" id=2]
+[ext_resource path="res://QuestSystem/QuestItemReward.tscn" type="PackedScene" id=2]
 [ext_resource path="res://QuestSystem/Objectives/QuestInteractObjective.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Inventory/Items/Keys/Key.tres" type="Resource" id=4]
 
 [node name="0070-check-out-the-cellars" instance=ExtResource( 1 )]
 title = "Investigate the Palace Cellars"
 description = "Something is wrong in the Palace Cellars. Go check it out."
 startText = [ "I can't say I've seen you around before. I am Sunny Kelpstrider, Beach-King for a Day. ", "Let me guess, you are here to ask me to do something about the monsters that just appeared all across the city? Well, like I have told everyone else, I am unable to...", "What's that you say? You're here to help? Well that's wonderful! Now I can tell the people that we are ready to take action to ensure the safety of everyone. Maybe I will get elected to serve another day as Beach-King. ", "Don't worry, you will get the credit for what you do to help. If you would start in the Palace cellars, I heard a terrible ruckus happening down there." ]
-deliverText = [ "I'll have the doors to the cellar unlocked for you.", "Perhaps there is a link between the noises I heard and the monsters in the city. Here's the key to the cellars. Good luck and be safe." ]
+deliverText = [ "Perhaps there is a link between the noises I heard and the monsters in the city. Here's the key to the cellars. Good luck and be safe." ]
 
-[node name="ChangeNodeProperty" parent="EnvironmentRewards" index="0" instance=ExtResource( 2 )]
-signal_code = "open_cellar_door"
+[node name="QuestItemReward" parent="ItemRewards" index="0" instance=ExtResource( 2 )]
+item = ExtResource( 4 )
 
 [node name="QuestInteractObjective" parent="Objectives" index="0" instance=ExtResource( 3 )]

@@ -1,9 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Sprites/HutInterior.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=3]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Objects/Doors/LadderUpper.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/Objects/PushObjects/PBoxL2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/Objects/Furniture/Shelves2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/Objects/Furniture/Shelves3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Objects/Furniture/Chairs/ChairRight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/Objects/PushObjects/PBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/Objects/SimpleObjects/BoxLarge.tscn" type="PackedScene" id=11]
+[ext_resource path="res://World/Objects/SimpleObjects/BoxSmall.tscn" type="PackedScene" id=12]
+[ext_resource path="res://World/Objects/SimpleObjects/BookRed.tscn" type="PackedScene" id=13]
+[ext_resource path="res://World/Objects/SimpleObjects/BottleGreen.tscn" type="PackedScene" id=14]
+[ext_resource path="res://World/Objects/SimpleObjects/BottleBlue.tscn" type="PackedScene" id=15]
+[ext_resource path="res://World/Objects/SimpleObjects/BookBlue.tscn" type="PackedScene" id=16]
+[ext_resource path="res://World/Objects/SimpleObjects/BottleRed.tscn" type="PackedScene" id=17]
+[ext_resource path="res://World/Objects/SimpleObjects/BookGreen.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18, 10 )
@@ -27,11 +41,232 @@ position = Vector2( 160, 90 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 157, 166 )
+position = Vector2( 160, 161 )
 
 [node name="NPCs" type="YSort" parent="YSort"]
 
 [node name="Furniture" type="YSort" parent="YSort"]
+
+[node name="Shelves3" parent="YSort/Furniture" instance=ExtResource( 8 )]
+position = Vector2( 139, 39 )
+
+[node name="BoxLarge" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( -2.5, -20.5 )
+
+[node name="BoxSmall" parent="YSort/Furniture/Shelves3" instance=ExtResource( 12 )]
+position = Vector2( -3.5, -10.5 )
+
+[node name="BoxSmall2" parent="YSort/Furniture/Shelves3" instance=ExtResource( 12 )]
+position = Vector2( 3.5, -0.5 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves3" instance=ExtResource( 13 )]
+position = Vector2( 5, -20 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves3" instance=ExtResource( 13 )]
+position = Vector2( 7, -20 )
+
+[node name="BottleGreen" parent="YSort/Furniture/Shelves3" instance=ExtResource( 14 )]
+position = Vector2( 3, -7.5 )
+
+[node name="BottleBlue" parent="YSort/Furniture/Shelves3" instance=ExtResource( 15 )]
+position = Vector2( 7, -9 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves3" instance=ExtResource( 16 )]
+position = Vector2( -8, 0 )
+
+[node name="BookBlue2" parent="YSort/Furniture/Shelves3" instance=ExtResource( 16 )]
+position = Vector2( -6, 0 )
+
+[node name="BookBlue3" parent="YSort/Furniture/Shelves3" instance=ExtResource( 16 )]
+position = Vector2( -4, 0 )
+
+[node name="BookRed3" parent="YSort/Furniture/Shelves3" instance=ExtResource( 13 )]
+position = Vector2( -2, 0 )
+
+[node name="Shelves4" parent="YSort/Furniture" instance=ExtResource( 8 )]
+position = Vector2( 165, 39 )
+
+[node name="BoxLarge" parent="YSort/Furniture/Shelves4" instance=ExtResource( 11 )]
+position = Vector2( 0, -20 )
+
+[node name="BottleRed" parent="YSort/Furniture/Shelves4" instance=ExtResource( 17 )]
+position = Vector2( -7, -17.5 )
+
+[node name="BottleGreen" parent="YSort/Furniture/Shelves4" instance=ExtResource( 14 )]
+position = Vector2( 7, -17.5 )
+
+[node name="BookGreen" parent="YSort/Furniture/Shelves4" instance=ExtResource( 18 )]
+position = Vector2( -2, -10 )
+
+[node name="BoxSmall" parent="YSort/Furniture/Shelves4" instance=ExtResource( 12 )]
+position = Vector2( 4, -10 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves4" instance=ExtResource( 13 )]
+position = Vector2( -4, -10 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves4" instance=ExtResource( 16 )]
+position = Vector2( -6, -10 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves4" instance=ExtResource( 13 )]
+position = Vector2( -8, -10 )
+
+[node name="Shelves5" parent="YSort/Furniture" instance=ExtResource( 8 )]
+position = Vector2( 209, 79 )
+
+[node name="BoxSmall" parent="YSort/Furniture/Shelves5" instance=ExtResource( 12 )]
+position = Vector2( -4, -20 )
+
+[node name="BookGreen" parent="YSort/Furniture/Shelves5" instance=ExtResource( 18 )]
+position = Vector2( 2, -19.5 )
+
+[node name="BookGreen2" parent="YSort/Furniture/Shelves5" instance=ExtResource( 18 )]
+position = Vector2( 4, -19.5 )
+
+[node name="BookGreen3" parent="YSort/Furniture/Shelves5" instance=ExtResource( 18 )]
+position = Vector2( 6, -19.5 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves5" instance=ExtResource( 16 )]
+position = Vector2( 8, -19.5 )
+
+[node name="BottleBlue" parent="YSort/Furniture/Shelves5" instance=ExtResource( 15 )]
+position = Vector2( -7, -10 )
+
+[node name="BottleGreen" parent="YSort/Furniture/Shelves5" instance=ExtResource( 14 )]
+position = Vector2( -3, -7 )
+
+[node name="BottleRed" parent="YSort/Furniture/Shelves5" instance=ExtResource( 17 )]
+position = Vector2( 1, -8 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves5" instance=ExtResource( 13 )]
+position = Vector2( 8, -10 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves5" instance=ExtResource( 13 )]
+position = Vector2( 6, -10 )
+
+[node name="BookGreen4" parent="YSort/Furniture/Shelves5" instance=ExtResource( 18 )]
+position = Vector2( 4, -10 )
+
+[node name="Shelves2" parent="YSort/Furniture" instance=ExtResource( 7 )]
+position = Vector2( 200, 130 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves2" instance=ExtResource( 16 )]
+position = Vector2( -8, -8.5 )
+
+[node name="BookBlue2" parent="YSort/Furniture/Shelves2" instance=ExtResource( 16 )]
+position = Vector2( -6, -8.5 )
+
+[node name="BookBlue3" parent="YSort/Furniture/Shelves2" instance=ExtResource( 16 )]
+position = Vector2( -4, -8.5 )
+
+[node name="BookGreen" parent="YSort/Furniture/Shelves2" instance=ExtResource( 18 )]
+position = Vector2( -2, -8.5 )
+
+[node name="BookGreen2" parent="YSort/Furniture/Shelves2" instance=ExtResource( 18 )]
+position = Vector2( 0, -8.5 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves2" instance=ExtResource( 13 )]
+position = Vector2( 2, -9 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves2" instance=ExtResource( 13 )]
+position = Vector2( 4, -9 )
+
+[node name="BookGreen3" parent="YSort/Furniture/Shelves2" instance=ExtResource( 18 )]
+position = Vector2( 6, -8.5 )
+
+[node name="BookBlue4" parent="YSort/Furniture/Shelves2" instance=ExtResource( 16 )]
+position = Vector2( 8, -8.5 )
+
+[node name="BottleBlue" parent="YSort/Furniture/Shelves2" instance=ExtResource( 15 )]
+position = Vector2( -7, 2 )
+
+[node name="BottleGreen" parent="YSort/Furniture/Shelves2" instance=ExtResource( 14 )]
+position = Vector2( -3, 3 )
+
+[node name="BottleGreen2" parent="YSort/Furniture/Shelves2" instance=ExtResource( 14 )]
+position = Vector2( 2, 2.5 )
+
+[node name="BottleRed" parent="YSort/Furniture/Shelves2" instance=ExtResource( 17 )]
+position = Vector2( 7, 3.5 )
+
+[node name="Shelves7" parent="YSort/Furniture" instance=ExtResource( 7 )]
+position = Vector2( 173, 130 )
+
+[node name="BoxLarge" parent="YSort/Furniture/Shelves7" instance=ExtResource( 11 )]
+position = Vector2( -3.5, -9.5 )
+
+[node name="BoxLarge2" parent="YSort/Furniture/Shelves7" instance=ExtResource( 11 )]
+position = Vector2( 3.5, 0.5 )
+
+[node name="BookGreen" parent="YSort/Furniture/Shelves7" instance=ExtResource( 18 )]
+position = Vector2( -3, 1 )
+
+[node name="BookGreen2" parent="YSort/Furniture/Shelves7" instance=ExtResource( 18 )]
+position = Vector2( -5, 1 )
+
+[node name="BookGreen3" parent="YSort/Furniture/Shelves7" instance=ExtResource( 18 )]
+position = Vector2( -8, 1 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves7" instance=ExtResource( 13 )]
+position = Vector2( 4, -9 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves7" instance=ExtResource( 16 )]
+position = Vector2( 6, -9 )
+
+[node name="BookGreen4" parent="YSort/Furniture/Shelves7" instance=ExtResource( 18 )]
+position = Vector2( 8, -9 )
+
+[node name="ChairRight" parent="YSort/Furniture" instance=ExtResource( 9 )]
+position = Vector2( 101, 111 )
+
+[node name="ChairRight2" parent="YSort/Furniture" instance=ExtResource( 9 )]
+position = Vector2( 108, 126 )
+
+[node name="ChairRight3" parent="YSort/Furniture" instance=ExtResource( 9 )]
+position = Vector2( 118, 141 )
+
+[node name="ChairRight4" parent="YSort/Furniture" instance=ExtResource( 9 )]
+position = Vector2( 97, 92 )
+
+[node name="PushObjects" type="YSort" parent="YSort"]
+
+[node name="PBox" parent="YSort/PushObjects" instance=ExtResource( 10 )]
+position = Vector2( 165, 57 )
+movement_locked = true
+
+[node name="PBox2" parent="YSort/PushObjects" instance=ExtResource( 10 )]
+position = Vector2( 166, 101 )
+movement_locked = true
+
+[node name="PBox3" parent="YSort/PushObjects" instance=ExtResource( 10 )]
+position = Vector2( 143, 101 )
+movement_locked = true
+
+[node name="PBox4" parent="YSort/PushObjects" instance=ExtResource( 10 )]
+position = Vector2( 180, 73 )
+movement_locked = true
+
+[node name="PBoxL2" parent="YSort/PushObjects" instance=ExtResource( 6 )]
+position = Vector2( 188, 57 )
+
+[node name="PBoxL3" parent="YSort/PushObjects" instance=ExtResource( 6 )]
+position = Vector2( 120, 101 )
+
+[node name="PBoxL4" parent="YSort/PushObjects" instance=ExtResource( 6 )]
+position = Vector2( 214, 109 )
+
+[node name="PBox5" parent="YSort/PushObjects" instance=ExtResource( 10 )]
+position = Vector2( 130, 117 )
+movement_locked = true
+
+[node name="PBoxL5" parent="YSort/PushObjects" instance=ExtResource( 6 )]
+position = Vector2( 102, 76 )
+
+[node name="Doors" type="YSort" parent="YSort"]
+
+[node name="LadderUpper" parent="YSort/Doors" instance=ExtResource( 5 )]
+position = Vector2( 131, 50 )
+destination_reference = "res://World/Below/BA1.tscn"
+exit_location = Vector2( 38, 13 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 

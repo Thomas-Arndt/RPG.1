@@ -1,9 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Sprites/HutInterior.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=3]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Objects/Furniture/Counter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/Objects/Furniture/Shelves3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Utils/Actions/SpeechAction.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Objects/SimpleObjects/BookRed.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/Objects/SimpleObjects/BookGreen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/Objects/SimpleObjects/BookBlue.tscn" type="PackedScene" id=11]
+[ext_resource path="res://World/Objects/SimpleObjects/BoxLarge.tscn" type="PackedScene" id=12]
+[ext_resource path="res://World/Objects/SimpleObjects/BoxSmall.tscn" type="PackedScene" id=13]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[sub_resource type="CircleShape2D" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18, 10 )
@@ -31,7 +44,572 @@ position = Vector2( 157, 166 )
 
 [node name="NPCs" type="YSort" parent="YSort"]
 
+[node name="NPC" parent="YSort/NPCs" instance=ExtResource( 7 )]
+position = Vector2( 157, 88 )
+is_stationary = true
+skin_tone = 3
+hair_style = 2
+hair_color = 5
+chest_color = 7
+legs_color = 11
+
+[node name="AnimationTree" parent="YSort/NPCs/NPC" index="8"]
+parameters/playback = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="YSort/NPCs/NPC/InteractionZone" index="0"]
+scale = Vector2( 1.33, 1.33 )
+shape = SubResource( 3 )
+
+[node name="SpeechAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="0" instance=ExtResource( 8 )]
+text_array = [ "You may not think today matters. But one day someone might ask, ‘When was the third annual sandcastle dispute?’ And I will know." ]
+
 [node name="Furniture" type="YSort" parent="YSort"]
+
+[node name="Shelves3" parent="YSort/Furniture" instance=ExtResource( 6 )]
+position = Vector2( 198, 68 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( -8, -20 )
+
+[node name="BookBlue10" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( -8, 0 )
+
+[node name="BookBlue11" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( -6, 0 )
+
+[node name="BookBlue12" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( -4, 0 )
+
+[node name="BookBlue13" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( -2, 0 )
+
+[node name="BookBlue14" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( 0, 0 )
+
+[node name="BookBlue2" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( -6, -20 )
+
+[node name="BookBlue3" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( -4, -20 )
+
+[node name="BookBlue4" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( -2, -20 )
+
+[node name="BookBlue5" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( 0, -20 )
+
+[node name="BookBlue6" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( 2, -20 )
+
+[node name="BookBlue7" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( 4, -20 )
+
+[node name="BookBlue8" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( 6, -20 )
+
+[node name="BookBlue9" parent="YSort/Furniture/Shelves3" instance=ExtResource( 11 )]
+position = Vector2( 8, -20 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves3" instance=ExtResource( 9 )]
+position = Vector2( -8, -10 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves3" instance=ExtResource( 9 )]
+position = Vector2( -6, -10 )
+
+[node name="BookRed3" parent="YSort/Furniture/Shelves3" instance=ExtResource( 9 )]
+position = Vector2( -4, -10 )
+
+[node name="BookRed4" parent="YSort/Furniture/Shelves3" instance=ExtResource( 9 )]
+position = Vector2( -2, -10 )
+
+[node name="BookRed5" parent="YSort/Furniture/Shelves3" instance=ExtResource( 9 )]
+position = Vector2( 0, -10 )
+
+[node name="BookRed6" parent="YSort/Furniture/Shelves3" instance=ExtResource( 9 )]
+position = Vector2( 2, -10 )
+
+[node name="BookRed7" parent="YSort/Furniture/Shelves3" instance=ExtResource( 9 )]
+position = Vector2( 4, -10 )
+
+[node name="BookRed8" parent="YSort/Furniture/Shelves3" instance=ExtResource( 9 )]
+position = Vector2( 6, -10 )
+
+[node name="BookRed9" parent="YSort/Furniture/Shelves3" instance=ExtResource( 9 )]
+position = Vector2( 8, -10 )
+
+[node name="Shelves4" parent="YSort/Furniture" instance=ExtResource( 6 )]
+position = Vector2( 212, 100 )
+
+[node name="BookGreen" parent="YSort/Furniture/Shelves4" instance=ExtResource( 10 )]
+position = Vector2( -8, -20 )
+
+[node name="BookGreen2" parent="YSort/Furniture/Shelves4" instance=ExtResource( 10 )]
+position = Vector2( -6, -20 )
+
+[node name="BookGreen3" parent="YSort/Furniture/Shelves4" instance=ExtResource( 10 )]
+position = Vector2( -4, -20 )
+
+[node name="BookGreen4" parent="YSort/Furniture/Shelves4" instance=ExtResource( 10 )]
+position = Vector2( -2, -20 )
+
+[node name="BookGreen5" parent="YSort/Furniture/Shelves4" instance=ExtResource( 10 )]
+position = Vector2( 0, -20 )
+
+[node name="BookGreen6" parent="YSort/Furniture/Shelves4" instance=ExtResource( 10 )]
+position = Vector2( 2, -20 )
+
+[node name="BookGreen7" parent="YSort/Furniture/Shelves4" instance=ExtResource( 10 )]
+position = Vector2( 4, -20 )
+
+[node name="BookGreen8" parent="YSort/Furniture/Shelves4" instance=ExtResource( 10 )]
+position = Vector2( 6, -20 )
+
+[node name="BookGreen9" parent="YSort/Furniture/Shelves4" instance=ExtResource( 10 )]
+position = Vector2( 8, -20 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves4" instance=ExtResource( 11 )]
+position = Vector2( -8, -10 )
+
+[node name="BookBlue2" parent="YSort/Furniture/Shelves4" instance=ExtResource( 11 )]
+position = Vector2( -6, -10 )
+
+[node name="BookBlue3" parent="YSort/Furniture/Shelves4" instance=ExtResource( 11 )]
+position = Vector2( -4, -10 )
+
+[node name="BookBlue4" parent="YSort/Furniture/Shelves4" instance=ExtResource( 11 )]
+position = Vector2( -2, -10 )
+
+[node name="BookBlue5" parent="YSort/Furniture/Shelves4" instance=ExtResource( 11 )]
+position = Vector2( 0, -10 )
+
+[node name="BookBlue6" parent="YSort/Furniture/Shelves4" instance=ExtResource( 11 )]
+position = Vector2( 2, -10 )
+
+[node name="BookBlue7" parent="YSort/Furniture/Shelves4" instance=ExtResource( 11 )]
+position = Vector2( 4, -10 )
+
+[node name="BookBlue8" parent="YSort/Furniture/Shelves4" instance=ExtResource( 11 )]
+position = Vector2( 6, -10 )
+
+[node name="BookBlue9" parent="YSort/Furniture/Shelves4" instance=ExtResource( 11 )]
+position = Vector2( 8, -10 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves4" instance=ExtResource( 9 )]
+position = Vector2( 8, 0 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves4" instance=ExtResource( 9 )]
+position = Vector2( 6, 0 )
+
+[node name="BookRed3" parent="YSort/Furniture/Shelves4" instance=ExtResource( 9 )]
+position = Vector2( 4, 0 )
+
+[node name="BookRed4" parent="YSort/Furniture/Shelves4" instance=ExtResource( 9 )]
+position = Vector2( 2, 0 )
+
+[node name="BookRed5" parent="YSort/Furniture/Shelves4" instance=ExtResource( 9 )]
+position = Vector2( 0, 0 )
+
+[node name="Shelves5" parent="YSort/Furniture" instance=ExtResource( 6 )]
+position = Vector2( 198, 134 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( -8, -20 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( -6, -20 )
+
+[node name="BookRed3" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( -4, -20 )
+
+[node name="BookRed4" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( -2, -20 )
+
+[node name="BookRed5" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( 0, -20 )
+
+[node name="BookRed6" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( 2, -20 )
+
+[node name="BookRed7" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( 4, -20 )
+
+[node name="BookRed8" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( 6, -20 )
+
+[node name="BookRed9" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( 8, -20 )
+
+[node name="BookRed10" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( -8, -10 )
+
+[node name="BookRed11" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( -6, -10 )
+
+[node name="BookRed12" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( -4, -10 )
+
+[node name="BookRed13" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( -2, -10 )
+
+[node name="BookRed14" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( 0, -10 )
+
+[node name="BookRed15" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( 2, -10 )
+
+[node name="BookRed16" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( 4, -10 )
+
+[node name="BookRed17" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( 6, -10 )
+
+[node name="BookRed18" parent="YSort/Furniture/Shelves5" instance=ExtResource( 9 )]
+position = Vector2( 8, -10 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves5" instance=ExtResource( 11 )]
+position = Vector2( -8, 0 )
+
+[node name="BookBlue2" parent="YSort/Furniture/Shelves5" instance=ExtResource( 11 )]
+position = Vector2( -6, 0 )
+
+[node name="BookBlue3" parent="YSort/Furniture/Shelves5" instance=ExtResource( 11 )]
+position = Vector2( -4, 0 )
+
+[node name="BookBlue4" parent="YSort/Furniture/Shelves5" instance=ExtResource( 11 )]
+position = Vector2( -2, 0 )
+
+[node name="BookBlue5" parent="YSort/Furniture/Shelves5" instance=ExtResource( 11 )]
+position = Vector2( 0, 0 )
+
+[node name="BookGreen" parent="YSort/Furniture/Shelves5" instance=ExtResource( 10 )]
+position = Vector2( 2, 0 )
+
+[node name="BookGreen2" parent="YSort/Furniture/Shelves5" instance=ExtResource( 10 )]
+position = Vector2( 4, 0 )
+
+[node name="BookGreen3" parent="YSort/Furniture/Shelves5" instance=ExtResource( 10 )]
+position = Vector2( 6, 0 )
+
+[node name="BookGreen4" parent="YSort/Furniture/Shelves5" instance=ExtResource( 10 )]
+position = Vector2( 8, 0 )
+
+[node name="Shelves6" parent="YSort/Furniture" instance=ExtResource( 6 )]
+position = Vector2( 115, 66 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves6" instance=ExtResource( 9 )]
+position = Vector2( -8, -10 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves6" instance=ExtResource( 9 )]
+position = Vector2( -6, -10 )
+
+[node name="BookRed3" parent="YSort/Furniture/Shelves6" instance=ExtResource( 9 )]
+position = Vector2( -4, -10 )
+
+[node name="BookRed4" parent="YSort/Furniture/Shelves6" instance=ExtResource( 9 )]
+position = Vector2( -2, -10 )
+
+[node name="BookRed5" parent="YSort/Furniture/Shelves6" instance=ExtResource( 9 )]
+position = Vector2( 0, -10 )
+
+[node name="BookRed6" parent="YSort/Furniture/Shelves6" instance=ExtResource( 9 )]
+position = Vector2( 2, -10 )
+
+[node name="BookRed7" parent="YSort/Furniture/Shelves6" instance=ExtResource( 9 )]
+position = Vector2( 4, -10 )
+
+[node name="BookGreen" parent="YSort/Furniture/Shelves6" instance=ExtResource( 10 )]
+position = Vector2( 6, -10 )
+
+[node name="BookGreen2" parent="YSort/Furniture/Shelves6" instance=ExtResource( 10 )]
+position = Vector2( 8, -10 )
+
+[node name="BookGreen3" parent="YSort/Furniture/Shelves6" instance=ExtResource( 10 )]
+position = Vector2( 8, 0 )
+
+[node name="BookGreen4" parent="YSort/Furniture/Shelves6" instance=ExtResource( 10 )]
+position = Vector2( 6, 0 )
+
+[node name="BookGreen5" parent="YSort/Furniture/Shelves6" instance=ExtResource( 10 )]
+position = Vector2( 4, 0 )
+
+[node name="BookGreen6" parent="YSort/Furniture/Shelves6" instance=ExtResource( 10 )]
+position = Vector2( 2, 0 )
+
+[node name="BookGreen7" parent="YSort/Furniture/Shelves6" instance=ExtResource( 10 )]
+position = Vector2( 0, 0 )
+
+[node name="BookGreen8" parent="YSort/Furniture/Shelves6" instance=ExtResource( 10 )]
+position = Vector2( 8, -20 )
+
+[node name="BookGreen9" parent="YSort/Furniture/Shelves6" instance=ExtResource( 10 )]
+position = Vector2( 6, -20 )
+
+[node name="BookGreen10" parent="YSort/Furniture/Shelves6" instance=ExtResource( 10 )]
+position = Vector2( 4, -20 )
+
+[node name="BookGreen11" parent="YSort/Furniture/Shelves6" instance=ExtResource( 10 )]
+position = Vector2( 2, -20 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves6" instance=ExtResource( 11 )]
+position = Vector2( 0, -20 )
+
+[node name="BookBlue2" parent="YSort/Furniture/Shelves6" instance=ExtResource( 11 )]
+position = Vector2( -2, -20 )
+
+[node name="BookBlue3" parent="YSort/Furniture/Shelves6" instance=ExtResource( 11 )]
+position = Vector2( -4, -20 )
+
+[node name="BookBlue4" parent="YSort/Furniture/Shelves6" instance=ExtResource( 11 )]
+position = Vector2( -6, -20 )
+
+[node name="BookBlue5" parent="YSort/Furniture/Shelves6" instance=ExtResource( 11 )]
+position = Vector2( -8, -20 )
+
+[node name="Shelves7" parent="YSort/Furniture" instance=ExtResource( 6 )]
+position = Vector2( 101, 100 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves7" instance=ExtResource( 11 )]
+position = Vector2( -8, 0 )
+
+[node name="BookBlue2" parent="YSort/Furniture/Shelves7" instance=ExtResource( 11 )]
+position = Vector2( -6, 0 )
+
+[node name="BookBlue3" parent="YSort/Furniture/Shelves7" instance=ExtResource( 11 )]
+position = Vector2( -4, 0 )
+
+[node name="BookBlue4" parent="YSort/Furniture/Shelves7" instance=ExtResource( 11 )]
+position = Vector2( -2, 0 )
+
+[node name="BookBlue5" parent="YSort/Furniture/Shelves7" instance=ExtResource( 11 )]
+position = Vector2( 0, 0 )
+
+[node name="BookGreen" parent="YSort/Furniture/Shelves7" instance=ExtResource( 10 )]
+position = Vector2( 8, -10 )
+
+[node name="BookGreen2" parent="YSort/Furniture/Shelves7" instance=ExtResource( 10 )]
+position = Vector2( 6, -10 )
+
+[node name="BookGreen3" parent="YSort/Furniture/Shelves7" instance=ExtResource( 10 )]
+position = Vector2( 4, -10 )
+
+[node name="BookGreen4" parent="YSort/Furniture/Shelves7" instance=ExtResource( 10 )]
+position = Vector2( 2, -10 )
+
+[node name="BookGreen5" parent="YSort/Furniture/Shelves7" instance=ExtResource( 10 )]
+position = Vector2( 0, -10 )
+
+[node name="BookGreen6" parent="YSort/Furniture/Shelves7" instance=ExtResource( 10 )]
+position = Vector2( -2, -10 )
+
+[node name="BookGreen7" parent="YSort/Furniture/Shelves7" instance=ExtResource( 10 )]
+position = Vector2( -4, -10 )
+
+[node name="BookGreen8" parent="YSort/Furniture/Shelves7" instance=ExtResource( 10 )]
+position = Vector2( -6, -10 )
+
+[node name="BookGreen9" parent="YSort/Furniture/Shelves7" instance=ExtResource( 10 )]
+position = Vector2( -8, -10 )
+
+[node name="BookGreen10" parent="YSort/Furniture/Shelves7" instance=ExtResource( 10 )]
+position = Vector2( -6, -20 )
+
+[node name="BookGreen11" parent="YSort/Furniture/Shelves7" instance=ExtResource( 10 )]
+position = Vector2( -4, -20 )
+
+[node name="BookBlue6" parent="YSort/Furniture/Shelves7" instance=ExtResource( 11 )]
+position = Vector2( -8, -20 )
+
+[node name="BookBlue7" parent="YSort/Furniture/Shelves7" instance=ExtResource( 11 )]
+position = Vector2( -2, -20 )
+
+[node name="BookBlue8" parent="YSort/Furniture/Shelves7" instance=ExtResource( 11 )]
+position = Vector2( 0, -20 )
+
+[node name="BookBlue9" parent="YSort/Furniture/Shelves7" instance=ExtResource( 11 )]
+position = Vector2( 2, -20 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves7" instance=ExtResource( 9 )]
+position = Vector2( 4, -20 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves7" instance=ExtResource( 9 )]
+position = Vector2( 6, -20 )
+
+[node name="BookRed3" parent="YSort/Furniture/Shelves7" instance=ExtResource( 9 )]
+position = Vector2( 8, -20 )
+
+[node name="Shelves8" parent="YSort/Furniture" instance=ExtResource( 6 )]
+position = Vector2( 115, 134 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves8" instance=ExtResource( 11 )]
+position = Vector2( -8, -20 )
+
+[node name="BookBlue2" parent="YSort/Furniture/Shelves8" instance=ExtResource( 11 )]
+position = Vector2( -6, -20 )
+
+[node name="BookBlue3" parent="YSort/Furniture/Shelves8" instance=ExtResource( 11 )]
+position = Vector2( -4, -20 )
+
+[node name="BookBlue4" parent="YSort/Furniture/Shelves8" instance=ExtResource( 11 )]
+position = Vector2( -2, -20 )
+
+[node name="BookBlue5" parent="YSort/Furniture/Shelves8" instance=ExtResource( 11 )]
+position = Vector2( 0, -20 )
+
+[node name="BookBlue6" parent="YSort/Furniture/Shelves8" instance=ExtResource( 11 )]
+position = Vector2( 2, -20 )
+
+[node name="BookBlue7" parent="YSort/Furniture/Shelves8" instance=ExtResource( 11 )]
+position = Vector2( 4, -20 )
+
+[node name="BookBlue8" parent="YSort/Furniture/Shelves8" instance=ExtResource( 11 )]
+position = Vector2( 6, -20 )
+
+[node name="BookBlue9" parent="YSort/Furniture/Shelves8" instance=ExtResource( 11 )]
+position = Vector2( 8, -20 )
+
+[node name="BookGreen" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( -8, -10 )
+
+[node name="BookGreen2" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( -6, -10 )
+
+[node name="BookGreen3" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( -4, -10 )
+
+[node name="BookGreen4" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( -2, -10 )
+
+[node name="BookGreen5" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( 0, -10 )
+
+[node name="BookGreen6" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( 2, -10 )
+
+[node name="BookGreen7" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( 4, -10 )
+
+[node name="BookGreen8" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( 6, -10 )
+
+[node name="BookGreen9" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( 8, -10 )
+
+[node name="BookGreen10" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( -8, 0 )
+
+[node name="BookGreen11" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( -6, 0 )
+
+[node name="BookGreen12" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( 8, 0 )
+
+[node name="BookGreen13" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( 6, 0 )
+
+[node name="BookGreen14" parent="YSort/Furniture/Shelves8" instance=ExtResource( 10 )]
+position = Vector2( 4, 0 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves8" instance=ExtResource( 9 )]
+position = Vector2( -4, 0 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves8" instance=ExtResource( 9 )]
+position = Vector2( -2, 0 )
+
+[node name="BookRed3" parent="YSort/Furniture/Shelves8" instance=ExtResource( 9 )]
+position = Vector2( 0, 0 )
+
+[node name="BookRed4" parent="YSort/Furniture/Shelves8" instance=ExtResource( 9 )]
+position = Vector2( 2, 0 )
+
+[node name="Counter" parent="YSort/Furniture" instance=ExtResource( 5 )]
+position = Vector2( 157, 98 )
+
+[node name="Shelves9" parent="YSort/Furniture" instance=ExtResource( 6 )]
+position = Vector2( 169, 44 )
+
+[node name="BoxSmall" parent="YSort/Furniture/Shelves9" instance=ExtResource( 13 )]
+position = Vector2( 4, -20 )
+
+[node name="BoxSmall2" parent="YSort/Furniture/Shelves9" instance=ExtResource( 13 )]
+position = Vector2( 4, -10 )
+
+[node name="BoxSmall3" parent="YSort/Furniture/Shelves9" instance=ExtResource( 13 )]
+position = Vector2( 4, 0 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves9" instance=ExtResource( 11 )]
+position = Vector2( -8, -20 )
+
+[node name="BookBlue2" parent="YSort/Furniture/Shelves9" instance=ExtResource( 11 )]
+position = Vector2( -6, -20 )
+
+[node name="BookBlue3" parent="YSort/Furniture/Shelves9" instance=ExtResource( 11 )]
+position = Vector2( -4, -20 )
+
+[node name="BookBlue4" parent="YSort/Furniture/Shelves9" instance=ExtResource( 11 )]
+position = Vector2( -2, -20 )
+
+[node name="BookGreen" parent="YSort/Furniture/Shelves9" instance=ExtResource( 10 )]
+position = Vector2( -8, -10 )
+
+[node name="BookGreen2" parent="YSort/Furniture/Shelves9" instance=ExtResource( 10 )]
+position = Vector2( -6, -10 )
+
+[node name="BookGreen3" parent="YSort/Furniture/Shelves9" instance=ExtResource( 10 )]
+position = Vector2( -4, -10 )
+
+[node name="BookGreen4" parent="YSort/Furniture/Shelves9" instance=ExtResource( 10 )]
+position = Vector2( -2, -10 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves9" instance=ExtResource( 9 )]
+position = Vector2( -8, 0 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves9" instance=ExtResource( 9 )]
+position = Vector2( -6, 0 )
+
+[node name="BookRed3" parent="YSort/Furniture/Shelves9" instance=ExtResource( 9 )]
+position = Vector2( -4, 0 )
+
+[node name="BookRed4" parent="YSort/Furniture/Shelves9" instance=ExtResource( 9 )]
+position = Vector2( -2, 0 )
+
+[node name="Shelves10" parent="YSort/Furniture" instance=ExtResource( 6 )]
+position = Vector2( 143, 44 )
+
+[node name="BoxLarge" parent="YSort/Furniture/Shelves10" instance=ExtResource( 12 )]
+position = Vector2( -3, -20 )
+
+[node name="BoxLarge2" parent="YSort/Furniture/Shelves10" instance=ExtResource( 12 )]
+position = Vector2( -3, -10 )
+
+[node name="BoxLarge3" parent="YSort/Furniture/Shelves10" instance=ExtResource( 12 )]
+position = Vector2( -3, 0 )
+
+[node name="BookBlue" parent="YSort/Furniture/Shelves10" instance=ExtResource( 11 )]
+position = Vector2( 8, -20 )
+
+[node name="BookBlue2" parent="YSort/Furniture/Shelves10" instance=ExtResource( 11 )]
+position = Vector2( 6, -20 )
+
+[node name="BookBlue3" parent="YSort/Furniture/Shelves10" instance=ExtResource( 11 )]
+position = Vector2( 4, -20 )
+
+[node name="BookGreen" parent="YSort/Furniture/Shelves10" instance=ExtResource( 10 )]
+position = Vector2( 8, -10 )
+
+[node name="BookGreen2" parent="YSort/Furniture/Shelves10" instance=ExtResource( 10 )]
+position = Vector2( 6, -10 )
+
+[node name="BookGreen3" parent="YSort/Furniture/Shelves10" instance=ExtResource( 10 )]
+position = Vector2( 4, -10 )
+
+[node name="BookRed" parent="YSort/Furniture/Shelves10" instance=ExtResource( 9 )]
+position = Vector2( 8, 0 )
+
+[node name="BookRed2" parent="YSort/Furniture/Shelves10" instance=ExtResource( 9 )]
+position = Vector2( 6, 0 )
+
+[node name="BookRed3" parent="YSort/Furniture/Shelves10" instance=ExtResource( 9 )]
+position = Vector2( 4, 0 )
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
@@ -43,4 +621,7 @@ exit_location = Vector2( -310, -360 )
 [node name="CollisionShape2D" parent="SceneLinks/SceneLink" index="0"]
 shape = SubResource( 1 )
 
+[editable path="YSort/NPCs/NPC"]
+[editable path="YSort/NPCs/NPC/InteractionZone"]
+[editable path="YSort/NPCs/NPC/PlayerDetectionZone"]
 [editable path="SceneLinks/SceneLink"]

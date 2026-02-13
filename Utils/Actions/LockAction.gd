@@ -23,17 +23,17 @@ func interact() -> void:
 					consume_key()
 					emit_signal("unlocked")
 				active = false
-				UI.TextBox.queue_text(["* * Click! * *"])
+				UI.TextBox.queue_text(["* * Click! * *"], "")
 				emit_signal("finished")
-			elif locked and !Inventory.has_item(Inventory.ItemResources.KEY):
-				UI.TextBox.queue_text(["The door appears to be locked."])
+			elif locked and !Inventory.has_item(key_resource):
+				UI.TextBox.queue_text(["The door appears to be locked."], "")
 				yield(UI.TextBox, "finished")
 				emit_signal("finished")
 			elif not locked:
 				emit_signal("unlocked")
 				emit_signal("finished")
 			else:
-				UI.TextBox.queue_text(["Something went wrong."])
+				UI.TextBox.queue_text(["Something went wrong."], "Error")
 				yield(UI.TextBox, "finished")
 				emit_signal("finished")
 		else:
