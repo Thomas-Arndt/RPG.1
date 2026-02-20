@@ -11,8 +11,8 @@ var drag_data = null
 var gold: int = 0 setget set_gold
 var max_gold: int = 999 setget set_max_gold
 
-var muon_pearls: int = 0 setget set_muon_pearls
-var max_muon_pearls: int = 99 setget set_max_muon_pearls
+var muon_pearls: int = 10 setget set_muon_pearls
+var max_muon_pearls: int = 999 setget set_max_muon_pearls
 
 export (Array, Resource) var inventory = [
 	null, null, null, null, 
@@ -67,11 +67,13 @@ func pick_up_item(item, quantity = 1, index = null):
 		inventory[item_index].quantity = quantity
 		save_inventory()
 		emit_signal("item_changed", [item_index])
+		SignalBus.emit_signal("TriggerFromItemReceived", item)
 		return previousItem
 	else:
 		inventory[item_index].quantity += quantity
 		save_inventory()
 		emit_signal("item_changed", [item_index])
+		SignalBus.emit_signal("TriggerFromItemReceived", item)
 		return inventory[item_index]
 
 func set_item(item_index, item):

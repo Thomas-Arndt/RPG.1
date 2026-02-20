@@ -60,6 +60,8 @@ func craft_item():
 			if item_index >= 0:
 				Inventory.consume_item(item_index, item.quantity)
 		Inventory.pick_up_item(recipe.product, recipe.product_quantity)
+		SignalBus.emit_signal("item_fabricated", recipe.product)
+		SignalBus.emit_signal("TriggerFromItemFabricated", recipe.product)
 	update_recipe_display()
 
 func has_all_ingredients(recipe):

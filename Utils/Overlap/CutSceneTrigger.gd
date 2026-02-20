@@ -1,9 +1,6 @@
-extends Node2D
-
-export var active : bool = false
+extends Trigger
 
 var action = 0
-var triggered = false
 var player = null
 
 onready var actor_controllers = $ActorControllers
@@ -40,6 +37,10 @@ func reset():
 	action = 0
 	active = true
 	triggered = false
+
+func trigger():
+	if active and not triggered:
+		start_cutscene(get_tree().get_nodes_in_group("Player")[0])
 
 func save():
 	var save_dict = {

@@ -14,9 +14,10 @@ func _ready():
 	var has_save = File.new().file_exists(get_tree().get_nodes_in_group("World")[0].save_file)
 	forage_layer_components = forage_nodes.get_children()
 	for node in forage_layer_components:
-		node.connect("gathered", self, "_on_Gathered")
-		if !has_save:
-			node.disable_node()
+		if node is ForageLayerNode:
+			node.connect("gathered", self, "_on_Gathered")
+			if !has_save:
+				node.disable_node()
 	timer.connect("timeout", self, "_on_Timer_timeout")
 	if !has_save:
 		activate_node()
@@ -33,7 +34,7 @@ func activate_node():
 		if active_node_count < max_active_nodes:
 			var random_index = randi() % forage_layer_components.size()
 			var forage_node = forage_layer_components[random_index]
-			if forage_node.available:
+			if forage_node is ForageLayerNode and forage_node.available:
 				forage_node.grow()
 				active_node_count += 1
 				timer.start(respawn_time)

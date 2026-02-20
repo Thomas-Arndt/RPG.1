@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://QuestSystem/QuestSystem.gd" type="Script" id=1]
 [ext_resource path="res://QuestSystem/QuestContainer.gd" type="Script" id=2]
-[ext_resource path="res://QuestSystem/Quests/protect-bills-house.tscn" type="PackedScene" id=3]
+[ext_resource path="res://QuestSystem/Quests/MQ_01_0020.tscn" type="PackedScene" id=3]
 [ext_resource path="res://QuestSystem/Quests/message-for-bob.tscn" type="PackedScene" id=4]
 [ext_resource path="res://QuestSystem/Quests/get-iron-for-pickaxe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://QuestSystem/Quests/wilburs-iron-bars.tscn" type="PackedScene" id=6]
@@ -15,6 +15,8 @@
 [ext_resource path="res://QuestSystem/Quests/0060-go-meet-dr.tscn" type="PackedScene" id=13]
 [ext_resource path="res://QuestSystem/Quests/0070-check-out-the-cellars.tscn" type="PackedScene" id=14]
 [ext_resource path="res://QuestSystem/Quests/find-materials-for-beckah.tscn" type="PackedScene" id=15]
+[ext_resource path="res://QuestSystem/Quests/MQ_01_0010.tscn" type="PackedScene" id=16]
+[ext_resource path="res://QuestSystem/Quests/MQ_01_0030.tscn" type="PackedScene" id=17]
 
 [node name="QuestSystem" type="Node"]
 script = ExtResource( 1 )
@@ -22,7 +24,12 @@ script = ExtResource( 1 )
 [node name="Available" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="protect-bills-house" parent="Available" instance=ExtResource( 3 )]
+[node name="MQ_01_0010" parent="Available" instance=ExtResource( 16 )]
+startText = [ "*** PROXIMITY ALERT ***", "My emergency sensors detect potentially hostile entities in your vicinity.", "I would recommend protecting yourself with a Survival Knife.", "If you would like, I can fabricate one designed by the exceptional engineers at Fabrio-Tech, Inc.", "Look around and see if you can find some wood and then I'll take it from there." ]
+
+[node name="MQ_01_0020" parent="Available" instance=ExtResource( 3 )]
+
+[node name="MQ_01_0030" parent="Available" instance=ExtResource( 17 )]
 
 [node name="message-for-bob" parent="Available" instance=ExtResource( 4 )]
 

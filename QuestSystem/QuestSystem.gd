@@ -8,6 +8,18 @@ onready var delivered_quests = $Delivered
 func find_available(reference: Quest):
 	return available_quests.find(reference)
 
+func find_by_scene(scene: PackedScene) -> Quest:
+	for quest in available_quests.get_children():
+		if quest.filename == scene.resource_path:
+			return quest
+	for quest in active_quests.get_children():
+		if quest.filename == scene.resource_path:
+			return quest
+	for quest in completed_quests.get_children():
+		if quest.filename == scene.resource_path:
+			return quest
+	return null
+
 func get_available_quests() -> Array:
 	return available_quests.get_quests()
 
@@ -26,6 +38,8 @@ func start(reference: Quest):
 func _on_Quest_completed(quest):
 	active_quests.remove_child(quest)
 	completed_quests.add_child(quest)
+	if quest.auto_deliver:
+		deliver(quest)
 	save_quest_progress()
 
 func deliver(quest: Quest):

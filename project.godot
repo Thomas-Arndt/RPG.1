@@ -190,6 +190,11 @@ _global_script_classes=[ {
 "path": "res://QuestSystem/Objectives/QuestDeliverItemObjective.gd"
 }, {
 "base": "QuestObjective",
+"class": "QuestFabricateItemObjective",
+"language": "GDScript",
+"path": "res://QuestSystem/Objectives/QuestFabricateItemObjective.gd"
+}, {
+"base": "QuestObjective",
 "class": "QuestInteractObjective",
 "language": "GDScript",
 "path": "res://QuestSystem/Objectives/QuestInteractObjective.gd"
@@ -259,6 +264,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Utils/Hit and Hurt Boxes/SwordHitBox.gd"
 }, {
+"base": "Node2D",
+"class": "Trigger",
+"language": "GDScript",
+"path": "res://Utils/Overlap/Trigger.gd"
+}, {
+"base": "Node",
+"class": "TriggerFromItemFabricatedReceiver",
+"language": "GDScript",
+"path": "res://Utils/Receivers/TriggerFromItemFabricatedReceiver.gd"
+}, {
+"base": "Node",
+"class": "TriggerFromItemReceivedReceiver",
+"language": "GDScript",
+"path": "res://Utils/Receivers/TriggerFromItemReceivedReceiver.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "VoidBlob",
 "language": "GDScript",
@@ -316,6 +336,7 @@ _global_script_class_icons={
 "Quest": "",
 "QuestCollectItemsObjective": "",
 "QuestDeliverItemObjective": "",
+"QuestFabricateItemObjective": "",
 "QuestInteractObjective": "",
 "QuestItemReward": "",
 "QuestObjective": "",
@@ -330,6 +351,9 @@ _global_script_class_icons={
 "SpawnController": "",
 "SpeechAction": "",
 "SwordHitBox": "",
+"Trigger": "",
+"TriggerFromItemFabricatedReceiver": "",
+"TriggerFromItemReceivedReceiver": "",
 "VoidBlob": "",
 "VoidLord": "",
 "VoidMote": "",

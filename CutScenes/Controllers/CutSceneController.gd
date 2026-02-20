@@ -36,6 +36,8 @@ enum {
 	EMOTE,
 	MOVE_CAMERA,
 	RETURN_CAMERA,
+	GIVE_QUEST,
+	DELIVER_QUEST
 }
 
 func _ready():
@@ -79,6 +81,11 @@ func run_cut_scene():
 			RETURN_CAMERA:
 				set_displacement("return")
 				move_camera(action[1], action[2])
+			GIVE_QUEST:
+				give_quest(action[1], action[2])
+			DELIVER_QUEST:
+				deliver_quest(action[1], action[2])
+			
 	else:
 		cut_scene_finished()
 
@@ -141,6 +148,24 @@ func start_dialogue(text_array, speaker):
 	is_acting = true
 	is_speaking = true
 	UI.TextBox.queue_text(text_array, speaker)
+
+func give_quest(quest_reference:PackedScene, speaker_name:String):
+	var quest = QuestSystem.find_by_scene(quest_reference)
+	if QuestSystem.find_available(quest) and UI.TextBox.complete:
+		is_acting = true
+		is_speaking = true
+		QuestSystem.start(quest)
+		UI.TextBox.queue_text(quest.startText, speaker_name)
+		#yield(UI.TextBox, "finished")
+	#run_cut_scene()
+
+func deliver_quest(quest_reference:PackedScene, speaker_name:String):
+	var quest = QuestSystem.find_by_scene(quest_reference)
+	is_acting = true
+	is_speaking = true
+	QuestSystem.deliver(quest)
+	UI.TextBox.queue_text(quest.deliverText, speaker_name)
+	#run_cut_scene()
 
 func toggle_visible_on():
 	actor.visible = true

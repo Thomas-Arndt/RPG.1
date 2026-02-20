@@ -9,12 +9,14 @@ onready var objectives = $Objectives
 onready var _reward_items: Node = $ItemRewards
 onready var _environment_rewards: Node = $EnvironmentRewards
 
+export var quest_id: String
 export var title: String
 export var description: String
-export var startText: Array
-export var progressText: Array
-export var deliverText: Array
+export (Array, String) var startText
+export (Array, String) var progressText
+export(Array, String)  var deliverText
 export var is_multiple_quest_part: bool = false
+export (bool) var auto_deliver = false
 
 export var _reward_experience: int
 export var _reward_gold: int

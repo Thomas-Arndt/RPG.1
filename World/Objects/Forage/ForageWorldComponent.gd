@@ -31,7 +31,8 @@ func forage(time):
 	shadow_sprite.visible = false
 	collision_shape.set_deferred("disabled", true)
 	interaction_zone.collision_shape.set_deferred("disabled", true)
-	timer.start(time)
+	if time >= 0:
+		timer.start(time)
 
 func regrow():
 	sprite.texture = world_item.texture

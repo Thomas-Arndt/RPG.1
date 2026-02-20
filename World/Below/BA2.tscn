@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://World/Below/Terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/AreaUtils/BelowYSort.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=6]
 [ext_resource path="res://World/Objects/Doors/BelowDoors.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Objects/Switches/RedBlueSwitch.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Objects/Rocks/RockLarge.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/Objects/Rocks/RockSmall.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/Objects/Rocks/RockMedium.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 47, 10 )
@@ -31,7 +34,7 @@ position = Vector2( 316, -13 )
 
 [node name="YSort" parent="." instance=ExtResource( 2 )]
 
-[node name="RemoteTransform2D" parent="YSort/Player" index="11"]
+[node name="RemoteTransform2D" parent="YSort/Player" index="12"]
 remote_path = NodePath("../../../Camera2D")
 
 [node name="LadderUpper" parent="YSort/Portals" index="0" instance=ExtResource( 4 )]
@@ -47,6 +50,53 @@ signal_code = "BA2_north_door"
 [node name="RedBlueSwitch" parent="YSort/Portals" index="2" instance=ExtResource( 8 )]
 position = Vector2( -124, -215 )
 signal_code = "BA2_north_door"
+green_active = false
+
+[node name="Rubble" type="YSort" parent="YSort"]
+
+[node name="RockLarge" parent="YSort/Rubble" instance=ExtResource( 9 )]
+position = Vector2( -127, -219 )
+show_red = false
+
+[node name="RockLarge3" parent="YSort/Rubble" instance=ExtResource( 9 )]
+position = Vector2( -107, -217 )
+show_red = false
+
+[node name="RockLarge2" parent="YSort/Rubble" instance=ExtResource( 9 )]
+position = Vector2( -135, -196 )
+show_red = false
+
+[node name="RockMedium" parent="YSort/Rubble" instance=ExtResource( 11 )]
+position = Vector2( -113, -202 )
+show_red = false
+
+[node name="RockMedium2" parent="YSort/Rubble" instance=ExtResource( 11 )]
+position = Vector2( -101, -210 )
+show_red = false
+
+[node name="RockMedium3" parent="YSort/Rubble" instance=ExtResource( 11 )]
+position = Vector2( -150, -219 )
+show_red = false
+
+[node name="RockSmall" parent="YSort/Rubble" instance=ExtResource( 10 )]
+position = Vector2( -145, -208 )
+show_red = false
+
+[node name="RockSmall2" parent="YSort/Rubble" instance=ExtResource( 10 )]
+position = Vector2( -163, -195 )
+show_red = false
+
+[node name="RockSmall3" parent="YSort/Rubble" instance=ExtResource( 10 )]
+position = Vector2( -116, -176 )
+show_red = false
+
+[node name="RockSmall4" parent="YSort/Rubble" instance=ExtResource( 10 )]
+position = Vector2( -77, -220 )
+show_red = false
+
+[node name="RockSmall5" parent="YSort/Rubble" instance=ExtResource( 10 )]
+position = Vector2( -116, -237 )
+show_red = false
 
 [node name="SceneLinks" type="Node2D" parent="."]
 

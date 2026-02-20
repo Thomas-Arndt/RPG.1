@@ -58,7 +58,7 @@ func display_quest_details():
 	description.text = quest_log[quest_cursor].description
 	for obj in quest_log[quest_cursor].objectives:
 		if "amount" in obj:
-			description.text += "\n\n" + str(obj.amount) + " remaining"
+			description.text += "\n" + str(obj.amount) + " remaining"
 	gold_reward.text = str(quest_log[quest_cursor].rewards["gold"])
 
 func show_hide_quest_log():

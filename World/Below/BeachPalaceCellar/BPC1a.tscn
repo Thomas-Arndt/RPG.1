@@ -81,7 +81,7 @@ position = Vector2( -27, 31 )
 position = Vector2( -4, 31 )
 
 [node name="PStoneBlock3" parent="YSort/StoneBlocks" instance=ExtResource( 5 )]
-position = Vector2( 19, 33 )
+position = Vector2( 19, 31 )
 movement_locked = false
 
 [node name="DimensionalRemoveNode" parent="YSort/StoneBlocks/PStoneBlock3" instance=ExtResource( 14 )]
@@ -92,6 +92,7 @@ position = Vector2( 42, 31 )
 
 [node name="PStoneBlock5" parent="YSort/StoneBlocks" instance=ExtResource( 5 )]
 position = Vector2( 65, 31 )
+movement_locked = false
 
 [node name="PStoneBlock6" parent="YSort/StoneBlocks" instance=ExtResource( 5 )]
 position = Vector2( 88, 31 )

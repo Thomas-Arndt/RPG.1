@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Inventory/Items/Keys/Key.tres" type="Resource" id=2]
+[ext_resource path="res://QuestSystem/QuestItemReward.tscn" type="PackedScene" id=3]
+[ext_resource path="res://QuestSystem/EnvironmentRewards/RemoveNode.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://QuestSystem/Objectives/QuestSlayObjective.tscn" type="PackedScene" id=6]
+
+[node name="MQ_01_0030" instance=ExtResource( 1 )]
+quest_id = "MQ_01_0010"
+title = "Protect Jaro Jaro Farm"
+description = "Benny Jaro has asked that you help him defeat 5 of the mysterious energy creatures on his farm so that he can safetly assess the damage to the farm."
+startText = [ "There's been lots of strange things happening. You appearing in my orchard, for one.", "Even stranger, there are these odd creatures appearing everywhere, but I can't do anything about them.", "The closer I get, the weaker I feel, and when I prodded one with my pitchfork, I nearly passed out.", "Since you survived the swarms of those creatures I saw in the orchard, I am hoping that maybe you are capable of helping me.", "Would you please help me clear some of those creatures from my farm? I would appreciate it very much!" ]
+progressText = [ "Remember, you can only attack a void blob that has fully phased into our dimension." ]
+deliverText = [ "Well done! While you were doing that, I had a chance to remove the boulders blocking the road to the 'Old Quarry'.", "It was odd. Right as I was leaving, the air suddenly felt 'charged'. Like lightning was about to strike...", "...anyways, thank you for your help. I don't have much to give you in return, but here is the key to my chest, feel free to take anything that might be of use to you." ]
+
+[node name="QuestItemReward" parent="ItemRewards" index="0" instance=ExtResource( 3 )]
+item = ExtResource( 2 )
+
+[node name="RemoveNode" parent="EnvironmentRewards" index="0" instance=ExtResource( 4 )]
+signal_code = "bill_moves_rocks"
+
+[node name="QuestSlayObjective" parent="Objectives" index="0" instance=ExtResource( 6 )]
+amount = 5
+target_to_slay = ExtResource( 5 )

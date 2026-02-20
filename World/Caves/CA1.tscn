@@ -265,6 +265,26 @@ quest_reference = ExtResource( 26 )
 speaker_name = "Saunder"
 active = true
 
+[node name="ForageWorldComponent" parent="YSort/Forage" index="0" instance=ExtResource( 21 )]
+position = Vector2( -537, 284 )
+world_item = ExtResource( 20 )
+forage_item = ExtResource( 20 )
+
+[node name="ForageWorldComponent2" parent="YSort/Forage" index="1" instance=ExtResource( 21 )]
+position = Vector2( 507, 936 )
+world_item = ExtResource( 20 )
+forage_item = ExtResource( 20 )
+
+[node name="ForageWorldComponent3" parent="YSort/Forage" index="2" instance=ExtResource( 21 )]
+position = Vector2( 569, -188 )
+world_item = ExtResource( 20 )
+forage_item = ExtResource( 20 )
+
+[node name="ForageWorldComponent4" parent="YSort/Forage" index="3" instance=ExtResource( 21 )]
+position = Vector2( 1209, 428 )
+world_item = ExtResource( 20 )
+forage_item = ExtResource( 20 )
+
 [node name="MineRock" parent="YSort/Rocks" index="0" instance=ExtResource( 12 )]
 position = Vector2( -195, 623 )
 
@@ -288,26 +308,6 @@ position = Vector2( 1013, -270 )
 
 [node name="MineRock8" parent="YSort/Rocks" index="7" instance=ExtResource( 12 )]
 position = Vector2( 987, -272 )
-
-[node name="ForageWorldComponent" parent="YSort/Forage" index="0" instance=ExtResource( 21 )]
-position = Vector2( -537, 284 )
-world_item = ExtResource( 20 )
-forage_item = ExtResource( 20 )
-
-[node name="ForageWorldComponent2" parent="YSort/Forage" index="1" instance=ExtResource( 21 )]
-position = Vector2( 507, 936 )
-world_item = ExtResource( 20 )
-forage_item = ExtResource( 20 )
-
-[node name="ForageWorldComponent3" parent="YSort/Forage" index="2" instance=ExtResource( 21 )]
-position = Vector2( 569, -188 )
-world_item = ExtResource( 20 )
-forage_item = ExtResource( 20 )
-
-[node name="ForageWorldComponent4" parent="YSort/Forage" index="3" instance=ExtResource( 21 )]
-position = Vector2( 1209, 428 )
-world_item = ExtResource( 20 )
-forage_item = ExtResource( 20 )
 
 [node name="MineralDepositWorldComponent" parent="YSort/Minerals" index="0" instance=ExtResource( 18 )]
 position = Vector2( -95, 825 )

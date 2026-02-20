@@ -32,23 +32,16 @@ func package_choreography():
 	choreography.append([DIALOGUE, monologue, "?????"])
 	choreography.append([WAIT, 0.5])
 	monologue = [
-		"Hello there! I'm Fabio, your handy fabricator and personal assistant.",
+		"Hello there! I'm FABIO, your Fantastic All-Purpose Builder & Installation Omnitool.",
 		"It seems as though we have experienced a dimensional shift in the local universal zone.",
 		"Unfortunately, it appears that the interdimensional traverse has corrupted my higher level functions.",
 		"I am currently limited to survival schematics and sensors. I appologize for any inconvenince.",
 		"Thankfully, the brilliant engineers at Fabrio-Tech, Inc. designed me with the ability for self-repair.",
 		"My systems are already working on restoring the corrupted files. I will be fully functioning before you know it.",
 	]
-	choreography.append([DIALOGUE, monologue, "Fabio"])
+	choreography.append([DIALOGUE, monologue, "FABIO"])
 	choreography.append([WAIT, 1])
-	monologue = [
-		"*** PROXIMITY ALERT ***",
-		"My emergency sensors detect potentially hostile entities in your vicinity.",
-		"I would recommend protecting yourself with a Survival Knife.",
-		"If you would like, I can fabricate one designed by the exceptional engineers at Fabrio-Tech, Inc.",
-		"Look around and see if you can find some wood and then I'll take it from there."
-	]
-	choreography.append([DIALOGUE, monologue, "Fabio"])
+	choreography.append([GIVE_QUEST, preload("res://QuestSystem/Quests/MQ_01_0010.tscn"), "FABIO"])
 	choreography.append([RELEASE_ACTOR])
 
 func custom_actions(action_name, args):

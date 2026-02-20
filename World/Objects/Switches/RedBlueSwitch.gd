@@ -1,7 +1,8 @@
 extends StaticBody2D
 
 export var signal_code : String
-export var active : bool = true
+export var red_active : bool = true
+export var green_active : bool = true
 
 enum states {
 	RED,
@@ -19,7 +20,7 @@ func _ready():
 	SignalBus.connect("event_switch", self, "on_Switch_Event")
 
 func toggle_switch(node):
-	if active:
+	if (red_active and WorldStats.DIMENSION == WorldStats.Dimensions.Red) or (green_active and WorldStats.DIMENSION == WorldStats.Dimensions.Green):
 		anim_player.stop()
 		match state:
 			states.RED:

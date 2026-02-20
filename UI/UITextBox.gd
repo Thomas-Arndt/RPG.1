@@ -39,10 +39,10 @@ func _process(delta):
 				if Input.is_action_just_pressed("quick_action_4"):
 					change_state(States.READY)
 					if len(text_queue) == 0:
+						complete = true
 						hide_text_box()
 						yield(get_tree().create_timer(0.2),"timeout")
 						emit_signal("finished")
-						complete = true
 
 func hide_text_box():
 	end_symbol.text = ""
@@ -57,12 +57,17 @@ func show_text_box():
 
 func display_text():
 	var next_text = text_queue.pop_front()
-	label.text = next_text
-	label.percent_visible = 0.0
-	change_state(States.READING)
-	show_text_box()
-	$Tween.interpolate_property(label, "percent_visible", 0.0, 1.0, len(next_text) * CHAR_READ_RATE, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$Tween.start()
+	if next_text != null:
+		label.text = next_text
+		label.percent_visible = 0.0
+		change_state(States.READING)
+		show_text_box()
+		$Tween.interpolate_property(label, "percent_visible", 0.0, 1.0, len(next_text) * CHAR_READ_RATE, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Tween.start()
+	else:
+		change_state(States.FINISHED)
+		complete = true
+		emit_signal("finished")
 
 func change_state(next_state):
 	state = next_state

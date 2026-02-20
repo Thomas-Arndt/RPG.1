@@ -3,11 +3,13 @@ extends Node
 #Scene Links
 signal scene_link_entered(destination_reference)
 
-#Environment Rewards Receivers
+#Receivers
 signal remove_node(signal_code)
 signal add_node(signal_code)
 signal modify_node_property(signal_code)
 signal run_node_function(signal_code)
+signal TriggerFromItemFabricated(item)
+signal TriggerFromItemReceived(item)
 
 #Switches
 signal red_blue_switch_state_changed(signal_code, state, states)
@@ -24,3 +26,6 @@ signal deactivate_barrier(signal_code)
 
 #ItemContainer
 signal drop_item(loc, quantity, direction, distance, item)
+
+#QuestObjectives
+signal item_fabricated(item)
