@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://World/Objects/Buildings/Hut.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Objects/Buildings/HutDoor.tscn" type="PackedScene" id=2]
@@ -12,26 +12,24 @@
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Objects/Signs/InformationBoard.tscn" type="PackedScene" id=12]
-[ext_resource path="res://QuestSystem/Quests/message-for-bob.tscn" type="PackedScene" id=13]
+[ext_resource path="res://QuestSystem/Quests/MQ_01_0040.tscn" type="PackedScene" id=13]
 [ext_resource path="res://World/AreaUtils/Area.gd" type="Script" id=14]
 [ext_resource path="res://Utils/Actions/CompletedQuestAction.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Utils/Overlap/CutSceneTrigger.tscn" type="PackedScene" id=16]
 [ext_resource path="res://CutScenes/Controllers/CutSceneController.tscn" type="PackedScene" id=17]
 [ext_resource path="res://CutScenes/Controllers/FabioInterruptsBobController.gd" type="Script" id=18]
 [ext_resource path="res://Utils/Receivers/RunFunctionReceiver.tscn" type="PackedScene" id=19]
-[ext_resource path="res://QuestSystem/Quests/get-iron-for-pickaxe.tscn" type="PackedScene" id=20]
+[ext_resource path="res://CutScenes/Controllers/TinyTown/DaleConversation1PlayerController.gd" type="Script" id=20]
 [ext_resource path="res://Utils/Actions/GiveQuestAction.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Utils/Receivers/ModifyPropertyReceiver.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Utils/Overlap/InteractionZone.tscn" type="PackedScene" id=23]
-[ext_resource path="res://QuestSystem/Quests/wilburs-iron-bars.tscn" type="PackedScene" id=24]
+[ext_resource path="res://QuestSystem/Quests/MQ_01_0050.tscn" type="PackedScene" id=22]
+[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=23]
+[ext_resource path="res://CutScenes/Controllers/TinyTown/DaleConversation1DoorController.gd" type="Script" id=24]
 [ext_resource path="res://World/Objects/Forage/ForageWorldComponent.tscn" type="PackedScene" id=25]
 [ext_resource path="res://World/Objects/Forage/WoodWorld.tres" type="Resource" id=26]
 [ext_resource path="res://World/Objects/Forage/Wood.tres" type="Resource" id=27]
-[ext_resource path="res://QuestSystem/Quests/bob-asks-for-help-at-cave-ca.tscn" type="PackedScene" id=28]
 [ext_resource path="res://NPC/Clothes/Shirts/npc-shirts-blue.png" type="Texture" id=29]
 [ext_resource path="res://NPC/Clothes/Pants/npc-pants-brown.png" type="Texture" id=30]
 [ext_resource path="res://NPC/NPCs/BaseNPCSpriteSheet.png" type="Texture" id=31]
-[ext_resource path="res://QuestSystem/Quests/rescue-the-miners-in-cave-ca.tscn" type="PackedScene" id=32]
 
 [sub_resource type="AnimationNodeAnimation" id=209]
 animation = "idle_down"
@@ -97,7 +95,7 @@ start_node = "idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=223]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 69.5, 10 )
@@ -156,7 +154,7 @@ position = Vector2( 219, -78 )
 position = Vector2( 219, -127 )
 
 [node name="HutDoor" parent="YSort/Buildings" groups=["Persist"] instance=ExtResource( 2 )]
-position = Vector2( -158, -87 )
+position = Vector2( -158, -75 )
 show_red = false
 
 [node name="Hut2" parent="YSort/Buildings" instance=ExtResource( 1 )]
@@ -166,7 +164,7 @@ position = Vector2( 0, -78 )
 position = Vector2( 0, -127 )
 
 [node name="HutDoor2" parent="YSort/Buildings" instance=ExtResource( 2 )]
-position = Vector2( 219, -87 )
+position = Vector2( 219, -75 )
 show_red = false
 
 [node name="Hut3" parent="YSort/Buildings" instance=ExtResource( 1 )]
@@ -176,7 +174,7 @@ position = Vector2( -158, -78 )
 position = Vector2( -158, -127 )
 
 [node name="HutDoor3" parent="YSort/Buildings" instance=ExtResource( 2 )]
-position = Vector2( 0, -87 )
+position = Vector2( 0, -75 )
 show_red = false
 
 [node name="Hut4" parent="YSort/Buildings" instance=ExtResource( 1 )]
@@ -361,7 +359,7 @@ position = Vector2( 134, 285 )
 
 [node name="NPCs" type="YSort" parent="YSort"]
 
-[node name="Bob" parent="YSort/NPCs" instance=ExtResource( 9 )]
+[node name="Loni Jaro" parent="YSort/NPCs" instance=ExtResource( 9 )]
 position = Vector2( 199, 124 )
 show_red = false
 skin_tone = 0
@@ -371,70 +369,46 @@ chest_color = 6
 legs_color = 10
 foot_color = 11
 
-[node name="Sprite" parent="YSort/NPCs/Bob" index="1"]
+[node name="Sprite" parent="YSort/NPCs/Loni Jaro" index="1"]
 texture = ExtResource( 31 )
 
-[node name="Chest" parent="YSort/NPCs/Bob" index="3"]
+[node name="Chest" parent="YSort/NPCs/Loni Jaro" index="3"]
 texture = ExtResource( 29 )
 
-[node name="Legs" parent="YSort/NPCs/Bob" index="4"]
+[node name="Legs" parent="YSort/NPCs/Loni Jaro" index="4"]
 texture = ExtResource( 30 )
 
-[node name="AnimationTree" parent="YSort/NPCs/Bob" index="8"]
+[node name="AnimationTree" parent="YSort/NPCs/Loni Jaro" index="8"]
 tree_root = SubResource( 221 )
 parameters/playback = SubResource( 2 )
 parameters/idle/blend_position = Vector2( 0.0267112, 0.575966 )
 
-[node name="CompletedQuestAction" parent="YSort/NPCs/Bob/InteractionZone/Actions" index="0" instance=ExtResource( 15 )]
+[node name="CompletedQuestAction" parent="YSort/NPCs/Loni Jaro/InteractionZone/Actions" index="0" instance=ExtResource( 15 )]
 quest_reference = ExtResource( 13 )
-speaker_name = "Bob"
+follow_up_quest = ExtResource( 22 )
+speaker_name = "Loni Jaro"
 active = true
 
-[node name="GiveQuestAction" parent="YSort/NPCs/Bob/InteractionZone/Actions" index="1" instance=ExtResource( 21 )]
-quest_reference = ExtResource( 20 )
-speaker_name = "Bob"
+[node name="GiveQuestAction" parent="YSort/NPCs/Loni Jaro/InteractionZone/Actions" index="1" instance=ExtResource( 21 )]
+quest_reference = ExtResource( 22 )
+speaker_name = "Loni Jaro"
 active = false
 
-[node name="ModifyPropertyReceiver" parent="YSort/NPCs/Bob/InteractionZone/Actions/GiveQuestAction" instance=ExtResource( 22 )]
-signal_code = "after-fabio-interrupts-bob"
-property = "active"
-value_array = [ true ]
+[node name="Dale" parent="YSort/NPCs" instance=ExtResource( 23 )]
+position = Vector2( 219, -80 )
+is_stationary = true
+skin_tone = 0
+chest_color = 4
+legs_color = 12
+foot_color = 11
 
-[node name="CompletedQuestAction3" parent="YSort/NPCs/Bob/InteractionZone/Actions" index="2" instance=ExtResource( 15 )]
-quest_reference = ExtResource( 28 )
-follow_up_quest = ExtResource( 32 )
-speaker_name = "Bob"
+[node name="AnimationTree" parent="YSort/NPCs/Dale" index="8"]
+parameters/playback = SubResource( 223 )
 
-[node name="ModifyPropertyReceiver" parent="YSort/NPCs/Bob/InteractionZone/Actions/CompletedQuestAction3" instance=ExtResource( 22 )]
-signal_code = "activate-bob-asks-for-help-at-cave-ca"
-property = "active"
-value_array = [ true ]
-
-[node name="GiveQuestAction2" parent="YSort/NPCs/Bob/InteractionZone/Actions" index="3" instance=ExtResource( 21 )]
-quest_reference = ExtResource( 32 )
-speaker_name = "Bob"
-active = false
-
-[node name="InteractionZone" parent="YSort/NPCs" instance=ExtResource( 23 )]
-position = Vector2( 220, -104 )
-
-[node name="CollisionShape2D" parent="YSort/NPCs/InteractionZone" index="0"]
-position = Vector2( -1, 17 )
-shape = SubResource( 6 )
-
-[node name="CompletedQuestAction" parent="YSort/NPCs/InteractionZone/Actions" index="0" instance=ExtResource( 15 )]
-quest_reference = ExtResource( 20 )
-follow_up_quest = ExtResource( 24 )
-speaker_name = "Wilbur"
-
-[node name="GiveQuestAction" parent="YSort/NPCs/InteractionZone/Actions" index="1" instance=ExtResource( 21 )]
-quest_reference = ExtResource( 24 )
-speaker_name = "Wilbur"
-active = false
-
-[node name="CompletedQuestAction2" parent="YSort/NPCs/InteractionZone/Actions" index="2" instance=ExtResource( 15 )]
-quest_reference = ExtResource( 24 )
-speaker_name = "Wilbur"
+[node name="CompletedQuestAction" parent="YSort/NPCs/Dale/InteractionZone/Actions" index="0" instance=ExtResource( 15 )]
+quest_reference = ExtResource( 22 )
+speaker_name = "Dale"
+active = true
 
 [node name="Signs" type="YSort" parent="YSort"]
 
@@ -504,6 +478,20 @@ shape = SubResource( 222 )
 
 [node name="CutSceneTriggers" type="Node2D" parent="."]
 
+[node name="DaleConversation1" parent="CutSceneTriggers" instance=ExtResource( 16 )]
+
+[node name="PlayerController" parent="CutSceneTriggers/DaleConversation1/ActorControllers" index="0" instance=ExtResource( 17 )]
+script = ExtResource( 20 )
+actor_path = NodePath("../../../../YSort/Player")
+
+[node name="DoorConroller" parent="CutSceneTriggers/DaleConversation1/ActorControllers" index="1" instance=ExtResource( 17 )]
+script = ExtResource( 24 )
+actor_path = NodePath("../../../../YSort/Buildings/HutDoor2")
+
+[node name="RunFunctionReceiver" parent="CutSceneTriggers/DaleConversation1" instance=ExtResource( 19 )]
+signal_code = "dale_conversation_1"
+function = "start_cutscene"
+
 [node name="FabioInterruptsBob" parent="CutSceneTriggers" instance=ExtResource( 16 )]
 
 [node name="FabioInterruptsBobController" parent="CutSceneTriggers/FabioInterruptsBob/ActorControllers" index="0" instance=ExtResource( 17 )]
@@ -516,10 +504,12 @@ function = "start_cutscene"
 
 [editable path="Terrain"]
 [editable path="Camera2D"]
-[editable path="YSort/NPCs/Bob"]
-[editable path="YSort/NPCs/Bob/InteractionZone"]
-[editable path="YSort/NPCs/Bob/PlayerDetectionZone"]
-[editable path="YSort/NPCs/InteractionZone"]
+[editable path="YSort/NPCs/Loni Jaro"]
+[editable path="YSort/NPCs/Loni Jaro/InteractionZone"]
+[editable path="YSort/NPCs/Loni Jaro/PlayerDetectionZone"]
+[editable path="YSort/NPCs/Dale"]
+[editable path="YSort/NPCs/Dale/InteractionZone"]
+[editable path="YSort/NPCs/Dale/PlayerDetectionZone"]
 [editable path="YSort/Signs/InformationBoard"]
 [editable path="YSort/Signs/InformationBoard/InteractionZone"]
 [editable path="YSort/Signs/InformationBoard2"]
@@ -529,4 +519,5 @@ function = "start_cutscene"
 [editable path="SceneLinks/Inn"]
 [editable path="SceneLinks/BobsHouse"]
 [editable path="SceneLinks/JimbosHut"]
+[editable path="CutSceneTriggers/DaleConversation1"]
 [editable path="CutSceneTriggers/FabioInterruptsBob"]

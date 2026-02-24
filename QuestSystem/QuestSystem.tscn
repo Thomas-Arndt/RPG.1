@@ -1,22 +1,12 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://QuestSystem/QuestSystem.gd" type="Script" id=1]
 [ext_resource path="res://QuestSystem/QuestContainer.gd" type="Script" id=2]
 [ext_resource path="res://QuestSystem/Quests/MQ_01_0020.tscn" type="PackedScene" id=3]
-[ext_resource path="res://QuestSystem/Quests/message-for-bob.tscn" type="PackedScene" id=4]
-[ext_resource path="res://QuestSystem/Quests/get-iron-for-pickaxe.tscn" type="PackedScene" id=5]
-[ext_resource path="res://QuestSystem/Quests/wilburs-iron-bars.tscn" type="PackedScene" id=6]
-[ext_resource path="res://QuestSystem/Quests/bob-asks-for-help-at-cave-ca.tscn" type="PackedScene" id=7]
-[ext_resource path="res://QuestSystem/Quests/rescue-person-1.tscn" type="PackedScene" id=8]
-[ext_resource path="res://QuestSystem/Quests/rescue-person-3.tscn" type="PackedScene" id=9]
-[ext_resource path="res://QuestSystem/Quests/rescue-person-2.tscn" type="PackedScene" id=10]
-[ext_resource path="res://QuestSystem/Quests/rescue-people-trapped-in-cave-ca.tscn" type="PackedScene" id=11]
-[ext_resource path="res://QuestSystem/Quests/rescue-the-miners-in-cave-ca.tscn" type="PackedScene" id=12]
-[ext_resource path="res://QuestSystem/Quests/0060-go-meet-dr.tscn" type="PackedScene" id=13]
-[ext_resource path="res://QuestSystem/Quests/0070-check-out-the-cellars.tscn" type="PackedScene" id=14]
-[ext_resource path="res://QuestSystem/Quests/find-materials-for-beckah.tscn" type="PackedScene" id=15]
+[ext_resource path="res://QuestSystem/Quests/MQ_01_0040.tscn" type="PackedScene" id=4]
 [ext_resource path="res://QuestSystem/Quests/MQ_01_0010.tscn" type="PackedScene" id=16]
 [ext_resource path="res://QuestSystem/Quests/MQ_01_0030.tscn" type="PackedScene" id=17]
+[ext_resource path="res://QuestSystem/Quests/MQ_01_0050.tscn" type="PackedScene" id=18]
 
 [node name="QuestSystem" type="Node"]
 script = ExtResource( 1 )
@@ -31,35 +21,15 @@ startText = [ "*** PROXIMITY ALERT ***", "My emergency sensors detect potentiall
 
 [node name="MQ_01_0030" parent="Available" instance=ExtResource( 17 )]
 
-[node name="message-for-bob" parent="Available" instance=ExtResource( 4 )]
+[node name="MQ_01_0040" parent="Available" instance=ExtResource( 4 )]
 
-[node name="get-iron-for-pickaxe" parent="Available" instance=ExtResource( 5 )]
-
-[node name="wilburs-iron-bars" parent="Available" instance=ExtResource( 6 )]
-
-[node name="rescue-person-1" parent="Available" instance=ExtResource( 8 )]
-
-[node name="rescue-person-2" parent="Available" instance=ExtResource( 10 )]
-
-[node name="rescue-person-3" parent="Available" instance=ExtResource( 9 )]
-
-[node name="rescue-people-trapped-in-cave-ca" parent="Available" instance=ExtResource( 11 )]
-
-[node name="rescue-the-miners-in-cave-ca" parent="Available" instance=ExtResource( 12 )]
-
-[node name="0060-go-meet-dr" parent="Available" instance=ExtResource( 13 )]
-
-[node name="0070-check-out-the-cellars" parent="Available" instance=ExtResource( 14 )]
-
-[node name="find-materials-for-beckah" parent="Available" instance=ExtResource( 15 )]
+[node name="MQ_01_0050" parent="Available" instance=ExtResource( 18 )]
 
 [node name="Active" type="Node" parent="."]
 script = ExtResource( 2 )
 
 [node name="Completed" type="Node" parent="."]
 script = ExtResource( 2 )
-
-[node name="bob-asks-for-help-at-cave-ca" parent="Completed" instance=ExtResource( 7 )]
 
 [node name="Delivered" type="Node" parent="."]
 script = ExtResource( 2 )

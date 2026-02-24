@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://QuestSystem/Objectives/QuestInteractObjective.tscn" type="PackedScene" id=2]
+[ext_resource path="res://QuestSystem/EnvironmentRewards/RunNodeFunction.tscn" type="PackedScene" id=3]
+
+[node name="MQ_01_0050" instance=ExtResource( 1 )]
+title = "Trapped Townspeople"
+description = "Loni has informed us that a local named Dale might have useful information on what happened at the cave to the West. Speak with Dale and then return to Loni."
+startText = [ "What's that? You say my brother sent you? That the farm is overrun with monsters? That's really not good!", "I will go as soon as I am able, but first I am helping coordinate the rescue of most of the town.", "You heard right. Most of the town is currently trapped in a cave to the west of here.", "I still don't have the whole story, but all that matters right now is that they need help.", "Perhaps you can find out more of what happened from Dale. He is the only person to have made it back.", "He lives in the Noethwest-most house in town here. See if you can get any more info and then come base in Tiny TOwn.ck to me." ]
+progressText = [ "Remember, Dale lives in the Nowrthwest-most hou" ]
+deliverText = [ "..." ]
+
+[node name="RunNodeFunction" parent="EnvironmentRewards" index="0" instance=ExtResource( 3 )]
+signal_code = "dale_conversation_1"
+
+[node name="QuestInteractObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]

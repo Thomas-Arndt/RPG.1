@@ -9,7 +9,6 @@ onready var objectives = $Objectives
 onready var _reward_items: Node = $ItemRewards
 onready var _environment_rewards: Node = $EnvironmentRewards
 
-export var quest_id: String
 export var title: String
 export var description: String
 export (Array, String) var startText
@@ -21,7 +20,11 @@ export (bool) var auto_deliver = false
 export var _reward_experience: int
 export var _reward_gold: int
 
+var quest_id: String
 var active: bool = false
+
+func _ready():
+	quest_id = self.name
 
 func _start():
 	for objective in get_objectives():

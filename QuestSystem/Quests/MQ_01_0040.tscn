@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://QuestSystem/EnvironmentRewards/RunNodeFunction.tscn" type="PackedScene" id=2]
+[ext_resource path="res://QuestSystem/Objectives/QuestDeliverItemObjective.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Inventory/Items/QuestItems/Message.tres" type="Resource" id=4]
+
+[node name="MQ_01_0040" instance=ExtResource( 1 )]
+title = "Loni Come Back!"
+description = "Beni has asked that we find his brother and send him back to the farm. He is doing some business in Tiny Town to the north of the Greatwood."
+startText = [ "I have a favor to ask of you, if you are willing.", "These creatures are proving to be a bit too much for me to handle on my own. I need my brother, Loni's help.", "Unfortunately he is up North for business, and I can't leave the farm in this state.", "Could you deliver this message to him for me? I would greatly appreciate it!" ]
+progressText = [ "Loni should be in Tiny Town, up to the north of the Greatwood." ]
+deliverText = [ "Oh hello! I do apologize, but I do not have the time for introductions at the moment." ]
+
+[node name="RunNodeFunction" parent="EnvironmentRewards" index="0" instance=ExtResource( 2 )]
+signal_code = "fabio_interrupts_loni"
+
+[node name="QuestDeliverItemObjective" parent="Objectives" index="0" instance=ExtResource( 3 )]
+item = ExtResource( 4 )

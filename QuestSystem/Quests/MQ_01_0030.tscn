@@ -8,7 +8,6 @@
 [ext_resource path="res://QuestSystem/Objectives/QuestSlayObjective.tscn" type="PackedScene" id=6]
 
 [node name="MQ_01_0030" instance=ExtResource( 1 )]
-quest_id = "MQ_01_0010"
 title = "Protect Jaro Jaro Farm"
 description = "Benny Jaro has asked that you help him defeat 5 of the mysterious energy creatures on his farm so that he can safetly assess the damage to the farm."
 startText = [ "There's been lots of strange things happening. You appearing in my orchard, for one.", "Even stranger, there are these odd creatures appearing everywhere, but I can't do anything about them.", "The closer I get, the weaker I feel, and when I prodded one with my pitchfork, I nearly passed out.", "Since you survived the swarms of those creatures I saw in the orchard, I am hoping that maybe you are capable of helping me.", "Would you please help me clear some of those creatures from my farm? I would appreciate it very much!" ]

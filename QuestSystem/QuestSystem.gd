@@ -18,6 +18,9 @@ func find_by_scene(scene: PackedScene) -> Quest:
 	for quest in completed_quests.get_children():
 		if quest.filename == scene.resource_path:
 			return quest
+	for quest in delivered_quests.get_children():
+		if quest.filename == scene.resource_path:
+			return quest
 	return null
 
 func get_available_quests() -> Array:

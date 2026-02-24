@@ -4,9 +4,8 @@
 [ext_resource path="res://QuestSystem/Objectives/QuestInteractObjective.tscn" type="PackedScene" id=2]
 
 [node name="MQ_01_0020" instance=ExtResource( 1 )]
-quest_id = "MQ_01_0020"
 title = "Lay of the Land"
 description = "Now that you have a way to defend yourself, FABIO suggests that we take a look around to see if there is anything or anyone that might help us gain our bearings."
-deliverText = [ "Well hello there! Not sure that I've seen you around before. Welcome to Jaro Jaro Farm, my name is Benny Jaro." ]
+deliverText = [ "Well hello there! Not sure that I've seen you around before. Welcome to Jaro Jaro Farm, my name is Beni Jaro." ]
 
 [node name="QuestInteractObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
