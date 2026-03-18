@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://World/AreaUtils/AreaYSort.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Above/Terrain.tscn" type="PackedScene" id=2]
@@ -19,10 +19,8 @@
 [ext_resource path="res://Utils/Overlap/CutSceneTrigger.tscn" type="PackedScene" id=17]
 [ext_resource path="res://CutScenes/Controllers/CutSceneController.tscn" type="PackedScene" id=18]
 [ext_resource path="res://CutScenes/Controllers/A9PlayerCutScene1Controller.gd" type="Script" id=19]
-[ext_resource path="res://Enemies/Bosses/VoidLord.tscn" type="PackedScene" id=20]
 [ext_resource path="res://CutScenes/Controllers/A9VoidLordCutScene1Controller.gd" type="Script" id=21]
 [ext_resource path="res://CutScenes/Controllers/A9PortalCutScene1Controller.gd" type="Script" id=22]
-[ext_resource path="res://World/Portals/Portal.tscn" type="PackedScene" id=23]
 [ext_resource path="res://CutScenes/Controllers/A9BatsCutScene1Controller.gd" type="Script" id=24]
 [ext_resource path="res://Utils/Controllers/RandomEncounterController.tscn" type="PackedScene" id=25]
 [ext_resource path="res://World/Objects/Signs/InformationBoard.tscn" type="PackedScene" id=26]
@@ -1321,15 +1319,12 @@ shape = SubResource( 3 )
 
 [node name="A9PlayerCutScene1Controller" parent="CutSceneTriggers/CutSceneTrigger1/ActorControllers" index="0" instance=ExtResource( 18 )]
 script = ExtResource( 19 )
-actor_path = NodePath("../../../../YSort/Player")
 
 [node name="A9VoidLordCutScene1Controller" parent="CutSceneTriggers/CutSceneTrigger1/ActorControllers" index="1" instance=ExtResource( 18 )]
 script = ExtResource( 21 )
-actor_reference = ExtResource( 20 )
 
 [node name="A9PortalCutScene1Controller" parent="CutSceneTriggers/CutSceneTrigger1/ActorControllers" index="2" instance=ExtResource( 18 )]
 script = ExtResource( 22 )
-actor_reference = ExtResource( 23 )
 
 [node name="A9BatsCutScene1Controller" parent="CutSceneTriggers/CutSceneTrigger1/ActorControllers" index="3" instance=ExtResource( 18 )]
 script = ExtResource( 24 )

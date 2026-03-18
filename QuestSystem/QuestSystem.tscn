@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://QuestSystem/QuestSystem.gd" type="Script" id=1]
 [ext_resource path="res://QuestSystem/QuestContainer.gd" type="Script" id=2]
 [ext_resource path="res://QuestSystem/Quests/MQ_01_0020.tscn" type="PackedScene" id=3]
 [ext_resource path="res://QuestSystem/Quests/MQ_01_0040.tscn" type="PackedScene" id=4]
+[ext_resource path="res://QuestSystem/Quests/MQ_01_0060.tscn" type="PackedScene" id=5]
+[ext_resource path="res://QuestSystem/Quests/MQ_01_0070.tscn" type="PackedScene" id=6]
 [ext_resource path="res://QuestSystem/Quests/MQ_01_0010.tscn" type="PackedScene" id=16]
 [ext_resource path="res://QuestSystem/Quests/MQ_01_0030.tscn" type="PackedScene" id=17]
 [ext_resource path="res://QuestSystem/Quests/MQ_01_0050.tscn" type="PackedScene" id=18]
@@ -24,6 +26,11 @@ startText = [ "*** PROXIMITY ALERT ***", "My emergency sensors detect potentiall
 [node name="MQ_01_0040" parent="Available" instance=ExtResource( 4 )]
 
 [node name="MQ_01_0050" parent="Available" instance=ExtResource( 18 )]
+
+[node name="MQ_01_0060" parent="Available" instance=ExtResource( 5 )]
+
+[node name="MQ_01_0070" parent="Available" instance=ExtResource( 6 )]
+deliverText = [ "Delivered..." ]
 
 [node name="Active" type="Node" parent="."]
 script = ExtResource( 2 )

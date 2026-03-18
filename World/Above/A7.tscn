@@ -470,7 +470,6 @@ shape = SubResource( 8 )
 
 [node name="SouthRoadGuard" parent="CutScenes/CutSceneTrigger/ActorControllers" index="0" instance=ExtResource( 15 )]
 script = ExtResource( 13 )
-actor_path = NodePath("../../../../YSort/Player")
 monologue = [ "Hey, hold it there! Where do you think you're going so fast?", "The road South is very dangerous right now.", "I've been told to keep people from going this way, so...", "Beat it! Go on now, scram!" ]
 speaker = "Guard"
 
@@ -482,7 +481,6 @@ shape = SubResource( 10 )
 
 [node name="SouthRoadGuardPass" parent="CutScenes/CutSceneTrigger2/ActorControllers" index="0" instance=ExtResource( 15 )]
 script = ExtResource( 17 )
-actor_path = NodePath("../../../../YSort/Player")
 monologue = [ "Oh, you again! I thought I told you to...", "What's that? You say the Doc is sending you on a special mission to help get rid of the monsters?", "Well, the Doc's a smart guy, so if he thinks you can help, then you can help. Be careful!" ]
 speaker = "Guard"
 

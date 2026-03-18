@@ -29,3 +29,6 @@ signal drop_item(loc, quantity, direction, distance, item)
 
 #QuestObjectives
 signal item_fabricated(item)
+
+#GlobalCutscenes
+signal run_global_cutscene(cutscene_name)

@@ -277,7 +277,6 @@ parameters/playback = SubResource( 1 )
 [node name="CompletedQuestAction" parent="YSort/NPCs/DrDochteur/InteractionZone/Actions" index="0" instance=ExtResource( 35 )]
 quest_reference = ExtResource( 36 )
 speaker_name = "Dr. Dochteur"
-active = true
 
 [node name="Shelves3" parent="YSort/Furniture" index="0" instance=ExtResource( 12 )]
 position = Vector2( 106, 81 )

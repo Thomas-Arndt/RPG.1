@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Objects/Plants/Shrub.tscn" type="PackedScene" id=2]
@@ -32,6 +32,9 @@
 [ext_resource path="res://World/Objects/Buildings/BridgeRailingMiddle.tscn" type="PackedScene" id=30]
 [ext_resource path="res://World/Objects/Buildings/BridgeRailingEndRight.tscn" type="PackedScene" id=31]
 [ext_resource path="res://World/Objects/Buildings/BridgeRailingEndLeft.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Inventory/Items/MetalBars/IronBar.tres" type="Resource" id=33]
+[ext_resource path="res://World/Objects/Forage/Wood.tres" type="Resource" id=34]
+[ext_resource path="res://World/Objects/Forage/WoodWorld.tres" type="Resource" id=35]
 [ext_resource path="res://World/AreaUtils/ItemsLayer.gd" type="Script" id=36]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=8]
@@ -873,7 +876,6 @@ parameters/playback = SubResource( 8 )
 [node name="CompletedQuestAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="0" instance=ExtResource( 24 )]
 quest_reference = ExtResource( 21 )
 speaker_name = "Beckah"
-active = true
 
 [node name="InProgressQuestAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="1" instance=ExtResource( 22 )]
 quest_reference = ExtResource( 21 )
@@ -924,6 +926,18 @@ respawn_time = 3.0
 position = Vector2( 284, 702 )
 world_item = ExtResource( 23 )
 forage_item = ExtResource( 23 )
+
+[node name="ForageWorldComponent6" parent="YSort/Forage" instance=ExtResource( 9 )]
+position = Vector2( 1037, -1213 )
+world_item = ExtResource( 35 )
+forage_item = ExtResource( 34 )
+respawn_time = 5.0
+
+[node name="ForageWorldComponent7" parent="YSort/Forage" instance=ExtResource( 9 )]
+position = Vector2( 1056, -1197 )
+world_item = ExtResource( 33 )
+forage_item = ExtResource( 33 )
+respawn_time = 5.0
 
 [node name="Bridges" type="YSort" parent="YSort"]
 
@@ -1048,7 +1062,6 @@ shape = SubResource( 7 )
 
 [node name="CutSceneController" parent="CutScenes/CutSceneTrigger/ActorControllers" index="0" instance=ExtResource( 12 )]
 script = ExtResource( 19 )
-actor_path = NodePath("../../../../YSort/Player")
 monologue = [ "I wouldn't go this way if I were you. It's dangerous..." ]
 speaker = "East Guard"
 

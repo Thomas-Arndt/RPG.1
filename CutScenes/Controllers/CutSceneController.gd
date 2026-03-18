@@ -3,6 +3,7 @@ extends Node2D
 signal finished
 signal release_player
 
+export (bool) var actor_is_player = false
 export (PackedScene) var actor_reference = null
 export (NodePath) var actor_path = null
 
@@ -94,14 +95,14 @@ func enter_actor(pos : Vector2) -> void:
 		actor = null
 		actor = actor_reference.instance()
 		actor.global_position = pos
-		if actor.has_method("state_machine_pause"):
-			actor.state_machine_pause()
 		get_tree().get_nodes_in_group("Mobs")[0].add_child(actor)
-	else:
+	elif actor_path != null:
 		actor = get_node(actor_path)
-		if actor.has_method("state_machine_pause"):
-			actor.state_machine_pause()
 		toggle_visible_on()
+	elif actor_is_player:
+		actor = get_tree().get_nodes_in_group("Player")[0]
+	if actor.has_method("state_machine_pause"):
+		actor.state_machine_pause()
 	run_cut_scene()
 
 func move_actor_to(destination : Vector2, duration: float, move_animation_name: String):

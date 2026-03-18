@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://QuestSystem/Objectives/QuestCollectItemsObjective.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Inventory/Items/MetalBars/IronBar.tres" type="Resource" id=3]
+[ext_resource path="res://World/Objects/Forage/Wood.tres" type="Resource" id=4]
+[ext_resource path="res://QuestSystem/EnvironmentRewards/RunGlobalCutscene.tscn" type="PackedScene" id=5]
+
+[node name="MQ_01_0070" instance=ExtResource( 1 )]
+title = "Iron Pickaxe"
+description = "FABIO is now able to create a digging tool that will allow you to free the trapped townsfolk. We simply need to find a couple iron bars and some wood."
+startText = [ "That is really fortunate timing! I am sure you can find those materials somehwere around here.", "The wood should be easy, we are in a forest after all. Search south of townand you should come across some logs.", "There are some iron bars in the forest too. Not sure why yet." ]
+progressText = [ "Look in the forest to the south of town here. I am sure you can find the materials you need." ]
+auto_deliver = true
+
+[node name="RunGlobalCutscene" parent="EnvironmentRewards" index="0" instance=ExtResource( 5 )]
+cutscene_name = "PickaxeMaterialsFound"
+
+[node name="QuestCollectItemsObjective" parent="Objectives" index="0" instance=ExtResource( 2 )]
+items = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 3 ) ]

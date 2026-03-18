@@ -123,6 +123,12 @@ func has_item(item) -> bool:
 		if inventory_item != null and inventory_item.type == item.type && inventory_item.name == item.name:
 			return true
 	return false
+
+func get_item_by_name(item_name):
+	for inventory_item in inventory:
+		if inventory_item != null and inventory_item.name == item_name:
+			return inventory_item
+	return null
 	
 func item_quantity(item) -> int:
 	for inventory_item in inventory:

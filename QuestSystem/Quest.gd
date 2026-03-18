@@ -13,7 +13,7 @@ export var title: String
 export var description: String
 export (Array, String) var startText
 export (Array, String) var progressText
-export(Array, String)  var deliverText
+export (Array, String)  var deliverText
 export var is_multiple_quest_part: bool = false
 export (bool) var auto_deliver = false
 

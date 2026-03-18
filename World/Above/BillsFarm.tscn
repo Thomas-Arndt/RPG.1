@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=2]
+[gd_scene load_steps=192 format=2]
 
 [ext_resource path="res://World/Objects/Forage/ForageWorldComponent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://QuestSystem/Quests/MQ_01_0010.tscn" type="PackedScene" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://Utils/Actions/InProgressQuestAction.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Above/Farmland.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Objects/Forage/ForageLayerComponent.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Player/Fabio.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Utils/Overlap/SceneLink.tscn" type="PackedScene" id=13]
 [ext_resource path="res://CutScenes/Controllers/IntroductionPortalController.gd" type="Script" id=14]
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=15]
@@ -32,7 +31,6 @@
 [ext_resource path="res://World/Objects/Forage/RedBerry.tres" type="Resource" id=31]
 [ext_resource path="res://World/Objects/Doors/LadderUpper.tscn" type="PackedScene" id=32]
 [ext_resource path="res://CutScenes/Controllers/BFScoutTheAreaPlayerController.gd" type="Script" id=33]
-[ext_resource path="res://World/Portals/Portal.tscn" type="PackedScene" id=34]
 [ext_resource path="res://World/AreaUtils/ItemsLayer.gd" type="Script" id=35]
 [ext_resource path="res://Utils/Receivers/RemoveNodeReceiver.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=37]
@@ -1987,7 +1985,6 @@ parameters/playback = SubResource( 222 )
 quest_reference = ExtResource( 29 )
 follow_up_quest = ExtResource( 7 )
 speaker_name = "Beni Jaro"
-active = true
 
 [node name="GiveQuestAction" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="1" instance=ExtResource( 27 )]
 quest_reference = ExtResource( 7 )
@@ -2002,7 +1999,6 @@ speaker_name = "Beni Jaro"
 quest_reference = ExtResource( 7 )
 follow_up_quest = ExtResource( 50 )
 speaker_name = "Beni Jaro"
-active = true
 
 [node name="GiveQuestAction2" parent="YSort/NPCs/NPC/InteractionZone/Actions" index="4" instance=ExtResource( 27 )]
 quest_reference = ExtResource( 50 )
@@ -2083,7 +2079,6 @@ respawn_time = -1.0
 [node name="CompletedQuestAction" parent="YSort/QuestItems/ForageWorldComponent/InteractionZone/Actions" index="1" instance=ExtResource( 3 )]
 quest_reference = ExtResource( 2 )
 speaker_name = "FABIO"
-active = true
 
 [node name="SceneLinks" type="Node2D" parent="."]
 
@@ -2130,14 +2125,11 @@ disabled = true
 
 [node name="CraftSurvivalKnifePlayerController" parent="CutSceneTriggers/CutSceneTrigger/ActorControllers" index="0" instance=ExtResource( 4 )]
 script = ExtResource( 43 )
-actor_path = NodePath("../../../../YSort/Player")
 
 [node name="CraftSurvivalKnifeFabioController2" parent="CutSceneTriggers/CutSceneTrigger/ActorControllers" index="1" instance=ExtResource( 4 )]
 script = ExtResource( 40 )
-actor_reference = ExtResource( 12 )
 
 [node name="TriggerFromItemReceivedReceiver" parent="CutSceneTriggers/CutSceneTrigger" instance=ExtResource( 49 )]
-item_resource = ExtResource( 45 )
 
 [node name="CutSceneTrigger2" parent="CutSceneTriggers" instance=ExtResource( 5 )]
 position = Vector2( 267, 126 )
@@ -2148,15 +2140,12 @@ shape = SubResource( 207 )
 
 [node name="IntroductionPlayerController" parent="CutSceneTriggers/CutSceneTrigger2/ActorControllers" index="0" instance=ExtResource( 4 )]
 script = ExtResource( 46 )
-actor_path = NodePath("../../../../YSort/Player")
 
 [node name="IntroductionPortalController" parent="CutSceneTriggers/CutSceneTrigger2/ActorControllers" index="1" instance=ExtResource( 4 )]
 script = ExtResource( 14 )
-actor_reference = ExtResource( 34 )
 
 [node name="IntroductionFabioController" parent="CutSceneTriggers/CutSceneTrigger2/ActorControllers" index="2" instance=ExtResource( 4 )]
 script = ExtResource( 6 )
-actor_reference = ExtResource( 12 )
 
 [node name="CutSceneTrigger3" parent="CutSceneTriggers" instance=ExtResource( 5 )]
 active = true
@@ -2171,11 +2160,9 @@ disabled = true
 
 [node name="LayOfTheLandPlayerController" parent="CutSceneTriggers/CutSceneTrigger3/ActorControllers" index="0" instance=ExtResource( 4 )]
 script = ExtResource( 33 )
-actor_path = NodePath("../../../../YSort/Player")
 
 [node name="LayOfTheLandFabioController" parent="CutSceneTriggers/CutSceneTrigger3/ActorControllers" index="1" instance=ExtResource( 4 )]
 script = ExtResource( 44 )
-actor_reference = ExtResource( 12 )
 
 [node name="TriggerFromItemFabricatedReceiver" parent="CutSceneTriggers/CutSceneTrigger3" instance=ExtResource( 47 )]
 item_resource = ExtResource( 48 )

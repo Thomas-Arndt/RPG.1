@@ -7,7 +7,7 @@ signal has_follow_up_quest(quest, speaker)
 export var quest_reference: PackedScene
 export var follow_up_quest: PackedScene
 export var speaker_name: String 
-export var active: bool = false
+export var active: bool = true
 
 var quest: Quest = null
 

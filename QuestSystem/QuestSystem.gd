@@ -43,6 +43,7 @@ func _on_Quest_completed(quest):
 	completed_quests.add_child(quest)
 	if quest.auto_deliver:
 		deliver(quest)
+		UI.TextBox.queue_text(quest.deliverText, "")
 	save_quest_progress()
 
 func deliver(quest: Quest):

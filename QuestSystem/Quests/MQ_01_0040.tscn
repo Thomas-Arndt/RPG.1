@@ -10,7 +10,7 @@ title = "Loni Come Back!"
 description = "Beni has asked that we find his brother and send him back to the farm. He is doing some business in Tiny Town to the north of the Greatwood."
 startText = [ "I have a favor to ask of you, if you are willing.", "These creatures are proving to be a bit too much for me to handle on my own. I need my brother, Loni's help.", "Unfortunately he is up North for business, and I can't leave the farm in this state.", "Could you deliver this message to him for me? I would greatly appreciate it!" ]
 progressText = [ "Loni should be in Tiny Town, up to the north of the Greatwood." ]
-deliverText = [ "Oh hello! I do apologize, but I do not have the time for introductions at the moment." ]
+deliverText = [ "Oh hello! I do apologize, but I do not have the time for introductions at the moment.", "t's that? You say may brother sent you for me with a letter? May I see it?" ]
 
 [node name="RunNodeFunction" parent="EnvironmentRewards" index="0" instance=ExtResource( 2 )]
 signal_code = "fabio_interrupts_loni"

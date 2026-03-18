@@ -210,7 +210,6 @@ deliver_text = [ "You found everyone! Thank you so much for helping us!", "Come 
 quest_reference = ExtResource( 31 )
 follow_up_quest = ExtResource( 30 )
 speaker_name = "Jimbo"
-active = true
 
 [node name="NPC2" parent="YSort/NPCs" index="1" instance=ExtResource( 23 )]
 position = Vector2( -191, 705 )
@@ -228,7 +227,6 @@ parameters/playback = SubResource( 5 )
 [node name="CompletedQuestAction" parent="YSort/NPCs/NPC2/InteractionZone/Actions" index="0" instance=ExtResource( 29 )]
 quest_reference = ExtResource( 25 )
 speaker_name = "Sally"
-active = true
 
 [node name="NPC3" parent="YSort/NPCs" index="2" instance=ExtResource( 23 )]
 position = Vector2( 582, 953 )
@@ -245,7 +243,6 @@ parameters/playback = SubResource( 6 )
 [node name="CompletedQuestAction" parent="YSort/NPCs/NPC3/InteractionZone/Actions" index="0" instance=ExtResource( 29 )]
 quest_reference = ExtResource( 27 )
 speaker_name = "Harold"
-active = true
 
 [node name="NPC4" parent="YSort/NPCs" index="3" instance=ExtResource( 23 )]
 position = Vector2( 1030, -336 )
@@ -263,7 +260,6 @@ parameters/playback = SubResource( 7 )
 [node name="CompletedQuestAction" parent="YSort/NPCs/NPC4/InteractionZone/Actions" index="0" instance=ExtResource( 29 )]
 quest_reference = ExtResource( 26 )
 speaker_name = "Saunder"
-active = true
 
 [node name="ForageWorldComponent" parent="YSort/Forage" index="0" instance=ExtResource( 21 )]
 position = Vector2( -537, 284 )

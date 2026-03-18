@@ -3,7 +3,7 @@ extends Node
 signal no_health
 signal health_changed(value)
 signal max_health_changed(value)
-signal muon_attunement_changes(value)
+signal muon_attunement_changed(value)
 signal experience_changed(value)
 signal player_level_changed(value)
 
@@ -39,7 +39,7 @@ func change_health(value):
 
 func set_muon_attunement(value):
 	muon_attunement = value
-	emit_signal("muon_attunement_changes", value)
+	emit_signal("muon_attunement_changed", value)
 		
 func set_experience(value):
 	experience = value
@@ -55,10 +55,12 @@ func set_player_level(value):
 	emit_signal("player_level_changed", playerLevel)
 
 func calculate_player_level():
-	playerLevel = floor(experience / 40) + 1
-	if experience >= 250 and !muon_attunement:
-		muon_attunement = true
-		#TODO: Fabio upgrade cutscene
+	var new_player_level = floor(experience / 40) + 1
+	if new_player_level > playerLevel:
+		emit_signal("player_level_changed", new_player_level)
+	playerLevel = new_player_level
+	if playerLevel == 5 and !muon_attunement:
+		set_muon_attunement(true)
 
 func has_weapon_equipped():
 	for i in range(4):

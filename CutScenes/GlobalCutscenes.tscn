@@ -1,0 +1,45 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://CutScenes/GlobalCutscenes.gd" type="Script" id=1]
+[ext_resource path="res://Utils/Overlap/CutSceneTrigger.tscn" type="PackedScene" id=2]
+[ext_resource path="res://CutScenes/Controllers/G_PickaxeFabricated.gd" type="Script" id=3]
+[ext_resource path="res://CutScenes/Controllers/GenericFabioController.gd" type="Script" id=4]
+[ext_resource path="res://CutScenes/Controllers/CutSceneController.tscn" type="PackedScene" id=5]
+[ext_resource path="res://CutScenes/Controllers/G_PickaxeMaterialsFound.gd" type="Script" id=6]
+[ext_resource path="res://Player/Fabio.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Utils/Receivers/TriggerFromItemFabricatedReceiver.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Inventory/Items/Tools/PickAxe.tres" type="Resource" id=9]
+
+[node name="GlobalCutscenes" type="Node"]
+script = ExtResource( 1 )
+
+[node name="FirstMuonAttunement" parent="." instance=ExtResource( 2 )]
+
+[node name="PickaxeMaterialsFound" parent="." instance=ExtResource( 2 )]
+active = true
+
+[node name="Player" parent="PickaxeMaterialsFound/ActorControllers" index="0" instance=ExtResource( 5 )]
+script = ExtResource( 6 )
+actor_is_player = true
+
+[node name="FABIO" parent="PickaxeMaterialsFound/ActorControllers" index="1" instance=ExtResource( 5 )]
+script = ExtResource( 4 )
+actor_reference = ExtResource( 7 )
+
+[node name="PickaxeFabicated" parent="." instance=ExtResource( 2 )]
+active = true
+
+[node name="Player" parent="PickaxeFabicated/ActorControllers" index="0" instance=ExtResource( 5 )]
+script = ExtResource( 3 )
+actor_is_player = true
+
+[node name="FABIO" parent="PickaxeFabicated/ActorControllers" index="1" instance=ExtResource( 5 )]
+script = ExtResource( 4 )
+actor_reference = ExtResource( 7 )
+
+[node name="TriggerFromItemFabricatedReceiver" parent="PickaxeFabicated" instance=ExtResource( 8 )]
+item_resource = ExtResource( 9 )
+
+[editable path="FirstMuonAttunement"]
+[editable path="PickaxeMaterialsFound"]
+[editable path="PickaxeFabicated"]

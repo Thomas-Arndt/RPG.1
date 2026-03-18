@@ -3,8 +3,11 @@ extends "res://CutScenes/Controllers/CutSceneController.gd"
 func package_choreography():
 	choreography.append([ENTER, Vector2.ZERO])
 	choreography.append([PAUSE_FOR_DIALOGUE])
+	choreography.append([PAUSE_FOR_DIALOGUE])
+	choreography.append([WAIT, 0.5])
 	choreography.append([CUSTOM, "OPENDOOR", []])
-	choreography.append([WAIT, 1.5])
+	choreography.append([PAUSE_FOR_DIALOGUE])
+	choreography.append([WAIT, 0.5])
 	choreography.append([CUSTOM, "CLOSEDOOR", []])
 	choreography.append([RELEASE_PLAYER])
 	choreography.append([RELEASE_ACTOR])

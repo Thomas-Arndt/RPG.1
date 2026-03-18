@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://QuestSystem/Objectives/QuestInteractObjective.tscn" type="PackedScene" id=1]
+[ext_resource path="res://QuestSystem/Quest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://QuestSystem/EnvironmentRewards/RunNodeFunction.tscn" type="PackedScene" id=3]
+
+[node name="MQ_01_0060" instance=ExtResource( 2 )]
+title = "Return to Loni"
+description = "We have learned that the townsfolk are trapped in Orrelsbad Caverns to the West due to a cave-in. You are going to need to do. Let's return to Loni."
+deliverText = [ "Hey, did Dale give you any helpful information?", "A cave-in!? I agree with Dale, digging will be required. And that is very unfortunate about their tools.", "The first thing we will need to do is to track down some sort of digging apparatus." ]
+
+[node name="RunNodeFunction" parent="EnvironmentRewards" index="0" instance=ExtResource( 3 )]
+signal_code = "fabio-interrupts-bob"
+
+[node name="QuestInteractObjective" parent="Objectives" index="0" instance=ExtResource( 1 )]
